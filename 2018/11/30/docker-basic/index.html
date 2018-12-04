@@ -12,12 +12,12 @@
 <meta name="keywords" content="docker">
 <meta property="og:type" content="article">
 <meta property="og:title" content="docker常用基础">
-<meta property="og:url" content="//www.guaosi.com/2018/11/30/docker/index.html">
+<meta property="og:url" content="//www.guaosi.com/2018/11/30/docker-basic/index.html">
 <meta property="og:site_name" content="guaosi的博客">
 <meta property="og:description" content="1. docker用来干什么将做好的环境和代码，打包成镜像，可以让各个地方都可以直接使用，不再受到环境的限制。 2. docker与虚拟机的区别 虚拟机是模拟整个操作系统，包括硬件部分 docker是使用linux容器，通过进程隔离，拥有自己的文件系统，不会跟宿主机产生错乱。 docker没有自己的内核，使用的是宿主机的内核。">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="//www.guaosi.com/assets/blogImg/docker-mascot.jpeg">
-<meta property="og:updated_time" content="2018-11-30T08:57:25.273Z">
+<meta property="og:updated_time" content="2018-12-04T07:34:20.550Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="docker常用基础">
 <meta name="twitter:description" content="1. docker用来干什么将做好的环境和代码，打包成镜像，可以让各个地方都可以直接使用，不再受到环境的限制。 2. docker与虚拟机的区别 虚拟机是模拟整个操作系统，包括硬件部分 docker是使用linux容器，通过进程隔离，拥有自己的文件系统，不会跟宿主机产生错乱。 docker没有自己的内核，使用的是宿主机的内核。">
@@ -169,7 +169,7 @@ var _hmt = _hmt || [];
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-docker" class="article article-type-post " itemscope="" itemprop="blogPost">
+            <article id="post-docker-basic" class="article article-type-post " itemscope="" itemprop="blogPost">
   <div class="article-inner">
     
     <header class="article-header">
@@ -195,7 +195,7 @@ var _hmt = _hmt || [];
 
 
       
-      <a href="/2018/11/30/docker/" class="archive-article-date">
+      <a href="/2018/11/30/docker-basic/" class="archive-article-date">
   	<time datetime="2018-11-30T03:39:18.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-30</time>
 </a>
       
@@ -695,7 +695,7 @@ var _hmt = _hmt || [];
           
           <br>
           <strong>本文链接：</strong>
-          <a rel="license" href="https://www.guaosi.com/2018/11/30/docker/">https://www.guaosi.com/2018/11/30/docker/</a>
+          <a rel="license" href="https://www.guaosi.com/2018/11/30/docker-basic/">https://www.guaosi.com/2018/11/30/docker-basic/</a>
           <br>
           <strong>版权声明：</strong>
           本博客所有文章除特别声明外，均采用
@@ -811,7 +811,7 @@ var _hmt = _hmt || [];
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAK4AAACuCAAAAACKZ2kyAAAByElEQVR42u3aS27DMAwFQN//0i6QVYEmyiNlyUYxWhX5SNMsCD9SxxGv87WS189fK3/l4oWLizvNPYfrLys5+NNnxvuPP4OLi7ufOy5S0UZx5Rn/BF9suLi4D+OOH1mqD0a4uLj/gzuOOtUwg4uL+3xuHk4SaPJItDyr4eLiTnBnis5Vfy/s7+Li4ha5Z3H1mqe9s96cjouLu4U7HpRWR6rjwtR7hDpyBC4u7kXc6uWJdYPY6CfAxcXdws2HH9VBSN5GyXfDxcW9l3ttGcpbIXmUwsXFXc3Nh50JurpbPpLBxcXdw52JOr0xTDViHb2v4eLiTnDzItUbt1SvX5RHrbi4uAu4vatX1dZGPoD5EplwcXG3c2fCT/5uHp9wcXHv5eYFpfcv9YLWmxNxcXG3cK+9mJWnlZmihouLu5rba1j0rl/krI+xChcXdyO3Ny6tznJ7wxhcXNy7uNUxSbJ1b9xyXHUALi7uBHfFFYo8UM2UUVxc3NXcvOhUm6T5dwsFDhcXdyO32u7Mg1By1lRNxcXFvZWbB54cV22t4uLiPpmbX8PqDWJxcXGfwM2bm0mR6l3ziposuLi4W7jVxJGPTquhCBcX9wHcH46kTdRIRZqgAAAAAElFTkSuQmCC" alt="微信分享二维码">
+      <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACJUlEQVR42u3aQW4CMQwFUO5/6em2EgX970ClSV5WowqC3yzcOPbjEa/raa188vffn5/f77+0MDAwbsu43q4kuOSHkz1nn8HAwDiHkafFJLhX30r2yX8XAwMDIwkuPwi+IrUvAgMDA2PGyNN0EjQGBgbGShHbFq6ztPv1WhwDA+OGjDyI/3/+Sn8DAwPjVoyrXHmibNNlnmT/2AcDA2NrxqwBudLOzNn1QRMDA2NTRhJEfuGVJM386i0pfYugMTAwbstYCX02NJbvUF/5YWBgHMBYSYtJupydW4urNwwMjK0ZSQGZjHy9b0Amh8g2fWNgYJzA+OzoQ05NAMUFHAYGxgGMpUuuhfTdpt2X8WBgYGzNmKXFWZNgZRytaHZiYGAcwGjTa158zpqX9eUdBgbGpoy8NG2bnbNAh68YAwNjU8YMMMvo7Z75cAYGBsbejFl7YP1Ymb+s/KVgYGDsypgNOswSZfs6ioYoBgbG1oz2CysXcPkBcTh+gYGBcQAjH24oGopxIZqH+zIpY2BgHMBoy8i2WM2Dy4cwpjdzGBgY92Z8qrxsWwh5DMW0CAYGxhaMq1yz8nXW2iyoGBgYWzPao9j3rs/yo2p+bMXAwNiJ0Y6FzQ5zbfOyTrgYGBgHMFYK1xaw8h9gOGyBgYFxMCMPeuVQGMWDgYGBMXquByYWDo4YGBgnMNohrfZCv03Z7RgHBgbG3oy8dJxd7q+UuO0wBwYGxnaMHxTsvCpgx2JvAAAAAElFTkSuQmCC" alt="微信分享二维码">
     </div>
 </div>
 
@@ -860,7 +860,7 @@ var _hmt = _hmt || [];
 
 
 
-<div id="SOHUCS" sid="docker"></div> 
+<div id="SOHUCS" sid="docker-basic"></div> 
 <script type="text/javascript"> 
 (function(){ 
 var appid = "cytWxLdY3"; 
