@@ -8,19 +8,19 @@
   <link rel="dns-prefetch" href="//www.guaosi.com">
   <title>docker常用基础 | guaosi的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="1. docker用来干什么将做好的环境和代码，打包成镜像，可以让各个地方都可以直接使用，不再受到环境的限制。 2. docker与虚拟机的区别 虚拟机是模拟整个操作系统，包括硬件部分 docker是使用linux容器，通过进程隔离，拥有自己的文件系统，不会跟宿主机产生错乱。 docker没有自己的内核，使用的是宿主机的内核。">
+  <meta name="description" content="1. docker用来干什么将做好的环境和代码，打包成镜像，可以让各个地方都可以直接使用，不再受到环境的限制。 2. docker与虚拟机的区别1.虚拟机是模拟整个操作系统，包括硬件部分2.docker是使用linux容器，通过进程隔离，拥有自己的文件系统，不会跟宿主机产生错乱。3.docker没有自己的内核，使用的是宿主机的内核。">
 <meta name="keywords" content="docker">
 <meta property="og:type" content="article">
 <meta property="og:title" content="docker常用基础">
 <meta property="og:url" content="//www.guaosi.com/2018/11/30/docker-basic/index.html">
 <meta property="og:site_name" content="guaosi的博客">
-<meta property="og:description" content="1. docker用来干什么将做好的环境和代码，打包成镜像，可以让各个地方都可以直接使用，不再受到环境的限制。 2. docker与虚拟机的区别 虚拟机是模拟整个操作系统，包括硬件部分 docker是使用linux容器，通过进程隔离，拥有自己的文件系统，不会跟宿主机产生错乱。 docker没有自己的内核，使用的是宿主机的内核。">
+<meta property="og:description" content="1. docker用来干什么将做好的环境和代码，打包成镜像，可以让各个地方都可以直接使用，不再受到环境的限制。 2. docker与虚拟机的区别1.虚拟机是模拟整个操作系统，包括硬件部分2.docker是使用linux容器，通过进程隔离，拥有自己的文件系统，不会跟宿主机产生错乱。3.docker没有自己的内核，使用的是宿主机的内核。">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="//www.guaosi.com/assets/blogImg/docker-mascot.jpeg">
-<meta property="og:updated_time" content="2018-12-04T07:58:52.612Z">
+<meta property="og:updated_time" content="2018-12-04T08:01:05.714Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="docker常用基础">
-<meta name="twitter:description" content="1. docker用来干什么将做好的环境和代码，打包成镜像，可以让各个地方都可以直接使用，不再受到环境的限制。 2. docker与虚拟机的区别 虚拟机是模拟整个操作系统，包括硬件部分 docker是使用linux容器，通过进程隔离，拥有自己的文件系统，不会跟宿主机产生错乱。 docker没有自己的内核，使用的是宿主机的内核。">
+<meta name="twitter:description" content="1. docker用来干什么将做好的环境和代码，打包成镜像，可以让各个地方都可以直接使用，不再受到环境的限制。 2. docker与虚拟机的区别1.虚拟机是模拟整个操作系统，包括硬件部分2.docker是使用linux容器，通过进程隔离，拥有自己的文件系统，不会跟宿主机产生错乱。3.docker没有自己的内核，使用的是宿主机的内核。">
 <meta name="twitter:image" content="//www.guaosi.com/assets/blogImg/docker-mascot.jpeg">
   
     <link rel="alternative" href="/atom.xml" title="guaosi的博客" type="application/atom+xml">
@@ -204,11 +204,7 @@ var _hmt = _hmt || [];
     <div class="article-entry" itemprop="articleBody">
       
       <h1 id="1-docker用来干什么"><a href="#1-docker用来干什么" class="headerlink" title="1. docker用来干什么"></a>1. docker用来干什么</h1><p>将做好的环境和代码，打包成镜像，可以让各个地方都可以直接使用，不再受到环境的限制。</p>
-<h1 id="2-docker与虚拟机的区别"><a href="#2-docker与虚拟机的区别" class="headerlink" title="2. docker与虚拟机的区别"></a>2. docker与虚拟机的区别</h1><ol>
-<li>虚拟机是模拟整个操作系统，包括硬件部分</li>
-<li>docker是使用linux容器，通过进程隔离，拥有自己的文件系统，不会跟宿主机产生错乱。</li>
-<li>docker没有自己的内核，使用的是宿主机的内核。</li>
-</ol>
+<h1 id="2-docker与虚拟机的区别"><a href="#2-docker与虚拟机的区别" class="headerlink" title="2. docker与虚拟机的区别"></a>2. docker与虚拟机的区别</h1><p>1.虚拟机是模拟整个操作系统，包括硬件部分<br>2.docker是使用linux容器，通过进程隔离，拥有自己的文件系统，不会跟宿主机产生错乱。<br>3.docker没有自己的内核，使用的是宿主机的内核。</p>
 <a id="more"></a>
 <p><img src="/assets/blogImg/docker-mascot.jpeg" alt="docker-mascot"></p>
 <h1 id="3-docker三大要素"><a href="#3-docker三大要素" class="headerlink" title="3. docker三大要素"></a>3. docker三大要素</h1><ol>
@@ -221,19 +217,9 @@ var _hmt = _hmt || [];
 </ol>
 <p>镜像就是模板。镜像好比类，容器是对象实例。</p>
 <h2 id="3-1-需要正确的理解仓库-镜像-容器这几个概念"><a href="#3-1-需要正确的理解仓库-镜像-容器这几个概念" class="headerlink" title="3.1. 需要正确的理解仓库/镜像/容器这几个概念"></a>3.1. 需要正确的理解仓库/镜像/容器这几个概念</h2><p>Docker本身是一个容器运行载体货称之为管理引擎。我们把应用程序和配置依赖打包好形成一个可交付的运行环境，这个打包好的运行环境就是image镜像文件。只有通过这个镜像文件才能生成docker容器。image文件可以看做是容器的模板。Docker根据image文件生成容器的实例。同一个image文件，可以生成多个同时运行的容器实例。</p>
-<ol>
-<li>image文件生成的容器实例，本身也是一个文件，称之为镜像文件。</li>
-<li>一个容器运行一种服务，当我们需要的时候，就可以通过docker客户端创建一个对应的运行实例，也就是我们的容器。</li>
-<li>至于仓库，就是存放了一堆镜像的地方，我们可以把镜像发布到仓库中，需要的时候从仓库中拉下来就可以了。</li>
-</ol>
+<p>1.image文件生成的容器实例，本身也是一个文件，称之为镜像文件。<br>2.一个容器运行一种服务，当我们需要的时候，就可以通过docker客户端创建一个对应的运行实例，也就是我们的容器。<br>3.至于仓库，就是存放了一堆镜像的地方，我们可以把镜像发布到仓库中，需要的时候从仓库中拉下来就可以了。</p>
 <h1 id="4-安装docker"><a href="#4-安装docker" class="headerlink" title="4. 安装docker"></a>4. 安装docker</h1><h2 id="4-1-在centos6上安装docker"><a href="#4-1-在centos6上安装docker" class="headerlink" title="4.1. 在centos6上安装docker"></a>4.1. 在centos6上安装docker</h2><p>至少要centos6.5以上。</p>
-<ol>
-<li>yum install -y epel-release</li>
-<li>yum install -y docker-io</li>
-<li>安装后的配置文件: /etc/sysconfig/docker</li>
-<li>启动Docker后台服务: service docker start</li>
-<li>docker version验证</li>
-</ol>
+<p>1.yum install -y epel-release<br>2.yum install -y docker-io<br>3.安装后的配置文件: /etc/sysconfig/docker<br>4.启动Docker后台服务: service docker start<br>5.docker version验证</p>
 <h2 id="4-2-在centos7上安装docker"><a href="#4-2-在centos7上安装docker" class="headerlink" title="4.2. 在centos7上安装docker"></a>4.2. 在centos7上安装docker</h2><p>官网安装教程:<br><a href="https://docs.docker.com/install/linux/docker-ce/centos/#install-docker-ce" target="_blank" rel="noopener">https://docs.docker.com/install/linux/docker-ce/centos/#install-docker-ce</a><br>使用镜像仓库进行安装</p>
 <p>1.安装gcc</p>
 <blockquote>

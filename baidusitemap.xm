@@ -2,6 +2,6 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>//www.guaosi.com/2018/11/30/docker-basic/</loc>
-    <lastmod>2018-12-04T07:58:52.612Z</lastmod>
+    <lastmod>2018-12-04T08:01:05.714Z</lastmod>
   </url>
 </urlset>
