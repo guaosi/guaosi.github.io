@@ -17,7 +17,7 @@
 <meta property="og:description" content="1. docker用来干什么将做好的环境和代码，打包成镜像，可以让各个地方都可以直接使用，不再受到环境的限制。 2. docker与虚拟机的区别 虚拟机是模拟整个操作系统，包括硬件部分 docker是使用linux容器，通过进程隔离，拥有自己的文件系统，不会跟宿主机产生错乱。 docker没有自己的内核，使用的是宿主机的内核。">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="//www.guaosi.com/assets/blogImg/docker-mascot.jpeg">
-<meta property="og:updated_time" content="2018-12-04T07:34:20.550Z">
+<meta property="og:updated_time" content="2018-12-04T07:51:40.187Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="docker常用基础">
 <meta name="twitter:description" content="1. docker用来干什么将做好的环境和代码，打包成镜像，可以让各个地方都可以直接使用，不再受到环境的限制。 2. docker与虚拟机的区别 虚拟机是模拟整个操作系统，包括硬件部分 docker是使用linux容器，通过进程隔离，拥有自己的文件系统，不会跟宿主机产生错乱。 docker没有自己的内核，使用的是宿主机的内核。">
@@ -226,7 +226,7 @@ var _hmt = _hmt || [];
 <li>一个容器运行一种服务，当我们需要的时候，就可以通过docker客户端创建一个对应的运行实例，也就是我们的容器。</li>
 <li>至于仓库，就是存放了一堆镜像的地方，我们可以把镜像发布到仓库中，需要的时候从仓库中拉下来就可以了。</li>
 </ol>
-<h1 id="4-安装docker"><a href="#4-安装docker" class="headerlink" title="4. 安装docker"></a>4. 安装docker</h1><h2 id="4-1-在centos6上安装docker"><a href="#4-1-在centos6上安装docker" class="headerlink" title="4.1. 在centos6上安装docker"></a>4.1. 在centos6上安装docker</h2><p>只少要centos6.5以上。</p>
+<h1 id="4-安装docker"><a href="#4-安装docker" class="headerlink" title="4. 安装docker"></a>4. 安装docker</h1><h2 id="4-1-在centos6上安装docker"><a href="#4-1-在centos6上安装docker" class="headerlink" title="4.1. 在centos6上安装docker"></a>4.1. 在centos6上安装docker</h2><p>至少要centos6.5以上。</p>
 <ol>
 <li>yum install -y epel-release</li>
 <li>yum install -y docker-io</li>
@@ -554,22 +554,15 @@ var _hmt = _hmt || [];
 </blockquote>
 <p>查看容器的详情，可以通过Binds看到对应的映射数据券，RWc查看是否可读可写。true代表可读可写，false代表只可读。</p>
 <h3 id="8-3-2-DockerFile添加"><a href="#8-3-2-DockerFile添加" class="headerlink" title="8.3.2. DockerFile添加"></a>8.3.2. DockerFile添加</h3><p>DockerFile相当于image镜像的源文件</p>
-<ol>
-<li>编写DockerFile文件<br>vim DockerFile(文件名随便)<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># volume test</span></span><br><span class="line"><span class="keyword">FROM</span> centos</span><br><span class="line"><span class="keyword">VOLUME</span><span class="bash"> [<span class="string">"/dataVolumeContainer1"</span>,<span class="string">"/dataVolumeContainer2"</span>]</span></span><br><span class="line"><span class="bash">CMD <span class="built_in">echo</span> <span class="string">"finished,-------success1"</span></span></span><br><span class="line"><span class="bash">CMD /bin/bash</span></span><br></pre></td></tr></table></figure>
-</li>
-</ol>
+<p>1.编写DockerFile文件<br>vim DockerFile(文件名随便)<br><figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># volume test</span></span><br><span class="line"><span class="keyword">FROM</span> centos</span><br><span class="line"><span class="keyword">VOLUME</span><span class="bash"> [<span class="string">"/dataVolumeContainer1"</span>,<span class="string">"/dataVolumeContainer2"</span>]</span></span><br><span class="line"><span class="bash">CMD <span class="built_in">echo</span> <span class="string">"finished,-------success1"</span></span></span><br><span class="line"><span class="bash">CMD /bin/bash</span></span><br></pre></td></tr></table></figure></p>
 <p>意思是集成centos这个镜像后，在容器的根目录下创建了2个数据券共享的文件夹,然后输出字符串，然后结束</p>
 <p>最后的 /bin/bash相当于将<code>docker run -it xxx</code>转为<code>docker run -it xxx /bin/bash</code></p>
-<ol start="2">
-<li>构建DockerFile对应的镜像</li>
-</ol>
+<p>2.构建DockerFile对应的镜像</p>
 <blockquote>
 <p>docker build -f /usr/local/DockerFile -t guaosi/centos .</p>
 </blockquote>
 <p>将编写好的DockerFile通过build命令创建出image镜像,DockerFile需要填写绝对路径，-t 后面写镜像的名称, . 代表镜像具体文件生成在当前目录下</p>
-<ol start="3">
-<li>检查</li>
-</ol>
+<p>3.检查</p>
 <p>容器运行刚刚生成的镜像后，通过 <code>docker inspect ff146b4fccd5</code> 可以看到对应的容器数据券,<code>Source</code>字段代表宿主机上所映射的文件夹。宿主机与容器实时同步，可读可写.</p>
 <h3 id="8-3-3-容器间数据共享-DockerFile"><a href="#8-3-3-容器间数据共享-DockerFile" class="headerlink" title="8.3.3. 容器间数据共享(DockerFile)"></a>8.3.3. 容器间数据共享(DockerFile)</h3><p>因为用DockerFile构建的镜像运行的容器，每一次运行宿主机上都会重新生成一个新的映射文件夹与之对应共享数据。此时同一镜像的不同容器想要想要进行数据共享，则需要<code>--volumes-from</code></p>
 <p>测试过程</p>
@@ -586,35 +579,18 @@ var _hmt = _hmt || [];
 <p>docker run -it –name dc03 –volumes-from dc01 guaosi/centos</p>
 </blockquote>
 <p>创建一个别名为dc02和dc03的guaosi/centos的容器,同时这个容器继承别名为dc01的guaosi/centos容器的数据共享(继承最好是同一个镜像)</p>
-<ol start="3">
-<li><p>此时对dc01容器,dc02容器,dc03容器其中的任意一个进行修改或者删除，其他两个都会同步到，现在这三个容器是实时同步。</p>
-</li>
-<li><p>如果此时删除dc01容器这个父容器，那么剩下两个子容器依旧可以数据券共享，实时同步，不会有任何影响(包括dc01里的文件也健在)。就算dc04继承dc03然后删除dc03，那么dc04与dc02依旧可以数据共享。</p>
-</li>
-</ol>
+<p>3.此时对dc01容器,dc02容器,dc03容器其中的任意一个进行修改或者删除，其他两个都会同步到，现在这三个容器是实时同步。</p>
+<p>4.如果此时删除dc01容器这个父容器，那么剩下两个子容器依旧可以数据券共享，实时同步，不会有任何影响(包括dc01里的文件也健在)。就算dc04继承dc03然后删除dc03，那么dc04与dc02依旧可以数据共享。</p>
 <p>总结: 容器之间配置信息的传递，数据卷的生命周期一直持续到没有容器使用为止(DockerFile)。</p>
-<h1 id="9-dockerFile"><a href="#9-dockerFile" class="headerlink" title="9. dockerFile"></a>9. dockerFile</h1><h2 id="9-1-dockerfile构建过程解析"><a href="#9-1-dockerfile构建过程解析" class="headerlink" title="9.1. dockerfile构建过程解析"></a>9.1. dockerfile构建过程解析</h2><h3 id="9-1-1-dockerfile内容基础知识"><a href="#9-1-1-dockerfile内容基础知识" class="headerlink" title="9.1.1. dockerfile内容基础知识"></a>9.1.1. dockerfile内容基础知识</h3><ol>
-<li><p>每条保留字指令都必须为大写字母并且后面要跟随至少一个参数</p>
-</li>
-<li><p>指令按照从上到下，顺序执行</p>
-</li>
-<li><p>#代表注释</p>
-</li>
-<li><p>每条指令都会创建一个新的镜像层，并对镜像进行提交。</p>
-</li>
-</ol>
-<h3 id="9-1-2-docker执行dockerfile的大致流程"><a href="#9-1-2-docker执行dockerfile的大致流程" class="headerlink" title="9.1.2. docker执行dockerfile的大致流程"></a>9.1.2. docker执行dockerfile的大致流程</h3><ol>
-<li><p>docker从基础镜像运行一个容器</p>
-</li>
-<li><p>执行一条指令并对容器做出修改</p>
-</li>
-<li><p>执行类型docker commit的操作提交一个新的镜像层</p>
-</li>
-<li><p>docker再基于刚提交的镜像运行一个新容器</p>
-</li>
-<li><p>执行dockerfile的下一条指令直到所有指令都执行完。</p>
-</li>
-</ol>
+<h1 id="9-dockerFile"><a href="#9-dockerFile" class="headerlink" title="9. dockerFile"></a>9. dockerFile</h1><h2 id="9-1-dockerfile构建过程解析"><a href="#9-1-dockerfile构建过程解析" class="headerlink" title="9.1. dockerfile构建过程解析"></a>9.1. dockerfile构建过程解析</h2><h3 id="9-1-1-dockerfile内容基础知识"><a href="#9-1-1-dockerfile内容基础知识" class="headerlink" title="9.1.1. dockerfile内容基础知识"></a>9.1.1. dockerfile内容基础知识</h3><p>1.每条保留字指令都必须为大写字母并且后面要跟随至少一个参数</p>
+<p>2.指令按照从上到下，顺序执行</p>
+<p>3.#代表注释</p>
+<p>4.每条指令都会创建一个新的镜像层，并对镜像进行提交。</p>
+<h3 id="9-1-2-docker执行dockerfile的大致流程"><a href="#9-1-2-docker执行dockerfile的大致流程" class="headerlink" title="9.1.2. docker执行dockerfile的大致流程"></a>9.1.2. docker执行dockerfile的大致流程</h3><p>1.docker从基础镜像运行一个容器</p>
+<p>2.执行一条指令并对容器做出修改</p>
+<p>3.执行类型docker commit的操作提交一个新的镜像层</p>
+<p>4.docker再基于刚提交的镜像运行一个新容器</p>
+<p>5.执行dockerfile的下一条指令直到所有指令都执行完。</p>
 <h2 id="9-2-dockerfile体系结构-保留字指令"><a href="#9-2-dockerfile体系结构-保留字指令" class="headerlink" title="9.2. dockerfile体系结构(保留字指令)"></a>9.2. dockerfile体系结构(保留字指令)</h2><figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">FROM</span>  基础镜像，当前新镜像是基于哪个镜像的</span><br><span class="line"><span class="keyword">MAINTAINER</span>  镜像维护者的姓名和邮箱地址</span><br><span class="line"><span class="keyword">RUN</span><span class="bash">  容器构建时需要运行的命令(容器中执行Linux的命令)</span></span><br><span class="line"><span class="bash">EXPOSE  当前容器对外暴露出的端口</span></span><br><span class="line"><span class="bash">WORKDIR  指定在创建容器之后，终端默认登陆进来的工作目录，一个落脚点</span></span><br><span class="line"><span class="bash">ENV  用来在构建镜像过程中设置环境变量，相当于是设定了变量，方便调用使用</span></span><br><span class="line"><span class="bash">ADD 将宿主机目录下的文件拷贝进镜像并且ADD会自动处理URL和解压tar压缩包</span></span><br><span class="line"><span class="bash">COPY  类似ADD，拷贝文件和目录到镜像中，但是不会自动解压。将从构建上下文目录中&lt;源路径&gt;的文件/目录复制到新的一层的镜像内&lt;目标路径&gt;位置</span></span><br><span class="line"><span class="bash">VOLUME  容器数据卷，用于数据保存和持久化工作</span></span><br><span class="line"><span class="bash">CMD  指定一个容器启动时要运行的命令，dockerfile中可以有多个CMD指令，构建时CMD都会运行。但是docker run时只有最后一个命令生效，并且CMD会被docker run之后的命令参数替代。(命令执行在容器)</span></span><br><span class="line"><span class="bash">ENTRYPOINT  指定一个容器启动时要运行的命令 ENTRYPOINT的目的和CMD一样，都是在指定容器启动程序及参数。ENTRYPOINT不会被docker run之后的命令参数替代，而是会被做成附加参数执行(命令执行在容器)</span></span><br><span class="line"><span class="bash">ONBUILD  当构建一个被继承的Dockerfile时运行命令，父镜像在被子镜像继承后，此时父镜像的onbuild被触发</span></span><br></pre></td></tr></table></figure>
 <h2 id="9-3-案例"><a href="#9-3-案例" class="headerlink" title="9.3. 案例"></a>9.3. 案例</h2><h3 id="9-3-1-查看构建历史"><a href="#9-3-1-查看构建历史" class="headerlink" title="9.3.1. 查看构建历史"></a>9.3.1. 查看构建历史</h3><blockquote>
 <p>docker history 镜像id</p>
