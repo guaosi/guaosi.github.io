@@ -6,19 +6,22 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="//www.guaosi.com">
-  <title>Archives: 2018/11 | guaosi的博客</title>
+  <title>git pull或git checkout 后保持权限不变 | guaosi的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="后端,PHP,Linux,golang,python,开发者,程序猿,程序媛,极客,编程,代码,开源,IT网站,docker">
-<meta name="keywords" content="后端,PHP,Linux,golang,python,开发者,程序猿,程序媛,极客,编程,代码,开源,IT网站,docker">
-<meta property="og:type" content="website">
-<meta property="og:title" content="guaosi的博客">
-<meta property="og:url" content="//www.guaosi.com/archives/2018/11/index.html">
+  <meta name="description" content="1. 起因服务器上的项目,一般都是使用用户组www-data或者www来保证权限安全,不会使用root的。但是git pull下来的新文件或者修改的文件,则会把原有的文件的权限更改为644,用户组改为root。">
+<meta name="keywords" content="git">
+<meta property="og:type" content="article">
+<meta property="og:title" content="git pull或git checkout 后保持权限不变">
+<meta property="og:url" content="//www.guaosi.com/2018/12/06/git-auto-change/index.html">
 <meta property="og:site_name" content="guaosi的博客">
-<meta property="og:description" content="后端,PHP,Linux,golang,python,开发者,程序猿,程序媛,极客,编程,代码,开源,IT网站,docker">
+<meta property="og:description" content="1. 起因服务器上的项目,一般都是使用用户组www-data或者www来保证权限安全,不会使用root的。但是git pull下来的新文件或者修改的文件,则会把原有的文件的权限更改为644,用户组改为root。">
 <meta property="og:locale" content="default">
+<meta property="og:image" content="//www.guaosi.com/assets/blogImg/git-auto-change-demo.png">
+<meta property="og:updated_time" content="2018-12-07T00:53:17.768Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="guaosi的博客">
-<meta name="twitter:description" content="后端,PHP,Linux,golang,python,开发者,程序猿,程序媛,极客,编程,代码,开源,IT网站,docker">
+<meta name="twitter:title" content="git pull或git checkout 后保持权限不变">
+<meta name="twitter:description" content="1. 起因服务器上的项目,一般都是使用用户组www-data或者www来保证权限安全,不会使用root的。但是git pull下来的新文件或者修改的文件,则会把原有的文件的权限更改为644,用户组改为root。">
+<meta name="twitter:image" content="//www.guaosi.com/assets/blogImg/git-auto-change-demo.png">
   
     <link rel="alternative" href="/atom.xml" title="guaosi的博客" type="application/atom+xml">
   
@@ -166,60 +169,258 @@ var _hmt = _hmt || [];
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-git-auto-change" class="article article-type-post " itemscope="" itemprop="blogPost">
+  <div class="article-inner">
     
-    
+    <header class="article-header">
       
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/11/30/docker-basic/" class="archive-article-date">
-  	<time datetime="2018-11-30T03:39:18.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-30</time>
-</a>
-        </div>
-    	 
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/11/30/docker-basic/">docker常用基础</a>
+    <h1 class="article-title" itemprop="name">
+      git pull或git checkout 后保持权限不变
     </h1>
   
 
-        <div class="article-info info-on-right">
+      <!-- 显示阅读和评论数 -->
+
+      <br>
+      
+      <a class="cloud-tie-join-count" href="javascript:void(0);" style="color:gray;font-size:14px;">
+        <span class="icon-sort"></span>
+        <span id="busuanzi_container_page_pv" style="color:#ef7522;font-size:14px;">
+          阅读数: <span id="busuanzi_value_page_pv"></span>次 &nbsp;&nbsp;
+        </span>
+      </a>
+      
+
+
+
+      
+      <a href="/2018/12/06/git-auto-change/" class="archive-article-date">
+  	<time datetime="2018-12-06T08:43:14.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-12-06</time>
+</a>
+      
+    </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+      <h1 id="1-起因"><a href="#1-起因" class="headerlink" title="1. 起因"></a>1. 起因</h1><p>服务器上的项目,一般都是使用用户组<code>www-data</code>或者<code>www</code>来保证权限安全,不会使用<code>root</code>的。但是<code>git pull</code>下来的新文件或者修改的文件,则会把原有的文件的权限更改为644,用户组改为root。</p>
+<a id="more"></a>
+<p>如下图所示:<br><img src="/assets/blogImg/git-auto-change-demo.png" alt="docker-mascot"></p>
+<h1 id="2-危害"><a href="#2-危害" class="headerlink" title="2. 危害"></a>2. 危害</h1><p>例如<code>日志文件</code>，<code>异步程序</code>,<code>定时任务</code>,<code>配置文件</code>之类的，由于最后运行用户的用户不对或者权限不够，可能会导致异常退出,文件无法读取,日志无法写入等等。所以,这个问题是值得引起我们重视的。</p>
+<h1 id="3-解决办法"><a href="#3-解决办法" class="headerlink" title="3. 解决办法"></a>3. 解决办法</h1><h2 id="3-1-手动解决"><a href="#3-1-手动解决" class="headerlink" title="3.1. 手动解决"></a>3.1. 手动解决</h2><p>想法很简单，重新修改文件的权限。比如，回到站点上级目录，执行如下命令</p>
+<figure class="highlight haskell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="title">chmod</span> -<span class="type">R</span> <span class="number">755</span> www.guaosi.com/</span><br><span class="line"><span class="meta"># 修改项目内所有文件为755权限</span></span><br><span class="line"><span class="title">chown</span> -<span class="type">R</span> www-<span class="class"><span class="keyword">data</span>:www-<span class="keyword">data</span> www.guaosi.com/</span></span><br><span class="line"><span class="meta"># 修改项目内所有文件的用户和用户组为www-data</span></span><br></pre></td></tr></table></figure>
+<p>只要不嫌累，每次git pull 或者 git checkout . 后退回上级目录执行一次，还是可以舒舒服服解决这个问题的.</p>
+<h2 id="3-2-git-hook函数"><a href="#3-2-git-hook函数" class="headerlink" title="3.2. git hook函数"></a>3.2. git hook函数</h2><p>接下来是这篇文章的重点了，我们可以使用git内置的钩子函数来解决这个问题.</p>
+<p>先来看一下怎么操作:</p>
+<h3 id="3-2-1-git-pull-操作"><a href="#3-2-1-git-pull-操作" class="headerlink" title="3.2.1. git pull 操作"></a>3.2.1. git pull 操作</h3><p>1.进入项目目录<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd www<span class="selector-class">.guaosi</span><span class="selector-class">.com</span></span><br></pre></td></tr></table></figure></p>
+<p>2.进入.git目录<br><figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">cd</span> <span class="string">.git/hooks/</span></span><br></pre></td></tr></table></figure></p>
+<p>3.新建post-merge文件<br><figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim <span class="built_in">post</span>-<span class="built_in">merge</span></span><br></pre></td></tr></table></figure></p>
+<p>4.写入钩子内容<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/sh</span></span><br><span class="line"><span class="built_in">pwd</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">"This is post-merge hook"</span></span><br><span class="line">chmod -R 755 ./* &amp;&amp; chown -R www-data:www-data ./*</span><br></pre></td></tr></table></figure></p>
+<p>5.给予运行权限<br><figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod +x <span class="built_in">post</span>-<span class="built_in">merge</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="3-2-2-git-checkout-操作"><a href="#3-2-2-git-checkout-操作" class="headerlink" title="3.2.2. git checkout 操作"></a>3.2.2. git checkout 操作</h3><p>1.进入项目目录<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd www<span class="selector-class">.guaosi</span><span class="selector-class">.com</span></span><br></pre></td></tr></table></figure></p>
+<p>2.进入.git目录<br><figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">cd</span> <span class="string">.git/hooks/</span></span><br></pre></td></tr></table></figure></p>
+<p>3.新建post-checkout文件<br><figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">vim post-checkout</span></span><br></pre></td></tr></table></figure></p>
+<p>4.写入钩子内容<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/sh</span></span><br><span class="line"><span class="built_in">pwd</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">"This is post-checkout hook"</span></span><br><span class="line">chmod -R 755 ./* &amp;&amp; chown -R www-data:www-data ./*</span><br></pre></td></tr></table></figure></p>
+<p>5.给予运行权限<br><figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod +x <span class="built_in">post</span>-checkout</span><br></pre></td></tr></table></figure></p>
+<h3 id="3-2-3-原理"><a href="#3-2-3-原理" class="headerlink" title="3.2.3. 原理"></a>3.2.3. 原理</h3><p>看了钩子内容应该大家都明白了，其实就是把手动运行的内容放入了钩子函数。在执行<code>git pull</code>命令时，会自动调用<code>post-merge</code>。在执行<code>git checkout</code>时,会自动调用<code>git checkout</code>.这样我们以后就不用再操心，怕遗忘权限有没有修改的问题了.</p>
+
+      
+
+      
+
+      
+        <div class="declare">
+          <strong>本文作者：</strong>
           
+            guaosi
+          
+          <br>
+          <strong>本文链接：</strong>
+          <a rel="license" href="https://www.guaosi.com/2018/12/06/git-auto-change/">https://www.guaosi.com/2018/12/06/git-auto-change/</a>
+          <br>
+          <strong>版权声明：</strong>
+          本博客所有文章除特别声明外，均采用
+          <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/3.0/">CC BY-NC-SA 3.0 许可协议</a>
+          
+            <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/3.0/"><img alt="知识共享许可协议" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/3.0/80x15.png"></a>
+          
+          进行许可。转载请注明出处！
+        </div>
+      
+
+
+
+      
+      <div class="page-reward">
+        <a href="javascript:;" class="page-reward-btn tooltip-top">
+          <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>
+                    谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/assets/img/alipay.png">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/assets/img/wechat.png">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+        </a>
+      </div>
+      
+    </div>
+
+
+
+
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">docker</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">git</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+      
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACIklEQVR42u3a0W6kMAwF0Pn/n2alqg9dtTDXdqlEcvKEGBpyqGQ5dl6veBwf4/udr/ePy3E229kMrzsGBgbGYxnJ65Oprxc0QSZ/hYGBsQNjsqxqsD5b4nU4fjMnBgYGxuVyrxeUp5UYGBgYdwTca1Iv1cPAwMCYbGLzADoJzbfvxTEwMB7IqDYG/vL6xv4GBgbGQxhHceSpXv7eyXo+Z8DAwFiacX2Qohp2q+Dk7YVmKgYGxtKM+TayWvqfPBP9TzAwMBZiJMGxurHMw+58O42BgYGRbzV7zYN5ExQDA2MHRq9kVm1hJundLbktBgbGEozJ0YfJkz3kaSDGwMBYmlE9epUE4rwkVwW/wWNgYCzKSNLBaqugF3arJTYMDIw9GUnJrLehnW+PCwEXAwNjOcbksEX+4mqJvzo/BgbGzoy8wZlvfZPrGxuZGBgYD2TMS2y9J6ukNx8aAwNjA0YvOP5u6Oy1KDAwMHZgTIryecCtJo49GAYGxqqMalLYOxLRw+cfAgMDYwdGrxnZC7VJazP/fD9kuBgYGMsxqstNAmIyQzNLxcDA2JJxFEc1QUyKZb1f/7vGwMBYmjEpuk2qepPDGRgYGHsyqkF2cicvzJUDPQYGxgaMfOp8KzsJ5eU2AwYGBkbxAMQkM83bCRgYGBh5gzMpuk3SxwiDgYGxAaMZ5uKDGtUkMmkblCt/GBgYj2VMNpD5y3pty95nxcDAWIjxD03xiYfgxj2HAAAAAElFTkSuQmCC" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
-  
-  
-    </div></section>
-  
 
-    
+
+<nav id="article-nav">
+  
+  
+    <a href="/2018/11/30/docker-basic/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">docker常用基础</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-起因"><span class="toc-number">1.</span> <span class="toc-text">1. 起因</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-危害"><span class="toc-number">2.</span> <span class="toc-text">2. 危害</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-解决办法"><span class="toc-number">3.</span> <span class="toc-text">3. 解决办法</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#3-1-手动解决"><span class="toc-number">3.1.</span> <span class="toc-text">3.1. 手动解决</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-2-git-hook函数"><span class="toc-number">3.2.</span> <span class="toc-text">3.2. git hook函数</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-1-git-pull-操作"><span class="toc-number">3.2.1.</span> <span class="toc-text">3.2.1. git pull 操作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-2-git-checkout-操作"><span class="toc-number">3.2.2.</span> <span class="toc-text">3.2.2. git checkout 操作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-3-原理"><span class="toc-number">3.2.3.</span> <span class="toc-text">3.2.3. 原理</span></a></li></ol></li></ol></li></ol>
+                    </div>
+                </span>
+            </div>
+        </div>
+        
+    </div>
+</aside>
+
+
+
+
+
+
+
+
+<div id="SOHUCS" sid="git-auto-change"></div> 
+<script type="text/javascript"> 
+(function(){ 
+var appid = "cytWxLdY3"; 
+var conf = "prod_f314382998643222116abeab50bbbc4f"; 
+var width = window.innerWidth || document.documentElement.clientWidth; 
+if (width < 960) { 
+window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="//changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>'); } else { var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("//changyan.sohu.com/upload/changyan.js",function(){window.changyan.api.config({appid:appid,conf:conf})}); } })(); </script>
+
+
 
 
           </div>
@@ -250,8 +451,8 @@ var _hmt = _hmt || [];
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: true,
