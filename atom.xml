@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="//www.guaosi.com/"/>
-  <updated>2018-12-07T01:00:39.134Z</updated>
+  <updated>2018-12-07T01:02:52.578Z</updated>
   <id>//www.guaosi.com/</id>
   
   <author>
@@ -21,16 +21,15 @@
     <link href="//www.guaosi.com/2018/12/06/git-auto-change/"/>
     <id>//www.guaosi.com/2018/12/06/git-auto-change/</id>
     <published>2018-12-06T08:43:14.000Z</published>
-    <updated>2018-12-07T01:00:39.134Z</updated>
+    <updated>2018-12-07T01:02:52.578Z</updated>
     
-    <content type="html"><![CDATA[<h1 id="1-起因"><a href="#1-起因" class="headerlink" title="1. 起因"></a>1. 起因</h1><p>服务器上的项目</p>]]></content>
+    <content type="html"><![CDATA[<h1 id="1-起因"><a href="#1-起因" class="headerlink" title="1. 起因"></a>1. 起因</h1><p>服务器上的项目,一般都是使用用户组<code>www-data</code>或者<code>www</code>来保证权限安全,不会使用<code>root</code>的。</p>]]></content>
     
     <summary type="html">
     
       
       
-        &lt;h1 id=&quot;1-起因&quot;&gt;&lt;a href=&quot;#1-起因&quot; class=&quot;headerlink&quot; title=&quot;1. 起因&quot;&gt;&lt;/a&gt;1. 起因&lt;/h1&gt;&lt;p&gt;服务器上的项目&lt;/p&gt;
-
+        &lt;h1 id=&quot;1-起因&quot;&gt;&lt;a href=&quot;#1-起因&quot; class=&quot;headerlink&quot; title=&quot;1. 起因&quot;&gt;&lt;/a&gt;1. 起因&lt;/h1&gt;&lt;p&gt;服务器上的项目,一般都是使用用户组&lt;code&gt;www-data&lt;/code&gt;或者&lt;code&gt;www&lt;/code&gt;来保证
       
     
     </summary>
