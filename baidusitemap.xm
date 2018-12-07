@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>//www.guaosi.com/2018/12/06/git-auto-change/</loc>
-    <lastmod>2018-12-07T01:28:51.738Z</lastmod>
+    <lastmod>2018-12-07T01:32:08.728Z</lastmod>
   </url>  <url>
     <loc>//www.guaosi.com/2018/11/30/docker-basic/</loc>
     <lastmod>2018-12-04T08:01:05.714Z</lastmod>

@@ -195,9 +195,9 @@ var _hmt = _hmt || [];
     
     <div class="article-entry" itemprop="articleBody">
       
-      <h1 id="1-起因"><a href="#1-起因" class="headerlink" title="1. 起因"></a>1. 起因</h1><p>服务器上的项目,一般都是使用用户组www-data或者www`来保证权限安全,不会使用root的。但是git pull下来的新文件或者修改的文件,则会把原有的文件的权限更改为644,用户组改为root。</p>
+      <h1 id="1-起因"><a href="#1-起因" class="headerlink" title="1. 起因"></a>1. 起因</h1><p>服务器上的项目,一般都是使用用户组<code>www-data</code>或者<code>www</code>来保证权限安全,不会使用<code>root</code>的。但是<code>git pull</code>下来的新文件或者修改的文件,则会把原有的文件的权限更改为644,用户组改为root。</p>
 <p>如下图所示:<br><img src="/assets/blogImg/git-auto-change-demo.png" alt="docker-mascot"></p>
-<h1 id="2-危害"><a href="#2-危害" class="headerlink" title="2. 危害"></a>2. 危害</h1><p>例如日志文件，异步程序,定时任务,配置文件之类的，由于最后运行用户的用户不对或者权限不够，可能会导致异常退出,文件无法读取,日志无法写入等等。所以,这个问题是值得引起我们重视的。</p>
+<h1 id="2-危害"><a href="#2-危害" class="headerlink" title="2. 危害"></a>2. 危害</h1><p>例如<code>日志文件</code>，<code>异步程序</code>,<code>定时任务</code>,<code>配置文件</code>之类的，由于最后运行用户的用户不对或者权限不够，可能会导致异常退出,文件无法读取,日志无法写入等等。所以,这个问题是值得引起我们重视的。</p>
 <h1 id="3-解决办法"><a href="#3-解决办法" class="headerlink" title="3. 解决办法"></a>3. 解决办法</h1><h2 id="3-1-手动解决"><a href="#3-1-手动解决" class="headerlink" title="3.1. 手动解决"></a>3.1. 手动解决</h2><p>想法很简单，重新修改文件的权限。比如，回到站点上级目录，执行如下命令</p>
 <figure class="highlight haskell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="title">chmod</span> -<span class="type">R</span> <span class="number">755</span> www.guaosi.com/</span><br><span class="line"><span class="meta"># 修改项目内所有文件为755权限</span></span><br><span class="line"><span class="title">chown</span> -<span class="type">R</span> www-<span class="class"><span class="keyword">data</span>:www-<span class="keyword">data</span> www.guaosi.com/</span></span><br><span class="line"><span class="meta"># 修改项目内所有文件的用户和用户组为www-data</span></span><br></pre></td></tr></table></figure>
 <p>只要不嫌累，每次git pull 或者 git checkout . 后退回上级目录执行一次，还是可以舒舒服服解决这个问题的.</p>
@@ -213,6 +213,7 @@ var _hmt = _hmt || [];
 <p>3.新建post-checkout文件<br><figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">vim post-checkout</span></span><br></pre></td></tr></table></figure></p>
 <p>4.写入钩子内容<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/sh</span></span><br><span class="line"><span class="built_in">pwd</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">"This is post-checkout hook"</span></span><br><span class="line">chmod -R 755 ./* &amp;&amp; chown -R www-data:www-data ./*</span><br></pre></td></tr></table></figure></p>
 <p>5.给予运行权限<br><figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod +x <span class="built_in">post</span>-checkout</span><br></pre></td></tr></table></figure></p>
+<h3 id="3-2-3-原理"><a href="#3-2-3-原理" class="headerlink" title="3.2.3. 原理"></a>3.2.3. 原理</h3><p>看了钩子内容应该大家都明白了，其实就是把手动运行的内容放入了钩子函数。在执行<code>git pull</code>命令时，会自动调用<code>post-merge</code>。在执行<code>git checkout</code>时,会自动调用<code>git checkout</code>.这样我们以后就不用再操心，怕遗忘权限有没有修改的问题了.</p>
 
       
 
