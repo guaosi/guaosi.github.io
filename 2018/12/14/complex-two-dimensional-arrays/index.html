@@ -6,19 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="//www.guaosi.com">
-  <title>guaosi的博客</title>
+  <title>二维数组的巧妙整合 | guaosi的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="后端,PHP,Linux,golang,python,开发者,程序猿,程序媛,极客,编程,代码,开源,IT网站,docker">
-<meta name="keywords" content="后端,PHP,Linux,golang,python,开发者,程序猿,程序媛,极客,编程,代码,开源,IT网站,docker">
-<meta property="og:type" content="website">
-<meta property="og:title" content="guaosi的博客">
-<meta property="og:url" content="//www.guaosi.com/index.html">
+  <meta name="description" content="起因在工作中，经常会遇到多个多维数组或者orm对象数组需要整合的情况。通过整合好数据，然后输出给前端。 数据比如现在，有2个orm对象，他们的表间关系存在不明显，互相没有做模型关联，但是id相同。  $name_data对象数组(已转json格式，方便查看)  12345678910111213141516171819202122[    &amp;#123;        &quot;id&quot;: 1,">
+<meta name="keywords" content="php">
+<meta property="og:type" content="article">
+<meta property="og:title" content="二维数组的巧妙整合">
+<meta property="og:url" content="//www.guaosi.com/2018/12/14/complex-two-dimensional-arrays/index.html">
 <meta property="og:site_name" content="guaosi的博客">
-<meta property="og:description" content="后端,PHP,Linux,golang,python,开发者,程序猿,程序媛,极客,编程,代码,开源,IT网站,docker">
+<meta property="og:description" content="起因在工作中，经常会遇到多个多维数组或者orm对象数组需要整合的情况。通过整合好数据，然后输出给前端。 数据比如现在，有2个orm对象，他们的表间关系存在不明显，互相没有做模型关联，但是id相同。  $name_data对象数组(已转json格式，方便查看)  12345678910111213141516171819202122[    &amp;#123;        &quot;id&quot;: 1,">
 <meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-12-18T01:29:01.487Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="guaosi的博客">
-<meta name="twitter:description" content="后端,PHP,Linux,golang,python,开发者,程序猿,程序媛,极客,编程,代码,开源,IT网站,docker">
+<meta name="twitter:title" content="二维数组的巧妙整合">
+<meta name="twitter:description" content="起因在工作中，经常会遇到多个多维数组或者orm对象数组需要整合的情况。通过整合好数据，然后输出给前端。 数据比如现在，有2个orm对象，他们的表间关系存在不明显，互相没有做模型关联，但是id相同。  $name_data对象数组(已转json格式，方便查看)  12345678910111213141516171819202122[    &amp;#123;        &quot;id&quot;: 1,">
   
     <link rel="alternative" href="/atom.xml" title="guaosi的博客" type="application/atom+xml">
   
@@ -166,22 +167,27 @@ var _hmt = _hmt || [];
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-    <article id="post-complex-two-dimensional-arrays" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
+            <article id="post-complex-two-dimensional-arrays" class="article article-type-post " itemscope="" itemprop="blogPost">
   <div class="article-inner">
     
     <header class="article-header">
       
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/12/14/complex-two-dimensional-arrays/">二维数组的巧妙整合</a>
+    <h1 class="article-title" itemprop="name">
+      二维数组的巧妙整合
     </h1>
   
 
       <!-- 显示阅读和评论数 -->
 
       <br>
+      
+      <a class="cloud-tie-join-count" href="javascript:void(0);" style="color:gray;font-size:14px;">
+        <span class="icon-sort"></span>
+        <span id="busuanzi_container_page_pv" style="color:#ef7522;font-size:14px;">
+          阅读数: <span id="busuanzi_value_page_pv"></span>次 &nbsp;&nbsp;
+        </span>
+      </a>
       
 
 
@@ -229,11 +235,59 @@ var _hmt = _hmt || [];
       
 
       
-        <div class="declare" hidden="hidden"></div>
+        <div class="declare">
+          <strong>本文作者：</strong>
+          
+            guaosi
+          
+          <br>
+          <strong>本文链接：</strong>
+          <a rel="license" href="https://www.guaosi.com/2018/12/14/complex-two-dimensional-arrays/">https://www.guaosi.com/2018/12/14/complex-two-dimensional-arrays/</a>
+          <br>
+          <strong>版权声明：</strong>
+          本博客所有文章除特别声明外，均采用
+          <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/3.0/">CC BY-NC-SA 3.0 许可协议</a>
+          
+            <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/3.0/"><img alt="知识共享许可协议" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/3.0/80x15.png"></a>
+          
+          进行许可。转载请注明出处！
+        </div>
       
 
 
 
+      
+      <div class="page-reward">
+        <a href="javascript:;" class="page-reward-btn tooltip-top">
+          <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>
+                    谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/assets/img/alipay.png">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/assets/img/wechat.png">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+        </a>
+      </div>
       
     </div>
 
@@ -257,17 +311,75 @@ var _hmt = _hmt || [];
       
 
       
-      <p class="article-more-link">
-        <a class="article-more-a" href="/2018/12/14/complex-two-dimensional-arrays/">
-          展开全文 >></a>
-      </p>
-      
 
+      
+      
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACmUlEQVR42u3aMXLDMAwEQP//006bGY+VA0AoKlZVRnYkLgsSPuL1iq/3x/V5//ed6//99oTrp30++diFh4eHNx56Mojrp11Tr+8k30zGjIeHh7fNqw50MjXJ067v55OCh4eH93zevLLtbTl4eHh4T+a942sj+MDDw8N7Dq+6ZFe3irxc/resBQ8PD+/oip0s0Hf+vXK+h4eHhzc+VT/VLtCbvjwO/jpaPDw8vAVevuAmhW/v+Oq6IK6Wy3h4eHhP4FU3gDzCqMay1YADDw8Pb48XfVAsdk8dp1Uzh0LljoeHh9fiVYd1qgkg31p62SweHh7enbxJ60C1NM/D4lFDAB4eHt4a79TiXj0e630aTRMeHh7eLbxeIJtvGPONJy/N8fDw8DZ4eURb/U41/O3FE/lk4eHh4Z3iJeXp2bK4FxZXP8XDw8Pb5k0i1PzI/x1f86gXDw8Pb49XXWrzJoPeoVp56e+1OODh4eENeHn00GsOmG8eo6nHw8PDu513amOo3qm+9+tegIeHh7fAO7XEVwvoasBR3cbw8PDw9njz109+++exRa/ZCw8PD2+DVz2g6oHzkjd/V76Z4eHh4W3w5o1QvSaA/BjseuLKjQJ4eHh4h3hJeT0vo6vL+iT2xcPDw7uHNzmOqhbW1bc3k2k8PDy823n54VY1eugFxOV2Ljw8PLw1Xl5A541Wk0i3d+Hh4eFt8ybtU0l5PYEl7/0DiYeHh7fAqy641W2jF9Em8cTZ7QQPDw+vyqs+uhAEFCOG/DitsNng4eHhrfF6C3peBL/+68LDw8N7DC+PBnotAsemHg8PD+8BvPxY61QcXA2a8fDw8O7hzYeSBL6TODifUDw8PLxtXu8XfTLo/IgrmazFaAMPDw8v5f0A2uqccULxkPcAAAAASUVORK5CYII=" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
       
       <div class="clearfix"></div>
     </div>
   </div>
 </article>
+
+
+<nav id="article-nav">
+  
+  
+    <a href="/2018/12/06/git-auto-change/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">git pull或git checkout 后保持权限不变</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
@@ -282,206 +394,39 @@ var _hmt = _hmt || [];
         </div>
         
         
-    </div>
-</aside>
-
-
-
-  
-    <article id="post-git-auto-change" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
-  <div class="article-inner">
-    
-    <header class="article-header">
-      
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/12/06/git-auto-change/">git pull或git checkout 后保持权限不变</a>
-    </h1>
-  
-
-      <!-- 显示阅读和评论数 -->
-
-      <br>
-      
-
-
-
-      
-      <a href="/2018/12/06/git-auto-change/" class="archive-article-date">
-  	<time datetime="2018-12-06T08:43:14.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-12-06</time>
-</a>
-      
-    </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-      <h1 id="1-起因"><a href="#1-起因" class="headerlink" title="1. 起因"></a>1. 起因</h1><p>服务器上的项目,一般都是使用用户组<code>www-data</code>或者<code>www</code>来保证权限安全,不会使用<code>root</code>的。但是<code>git pull</code>下来的新文件或者修改的文件,则会把原有的文件的权限更改为644,用户组改为root。</p>
-      
-      <a class="article-more-a" href="/2018/12/06/git-auto-change/#more">
-        more >></a>
-      
-      
-
-      
-
-      
-        <div class="declare" hidden="hidden"></div>
-      
-
-
-
-      
-    </div>
-
-
-
-
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">git</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-      <p class="article-more-link">
-        <a class="article-more-a" href="/2018/12/06/git-auto-change/">
-          展开全文 >></a>
-      </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#起因"><span class="toc-number">1.</span> <span class="toc-text">起因</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#数据"><span class="toc-number">2.</span> <span class="toc-text">数据</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#实现"><span class="toc-number">3.</span> <span class="toc-text">实现</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#想法一"><span class="toc-number">3.1.</span> <span class="toc-text">想法一</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#想法二"><span class="toc-number">3.2.</span> <span class="toc-text">想法二</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#想法三"><span class="toc-number">3.3.</span> <span class="toc-text">想法三</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#总结"><span class="toc-number">4.</span> <span class="toc-text">总结</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#案例完整代码"><span class="toc-number">5.</span> <span class="toc-text">案例完整代码</span></a></li></ol>
+                    </div>
+                </span>
             </div>
         </div>
         
-        
     </div>
 </aside>
 
 
 
-  
-    <article id="post-docker-basic" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
-  <div class="article-inner">
-    
-    <header class="article-header">
-      
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/11/30/docker-basic/">docker常用基础</a>
-    </h1>
-  
-
-      <!-- 显示阅读和评论数 -->
-
-      <br>
-      
-
-
-
-      
-      <a href="/2018/11/30/docker-basic/" class="archive-article-date">
-  	<time datetime="2018-11-30T03:39:18.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-30</time>
-</a>
-      
-    </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-      <h1 id="1-docker用来干什么"><a href="#1-docker用来干什么" class="headerlink" title="1. docker用来干什么"></a>1. docker用来干什么</h1><p>将做好的环境和代码，打包成镜像，可以让各个地方都可以直接使用，不再受到环境的限制。</p>
-<h1 id="2-docker与虚拟机的区别"><a href="#2-docker与虚拟机的区别" class="headerlink" title="2. docker与虚拟机的区别"></a>2. docker与虚拟机的区别</h1><p>1.虚拟机是模拟整个操作系统，包括硬件部分<br>2.docker是使用linux容器，通过进程隔离，拥有自己的文件系统，不会跟宿主机产生错乱。<br>3.docker没有自己的内核，使用的是宿主机的内核。</p>
-      
-      <a class="article-more-a" href="/2018/11/30/docker-basic/#more">
-        more >></a>
-      
-      
-
-      
-
-      
-        <div class="declare" hidden="hidden"></div>
-      
-
-
-
-      
-    </div>
 
 
 
 
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">docker</a>
-        		</li>
-      		
-		</ul>
-	</div>
 
-      
-
-      
-      <p class="article-more-link">
-        <a class="article-more-a" href="/2018/11/30/docker-basic/">
-          展开全文 >></a>
-      </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
+<div id="SOHUCS" sid="complex-two-dimensional-arrays"></div> 
+<script type="text/javascript"> 
+(function(){ 
+var appid = "cytWxLdY3"; 
+var conf = "prod_f314382998643222116abeab50bbbc4f"; 
+var width = window.innerWidth || document.documentElement.clientWidth; 
+if (width < 960) { 
+window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="//changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>'); } else { var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("//changyan.sohu.com/upload/changyan.js",function(){window.changyan.api.config({appid:appid,conf:conf})}); } })(); </script>
 
 
-
-  
-  
 
 
           </div>
@@ -511,8 +456,8 @@ var _hmt = _hmt || [];
     <script>
 	var yiliaConfig = {
 		mathjax: false,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
