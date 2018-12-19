@@ -5,23 +5,23 @@
   
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <link rel="dns-prefetch" href="//www.guaosi.com">
+  <link rel="dns-prefetch" href="https://www.guaosi.com">
   <title>使用lnmp快速构建线上环境并搭建项目成功上线 | guaosi的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="1. 前提本文适合: 1.已经在linux虚拟机上搭建过环境，可以正常访问的，但是没有搭建在真实服务器上。 2.需要有略微的linux基础。 3.有自己的小项目或者demo，如果没有，会composer安装框架也是可以的。 因为本文适合偷懒使用，如果没有丝毫搭建经验的，所以我建议最好是创建一台虚拟机，自己手动安装nginx,php,MySQL，让内网可以上线访问。有了相关的认识，再来看本文效果是最">
 <meta name="keywords" content="php,lnmp,服务器">
 <meta property="og:type" content="article">
 <meta property="og:title" content="使用lnmp快速构建线上环境并搭建项目成功上线">
-<meta property="og:url" content="//www.guaosi.com/2018/12/18/environment-by-lnmp/index.html">
+<meta property="og:url" content="https://www.guaosi.com/2018/12/18/environment-by-lnmp/index.html">
 <meta property="og:site_name" content="guaosi的博客">
 <meta property="og:description" content="1. 前提本文适合: 1.已经在linux虚拟机上搭建过环境，可以正常访问的，但是没有搭建在真实服务器上。 2.需要有略微的linux基础。 3.有自己的小项目或者demo，如果没有，会composer安装框架也是可以的。 因为本文适合偷懒使用，如果没有丝毫搭建经验的，所以我建议最好是创建一台虚拟机，自己手动安装nginx,php,MySQL，让内网可以上线访问。有了相关的认识，再来看本文效果是最">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="//www.guaosi.com/assets/blogImg/tencent-domain-name.png">
+<meta property="og:image" content="https://www.guaosi.com/assets/blogImg/tencent-domain-name.png">
 <meta property="og:updated_time" content="2018-12-19T06:15:48.683Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="使用lnmp快速构建线上环境并搭建项目成功上线">
 <meta name="twitter:description" content="1. 前提本文适合: 1.已经在linux虚拟机上搭建过环境，可以正常访问的，但是没有搭建在真实服务器上。 2.需要有略微的linux基础。 3.有自己的小项目或者demo，如果没有，会composer安装框架也是可以的。 因为本文适合偷懒使用，如果没有丝毫搭建经验的，所以我建议最好是创建一台虚拟机，自己手动安装nginx,php,MySQL，让内网可以上线访问。有了相关的认识，再来看本文效果是最">
-<meta name="twitter:image" content="//www.guaosi.com/assets/blogImg/tencent-domain-name.png">
+<meta name="twitter:image" content="https://www.guaosi.com/assets/blogImg/tencent-domain-name.png">
   
     <link rel="alternative" href="/atom.xml" title="guaosi的博客" type="application/atom+xml">
   
@@ -402,7 +402,7 @@ var _hmt = _hmt || [];
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACKElEQVR42u3aQY7jMAwEwPz/01lgTnNYKN2iM4Dl0ilwElvlA0GRfL3i9f5Z+be/r+Sff6/XNxYGBsZtGe/lWj9+fSXZ9JqR7A0DA+M5jHUYzTeU/2a90XxvGBgYGEnq1gbo+X8xMDAw2q3kB1oMDAyMCSNJ0ZJQu1cHywP9BWdxDAyMGzLaMPqXn7/Y38DAwLgJ47212k20Jbl6PxgYGEcz8vRuPucwT0Y/7BADA+MBjL3W4971PAQXrx4DA+NoRlLQz4PyOjVs083NAy0GBsZBjL3jZdKAbNuQeSqJgYGBkQ9M7JXh5o3SD1VDDAyMoxl56Lz2l22j9D/3wcDAOJqRH0TnoxhJeyBPLjEwMJ7MaEtgeZBdJ3lXtSUwMDBOZbQhcq8kl9+tHezAwMB4MmPSDGiHMNrxiyLgYmBg3JyxmT+WqWR7/3X6WL8hDAyMgxjtSMQ8mcvD62a1DwMD41BGm6i1KV1eSsvxGBgYZzMmhfu8DTkZ/xqV2zAwMI5m5Ly9Ut1kqKIIuBgYGMcx2gGLdtPtc+vmKAYGxtGMvT/MW49Xle0wMDDOZrzL1TYak/JccgD+8AowMDCOZuQrv0XeCm0bmW3qiYGBcRKjLaXNE768bVCMX2BgYDyAMQmRyT3nUf/DWRwDAwMjGH2YHC/bcY0LAi4GBsahjL1Rib85JGNgYDyBsTdyetXd8obExQ/GwMC4CWMvIOaFs3bu44tIDAyM+zH+Ab53k2GgLJQUAAAAAElFTkSuQmCC" alt="微信分享二维码">
+      <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACJElEQVR42u3asXIDIQwEUP//Tzt1ilx20TkTuEflgoF7FDJCer3i8b4cyfx2l9cnBgYGxraM5BOTj75e/3pmsu8vR4OBgfEAxtr21zOTAHo9vzg4DAwMjLUgeNNdDgMDA2PCuE5BE9i/CLgYGBibMNYCX7JB/jw3Cu4YGBhHM9qP+8vfH6lvYGBgbMV4l2NSTsif3uqvwsDAOJrRpprXnzhZLS+I/rgCBgbGoYzr7e8KwWtHkyTGUa0VAwNjc0ZbGMjZkyCbhPLifwMDA2NzRrJlgmlPLqdGMzEwMI5m5ID5A1m7ft7SgYGBcTYjmTRJNdeKo3WwxsDAeAxjkqbOL5Htyt9+Y2BgPJ6RhNf8OrhW1KxLmBgYGAcx8vQ1CcSTIkG75uJDGwYGxraM5EH/rrA7aQKrs2EMDIyDGG35sC15rpUQ2oc5DAyMUxlt8jm/MubhvigqYGBgHM2oo3IcZOeFybZlDQMD4zmMtae0tU60+cpFxQADA2NzRptA/mWYLq6GGBgYj2FMWijapq483NcBFwMD41DGazzy1q62CSw6FAwMjEMZ73LkS09aWtt2DQwMjLMZa8EubxRbK3Net2tMQjYGBsa+jDxE5rwWXxQpJyeNgYGxOSN59G+vaMkjWvu5v9xzMTAwMJaCY95ycUO3CAYGBsYg6Z3k09EVEwMD4wGMtaf8NgFea7aI5mNgYBzNaFPHex/UkjvePJ3GwMDYlvEF5ILk80RlFEoAAAAASUVORK5CYII=" alt="微信分享二维码">
     </div>
 </div>
 

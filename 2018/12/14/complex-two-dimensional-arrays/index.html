@@ -5,14 +5,14 @@
   
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <link rel="dns-prefetch" href="//www.guaosi.com">
+  <link rel="dns-prefetch" href="https://www.guaosi.com">
   <title>二维数组的巧妙整合 | guaosi的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="1. 起因在工作中，经常会遇到多个多维数组或者orm对象数组需要整合的情况。通过整合好数据，然后输出给前端。 2. 数据比如现在，有2个orm对象，他们的表间关系存在不明显，互相没有做模型关联，但是id相同。">
 <meta name="keywords" content="php">
 <meta property="og:type" content="article">
 <meta property="og:title" content="二维数组的巧妙整合">
-<meta property="og:url" content="//www.guaosi.com/2018/12/14/complex-two-dimensional-arrays/index.html">
+<meta property="og:url" content="https://www.guaosi.com/2018/12/14/complex-two-dimensional-arrays/index.html">
 <meta property="og:site_name" content="guaosi的博客">
 <meta property="og:description" content="1. 起因在工作中，经常会遇到多个多维数组或者orm对象数组需要整合的情况。通过整合好数据，然后输出给前端。 2. 数据比如现在，有2个orm对象，他们的表间关系存在不明显，互相没有做模型关联，但是id相同。">
 <meta property="og:locale" content="default">
@@ -359,7 +359,7 @@ var _hmt = _hmt || [];
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACmUlEQVR42u3aMXLDMAwEQP//006bGY+VA0AoKlZVRnYkLgsSPuL1iq/3x/V5//ed6//99oTrp30++diFh4eHNx56Mojrp11Tr+8k30zGjIeHh7fNqw50MjXJ067v55OCh4eH93zevLLtbTl4eHh4T+a942sj+MDDw8N7Dq+6ZFe3irxc/resBQ8PD+/oip0s0Hf+vXK+h4eHhzc+VT/VLtCbvjwO/jpaPDw8vAVevuAmhW/v+Oq6IK6Wy3h4eHhP4FU3gDzCqMay1YADDw8Pb48XfVAsdk8dp1Uzh0LljoeHh9fiVYd1qgkg31p62SweHh7enbxJ60C1NM/D4lFDAB4eHt4a79TiXj0e630aTRMeHh7eLbxeIJtvGPONJy/N8fDw8DZ4eURb/U41/O3FE/lk4eHh4Z3iJeXp2bK4FxZXP8XDw8Pb5k0i1PzI/x1f86gXDw8Pb49XXWrzJoPeoVp56e+1OODh4eENeHn00GsOmG8eo6nHw8PDu513amOo3qm+9+tegIeHh7fAO7XEVwvoasBR3cbw8PDw9njz109+++exRa/ZCw8PD2+DVz2g6oHzkjd/V76Z4eHh4W3w5o1QvSaA/BjseuLKjQJ4eHh4h3hJeT0vo6vL+iT2xcPDw7uHNzmOqhbW1bc3k2k8PDy823n54VY1eugFxOV2Ljw8PLw1Xl5A541Wk0i3d+Hh4eFt8ybtU0l5PYEl7/0DiYeHh7fAqy641W2jF9Em8cTZ7QQPDw+vyqs+uhAEFCOG/DitsNng4eHhrfF6C3peBL/+68LDw8N7DC+PBnotAsemHg8PD+8BvPxY61QcXA2a8fDw8O7hzYeSBL6TODifUDw8PLxtXu8XfTLo/IgrmazFaAMPDw8v5f0A2uqccULxkPcAAAAASUVORK5CYII=" alt="微信分享二维码">
+      <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACv0lEQVR42u3aQY7CMBAEQP7/afa6q1WS7rGNOFROCEKSMpJnaPv1io/3r+Pqnf/vX316df3kjq8TBx4eHt7Co189XPK4+adXV74H3H/r8gp4eHh4x3jJ5RJSUlRmBaA9Bw8PD+97ePfTdHt+0oLPhgAPDw/v23jtf/+2VMwKEh4eHt4neUkYkQxKHv4m8cRHsxY8PDy8mJdP99/z+sj6Hh4eHt7yqnobE8wChaTkvEcHHh4e3gnerDleuVkRIsThxcOZeHh4eAd4eXzQLowlwW672WtWWvDw8PD28vJmNykYs3Z5fePCMEvGw8PDW+Al03r+oPnU37bO9Xfx8PDwtvLaRrndWJA0x7PB3bZqh4eHh7fAy+PalfPb0HZp6xUeHh7eYd6skW2b7HZjQTsoxX8FPDw8vE28diJuI9o8jMiLyuXQ4OHh4R3g5RedlYFZkLFyr9dszPDw8PBiXhu/rm9CzYPjpCt+KFF4eHh4B3jt0n6+JNYutu16hg0PioeHhxfz1gtD/v561loMMR4eHt4BXrsFahZkzCLddkHu4TfEw8PDW+a1EWo7xc8GZfbpw/oeHh4e3iZe/oV2gapl52WpLiR4eHh4x3gzdhu2JkHw5jAXDw8PbytvVhLajQJ5gWmDjCMVDw8PDy+YvfPodhYfzLYIJFusomvi4eHhHea1E32+aSBpzdugoah+eHh4eB/hzabj/PxZdlI37nh4eHgf5K1sSJ0NSjv00fl4eHh4W3nv8liJGJL2d30z1p/XeHh4eAd47YSbN8QrpaXdsrC+wIaHh4c3W1vPL50EFnVff9uIz0IKPDw8vNO82W6llRhiVwV7oOLh4eF9AS8vG3sLTH7HpcKAh4eHd4CXtOP5xH16CQ0PDw/vHK/dOJW3y0mjvFI8HpB4eHh4B3jtH/5dD50vp83ujoeHh3eA9wN9L16TUKS6eAAAAABJRU5ErkJggg==" alt="微信分享二维码">
     </div>
 </div>
 

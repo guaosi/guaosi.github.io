@@ -5,23 +5,23 @@
   
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <link rel="dns-prefetch" href="//www.guaosi.com">
+  <link rel="dns-prefetch" href="https://www.guaosi.com">
   <title>git pull或git checkout 后保持权限不变 | guaosi的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="1. 起因服务器上的项目,一般都是使用用户组www-data或者www来保证权限安全,不会使用root的。但是git pull下来的新文件或者修改的文件,则会把原有的文件的权限更改为644,用户组改为root。">
 <meta name="keywords" content="git">
 <meta property="og:type" content="article">
 <meta property="og:title" content="git pull或git checkout 后保持权限不变">
-<meta property="og:url" content="//www.guaosi.com/2018/12/06/git-auto-change/index.html">
+<meta property="og:url" content="https://www.guaosi.com/2018/12/06/git-auto-change/index.html">
 <meta property="og:site_name" content="guaosi的博客">
 <meta property="og:description" content="1. 起因服务器上的项目,一般都是使用用户组www-data或者www来保证权限安全,不会使用root的。但是git pull下来的新文件或者修改的文件,则会把原有的文件的权限更改为644,用户组改为root。">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="//www.guaosi.com/assets/blogImg/git-auto-change-demo.png">
+<meta property="og:image" content="https://www.guaosi.com/assets/blogImg/git-auto-change-demo.png">
 <meta property="og:updated_time" content="2018-12-18T07:24:20.312Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="git pull或git checkout 后保持权限不变">
 <meta name="twitter:description" content="1. 起因服务器上的项目,一般都是使用用户组www-data或者www来保证权限安全,不会使用root的。但是git pull下来的新文件或者修改的文件,则会把原有的文件的权限更改为644,用户组改为root。">
-<meta name="twitter:image" content="//www.guaosi.com/assets/blogImg/git-auto-change-demo.png">
+<meta name="twitter:image" content="https://www.guaosi.com/assets/blogImg/git-auto-change-demo.png">
   
     <link rel="alternative" href="/atom.xml" title="guaosi的博客" type="application/atom+xml">
   
@@ -352,7 +352,7 @@ var _hmt = _hmt || [];
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACIklEQVR42u3a0W6kMAwF0Pn/n2alqg9dtTDXdqlEcvKEGBpyqGQ5dl6veBwf4/udr/ePy3E229kMrzsGBgbGYxnJ65Oprxc0QSZ/hYGBsQNjsqxqsD5b4nU4fjMnBgYGxuVyrxeUp5UYGBgYdwTca1Iv1cPAwMCYbGLzADoJzbfvxTEwMB7IqDYG/vL6xv4GBgbGQxhHceSpXv7eyXo+Z8DAwFiacX2Qohp2q+Dk7YVmKgYGxtKM+TayWvqfPBP9TzAwMBZiJMGxurHMw+58O42BgYGRbzV7zYN5ExQDA2MHRq9kVm1hJundLbktBgbGEozJ0YfJkz3kaSDGwMBYmlE9epUE4rwkVwW/wWNgYCzKSNLBaqugF3arJTYMDIw9GUnJrLehnW+PCwEXAwNjOcbksEX+4mqJvzo/BgbGzoy8wZlvfZPrGxuZGBgYD2TMS2y9J6ukNx8aAwNjA0YvOP5u6Oy1KDAwMHZgTIryecCtJo49GAYGxqqMalLYOxLRw+cfAgMDYwdGrxnZC7VJazP/fD9kuBgYGMsxqstNAmIyQzNLxcDA2JJxFEc1QUyKZb1f/7vGwMBYmjEpuk2qepPDGRgYGHsyqkF2cicvzJUDPQYGxgaMfOp8KzsJ5eU2AwYGBkbxAMQkM83bCRgYGBh5gzMpuk3SxwiDgYGxAaMZ5uKDGtUkMmkblCt/GBgYj2VMNpD5y3pty95nxcDAWIjxD03xiYfgxj2HAAAAAElFTkSuQmCC" alt="微信分享二维码">
+      <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACNElEQVR42u3aSRLCMAwF0dz/0nACnP5SoLDcWVFUYvyyENZwXfh6gevT/es106dalwwZMrZlkM11tstXWP/u+sXJkCHjBMY6IK5J5DMJu+uVb/YsQ4YMGct71mF3HWprL0KGDBky0tC5PtitSX8RcGXIkLEJgySThEfS1PRFPJyLy5AhY0MGr7r//vNX+hsyZMjYivEKrzSk1sJlvCsZMmSMZqTle07qrFNsiMqQIeMABv8BPjCRDoeRFkJcbpMhQ8YgRtokWB8B+fp8tRuwDBkyDmDwbZGDWr8xSRoJV+19yJAhYytGmoJ2SmPpCwpGQGTIkDGaQR4oppSl1fjBMXbLkCFjBOPZSY10sIwU8lDAlSFDxmhGGiJ5mpoOWBT/DGTIkDGawdNIMvLFi2VpEpsWAWXIkDGD0RlgTTdKAndaepMhQ8Y5jLRkxmN5J0Dz1WTIkHECo3aMSwe50mgZJL0yZMgYzeAP83t4MOXhNUhlZciQMZRRC6NpuksOiLXCnwwZMk5gFPsGOHTygyAfzriZGZEhQ8ZQBmkYpEfG9NXwFT4GXBkyZIxmkBJ/Oh4RFMvCp4KRCxkyZGzO6A9bpKMbadEfPSVDhozRjE6yygNu2qTk6WsMkyFDxraMNETybZGVi03K9N9DhgwZIxj9QMnDdOfYhwYsZMiQIQMMZPBNp01NGTJkyEjbk/0jZmcs7GbYQoYMGeMYnWbAUyU2jpQhQ8ZpjKdqWfz7bxwlZciQMZTxBokPDcs0y4seAAAAAElFTkSuQmCC" alt="微信分享二维码">
     </div>
 </div>
 

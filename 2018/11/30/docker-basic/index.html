@@ -5,23 +5,23 @@
   
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <link rel="dns-prefetch" href="//www.guaosi.com">
+  <link rel="dns-prefetch" href="https://www.guaosi.com">
   <title>docker常用基础 | guaosi的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="1. docker用来干什么将做好的环境和代码，打包成镜像，可以让各个地方都可以直接使用，不再受到环境的限制。 2. docker与虚拟机的区别1.虚拟机是模拟整个操作系统，包括硬件部分2.docker是使用linux容器，通过进程隔离，拥有自己的文件系统，不会跟宿主机产生错乱。3.docker没有自己的内核，使用的是宿主机的内核。">
 <meta name="keywords" content="docker">
 <meta property="og:type" content="article">
 <meta property="og:title" content="docker常用基础">
-<meta property="og:url" content="//www.guaosi.com/2018/11/30/docker-basic/index.html">
+<meta property="og:url" content="https://www.guaosi.com/2018/11/30/docker-basic/index.html">
 <meta property="og:site_name" content="guaosi的博客">
 <meta property="og:description" content="1. docker用来干什么将做好的环境和代码，打包成镜像，可以让各个地方都可以直接使用，不再受到环境的限制。 2. docker与虚拟机的区别1.虚拟机是模拟整个操作系统，包括硬件部分2.docker是使用linux容器，通过进程隔离，拥有自己的文件系统，不会跟宿主机产生错乱。3.docker没有自己的内核，使用的是宿主机的内核。">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="//www.guaosi.com/assets/blogImg/docker-mascot.jpeg">
+<meta property="og:image" content="https://www.guaosi.com/assets/blogImg/docker-mascot.jpeg">
 <meta property="og:updated_time" content="2018-12-18T07:24:14.148Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="docker常用基础">
 <meta name="twitter:description" content="1. docker用来干什么将做好的环境和代码，打包成镜像，可以让各个地方都可以直接使用，不再受到环境的限制。 2. docker与虚拟机的区别1.虚拟机是模拟整个操作系统，包括硬件部分2.docker是使用linux容器，通过进程隔离，拥有自己的文件系统，不会跟宿主机产生错乱。3.docker没有自己的内核，使用的是宿主机的内核。">
-<meta name="twitter:image" content="//www.guaosi.com/assets/blogImg/docker-mascot.jpeg">
+<meta name="twitter:image" content="https://www.guaosi.com/assets/blogImg/docker-mascot.jpeg">
   
     <link rel="alternative" href="/atom.xml" title="guaosi的博客" type="application/atom+xml">
   
@@ -747,7 +747,7 @@ var _hmt = _hmt || [];
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACJUlEQVR42u3aQW4CMQwFUO5/6em2EgX970ClSV5WowqC3yzcOPbjEa/raa188vffn5/f77+0MDAwbsu43q4kuOSHkz1nn8HAwDiHkafFJLhX30r2yX8XAwMDIwkuPwi+IrUvAgMDA2PGyNN0EjQGBgbGShHbFq6ztPv1WhwDA+OGjDyI/3/+Sn8DAwPjVoyrXHmibNNlnmT/2AcDA2NrxqwBudLOzNn1QRMDA2NTRhJEfuGVJM386i0pfYugMTAwbstYCX02NJbvUF/5YWBgHMBYSYtJupydW4urNwwMjK0ZSQGZjHy9b0Amh8g2fWNgYJzA+OzoQ05NAMUFHAYGxgGMpUuuhfTdpt2X8WBgYGzNmKXFWZNgZRytaHZiYGAcwGjTa158zpqX9eUdBgbGpoy8NG2bnbNAh68YAwNjU8YMMMvo7Z75cAYGBsbejFl7YP1Ymb+s/KVgYGDsypgNOswSZfs6ioYoBgbG1oz2CysXcPkBcTh+gYGBcQAjH24oGopxIZqH+zIpY2BgHMBoy8i2WM2Dy4cwpjdzGBgY92Z8qrxsWwh5DMW0CAYGxhaMq1yz8nXW2iyoGBgYWzPao9j3rs/yo2p+bMXAwNiJ0Y6FzQ5zbfOyTrgYGBgHMFYK1xaw8h9gOGyBgYFxMCMPeuVQGMWDgYGBMXquByYWDo4YGBgnMNohrfZCv03Z7RgHBgbG3oy8dJxd7q+UuO0wBwYGxnaMHxTsvCpgx2JvAAAAAElFTkSuQmCC" alt="微信分享二维码">
+      <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACOUlEQVR42u3aS27CQBAFwNz/0mSLlNh+bxqiMC6vEAh7yotW/76+4uvxdD1/c/7rz+9/3vP8KS++MDAwPpbxOL3ygx4d4gh/fp/2KRgYGHdgnAfEJAgmR5yE9YszY2BgYCwlguch+Pz+GBgYGPOAmxw3KVCTF4SBgYGRF7H5v+Z3e2MtjoGB8YGMvOv+95/fMt/AwMD4KMZauJwPOF98KgwMjK0ZbdO/TfIm7HaEgIGBsTejbeK/Y2yZt+QuqBgYGNsx2qFj275PguxkzPlLhouBgbEpIxkW5ow8NVwLvhgYGHdjrBWieVDOx5N5KVu02zAwMLZgtAdaS/4mjbYoDcXAwLgBIy8p2yFB285rG22HGS4GBsZ2jLYR1gbHZHWjXQW72BnBwMDYiNGOHteGAZOljXo4ioGBsR1j0gLLE8G1NY4iHGNgYNyGMS9HJwsWbfpYZLgYGBhbMCZ55eTXyQuKMlAMDIxNGfloc23B4iJ0lqsehwEXAwNjI8Y8BE+GlGvfFGUtBgbGRox8DJCPJ/Og2Q5ED0+OgYFxA0YeFl/bn59UqcUsAgMDYwtGmw5OBpNr1LcUrhgYGP+e8SivfOUi+VfbUCs22jAwMDZitMnZZEiZHytfSlscdmJgYHwgow2yk4Pm61/1+8bAwLgBIw98bQKXh+NR6w0DAwOjTOnyJl2bw1403TAwMDAGD57U09FqLAYGxg0Y+cpFHojng8988ICBgbE3oy0d89QwH0+uBVkMDIwbML4B/TXk83D/AygAAAAASUVORK5CYII=" alt="微信分享二维码">
     </div>
 </div>
 
