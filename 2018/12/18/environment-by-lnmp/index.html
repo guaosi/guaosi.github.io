@@ -6,20 +6,22 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="//www.guaosi.com">
-  <title>guaosi的博客</title>
+  <title>使用lnmp快速构建线上环境并搭建项目成功上线 | guaosi的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="h3,h4{ 			text-align: center; 		} 		#main{ 			width: 350px; 			height: 100px; 			border: 1px solid #000; 			margin: 0 auto; 		} 		#main .box{ 			width: 100px; 			height: 100px; 			margin-le">
-<meta name="keywords" content="后端,PHP,Linux,golang,python,开发者,程序猿,程序媛,极客,编程,代码,开源,IT网站,docker">
-<meta property="og:type" content="website">
-<meta property="og:title" content="guaosi的博客">
-<meta property="og:url" content="//www.guaosi.com/assets/demo/hack_demo.html">
+  <meta name="description" content="前提本文适合:  已经在linux虚拟机上搭建过环境，可以正常访问的，但是没有搭建在真实服务器上。  需要有略微的linux基础。  有自己的小项目或者demo，如果没有，会composer安装框架也是可以的。   因为本文适合偷懒使用，如果没有丝毫搭建经验的，所以我建议最好是创建一台虚拟机，自己手动安装nginx,php,MySQL，让内网可以上线访问。有了相关的认识，再来看本文效果是最好">
+<meta name="keywords" content="php,lnmp,服务器">
+<meta property="og:type" content="article">
+<meta property="og:title" content="使用lnmp快速构建线上环境并搭建项目成功上线">
+<meta property="og:url" content="//www.guaosi.com/2018/12/18/environment-by-lnmp/index.html">
 <meta property="og:site_name" content="guaosi的博客">
-<meta property="og:description" content="h3,h4{ 			text-align: center; 		} 		#main{ 			width: 350px; 			height: 100px; 			border: 1px solid #000; 			margin: 0 auto; 		} 		#main .box{ 			width: 100px; 			height: 100px; 			margin-le">
+<meta property="og:description" content="前提本文适合:  已经在linux虚拟机上搭建过环境，可以正常访问的，但是没有搭建在真实服务器上。  需要有略微的linux基础。  有自己的小项目或者demo，如果没有，会composer安装框架也是可以的。   因为本文适合偷懒使用，如果没有丝毫搭建经验的，所以我建议最好是创建一台虚拟机，自己手动安装nginx,php,MySQL，让内网可以上线访问。有了相关的认识，再来看本文效果是最好">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-11-30T03:22:46.973Z">
+<meta property="og:image" content="//www.guaosi.com/assets/blogImg/tencent-domain-name.png">
+<meta property="og:updated_time" content="2018-12-19T06:03:02.384Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="guaosi的博客">
-<meta name="twitter:description" content="h3,h4{ 			text-align: center; 		} 		#main{ 			width: 350px; 			height: 100px; 			border: 1px solid #000; 			margin: 0 auto; 		} 		#main .box{ 			width: 100px; 			height: 100px; 			margin-le">
+<meta name="twitter:title" content="使用lnmp快速构建线上环境并搭建项目成功上线">
+<meta name="twitter:description" content="前提本文适合:  已经在linux虚拟机上搭建过环境，可以正常访问的，但是没有搭建在真实服务器上。  需要有略微的linux基础。  有自己的小项目或者demo，如果没有，会composer安装框架也是可以的。   因为本文适合偷懒使用，如果没有丝毫搭建经验的，所以我建议最好是创建一台虚拟机，自己手动安装nginx,php,MySQL，让内网可以上线访问。有了相关的认识，再来看本文效果是最好">
+<meta name="twitter:image" content="//www.guaosi.com/assets/blogImg/tencent-domain-name.png">
   
     <link rel="alternative" href="/atom.xml" title="guaosi的博客" type="application/atom+xml">
   
@@ -167,59 +169,120 @@ var _hmt = _hmt || [];
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="page-undefined" class="article article-type-page "
-  itemscope itemprop="blogPost">
+            <article id="post-environment-by-lnmp" class="article article-type-post " itemscope="" itemprop="blogPost">
   <div class="article-inner">
+    
+    <header class="article-header">
+      
+  
+    <h1 class="article-title" itemprop="name">
+      使用lnmp快速构建线上环境并搭建项目成功上线
+    </h1>
+  
+
+      <!-- 显示阅读和评论数 -->
+
+      <br>
+      
+      <a class="cloud-tie-join-count" href="javascript:void(0);" style="color:gray;font-size:14px;">
+        <span class="icon-sort"></span>
+        <span id="busuanzi_container_page_pv" style="color:#ef7522;font-size:14px;">
+          阅读数: <span id="busuanzi_value_page_pv"></span>次 &nbsp;&nbsp;
+        </span>
+      </a>
+      
+
+
+
+      
+      <a href="/2018/12/18/environment-by-lnmp/" class="archive-article-date">
+  	<time datetime="2018-12-18T07:20:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-12-18</time>
+</a>
+      
+    </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-      <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html lang="en">
-<head><meta name="generator" content="Hexo 3.8.0">
-	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-	<title></title>
-	<style type="text/css">
-		h3,h4{
-			text-align: center;
-		}
-		#main{
-			width: 350px;
-			height: 100px;
-			border: 1px solid #000;
-			margin: 0 auto;
-		}
-		#main .box{
-			width: 100px;
-			height: 100px;
-			margin-left: 10px;
-			position: relative;
-			float: left;
-			background: #333;
-			color:#ddd;
-		}
-		#main .task1:hover{
-			z-index: 999;
-		}
-		#main .task2:hover{
-			z-index: 999;
-			background: #999;
-		}
-		#main .task3:hover{
-			z-index: 999;
-			background: #333;
-		}
-	</style>
-</head>
-<body>
-	<h3>三个background为#333的box</h3>
-	<h4>- 请在IE6，IE7中触发hover -</h4>
-	<div id="main">
-		<div class="box task1">box1 - 未设置backgorund</div>
-		<div class="box task2">box2 - background: #999</div>
-		<div class="box task3">box3 - background: #333</div>
-	</div>
-</body>
-</html>
+      <h1 id="前提"><a href="#前提" class="headerlink" title="前提"></a>前提</h1><p>本文适合:</p>
+<ol>
+<li><p>已经在linux虚拟机上搭建过环境，可以正常访问的，但是没有搭建在真实服务器上。</p>
+</li>
+<li><p>需要有略微的<code>linux</code>基础。</p>
+</li>
+<li><p>有自己的小项目或者demo，如果没有，会<code>composer</code>安装框架也是可以的。</p>
+</li>
+</ol>
+<p>因为本文适合偷懒使用，如果没有丝毫搭建经验的，所以我建议最好是创建一台虚拟机，自己手动安装<code>nginx</code>,<code>php</code>,<code>MySQL</code>，让内网可以上线访问。有了相关的认识，再来看本文效果是最好的。</p>
+<a id="more"></a>
+<h1 id="起因"><a href="#起因" class="headerlink" title="起因"></a>起因</h1><p>当大家做好自己的项目或者是demo，都想放在服务器上线，这样其他人才能随时随地访问使用。但是新拿到一台服务器后，可是服务器里<code>nginx</code>,<code>php</code>,<code>mysql</code>这些必须环境都没有安装，去装的话又是很繁琐。<br>那么，有没有一种快速高效的办法，类似windows上的<code>phpstudy</code>一样的集成环境呢？答案是有的，比如<code>宝塔</code>，<code>lnmp</code>。这里，我们选择已经很成熟的<code>lnmp</code>的<code>1.5</code>版本来快速构建环境。</p>
+<p>LNMP官网: <a href="https://lnmp.org" target="_blank" rel="noopener">LNMP</a></p>
+<h1 id="配置域名"><a href="#配置域名" class="headerlink" title="配置域名"></a>配置域名</h1><p>## 域名问题</p>
+<p>首先，我们要知道域名是什么？为什么域名可以知道我们服务器在哪里？甚至还可以知道最后要访问我们哪一个项目？</p>
+<h3 id="域名是什么？"><a href="#域名是什么？" class="headerlink" title="域名是什么？"></a>域名是什么？</h3><p>百度上有相关的定义，我这里就不阐述了，直接举个例子吧。比如，我在万网或者腾讯云上购买了一个域名，这个域名可以是<code>guaosi.com</code>，<code>guaosi.cn</code>或者<code>guaosi.top</code>，这些域名都称之为一级域名。然后我买了<code>guaosi.com</code>这个域名，那么，我就可以随心所欲在这个域名旗下生成我想要的域名了。给项目1的域名是<code>www.guaosi.com</code>,项目2的域名是<code>test.guaosi.com</code>。这些称之为二级域名，甚至还可以创建三级域名，四级域名，这些域名都是归于<code>guaosi.com</code>旗下的，不需要购买。</p>
+<h3 id="域名如何知道我们服务器在哪里"><a href="#域名如何知道我们服务器在哪里" class="headerlink" title="域名如何知道我们服务器在哪里"></a>域名如何知道我们服务器在哪里</h3><p>以腾讯云的域名系统为例。已经购买了腾讯云的域名后，找到<code>域名与网站</code>-<code>云解析</code>-<code>域名解析列表</code>-<code>解析</code>。点击<code>添加记录</code>添加想要的域名，比如我想添加<code>www.guaosi.com</code>。那么，在<code>主机记录</code>填写<code>www</code>，<code>记录值</code>填写服务器的地址,然后保存即可。</p>
+<p><img src="/assets/blogImg/tencent-domain-name.png" alt="腾讯云域名配置"></p>
+<p>现在如果一个用户在电脑上访问了我的<code>www.guaosi.com</code>域名，首先，电脑上会先查看自己本地的Hosts文件里是否有做了关于<code>www.guaosi.com</code>的重定向，如果没有，那么电脑再访问由宽带运营商规定DNS(域名解析)服务器，查到<code>www.guaosi.com</code>的服务器地址为<code>xx.xx.xx.xx</code>，然后此时将请求发往IP为<code>xx.xx.xx.xx</code>的服务器上。最后，具体是访问到这台服务器上的哪个项目，哪个文件，我们下面再说。</p>
+<h2 id="没有服务器或者域名"><a href="#没有服务器或者域名" class="headerlink" title="没有服务器或者域名"></a>没有服务器或者域名</h2><p>由上文的 <code>域名如何知道我们服务器在哪里</code> ，里面提及到，电脑上是先查看自己本地的Hosts文件里是否有做了关于<code>www.guaosi.com</code>的重定向，如果没有，电脑才访问由宽带运营商规定DNS(域名解析)服务器。所以，我们可以修改Hosts文件来假装自己已经拥有了自己的域名。</p>
+<p>编辑hosts文件，加入</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">环境地址       <span class="selector-tag">www</span><span class="selector-class">.guaosi</span><span class="selector-class">.com</span></span><br><span class="line"></span><br><span class="line"># 比如我虚拟机环境地址是192<span class="selector-class">.168</span><span class="selector-class">.1</span><span class="selector-class">.101</span></span><br><span class="line">192<span class="selector-class">.168</span><span class="selector-class">.1</span><span class="selector-class">.101</span>  <span class="selector-tag">www</span><span class="selector-class">.guaosi</span><span class="selector-class">.com</span></span><br></pre></td></tr></table></figure>
+<h2 id="拥有自己的服务器以及域名"><a href="#拥有自己的服务器以及域名" class="headerlink" title="拥有自己的服务器以及域名"></a>拥有自己的服务器以及域名</h2><p>通过上文的 <code>域名如何知道我们服务器在哪里</code> ，进行配置即可。</p>
+<h1 id="安装LNMP"><a href="#安装LNMP" class="headerlink" title="安装LNMP"></a>安装LNMP</h1><p>根据官网的步骤安装即可，因为是一键包而且官网已经说得很详细了，我就不复现了。</p>
+<p>建议安装MySQL8和PHP7.26版本，不要忘记设置的MySQL密码，并且密码的加密方式最好选择<code>mysql_native_password</code>。</p>
+<p>LNMP安装: <a href="https://lnmp.org/install.html" target="_blank" rel="noopener">LNMP安装</a></p>
+<p>安装完毕后，默认是root账户只能在本服务器上被访问，外界访问不到，可以进到mysql客户端里进行修改。</p>
+<p>LNMP相关软件目录及文件位置 : <a href="https://lnmp.org/faq/lnmp-software-list.html" target="_blank" rel="noopener">LNMP相关软件目录及文件位置</a></p>
+<p><code>my.ini</code>位置: <code>/etc/my.cnf</code></p>
+<p><code>php.ini</code>位置: <code>/usr/local/php/etc/php.ini</code></p>
+<p><code>vhost</code>位置: <code>/usr/local/nginx/conf/vhost</code></p>
+<h1 id="配置虚拟站点"><a href="#配置虚拟站点" class="headerlink" title="配置虚拟站点"></a>配置虚拟站点</h1><h2 id="添加虚拟站点"><a href="#添加虚拟站点" class="headerlink" title="添加虚拟站点"></a>添加虚拟站点</h2><p>输入命令，新建虚拟站点<br><figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lnmp vhost <span class="keyword">add</span><span class="bash"></span></span><br></pre></td></tr></table></figure></p>
+<p>之后的选择，可以参考如下:<br><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">1.Please enter domain(example: www.lnmp.org) </span><br><span class="line">输入想要创建的域名。比如  www.guaosi.com  回车</span><br><span class="line">2.Enter more domain name(example: lnmp.org *.lnmp.org)</span><br><span class="line">输入更多域名。没有必要，回车</span><br><span class="line">3.Default directory: /home/wwwroot/www.guaosi.com:</span><br><span class="line">项目存放的目录。默认即可，回车</span><br><span class="line">4.Allow Rewrite rule? (y/n)</span><br><span class="line">vhost里的配置规则。默认即可，回车</span><br><span class="line">5.<span class="builtin-name">Enable</span> PHP Pathinfo? (y/n) </span><br><span class="line">是否添加PHP Pathinfo。默认即可，回车</span><br><span class="line">6.Allow access log? (y/n)</span><br><span class="line">是否开启访问日志。默认即可，回车</span><br><span class="line">7. Multiple PHP version found, Please select the PHP version.</span><br><span class="line">选择运行该项目的php版本，回车</span><br><span class="line">8. Create database <span class="keyword">and</span> MySQL<span class="built_in"> user </span>with same name</span><br><span class="line">是否在mysql里创建当前项目专用的数据库与账户。这步可以选择 n 跳过,但是为了安全起见，最好是一个项目存放一个数据库以及配置专用的MySQL账号密码，所以我这里选择y，回车</span><br><span class="line">9. Enter current root password of Database (Password will <span class="keyword">not</span> shown):</span><br><span class="line">请输入当前mysql的root密码。输入完毕后，回车</span><br><span class="line">10.Enter database name: </span><br><span class="line">输入新建数据库的名称。输入完毕后，回车</span><br><span class="line">11.Please enter password <span class="keyword">for</span> mysql<span class="built_in"> user </span></span><br><span class="line">为新建的mysql账户设置密码。输入完毕后，回车</span><br><span class="line">12.<span class="builtin-name">Add</span> SSL Certificate </span><br><span class="line">是否添加SSL证书。现在SSL证书都是可以免费拿到，比如腾讯云，阿里云的域名都可以免费申请，我们这边直接n跳过，自己来配置SSL证书</span><br><span class="line">13.Press any key <span class="keyword">to</span> start create virtul host.</span><br><span class="line">直接回车，添加新的虚拟站点成功</span><br></pre></td></tr></table></figure></p>
+<p>成功后，会生成对应的项目目录 <code>/home/wwwroot/www.guaosi.com</code> ，成生成nginx关于这个项目的虚拟站点配置文件<code>/usr/local/nginx/conf/vhost/www.guaosi.com.conf</code></p>
+<h2 id="修改vhost配置文件"><a href="#修改vhost配置文件" class="headerlink" title="修改vhost配置文件"></a>修改vhost配置文件</h2><p>输入<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim /usr/local/nginx/conf/vhost/www<span class="selector-class">.guaosi</span><span class="selector-class">.com</span><span class="selector-class">.conf</span></span><br></pre></td></tr></table></figure></p>
+<p>将 <code>root</code> 指向的地址，进行修改，将原来的<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">root  /home/wwwroot/www<span class="selector-class">.guaosi</span><span class="selector-class">.com</span>/</span><br></pre></td></tr></table></figure></p>
+<p>修改为项目入口地址所在目录。<br>如果是yii2项目，修改为<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">root  /home/wwwroot/www<span class="selector-class">.guaosi</span><span class="selector-class">.com</span>/web</span><br></pre></td></tr></table></figure></p>
+<p>如果是laravel或者tp5项目，修改为<br><figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">root  <span class="regexp">/home/</span>wwwroot<span class="regexp">/www.guaosi.com/</span><span class="keyword">public</span></span><br></pre></td></tr></table></figure></p>
+<h1 id="测试项目上线"><a href="#测试项目上线" class="headerlink" title="测试项目上线"></a>测试项目上线</h1><h2 id="将项目放入线上"><a href="#将项目放入线上" class="headerlink" title="将项目放入线上"></a>将项目放入线上</h2><p>将自己已经完成的项目或者demo，放到服务器的项目目录下(比如<code>home/wwwroot/www.guaosi.com/</code>)。</p>
+<p>以下提供四种方式，<code>推荐使用git</code>，因为git有版本控制，可以回退版本以及分支开发，团队合作，是现在的主流趋势，是每个程序猿必须掌握的。</p>
+<h3 id="composer"><a href="#composer" class="headerlink" title="composer"></a>composer</h3><p>如果没有可以放的项目或者demo，可以直接composer下载thinkphp5或者laravel到项目目录下，可以通过域名成功访问到即代表成功.</p>
+<h3 id="FTP上传"><a href="#FTP上传" class="headerlink" title="FTP上传"></a>FTP上传</h3><p>需要服务器开了FTP的21端口或者sftp的22端口.建议把自己的项目打包成zip，然后通过ftp工具上传到项目目录，然后解压。工具推荐<code>winscp</code>,<code>FlashFXP</code>。</p>
+<h3 id="git"><a href="#git" class="headerlink" title="git"></a>git</h3><p>需要有git的使用基础，如果还不会git或者对git有兴趣，可以查查廖大神的git教程。<a href="https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000" target="_blank" rel="noopener">点我查看git教程</a></p>
+<p>已经将项目上传至<code>github</code>或者<code>gitee</code>这样的远程仓库，然后在项目目录下<code>git clone</code>自己的项目下来即可。（如果是laravel或者tp5项目，记得<code>composer update</code>,laravel记得修改<code>.env</code>文件）</p>
+<h3 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h3><p>如果服务器已经做过ssh免密码登陆。那么可以把项目打包成zip，然后通过scp<br>进行上传<br><figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 将本地的 /Users/guaosi/Documents/www.guaosi.com.zip 的文件复制到ip为192.168.120.204的服务器上的</span></span><br><span class="line">scp /Users/guaosi/Documents/www.guaosi.com.zip  root<span class="variable">@192</span>.<span class="number">168.120</span>.<span class="number">204</span><span class="symbol">:/home/wwwroot/www</span>.guaosi.com</span><br><span class="line"><span class="comment"># 最后记得解压</span></span><br></pre></td></tr></table></figure></p>
+<p>如果是从服务器上复制文件到本地<br><figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 从ip为192.168.120.204的服务器上，通过root登录，然后复制 /opt/soft/ 下的nginx-0.5.38.tar.gz 文件 到 本地的 /Users/guaosi/Documents 目录下</span></span><br><span class="line">scp root<span class="variable">@192</span>.<span class="number">168.120</span>.<span class="number">204</span><span class="symbol">:/opt/soft/nginx-</span><span class="number">0</span>.<span class="number">5.38</span>.tar.gz /Users/guaosi/Documents</span><br></pre></td></tr></table></figure></p>
+<h2 id="遇到的问题"><a href="#遇到的问题" class="headerlink" title="遇到的问题"></a>遇到的问题</h2><p>说几个在<code>lnmp</code>集成环境下部署遇到的问题。</p>
+<h3 id="多站点白屏问题"><a href="#多站点白屏问题" class="headerlink" title="多站点白屏问题"></a>多站点白屏问题</h3><p>一个服务器其实是可以部署多个项目的。那么，回到之前欠下的问题<code>如何知道最后要访问我们哪一个项目？</code><br>通过上面的虚拟站点配置文件，我们可以知道，我们为域名为<code>www.guaosi.com</code>专门指定了访问目录root为<code>/home/wwwroot/www.guaosi.com/public</code>。这样，当用户访问<code>www.guaosi.com</code>的时候，他的电脑会先去DNS服务器查询到<code>www.guaosi.com</code>解析的服务器IP地址，然后访问到这台服务器。因为访问的是<code>www.guaosi.com</code>，那么，nginx后找到配置文件中站点为<code>www.guaosi.com</code>,找到它对应的root指向目录，进行访问。</p>
+<p>lnmp多站点(多项目)部署的时候，tp5会出现项目白屏的问题，报500错误。这是因为我们在vhost配置中的root指向的是<code>public</code>，这样一来，访问网址就不需要加<code>public</code>了，可是因为lnmp设置了目录访问权限，无法访问上级目录，所以需要进行修改。</p>
+<ol>
+<li><p>修改<code>fastcgi.conf</code>的配置</p>
+<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim /usr/<span class="keyword">local</span>/nginx/<span class="keyword">conf</span>/fastcgi.<span class="keyword">conf</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>然后在最后一行加入</p>
+<figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fastcgi_param PHP_ADMIN_VALUE $<span class="keyword">basedir </span>if_not_empty<span class="comment">;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>保存退出</p>
+</li>
+<li><p>再修改<code>www.guaosi.com.conf</code>的配置</p>
+</li>
+</ol>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim /usr/local/nginx/conf/vhost/www<span class="selector-class">.guaosi</span><span class="selector-class">.com</span><span class="selector-class">.conf</span></span><br></pre></td></tr></table></figure>
+<ol start="5">
+<li><p>在<code>root</code>下面一行加入 <code>&quot;open_basedir=/home/wwwroot/www.guaosi.com/:/tmp/:/proc/&quot;;</code><br>完整配置参考</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line">server</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="attribute">listen</span> <span class="number">80</span>;</span><br><span class="line">        <span class="comment">#listen [::]:80;</span></span><br><span class="line">        <span class="attribute">server_name</span> www.guaosi.com ;</span><br><span class="line">        <span class="attribute">index</span> index.html index.htm index.php default.html default.htm default.php;</span><br><span class="line">        <span class="comment"># yii2</span></span><br><span class="line">        <span class="comment"># root  /home/wwwroot/www.guaosi.com/web;</span></span><br><span class="line">        <span class="comment"># thinkphp5跟laravel5</span></span><br><span class="line">        <span class="attribute">root</span>  /home/wwwroot/www.guaosi.com/public;</span><br><span class="line"></span><br><span class="line">        <span class="attribute">set</span> <span class="variable">$basedir</span> <span class="string">"open_basedir=/home/wwwroot/www.guaosi.com/:/tmp/:/proc/"</span>;</span><br><span class="line">        <span class="attribute">include</span> rewrite/none.conf;</span><br><span class="line">        <span class="comment">#error_page   404   /404.html;</span></span><br><span class="line"></span><br><span class="line">        <span class="comment"># Deny access to PHP files in specific directory</span></span><br><span class="line">        <span class="comment">#location ~ /(wp-content|uploads|wp-includes|images)/.*\.php$ &#123; deny all; &#125;</span></span><br><span class="line"></span><br><span class="line">        <span class="attribute">include</span> enable-php.conf;</span><br><span class="line"></span><br><span class="line">        <span class="comment"># yii2 nginx规则</span></span><br><span class="line">        <span class="attribute">location</span> / &#123;</span><br><span class="line">         <span class="attribute">if</span> (!-e <span class="variable">$request_filename</span>)&#123;</span><br><span class="line">           <span class="attribute">rewrite</span><span class="regexp"> ^/(.*)</span> /index.php <span class="literal">last</span>;</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment"># thinkphp5 nginx规则</span></span><br><span class="line">         <span class="attribute">location</span> / &#123;</span><br><span class="line">          <span class="attribute">if</span> (!-e <span class="variable">$request_filename</span>) &#123;</span><br><span class="line">                <span class="attribute">rewrite</span><span class="regexp"> ^(.*)$</span> /index.php?s=<span class="variable">$1</span> <span class="literal">last</span>;</span><br><span class="line">          &#125;</span><br><span class="line">       &#125;</span><br><span class="line">        <span class="comment"># laravel5 nginx规则</span></span><br><span class="line">        <span class="attribute">location</span> / &#123;</span><br><span class="line">            <span class="attribute">try_files</span> <span class="variable">$uri</span> <span class="variable">$uri</span>/ /index.php?<span class="variable">$query_string</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        <span class="attribute">location</span> <span class="regexp">~ .*\.(gif|jpg|jpeg|png|bmp|swf)$</span></span><br><span class="line"><span class="regexp"></span>        &#123;</span><br><span class="line">            <span class="attribute">expires</span>      <span class="number">30d</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="attribute">location</span> <span class="regexp">~ .*\.(js|css)?$</span></span><br><span class="line"><span class="regexp"></span>        &#123;</span><br><span class="line">            <span class="attribute">expires</span>      <span class="number">12h</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="attribute">location</span> <span class="regexp">~ /.well-known</span> &#123;</span><br><span class="line">            <span class="attribute">allow</span> all;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="attribute">location</span> <span class="regexp">~ /\.</span></span><br><span class="line"><span class="regexp"></span>        &#123;</span><br><span class="line">            <span class="attribute">deny</span> all;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="attribute">access_log</span>  /home/wwwlogs/www.guaosi.com.log;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>保存退出</p>
+</li>
+<li><p>重启nginx</p>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">lnmp nginx restart</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>测试访问 <code>http://www.guaosi.com</code> 看看是否正常吧</p>
+</li>
+</ol>
+<h3 id="添加SSL证书-HTTPS"><a href="#添加SSL证书-HTTPS" class="headerlink" title="添加SSL证书(HTTPS)"></a>添加SSL证书(HTTPS)</h3><p>在阿里云或者腾讯云购买的域名，可以免费申请ssl证书.申请通过后，下载并且上传到服务器上，解压。</p>
+<p>修改修改<code>www.guaosi.com.conf</code>的配置<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim /usr/local/nginx/conf/vhost/www<span class="selector-class">.guaosi</span><span class="selector-class">.com</span><span class="selector-class">.conf</span></span><br></pre></td></tr></table></figure></p>
+<p>在 <code>listen 80;</code>后面加入下面代码<br><figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">listen</span> <span class="number">443</span> ssl;</span><br><span class="line"><span class="attribute">ssl</span> <span class="literal">on</span>;</span><br><span class="line"><span class="attribute">ssl_certificate</span> 证书存在位置;</span><br><span class="line"><span class="attribute">ssl_certificate_key</span> 证书存在位置;</span><br></pre></td></tr></table></figure></p>
+<p>参考案例<br><figure class="highlight axapta"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">server</span></span><br><span class="line">    &#123;</span><br><span class="line">        listen <span class="number">80</span>;</span><br><span class="line">        listen <span class="number">443</span> ssl;</span><br><span class="line">        ssl on;</span><br><span class="line">        ssl_certificate /usr/cert/www/ssl.crt;</span><br><span class="line">        ssl_certificate_key /usr/cert/www/ssl.key;</span><br><span class="line">        <span class="meta">#listen [::]:80;</span></span><br><span class="line">        server_name www.guaosi.com ;</span><br><span class="line">        <span class="keyword">index</span> <span class="keyword">index</span>.html <span class="keyword">index</span>.htm <span class="keyword">index</span>.php <span class="keyword">default</span>.html <span class="keyword">default</span>.htm <span class="keyword">default</span>.php;</span><br><span class="line">    ......</span><br></pre></td></tr></table></figure></p>
+<h3 id="无法删除项目"><a href="#无法删除项目" class="headerlink" title="无法删除项目"></a>无法删除项目</h3><p>因为LNMP 1.2开始PHP防跨目录限制使用<code>.user.ini</code>，该文件在网站根目录下，<code>.user.ini</code>文件无法直接修改。所以需要先解锁<code>.user.ini</code>文件。<br>执行下面的命令<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chattr -<span class="selector-tag">i</span> /home/wwwroot/www<span class="selector-class">.guaosi</span><span class="selector-class">.com</span>/<span class="selector-class">.user</span><span class="selector-class">.ini</span></span><br></pre></td></tr></table></figure></p>
+
       
 
       
@@ -232,13 +295,13 @@ var _hmt = _hmt || [];
           
           <br>
           <strong>本文链接：</strong>
-          <a rel="license" href="https://www.guaosi.com/assets/demo/hack_demo.html">https://www.guaosi.com/assets/demo/hack_demo.html</a>
+          <a rel="license" href="https://www.guaosi.com/2018/12/18/environment-by-lnmp/">https://www.guaosi.com/2018/12/18/environment-by-lnmp/</a>
           <br>
           <strong>版权声明：</strong>
           本博客所有文章除特别声明外，均采用
           <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/3.0/">CC BY-NC-SA 3.0 许可协议</a>
           
-            <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/3.0/"><img alt="知识共享许可协议" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/3.0/80x15.png"/></a>
+            <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/3.0/"><img alt="知识共享许可协议" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/3.0/80x15.png"></a>
           
           进行许可。转载请注明出处！
         </div>
@@ -287,6 +350,25 @@ var _hmt = _hmt || [];
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">php</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">lnmp</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">服务器</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
@@ -337,7 +419,7 @@ var _hmt = _hmt || [];
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACHElEQVR42u3a207DMBAFwP7/T4dXJEg5Z11AtcdPVWSSTJG2e/HjEa/ry/p8/W7n7G7P/3ZpYWBgvC3jerpe9T3d3SF/7t0eDAyMcxh3D0725OAZI7kPBgYGRhsEE9jz/RgYGBjrAfc5bFbi/sPvBgYGxlsxZinarMWWv/qv1OIYGBhvyMibZX//+VfmGxgYGG/FuMqVF7ezcHmNFgYGxt6MPMC1yWKe5LUp5u1ODAyMTRl1UCuLzLy4bdtz3/wfMDAwDmDkoTMhrR/aKNJQDAyMAxgrI8mVRLAdlA57gRgYGFswZq205HVnY8v6q8TAwDiMMQvK7YSxTQcxMDAw8tC2HoKTYWdd1mJgYBzAaJtos9J0pakXjTAxMDAOYLwqTZwlfAkpOhCGgYGxHSMvMtfD6+xKsRMDA2NTRhsi2zQuD7IrwwMMDIwTGLOwmDfI8mI1D/EYGBjnMNrHt0co6mMTozQRAwPjNEZSxCbhsr2SDyFe1m7DwMDYiLESgvOytgUXTTcMDIyNGEkxmTf923C53ozDwMA4gZGHtlm7rW2l1XfAwMDYlHGVKz9Oke9PCtcfRqoYGBhbM1aC3SyxaweT6wc+MDAw9mDkQXb2iivjBAwMDIz2FdtyNE8i2yEEBgYGxmszzdmQss5nMTAwMIKbtoE4r6eHk1gMDIztGPkwYKUoTYJyG8QxMDBOYMxKx/UB5PpRMAwMjAMYH0DgapidC6zrAAAAAElFTkSuQmCC" alt="微信分享二维码">
+      <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACKElEQVR42u3aQY7jMAwEwPz/01lgTnNYKN2iM4Dl0ilwElvlA0GRfL3i9f5Z+be/r+Sff6/XNxYGBsZtGe/lWj9+fSXZ9JqR7A0DA+M5jHUYzTeU/2a90XxvGBgYGEnq1gbo+X8xMDAw2q3kB1oMDAyMCSNJ0ZJQu1cHywP9BWdxDAyMGzLaMPqXn7/Y38DAwLgJ47212k20Jbl6PxgYGEcz8vRuPucwT0Y/7BADA+MBjL3W4971PAQXrx4DA+NoRlLQz4PyOjVs083NAy0GBsZBjL3jZdKAbNuQeSqJgYGBkQ9M7JXh5o3SD1VDDAyMoxl56Lz2l22j9D/3wcDAOJqRH0TnoxhJeyBPLjEwMJ7MaEtgeZBdJ3lXtSUwMDBOZbQhcq8kl9+tHezAwMB4MmPSDGiHMNrxiyLgYmBg3JyxmT+WqWR7/3X6WL8hDAyMgxjtSMQ8mcvD62a1DwMD41BGm6i1KV1eSsvxGBgYZzMmhfu8DTkZ/xqV2zAwMI5m5Ly9Ut1kqKIIuBgYGMcx2gGLdtPtc+vmKAYGxtGMvT/MW49Xle0wMDDOZrzL1TYak/JccgD+8AowMDCOZuQrv0XeCm0bmW3qiYGBcRKjLaXNE768bVCMX2BgYDyAMQmRyT3nUf/DWRwDAwMjGH2YHC/bcY0LAi4GBsahjL1Rib85JGNgYDyBsTdyetXd8obExQ/GwMC4CWMvIOaFs3bu44tIDAyM+zH+Ab53k2GgLJQUAAAAAElFTkSuQmCC" alt="微信分享二维码">
     </div>
 </div>
 
@@ -348,6 +430,16 @@ var _hmt = _hmt || [];
   </div>
 </article>
 
+
+<nav id="article-nav">
+  
+  
+    <a href="/2018/12/14/complex-two-dimensional-arrays/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">二维数组的巧妙整合</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
 
 
 <aside class="wrap-side-operation">
@@ -363,6 +455,19 @@ var _hmt = _hmt || [];
         </div>
         
         
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#前提"><span class="toc-number">1.</span> <span class="toc-text">前提</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#起因"><span class="toc-number">2.</span> <span class="toc-text">起因</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#配置域名"><span class="toc-number">3.</span> <span class="toc-text">配置域名</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#域名是什么？"><span class="toc-number">3.0.1.</span> <span class="toc-text">域名是什么？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#域名如何知道我们服务器在哪里"><span class="toc-number">3.0.2.</span> <span class="toc-text">域名如何知道我们服务器在哪里</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#没有服务器或者域名"><span class="toc-number">3.1.</span> <span class="toc-text">没有服务器或者域名</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#拥有自己的服务器以及域名"><span class="toc-number">3.2.</span> <span class="toc-text">拥有自己的服务器以及域名</span></a></li></ol><li class="toc-item toc-level-1"><a class="toc-link" href="#安装LNMP"><span class="toc-number">4.</span> <span class="toc-text">安装LNMP</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#配置虚拟站点"><span class="toc-number">5.</span> <span class="toc-text">配置虚拟站点</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#添加虚拟站点"><span class="toc-number">5.1.</span> <span class="toc-text">添加虚拟站点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#修改vhost配置文件"><span class="toc-number">5.2.</span> <span class="toc-text">修改vhost配置文件</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#测试项目上线"><span class="toc-number">6.</span> <span class="toc-text">测试项目上线</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#将项目放入线上"><span class="toc-number">6.1.</span> <span class="toc-text">将项目放入线上</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#composer"><span class="toc-number">6.1.1.</span> <span class="toc-text">composer</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#FTP上传"><span class="toc-number">6.1.2.</span> <span class="toc-text">FTP上传</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#git"><span class="toc-number">6.1.3.</span> <span class="toc-text">git</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#其他"><span class="toc-number">6.1.4.</span> <span class="toc-text">其他</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#遇到的问题"><span class="toc-number">6.2.</span> <span class="toc-text">遇到的问题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#多站点白屏问题"><span class="toc-number">6.2.1.</span> <span class="toc-text">多站点白屏问题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#添加SSL证书-HTTPS"><span class="toc-number">6.2.2.</span> <span class="toc-text">添加SSL证书(HTTPS)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#无法删除项目"><span class="toc-number">6.2.3.</span> <span class="toc-text">无法删除项目</span></a></li></ol></li></ol></li>
+                    </div>
+                </span>
+            </div>
+        </div>
+        
     </div>
 </aside>
 
@@ -373,7 +478,7 @@ var _hmt = _hmt || [];
 
 
 
-<div id="SOHUCS" sid="undefined"></div> 
+<div id="SOHUCS" sid="environment-by-lnmp"></div> 
 <script type="text/javascript"> 
 (function(){ 
 var appid = "cytWxLdY3"; 
@@ -413,7 +518,7 @@ window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="tex
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
