@@ -168,6 +168,104 @@ var _hmt = _hmt || [];
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-linux-add-virtual-memory" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
+  <div class="article-inner">
+    
+    <header class="article-header">
+      
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/02/21/linux-add-virtual-memory/">Linux虚拟内存设置</a>
+    </h1>
+  
+
+      <!-- 显示阅读和评论数 -->
+
+      <br>
+      
+
+
+
+      
+      <a href="/2019/02/21/linux-add-virtual-memory/" class="archive-article-date">
+  	<time datetime="2019-02-21T02:32:35.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-02-21</time>
+</a>
+      
+    </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+      <h1 id="起因"><a href="#起因" class="headerlink" title="起因"></a>起因</h1><p>开发过程中，可能会碰到安装某个扩展需要扩大本服务器的内存，但是给的硬件内存只有那么点，该如何处理呢？<br>Linux上开启虚拟内存即可解决。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">虚拟内存是为了满足物理内存不足采用的策略，利用磁盘空间虚拟出一块逻辑内存，用作虚拟内存的空间也就是交换分区。</span><br><span class="line">作为物理内存的扩展，Linux会在物理内存不足时，使用交换分区的逻辑内存，内核会把暂时不用的内存块信息写到交换空间，这样物理内存就得到了释放，这块儿内存就可以用于其他目的，而需要用到这些内容的时候，这些信息就会被重新从交换分区读入物理内存。</span><br><span class="line">Linux的内存管理采用的是分页存取机制，为了保证物理内存得到充分的利用，内核会在适当的时间把物理内存中不经常使用的数据块儿自动交换到虚拟内存中，而将充分使用的信息保留到物理内存中。</span><br></pre></td></tr></table></figure></p>
+<h1 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h1><h2 id="创建swap分区"><a href="#创建swap分区" class="headerlink" title="创建swap分区"></a>创建swap分区</h2><p>用<code>拥有ROOT权限</code>的用户登入到系统，进行创建swap分区，通过下面指令创建1G的虚拟内存<br><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dd <span class="attribute">if</span>=/dev/zero <span class="attribute">of</span>=/swap/swap <span class="attribute">bs</span>=1024 <span class="attribute">count</span>=1024000</span><br></pre></td></tr></table></figure></p>
+<h2 id="创建交换文件"><a href="#创建交换文件" class="headerlink" title="创建交换文件"></a>创建交换文件</h2><figure class="highlight avrasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mkswap /<span class="keyword">swap</span>/<span class="keyword">swap</span></span><br></pre></td></tr></table></figure>
+<h2 id="立即激活交换文件"><a href="#立即激活交换文件" class="headerlink" title="立即激活交换文件"></a>立即激活交换文件</h2><figure class="highlight avrasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">swapon /<span class="keyword">swap</span>/<span class="keyword">swap</span></span><br></pre></td></tr></table></figure>
+<h2 id="设置成永久生效"><a href="#设置成永久生效" class="headerlink" title="设置成永久生效"></a>设置成永久生效</h2><p>虽然现在已经生效，但是等下次服务器重启之后。该swap虚拟磁盘会失效，为保证永久生效，还需往/etc/fstab文件添加分区信息：<br><figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">echo <span class="string">"/swap/swap swap swap defaults 0 0"</span> <span class="meta">&gt;&gt; </span>/etc/fstab</span><br></pre></td></tr></table></figure></p>
+<p>现在为止，swap分区已经完成创建。</p>
+
+      
+
+      
+
+      
+        <div class="declare" hidden="hidden"></div>
+      
+
+
+
+      
+    </div>
+
+
+
+
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Linux</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+      <p class="article-more-link">
+        <a class="article-more-a" href="/2019/02/21/linux-add-virtual-memory/">
+          展开全文 >></a>
+      </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+  
     <article id="post-environment-by-lnmp" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
   <div class="article-inner">
     
@@ -677,6 +775,10 @@ var _hmt = _hmt || [];
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">docker</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Linux</a>
               </li>
             
             <div class="clearfix"></div>

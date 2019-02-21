@@ -17,7 +17,7 @@
 <meta property="og:description" content="1. 前提本文适合: 1.已经在linux虚拟机上搭建过环境，可以正常访问的，但是没有搭建在真实服务器上。 2.需要有略微的linux基础。 3.有自己的小项目或者demo，如果没有，会composer安装框架也是可以的。 因为本文适合偷懒使用，如果没有丝毫搭建经验的，所以我建议最好是创建一台虚拟机，自己手动安装nginx,php,MySQL，让内网可以上线访问。有了相关的认识，再来看本文效果是最">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://www.guaosi.com/assets/blogImg/tencent-domain-name.png">
-<meta property="og:updated_time" content="2019-02-21T02:19:19.434Z">
+<meta property="og:updated_time" content="2019-02-21T02:24:09.673Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="使用lnmp快速构建线上环境并搭建项目成功上线">
 <meta name="twitter:description" content="1. 前提本文适合: 1.已经在linux虚拟机上搭建过环境，可以正常访问的，但是没有搭建在真实服务器上。 2.需要有略微的linux基础。 3.有自己的小项目或者demo，如果没有，会composer安装框架也是可以的。 因为本文适合偷懒使用，如果没有丝毫搭建经验的，所以我建议最好是创建一台虚拟机，自己手动安装nginx,php,MySQL，让内网可以上线访问。有了相关的认识，再来看本文效果是最">
@@ -253,12 +253,14 @@ var _hmt = _hmt || [];
 <figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim /usr/local/nginx/conf/vhost/www<span class="selector-class">.guaosi</span><span class="selector-class">.com</span><span class="selector-class">.conf</span></span><br></pre></td></tr></table></figure>
 <p>5.在<code>root</code>下面一行加入 <code>&quot;open_basedir=/home/wwwroot/www.guaosi.com/:/tmp/:/proc/&quot;;</code><br>完整配置参考<br><figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line">server</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="attribute">listen</span> <span class="number">80</span>;</span><br><span class="line">        <span class="comment">#listen [::]:80;</span></span><br><span class="line">        <span class="attribute">server_name</span> www.guaosi.com ;</span><br><span class="line">        <span class="attribute">index</span> index.html index.htm index.php default.html default.htm default.php;</span><br><span class="line">        <span class="comment"># yii2</span></span><br><span class="line">        <span class="comment"># root  /home/wwwroot/www.guaosi.com/web;</span></span><br><span class="line">        <span class="comment"># thinkphp5跟laravel5</span></span><br><span class="line">        <span class="attribute">root</span>  /home/wwwroot/www.guaosi.com/public;</span><br><span class="line"></span><br><span class="line">        <span class="attribute">set</span> <span class="variable">$basedir</span> <span class="string">"open_basedir=/home/wwwroot/www.guaosi.com/:/tmp/:/proc/"</span>;</span><br><span class="line">        <span class="attribute">include</span> rewrite/none.conf;</span><br><span class="line">        <span class="comment">#error_page   404   /404.html;</span></span><br><span class="line"></span><br><span class="line">        <span class="comment"># Deny access to PHP files in specific directory</span></span><br><span class="line">        <span class="comment">#location ~ /(wp-content|uploads|wp-includes|images)/.*\.php$ &#123; deny all; &#125;</span></span><br><span class="line"></span><br><span class="line">        <span class="attribute">include</span> enable-php.conf;</span><br><span class="line"></span><br><span class="line">        <span class="comment"># yii2 nginx规则</span></span><br><span class="line">        <span class="attribute">location</span> / &#123;</span><br><span class="line">         <span class="attribute">if</span> (!-e <span class="variable">$request_filename</span>)&#123;</span><br><span class="line">           <span class="attribute">rewrite</span><span class="regexp"> ^/(.*)</span> /index.php <span class="literal">last</span>;</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment"># thinkphp5 nginx规则</span></span><br><span class="line">         <span class="attribute">location</span> / &#123;</span><br><span class="line">          <span class="attribute">if</span> (!-e <span class="variable">$request_filename</span>) &#123;</span><br><span class="line">                <span class="attribute">rewrite</span><span class="regexp"> ^(.*)$</span> /index.php?s=<span class="variable">$1</span> <span class="literal">last</span>;</span><br><span class="line">          &#125;</span><br><span class="line">       &#125;</span><br><span class="line">        <span class="comment"># laravel5 nginx规则</span></span><br><span class="line">        <span class="attribute">location</span> / &#123;</span><br><span class="line">            <span class="attribute">try_files</span> <span class="variable">$uri</span> <span class="variable">$uri</span>/ /index.php?<span class="variable">$query_string</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        <span class="attribute">location</span> <span class="regexp">~ .*\.(gif|jpg|jpeg|png|bmp|swf)$</span></span><br><span class="line"><span class="regexp"></span>        &#123;</span><br><span class="line">            <span class="attribute">expires</span>      <span class="number">30d</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="attribute">location</span> <span class="regexp">~ .*\.(js|css)?$</span></span><br><span class="line"><span class="regexp"></span>        &#123;</span><br><span class="line">            <span class="attribute">expires</span>      <span class="number">12h</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="attribute">location</span> <span class="regexp">~ /.well-known</span> &#123;</span><br><span class="line">            <span class="attribute">allow</span> all;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="attribute">location</span> <span class="regexp">~ /\.</span></span><br><span class="line"><span class="regexp"></span>        &#123;</span><br><span class="line">            <span class="attribute">deny</span> all;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="attribute">access_log</span>  /home/wwwlogs/www.guaosi.com.log;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></p>
 <ol start="6">
-<li>保存退出</li>
+<li><p>保存退出</p>
+</li>
 <li><p>重启nginx</p>
+</li>
+</ol>
 <figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">lnmp nginx restart</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>测试访问 <code>http://www.guaosi.com</code> 看看是否正常吧</p>
-</li>
+<ol start="8">
+<li>测试访问 <code>http://www.guaosi.com</code> 看看是否正常吧</li>
 </ol>
 <h3 id="6-2-2-添加SSL证书-HTTPS"><a href="#6-2-2-添加SSL证书-HTTPS" class="headerlink" title="6.2.2. 添加SSL证书(HTTPS)"></a>6.2.2. 添加SSL证书(HTTPS)</h3><p>在阿里云或者腾讯云购买的域名，可以免费申请ssl证书.申请通过后，下载并且上传到服务器上，解压。</p>
 <p>修改修改<code>www.guaosi.com.conf</code>的配置<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim /usr/local/nginx/conf/vhost/www<span class="selector-class">.guaosi</span><span class="selector-class">.com</span><span class="selector-class">.conf</span></span><br></pre></td></tr></table></figure></p>
@@ -416,6 +418,15 @@ var _hmt = _hmt || [];
 
 
 <nav id="article-nav">
+  
+    <a href="/2019/02/21/linux-add-virtual-memory/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          Linux虚拟内存设置
+        
+      </div>
+    </a>
   
   
     <a href="/2018/12/14/complex-two-dimensional-arrays/" id="article-nav-older" class="article-nav-link-wrap">
@@ -582,6 +593,10 @@ window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="tex
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">docker</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Linux</a>
               </li>
             
             <div class="clearfix"></div>
