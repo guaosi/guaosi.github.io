@@ -8,18 +8,18 @@
   <link rel="dns-prefetch" href="https://www.guaosi.com">
   <title>安装php扩展:Fileinfo | guaosi的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="1. 起因在编译安装php或者lnmp安装的时候，可能由于服务器的配置不够(内存小于1G)，会将fileinfo扩展默认不安装，已保证php可以正常安装。可是有的时候我们又必须安装fileinfo扩展。">
+  <meta name="description" content="1. 起因&amp;#160; &amp;#160; &amp;#160; &amp;#160;在编译安装php或者lnmp安装的时候，可能由于服务器的配置不够(内存小于1G)，会将fileinfo扩展默认不安装，已保证php可以正常安装。可是有的时候我们又必须安装fileinfo扩展。">
 <meta name="keywords" content="php">
 <meta property="og:type" content="article">
 <meta property="og:title" content="安装php扩展:Fileinfo">
 <meta property="og:url" content="https://www.guaosi.com/2019/02/22/install-php-fileinfo/index.html">
 <meta property="og:site_name" content="guaosi的博客">
-<meta property="og:description" content="1. 起因在编译安装php或者lnmp安装的时候，可能由于服务器的配置不够(内存小于1G)，会将fileinfo扩展默认不安装，已保证php可以正常安装。可是有的时候我们又必须安装fileinfo扩展。">
+<meta property="og:description" content="1. 起因&amp;#160; &amp;#160; &amp;#160; &amp;#160;在编译安装php或者lnmp安装的时候，可能由于服务器的配置不够(内存小于1G)，会将fileinfo扩展默认不安装，已保证php可以正常安装。可是有的时候我们又必须安装fileinfo扩展。">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-02-22T05:28:57.377Z">
+<meta property="og:updated_time" content="2019-02-22T06:53:23.838Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="安装php扩展:Fileinfo">
-<meta name="twitter:description" content="1. 起因在编译安装php或者lnmp安装的时候，可能由于服务器的配置不够(内存小于1G)，会将fileinfo扩展默认不安装，已保证php可以正常安装。可是有的时候我们又必须安装fileinfo扩展。">
+<meta name="twitter:description" content="1. 起因&amp;#160; &amp;#160; &amp;#160; &amp;#160;在编译安装php或者lnmp安装的时候，可能由于服务器的配置不够(内存小于1G)，会将fileinfo扩展默认不安装，已保证php可以正常安装。可是有的时候我们又必须安装fileinfo扩展。">
   
     <link rel="alternative" href="/atom.xml" title="guaosi的博客" type="application/atom+xml">
   
@@ -200,14 +200,14 @@ var _hmt = _hmt || [];
 
       
       <a href="/2019/02/22/install-php-fileinfo/" class="archive-article-date">
-  	<time datetime="2019-02-22T02:32:35.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-02-22</time>
+  	<time datetime="2019-02-22T01:32:35.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-02-22</time>
 </a>
       
     </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-      <h1 id="1-起因"><a href="#1-起因" class="headerlink" title="1. 起因"></a>1. 起因</h1><p>在编译安装php或者lnmp安装的时候，可能由于服务器的配置不够(内存小于1G)，会将fileinfo扩展默认不安装，已保证php可以正常安装。可是有的时候我们又必须安装fileinfo扩展。<br><a id="more"></a></p>
+      <h1 id="1-起因"><a href="#1-起因" class="headerlink" title="1. 起因"></a>1. 起因</h1><p>&#160; &#160; &#160; &#160;在编译安装php或者lnmp安装的时候，可能由于服务器的配置不够(内存小于1G)，会将fileinfo扩展默认不安装，已保证php可以正常安装。可是有的时候我们又必须安装fileinfo扩展。<br><a id="more"></a></p>
 <h1 id="2-解决"><a href="#2-解决" class="headerlink" title="2. 解决"></a>2. 解决</h1><h2 id="2-1-下载php的源码编译包"><a href="#2-1-下载php的源码编译包" class="headerlink" title="2.1. 下载php的源码编译包"></a>2.1. 下载php的源码编译包</h2><p>php源码包下载地址(下载与当前安装的php相同版本的源码包): <a href="http://www.php.net/downloads.php" target="_blank" rel="noopener">http://www.php.net/downloads.php</a><br>如果是lnmp安装的，则在<code>lnmp下载处/src/</code>下可以看到php的源码包。</p>
 <h2 id="2-2-安装fileinfo"><a href="#2-2-安装fileinfo" class="headerlink" title="2.2. 安装fileinfo"></a>2.2. 安装fileinfo</h2><p>以lnmp1.5安装位置为例,我安装的是php7.2.6版本<br><figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">tar xvf php-<span class="number">7.2</span>.<span class="number">6</span>.tar.bz2</span><br><span class="line">cd php-<span class="number">7.2</span>.<span class="number">6</span><span class="regexp">/ext/</span>fileinfo</span><br><span class="line">phpize</span><br><span class="line">.<span class="regexp">/configure --with-php-config=/u</span>sr<span class="regexp">/local/</span>php<span class="regexp">/bin/</span>php-config</span><br><span class="line">make &amp;&amp; make install</span><br></pre></td></tr></table></figure></p>
 <p>当<code>make &amp;&amp; make install</code>时报错提示内存不够时，可以参考<a href="https://www.guaosi.com/2019/02/21/linux-add-virtual-memory/">Linux虚拟内存设置</a>解决</p>
@@ -357,6 +357,15 @@ var _hmt = _hmt || [];
 
 <nav id="article-nav">
   
+    <a href="/2019/02/22/onedrive-olyindex-oneindex-aria-ariang/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          oneDrive+olaIndex/oneIndex+aria2+ariaNg 制作个人大容量网盘，支持离线下载
+        
+      </div>
+    </a>
+  
   
     <a href="/2019/02/21/linux-add-virtual-memory/" id="article-nav-older" class="article-nav-link-wrap">
       <div class="article-nav-title">Linux虚拟内存设置</div>
@@ -505,11 +514,11 @@ window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="tex
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">php</a>
+                <a href="javascript:void(0)" class="js-tag color4">git</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">git</a>
+                <a href="javascript:void(0)" class="js-tag color4">php</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -522,6 +531,10 @@ window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="tex
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">服务器</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">onedrive</a>
               </li>
              
               <li class="article-tag-list-item">
