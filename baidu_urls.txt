@@ -1,4 +1,4 @@
+https://www.guaosi.com/2019/02/22/install-php-fileinfo/
 https://www.guaosi.com/2019/02/21/linux-add-virtual-memory/
 https://www.guaosi.com/2018/12/18/environment-by-lnmp/
 https://www.guaosi.com/2018/12/14/complex-two-dimensional-arrays/
-https://www.guaosi.com/2018/12/06/git-auto-change/
