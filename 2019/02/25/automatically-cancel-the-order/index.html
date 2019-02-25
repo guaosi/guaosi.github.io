@@ -8,18 +8,18 @@
   <link rel="dns-prefetch" href="https://www.guaosi.com">
   <title>指定时间自动取消订单 | guaosi的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="1. 起因&amp;#160; &amp;#160; &amp;#160; &amp;#160;在电商网站或者外卖网站，通常都有会一种需求。当一个用户下单后没有支付，此时库存量已经减少，需要取消订单才能回复库存量。取消订单有2种方式:1.用户手动取消,2.系统在指定时间过后，比如淘宝的30分钟，自动取消。那么，应该如何来实现系统在指定时间过后,自动取消订单?">
+  <meta name="description" content="1. 起因&amp;#160; &amp;#160; &amp;#160; &amp;#160;在电商网站或者外卖网站，通常都有会一种需求。当一个用户下单后没有支付，此时库存量已经减少，需要取消订单才能回复库存量。取消订单有2种方式:1.用户手动取消,2.系统在指定时间过后，比如淘宝的30分钟，自动取消。&amp;#160; &amp;#160; &amp;#160; &amp;#160;那么，应该如何来实现系统在指定时间过后,自动取消订单?">
 <meta name="keywords" content="linux,php,redis">
 <meta property="og:type" content="article">
 <meta property="og:title" content="指定时间自动取消订单">
 <meta property="og:url" content="https://www.guaosi.com/2019/02/25/automatically-cancel-the-order/index.html">
 <meta property="og:site_name" content="guaosi的博客">
-<meta property="og:description" content="1. 起因&amp;#160; &amp;#160; &amp;#160; &amp;#160;在电商网站或者外卖网站，通常都有会一种需求。当一个用户下单后没有支付，此时库存量已经减少，需要取消订单才能回复库存量。取消订单有2种方式:1.用户手动取消,2.系统在指定时间过后，比如淘宝的30分钟，自动取消。那么，应该如何来实现系统在指定时间过后,自动取消订单?">
+<meta property="og:description" content="1. 起因&amp;#160; &amp;#160; &amp;#160; &amp;#160;在电商网站或者外卖网站，通常都有会一种需求。当一个用户下单后没有支付，此时库存量已经减少，需要取消订单才能回复库存量。取消订单有2种方式:1.用户手动取消,2.系统在指定时间过后，比如淘宝的30分钟，自动取消。&amp;#160; &amp;#160; &amp;#160; &amp;#160;那么，应该如何来实现系统在指定时间过后,自动取消订单?">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-02-25T08:35:34.316Z">
+<meta property="og:updated_time" content="2019-02-25T08:40:03.459Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="指定时间自动取消订单">
-<meta name="twitter:description" content="1. 起因&amp;#160; &amp;#160; &amp;#160; &amp;#160;在电商网站或者外卖网站，通常都有会一种需求。当一个用户下单后没有支付，此时库存量已经减少，需要取消订单才能回复库存量。取消订单有2种方式:1.用户手动取消,2.系统在指定时间过后，比如淘宝的30分钟，自动取消。那么，应该如何来实现系统在指定时间过后,自动取消订单?">
+<meta name="twitter:description" content="1. 起因&amp;#160; &amp;#160; &amp;#160; &amp;#160;在电商网站或者外卖网站，通常都有会一种需求。当一个用户下单后没有支付，此时库存量已经减少，需要取消订单才能回复库存量。取消订单有2种方式:1.用户手动取消,2.系统在指定时间过后，比如淘宝的30分钟，自动取消。&amp;#160; &amp;#160; &amp;#160; &amp;#160;那么，应该如何来实现系统在指定时间过后,自动取消订单?">
   
     <link rel="alternative" href="/atom.xml" title="guaosi的博客" type="application/atom+xml">
   
@@ -207,7 +207,7 @@ var _hmt = _hmt || [];
     
     <div class="article-entry" itemprop="articleBody">
       
-      <h1 id="1-起因"><a href="#1-起因" class="headerlink" title="1. 起因"></a>1. 起因</h1><p>&#160; &#160; &#160; &#160;在电商网站或者外卖网站，通常都有会一种需求。当一个用户下单后没有支付，此时库存量已经减少，需要取消订单才能回复库存量。取消订单有2种方式:<code>1.用户手动取消</code>,<code>2.系统在指定时间过后，比如淘宝的30分钟，自动取消</code>。<br>那么，应该如何来实现系统在指定时间过后,自动取消订单?<br><a id="more"></a></p>
+      <h1 id="1-起因"><a href="#1-起因" class="headerlink" title="1. 起因"></a>1. 起因</h1><p>&#160; &#160; &#160; &#160;在电商网站或者外卖网站，通常都有会一种需求。当一个用户下单后没有支付，此时库存量已经减少，需要取消订单才能回复库存量。取消订单有2种方式:<code>1.用户手动取消</code>,<code>2.系统在指定时间过后，比如淘宝的30分钟，自动取消</code>。<br>&#160; &#160; &#160; &#160;那么，应该如何来实现系统在指定时间过后,自动取消订单?<br><a id="more"></a></p>
 <h1 id="2-解决办法"><a href="#2-解决办法" class="headerlink" title="2. 解决办法"></a>2. 解决办法</h1><p>以下提供三种方案参考:</p>
 <p>1) 使用<code>Linux</code>内置的<code>crontab</code>定时任务，每隔几秒甚至几分钟轮训遍历一次数据库，找到超出时间间隔的订单，进行取消。这种办法没有失效性以及在没有订单的时间内属于浪费服务器资源。</p>
 <p>2) 使用框架内置的延时处理机制。比如<code>Laravel</code>的队列任务，可以指定多少分钟后执行。这样就能判断订单是否超出时间间隔，是否要取消订单恢复库存量。</p>
@@ -552,11 +552,15 @@ window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="tex
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">php</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Linux</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">php</a>
+                <a href="javascript:void(0)" class="js-tag color1">redis</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -565,10 +569,6 @@ window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="tex
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">服务器</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">redis</a>
               </li>
              
               <li class="article-tag-list-item">
