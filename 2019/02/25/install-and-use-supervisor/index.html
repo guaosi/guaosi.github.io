@@ -6,19 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="https://www.guaosi.com">
-  <title>Tag: php | guaosi的博客</title>
+  <title>安装和使用守护进程--Supervisor | guaosi的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="guaosi,guaosi的博客,后端,PHP,Linux,golang,python,开发者,程序猿,程序媛,极客,编程,代码,开源,IT网站,docker">
-<meta name="keywords" content="guaosi,guaosi的博客,后端,PHP,Linux,golang,python,开发者,程序猿,程序媛,极客,编程,代码,开源,IT网站,docker">
-<meta property="og:type" content="website">
-<meta property="og:title" content="guaosi的博客">
-<meta property="og:url" content="https://www.guaosi.com/tags/php/index.html">
+  <meta name="description" content="1. 起因在Linux上有时候需要开启一个阻塞进程来监听操作。当ssh连上服务器，直接运行一个阻塞进程，然后退出服务器时，这个阻塞进程也会跟着关闭。 2. 解决办法 使用nohup ./xxx &amp;amp;将进程后台挂起，不过有效期只有12小时，会被自动杀进程。 使用screen建立窗口，将阻塞进程运行在该窗口内，这个窗口可以被多个物理窗口所复用(就是就算这次退出了服务器连接，下次再连进来还是依旧存">
+<meta name="keywords" content="linux,python">
+<meta property="og:type" content="article">
+<meta property="og:title" content="安装和使用守护进程--Supervisor">
+<meta property="og:url" content="https://www.guaosi.com/2019/02/25/install-and-use-supervisor/index.html">
 <meta property="og:site_name" content="guaosi的博客">
-<meta property="og:description" content="guaosi,guaosi的博客,后端,PHP,Linux,golang,python,开发者,程序猿,程序媛,极客,编程,代码,开源,IT网站,docker">
+<meta property="og:description" content="1. 起因在Linux上有时候需要开启一个阻塞进程来监听操作。当ssh连上服务器，直接运行一个阻塞进程，然后退出服务器时，这个阻塞进程也会跟着关闭。 2. 解决办法 使用nohup ./xxx &amp;amp;将进程后台挂起，不过有效期只有12小时，会被自动杀进程。 使用screen建立窗口，将阻塞进程运行在该窗口内，这个窗口可以被多个物理窗口所复用(就是就算这次退出了服务器连接，下次再连进来还是依旧存">
 <meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-02-25T02:40:51.772Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="guaosi的博客">
-<meta name="twitter:description" content="guaosi,guaosi的博客,后端,PHP,Linux,golang,python,开发者,程序猿,程序媛,极客,编程,代码,开源,IT网站,docker">
+<meta name="twitter:title" content="安装和使用守护进程--Supervisor">
+<meta name="twitter:description" content="1. 起因在Linux上有时候需要开启一个阻塞进程来监听操作。当ssh连上服务器，直接运行一个阻塞进程，然后退出服务器时，这个阻塞进程也会跟着关闭。 2. 解决办法 使用nohup ./xxx &amp;amp;将进程后台挂起，不过有效期只有12小时，会被自动杀进程。 使用screen建立窗口，将阻塞进程运行在该窗口内，这个窗口可以被多个物理窗口所复用(就是就算这次退出了服务器连接，下次再连进来还是依旧存">
   
     <link rel="alternative" href="/atom.xml" title="guaosi的博客" type="application/atom+xml">
   
@@ -172,154 +173,283 @@ var _hmt = _hmt || [];
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-install-and-use-supervisor" class="article article-type-post " itemscope="" itemprop="blogPost">
+  <div class="article-inner">
     
-    
+    <header class="article-header">
       
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/02/22/install-php-fileinfo/" class="archive-article-date">
-  	<time datetime="2019-02-22T01:32:35.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-02-22</time>
-</a>
-        </div>
-    	 
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/02/22/install-php-fileinfo/">安装php扩展--Fileinfo</a>
+    <h1 class="article-title" itemprop="name">
+      安装和使用守护进程--Supervisor
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">php</a>
-        		</li>
-      		
-		</ul>
-	</div>
+      <!-- 显示阅读和评论数 -->
 
-          
+      <br>
+      
+      <a class="cloud-tie-join-count" href="javascript:void(0);" style="color:gray;font-size:14px;">
+        <span class="icon-sort"></span>
+        <span id="busuanzi_container_page_pv" style="color:#ef7522;font-size:14px;">
+          阅读数: <span id="busuanzi_value_page_pv"></span>次 &nbsp;&nbsp;
+        </span>
+      </a>
+      
 
-        </div>
-        <div class="clearfix"></div>
+
+
+      
+      <a href="/2019/02/25/install-and-use-supervisor/" class="archive-article-date">
+  	<time datetime="2019-02-25T01:03:33.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-02-25</time>
+</a>
+      
     </header>
-  </div>
-</article>
-  
     
-    
+    <div class="article-entry" itemprop="articleBody">
       
-        </div></section>
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/12/18/environment-by-lnmp/" class="archive-article-date">
-  	<time datetime="2018-12-18T07:20:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-12-18</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/12/18/environment-by-lnmp/">使用lnmp快速构建线上环境并搭建项目成功上线</a>
-    </h1>
-  
+      <h1 id="1-起因"><a href="#1-起因" class="headerlink" title="1. 起因"></a>1. 起因</h1><p>在Linux上有时候需要开启一个阻塞进程来监听操作。当ssh连上服务器，直接运行一个阻塞进程，然后退出服务器时，这个阻塞进程也会跟着关闭。</p>
+<h1 id="2-解决办法"><a href="#2-解决办法" class="headerlink" title="2. 解决办法"></a>2. 解决办法</h1><ol>
+<li>使用<code>nohup ./xxx &amp;</code>将进程后台挂起，不过有效期只有12小时，会被自动杀进程。</li>
+<li>使用<code>screen</code>建立窗口，将阻塞进程运行在该窗口内，这个窗口可以被多个物理窗口所复用(就是就算这次退出了服务器连接，下次再连进来还是依旧存在的)，貌似可以满足我们的要求了。但是如果阻塞进程出错，阻塞进程不会自动重新启动，需要我们手动干预。</li>
+<li>使用python开发的<code>Supervisor</code>守护进程。它可以很方便的监听、启动、停止、重启一个或多个进程。用Supervisor管理的进程，当一个进程意外被杀死，supervisort监听到进程死后，会自动将它重新拉起，很方便的做到进程自动恢复的功能，不再需要自己写shell脚本来控制。</li>
+</ol>
+<a id="more"></a>
+<h1 id="3-安装配置Supervisor"><a href="#3-安装配置Supervisor" class="headerlink" title="3. 安装配置Supervisor"></a>3. 安装配置Supervisor</h1><h2 id="3-1-安装"><a href="#3-1-安装" class="headerlink" title="3.1. 安装"></a>3.1. 安装</h2><h3 id="3-1-1-Centos安装"><a href="#3-1-1-Centos安装" class="headerlink" title="3.1.1. Centos安装"></a>3.1.1. Centos安装</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">yum <span class="keyword">install</span> epel-<span class="keyword">release</span></span><br><span class="line">yum <span class="keyword">install</span> -y supervisor</span><br></pre></td></tr></table></figure>
+<h3 id="3-1-2-Ubuntu安装"><a href="#3-1-2-Ubuntu安装" class="headerlink" title="3.1.2. Ubuntu安装"></a>3.1.2. Ubuntu安装</h3><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt-<span class="builtin-name">get</span> install supervisor</span><br></pre></td></tr></table></figure>
+<h2 id="3-2-配置"><a href="#3-2-配置" class="headerlink" title="3.2. 配置"></a>3.2. 配置</h2><p>在<code>/etc/supervisor/</code>目录下有个<code>conf.d</code>的文件夹和<code>supervisord.conf</code>配置文件。打开配置文件<br><figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">vim</span> supervisord.<span class="keyword">conf</span></span><br></pre></td></tr></table></figure></p>
+<p>我们可以看到<br><figure class="highlight crystal"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[<span class="keyword">include</span>]</span><br><span class="line">files = <span class="regexp">/etc/supervisor</span><span class="regexp">/conf.d/</span>*.conf</span><br></pre></td></tr></table></figure></p>
+<p>意思是<code>Supervisor</code>在启动的时候会加载conf.d目录下所有的conf配置文件。<br>下面给出2个参考配置的案例</p>
+<h3 id="3-2-1-horizon守护进程配置参考"><a href="#3-2-1-horizon守护进程配置参考" class="headerlink" title="3.2.1. horizon守护进程配置参考"></a>3.2.1. horizon守护进程配置参考</h3><p>laravel的horizon守护进程配置<br><figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">cd</span> /etc/supervisor/<span class="keyword">conf</span>.d/</span><br><span class="line"><span class="keyword">vim</span> horizon.<span class="keyword">conf</span></span><br></pre></td></tr></table></figure></p>
+<p>填入以下内容<br><figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">[program:horizon]</span></span><br><span class="line"><span class="attr">process_name</span>=%(program_name)s</span><br><span class="line"><span class="attr">command</span>=php /home/wwwroot/www.guaosi.com/artisan horizon ; 阻塞进程执行的命令</span><br><span class="line"><span class="attr">autostart</span>=<span class="literal">true</span> ; 阻塞进程是否跟着Supervisor一起开机自动</span><br><span class="line"><span class="attr">autorestart</span>=<span class="literal">true</span> ; 阻塞进程被异常退出是否自动重启</span><br><span class="line"><span class="attr">user</span>=www ; 由哪个用户执行阻塞进程的命令</span><br><span class="line"><span class="attr">redirect_stderr</span>=<span class="literal">true</span></span><br><span class="line"><span class="attr">stdout_logfile</span>=/home/wwwroot/www.guaosi.com/storage/logs/horizon.log ; 阻塞进程打印到控制台的内容写到哪里</span><br></pre></td></tr></table></figure></p>
+<p>重新启动配置中的所有程序<br><figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">supervisorctl reload</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="3-2-2-yii2的队列守护进程配置参考"><a href="#3-2-2-yii2的队列守护进程配置参考" class="headerlink" title="3.2.2. yii2的队列守护进程配置参考"></a>3.2.2. yii2的队列守护进程配置参考</h3><figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">cd</span> /etc/supervisor/<span class="keyword">conf</span>.d/</span><br><span class="line"><span class="keyword">vim</span> yii2-queue.<span class="keyword">conf</span></span><br></pre></td></tr></table></figure>
+<p>填入以下内容<br><figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">[program:yii-queue-worker]</span></span><br><span class="line"><span class="attr">process_name</span>=%(program_name)s_%(process_num)<span class="number">02</span>d</span><br><span class="line"><span class="attr">command</span>=/usr/bin/php7.<span class="number">2</span> /home/wwwroot/www.guaosi.com/yii queue/listen --verbose=<span class="number">1</span> --color=<span class="number">0</span> ; 阻塞进程执行的命令</span><br><span class="line"><span class="attr">autostart</span>=<span class="literal">true</span> ; 阻塞进程是否跟着Supervisor一起开机自动</span><br><span class="line"><span class="attr">autorestart</span>=<span class="literal">true</span> ; 阻塞进程被异常退出是否自动重启</span><br><span class="line"><span class="attr">user</span>=www ; 由哪个用户执行阻塞进程的命令</span><br><span class="line"><span class="attr">numprocs</span>=<span class="number">10</span> ; 启动几个阻塞进程</span><br><span class="line"><span class="attr">redirect_stderr</span>=<span class="literal">true</span></span><br><span class="line"><span class="attr">stdout_logfile</span>=/home/wwwroot/www.guaosi.com/runtime/logs/yii2-queue.log ; 阻塞进程打印到控制台的内容写到哪里</span><br></pre></td></tr></table></figure></p>
+<p>重新启动配置中的所有程序<br><figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">supervisorctl reload</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="3-3-启动服务"><a href="#3-3-启动服务" class="headerlink" title="3.3. 启动服务"></a>3.3. 启动服务</h2><h3 id="3-3-1-Centos启动"><a href="#3-3-1-Centos启动" class="headerlink" title="3.3.1. Centos启动"></a>3.3.1. Centos启动</h3><figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl <span class="literal">start</span> supervisord</span><br></pre></td></tr></table></figure>
+<h3 id="3-3-2-Ubuntu启动"><a href="#3-3-2-Ubuntu启动" class="headerlink" title="3.3.2. Ubuntu启动"></a>3.3.2. Ubuntu启动</h3><figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">supervisord -c <span class="regexp">/etc/</span>supervisor<span class="regexp">/supervisord.conf</span></span><br></pre></td></tr></table></figure>
+<h2 id="3-4-开机自启"><a href="#3-4-开机自启" class="headerlink" title="3.4. 开机自启"></a>3.4. 开机自启</h2><h3 id="3-4-1-Centos开机自启"><a href="#3-4-1-Centos开机自启" class="headerlink" title="3.4.1. Centos开机自启"></a>3.4.1. Centos开机自启</h3><p>新建文件<code>supervisord.service</code><br><figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#supervisord.service</span></span><br><span class="line"></span><br><span class="line"><span class="section">[Unit]</span> </span><br><span class="line"><span class="attr">Description</span>=Supervisor daemon</span><br><span class="line"></span><br><span class="line"><span class="section">[Service]</span> </span><br><span class="line"><span class="attr">Type</span>=forking </span><br><span class="line"><span class="attr">ExecStart</span>=/usr/bin/supervisord -c /etc/supervisord.conf </span><br><span class="line"><span class="attr">ExecStop</span>=/usr/bin/supervisorctl shutdown </span><br><span class="line"><span class="attr">ExecReload</span>=/usr/bin/supervisorctl reload </span><br><span class="line"><span class="attr">KillMode</span>=process </span><br><span class="line"><span class="attr">Restart</span>=<span class="literal">on</span>-failure </span><br><span class="line"><span class="attr">RestartSec</span>=<span class="number">42</span>s</span><br><span class="line"></span><br><span class="line"><span class="section">[Install]</span> </span><br><span class="line"><span class="attr">WantedBy</span>=multi-user.target</span><br></pre></td></tr></table></figure></p>
+<p>将文件拷贝到<code>/usr/lib/systemd/system/</code><br><figure class="highlight crystal"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cp supervisord.service /usr/<span class="class"><span class="keyword">lib</span>/<span class="title">systemd</span>/<span class="title">system</span>/</span></span><br></pre></td></tr></table></figure></p>
+<p>启动服务<br><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl <span class="builtin-name">enable</span> supervisord</span><br></pre></td></tr></table></figure></p>
+<p>验证一下是否为开机启动<br><figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl <span class="keyword">is</span>-enabled supervisord</span><br></pre></td></tr></table></figure></p>
+<h3 id="3-4-2-Ubuntu开机自启"><a href="#3-4-2-Ubuntu开机自启" class="headerlink" title="3.4.2. Ubuntu开机自启"></a>3.4.2. Ubuntu开机自启</h3><p>编辑<code>/etc/rc.local</code>文件<br><figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vi /etc/rc.<span class="keyword">local</span></span><br></pre></td></tr></table></figure></p>
+<p>在<code>exit 0</code>之前加入以下命令<br><figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="regexp">/usr/</span>local<span class="regexp">/bin/</span>supervisord</span><br></pre></td></tr></table></figure></p>
+<p>保存并退出<br>最后修改<code>rc.local</code>权限<br><figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod +x /etc/rc.<span class="keyword">local</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="3-5-常用命令"><a href="#3-5-常用命令" class="headerlink" title="3.5. 常用命令"></a>3.5. 常用命令</h2><p>重新启动配置中的所有程序</p>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">supervisorctl reload</span></span><br></pre></td></tr></table></figure>
+<p>启动某个进程(program_name=你配置中写的程序名称)</p>
+<figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">supervisorctl <span class="literal">start</span> program_name</span><br></pre></td></tr></table></figure>
+<p>查看正在守候的进程</p>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">supervisorctl</span></span><br></pre></td></tr></table></figure>
+<p>停止某一进程 (program_name=你配置中写的程序名称)</p>
+<figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">supervisorctl <span class="built_in">stop</span> program_name</span><br></pre></td></tr></table></figure>
+<p>重启某一进程 (program_name=你配置中写的程序名称)</p>
+<figure class="highlight maxima"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">supervisorctl <span class="built_in">restart</span> program_name</span><br></pre></td></tr></table></figure>
+<p>停止全部进程</p>
+<figure class="highlight fortran"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">supervisorctl <span class="keyword">stop</span> <span class="built_in">all</span></span><br></pre></td></tr></table></figure>
+<p>注意：显示用stop停止掉的进程，用reload或者update都不会自动重启。</p>
+<h1 id="4-注意"><a href="#4-注意" class="headerlink" title="4. 注意"></a>4. 注意</h1><p>被<code>Supervisor</code>守护的进程都是<code>常驻内存</code>的，即如果<code>修改了被守护的进程的源码</code>，需要重启对这个进程的守护才能生效，否则还是未修改前的。<br><figure class="highlight maxima"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">supervisorctl <span class="built_in">restart</span> program_name</span><br></pre></td></tr></table></figure></p>
 
-        <div class="article-info info-on-right">
+      
+
+      
+
+      
+        <div class="declare">
+          <strong>本文作者：</strong>
           
+            guaosi
+          
+          <br>
+          <strong>本文链接：</strong>
+          <a rel="license" href="https://www.guaosi.com/2019/02/25/install-and-use-supervisor/">https://www.guaosi.com/2019/02/25/install-and-use-supervisor/</a>
+          <br>
+          <strong>版权声明：</strong>
+          本博客所有文章除特别声明外，均采用
+          <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/3.0/">CC BY-NC-SA 3.0 许可协议</a>
+          
+            <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/3.0/"><img alt="知识共享许可协议" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/3.0/80x15.png"></a>
+          
+          进行许可。转载请注明出处！
+        </div>
+      
+
+
+
+      
+      <div class="page-reward">
+        <a href="javascript:;" class="page-reward-btn tooltip-top">
+          <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>
+                    谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/assets/img/alipay.png">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/assets/img/wechat.png">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+        </a>
+      </div>
+      
+    </div>
+
+
+
+
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">php</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">linux</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">lnmp</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">服务器</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">python</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+      
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACL0lEQVR42u3aQXKcQAwF0Ln/pcnWVQ7kS8KuIF6vphgM/WYhSy19PvE6vqzq9e/fVt9y28LAwHgs47hcyT1nLz57TrKHfG8YGBjvYZw9+uxzssUkgJ49Od8bBgYGxvU9eXjN00cMDAyMexm9lPG/C7gYGBgPYSRFbJ44Xj95kobeUItjYGA8kJGfuv/+5x/pb2BgYDyKcRRXktJNksWjtTAwMHYz5kdpedmZD2H09oOBgbGVUW1SJq+cj2JcB/e/XMHAwHgBo5f8VccpqsdtSWvzNMPFwMBYxOgNTNx1pdrOLCSRGBgYqxnzJmWSMublbm8EBAMDYx8jGbNItlUtRHtlbfS/AgMDYx0jOdLqpXdVdm9oDAMDYzdjPgDRC9l5OI7COgYGxmpGtfWYsHvhNW9bFloCGBgY6xi9UJvfPx8C+/QWBgbGOkY1Way+ZhLKR8MWGBgYj2XcW8T2fpRe8nfavMTAwFjHqJav+RarZWqvRVoYtsDAwFjEuE7C8rCbj2vkwxb/CMcYGBivYVSHHqoFbU4d5bkYGBhLGZMU8KfL3eg6BgbGyxh5MjdpSVYbk1FPAwMDYx3jKK75oEaePhb+CgMDYzVjEuwmQ2P5MVz1CA8DA2MrY1J85u3GyXjHKMZjYGAsYkwO8XtP66V9US2OgYGBESR/vYGw3ogGBgYGxrx5MK+no4IZAwPjBYykiK0mc/Nhi8L9GBgYqxnV0nGCTNLH5NtmUxMDA+N5jD+JaSy61+klUwAAAABJRU5ErkJggg==" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+
+<nav id="article-nav">
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/12/14/complex-two-dimensional-arrays/" class="archive-article-date">
-  	<time datetime="2018-12-14T06:58:15.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-12-14</time>
-</a>
+  
+    <a href="/2019/02/22/onedrive-olyindex-oneindex-aria-ariang/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">oneDrive+olaIndex/oneIndex+aria2+ariaNg 制作个人大容量网盘，支持离线下载</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/12/14/complex-two-dimensional-arrays/">二维数组的巧妙整合</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">php</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-起因"><span class="toc-number">1.</span> <span class="toc-text">1. 起因</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-解决办法"><span class="toc-number">2.</span> <span class="toc-text">2. 解决办法</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-安装配置Supervisor"><span class="toc-number">3.</span> <span class="toc-text">3. 安装配置Supervisor</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#3-1-安装"><span class="toc-number">3.1.</span> <span class="toc-text">3.1. 安装</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-1-Centos安装"><span class="toc-number">3.1.1.</span> <span class="toc-text">3.1.1. Centos安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-2-Ubuntu安装"><span class="toc-number">3.1.2.</span> <span class="toc-text">3.1.2. Ubuntu安装</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-2-配置"><span class="toc-number">3.2.</span> <span class="toc-text">3.2. 配置</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-1-horizon守护进程配置参考"><span class="toc-number">3.2.1.</span> <span class="toc-text">3.2.1. horizon守护进程配置参考</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-2-yii2的队列守护进程配置参考"><span class="toc-number">3.2.2.</span> <span class="toc-text">3.2.2. yii2的队列守护进程配置参考</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-3-启动服务"><span class="toc-number">3.3.</span> <span class="toc-text">3.3. 启动服务</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-3-1-Centos启动"><span class="toc-number">3.3.1.</span> <span class="toc-text">3.3.1. Centos启动</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-3-2-Ubuntu启动"><span class="toc-number">3.3.2.</span> <span class="toc-text">3.3.2. Ubuntu启动</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-4-开机自启"><span class="toc-number">3.4.</span> <span class="toc-text">3.4. 开机自启</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-4-1-Centos开机自启"><span class="toc-number">3.4.1.</span> <span class="toc-text">3.4.1. Centos开机自启</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-4-2-Ubuntu开机自启"><span class="toc-number">3.4.2.</span> <span class="toc-text">3.4.2. Ubuntu开机自启</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-5-常用命令"><span class="toc-number">3.5.</span> <span class="toc-text">3.5. 常用命令</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4-注意"><span class="toc-number">4.</span> <span class="toc-text">4. 注意</span></a></li></ol>
+                    </div>
+                </span>
+            </div>
         </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
+        
+    </div>
+</aside>
 
-    
+
+
+
+
+
+
+
+<div id="SOHUCS" sid="install-and-use-supervisor"></div> 
+<script type="text/javascript"> 
+(function(){ 
+var appid = "cytWxLdY3"; 
+var conf = "prod_f314382998643222116abeab50bbbc4f"; 
+var width = window.innerWidth || document.documentElement.clientWidth; 
+if (width < 960) { 
+window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="//changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>'); } else { var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("//changyan.sohu.com/upload/changyan.js",function(){window.changyan.api.config({appid:appid,conf:conf})}); } })(); </script>
+
+
 
 
           </div>
@@ -350,9 +480,9 @@ var _hmt = _hmt || [];
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: true,
 		toc_hide_index: true,
