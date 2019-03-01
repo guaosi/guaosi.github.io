@@ -37,7 +37,7 @@
 <meta property="og:image" content="https://www.guaosi.com/assets/blogImg/laravel-api-initialization-preparation/invalid_token_second.png">
 <meta property="og:image" content="https://www.guaosi.com/assets/blogImg/laravel-api-initialization-preparation/horizon_dashboard.png">
 <meta property="og:image" content="https://www.guaosi.com/assets/blogImg/laravel-api-initialization-preparation/horizon_dashboard_job.png">
-<meta property="og:updated_time" content="2019-03-01T06:55:46.433Z">
+<meta property="og:updated_time" content="2019-03-01T08:04:12.532Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="手摸手教你让Laravel开发Api更得心应手">
 <meta name="twitter:description" content="1. 起因&amp;#160; &amp;#160; &amp;#160; &amp;#160;随着前后端完全分离，PHP也基本告别了view模板嵌套开发，转而专门写资源接口。Laravel是PHP框架中最优雅的框架，国内也越来越多人告别ThinkPHP选择了Laravel。Laravel框架本身对API有支持，但是感觉再工作中还是需要再做一些处理。Lumen用起来不顺手，有些包不能很好地支持。所以，将Laravel框架进行一些">
@@ -415,7 +415,7 @@ var _hmt = _hmt || [];
 <p>看来<code>jwt-auth</code>真的串号了，这个问题我们下面再开一个标题进行解决。</p>
 <h3 id="5-8-9-自动区分guard"><a href="#5-8-9-自动区分guard" class="headerlink" title="5.8.9. 自动区分guard"></a>5.8.9. 自动区分guard</h3><p>1.当我们编写登陆，退出，获取当前用户信息的时候，都需要<br><figure class="highlight clean"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Auth::guard(<span class="string">'admin'</span>)</span><br></pre></td></tr></table></figure></p>
 <p>通过制定<code>guard</code>的具体守护是哪一个。因为框架默认的<code>guard</code>默认守护的是<code>web</code>。</p>
-<p>所以，我希望可以让<code>guard</code>自动化，如果我请求的是<code>users</code>的，我就守护<code>api</code>。如果我守护的是<code>admins</code>的，我就守护<code>admin</code>。</p>
+<p>所以，我希望可以让<code>guard</code>自动化，如果我请求的是<code>users</code>的，我就守护<code>api</code>。如果我请求的是<code>admins</code>的，我就守护<code>admin</code>。</p>
 <p>接下来，就以<code>admins</code>的为例，<code>users</code>的保持不动</p>
 <p>2.新建中间件<br><figure class="highlight gauss"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">php artisan <span class="built_in">make</span>:middleware Api/AdminGuardMiddleware</span><br></pre></td></tr></table></figure></p>
 <p>打开<code>app/Http/Middleware/Api/AdminGuardMiddleware.php</code> 文件，填入以下内容<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="php"><span class="meta">&lt;?php</span></span></span><br><span class="line"><span class="php"></span></span><br><span class="line"><span class="php"><span class="keyword">namespace</span> <span class="title">App</span>\<span class="title">Http</span>\<span class="title">Middleware</span>\<span class="title">Api</span>;</span></span><br><span class="line"><span class="php"><span class="keyword">use</span> <span class="title">Closure</span>;</span></span><br><span class="line"><span class="php"><span class="class"><span class="keyword">class</span> <span class="title">AdminGuardMiddleware</span></span></span></span><br><span class="line"><span class="php">&#123;</span></span><br><span class="line">    /**</span><br><span class="line">     * Handle an incoming request.</span><br><span class="line">     *</span><br><span class="line">     * @param  \Illuminate\Http\Request $request</span><br><span class="line">     * @param  \Closure $next</span><br><span class="line">     *</span><br><span class="line">     * @throws \Symfony\Component\HttpKernel\Exception\UnauthorizedHttpException</span><br><span class="line">     *</span><br><span class="line">     * @return mixed</span><br><span class="line"><span class="php">     */</span></span><br><span class="line"><span class="php">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">handle</span><span class="params">($request, Closure $next)</span></span></span></span><br><span class="line"><span class="php">    &#123;</span></span><br><span class="line"><span class="php">        config([<span class="string">'auth.defaults.guard'</span>=&gt;<span class="string">'admin'</span>]);</span></span><br><span class="line"><span class="php">        <span class="keyword">return</span> $next($request);</span></span><br><span class="line"><span class="php">    &#125;</span></span><br><span class="line"><span class="php">&#125;</span></span><br></pre></td></tr></table></figure></p>
@@ -774,7 +774,7 @@ window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="tex
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">php</a>
+                <a href="javascript:void(0)" class="js-tag color4">git</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -786,15 +786,11 @@ window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="tex
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">git</a>
+                <a href="javascript:void(0)" class="js-tag color4">php</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Linux</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">redis</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -803,6 +799,10 @@ window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="tex
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">服务器</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">redis</a>
               </li>
              
               <li class="article-tag-list-item">
