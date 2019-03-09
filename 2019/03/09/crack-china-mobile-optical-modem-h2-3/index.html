@@ -6,20 +6,23 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="https://www.guaosi.com">
-  <title>安装和使用守护进程--Supervisor | guaosi的博客</title>
+  <title>手摸手教你破解移动光猫吉比特--H2-3 | guaosi的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="1. 起因&amp;#160; &amp;#160; &amp;#160; &amp;#160;在Linux上有时候需要开启一个阻塞进程来监听操作。当ssh连上服务器，直接运行一个阻塞进程，然后退出服务器时，这个阻塞进程也会跟着关闭。 2. 解决办法以下提供三种方案参考:  使用nohup ./xxx &amp;amp;将进程后台挂起，不过有效期只有12小时，会被自动杀进程。 使用screen建立窗口，将阻塞进程运行在该窗口内，这个窗口">
-<meta name="keywords" content="linux,python">
+  <meta name="description" content="1. 起因&amp;#160; &amp;#160; &amp;#160; &amp;#160;过年期间家里装了2年免费的移动光纤(真香)，可是移动装机默认光猫都是路由模式，装机师傅以及移动人工客服都是拒绝给超级账户的。所以只能自己想办法解决。 2. 解决办法1.工信部投诉，百试百灵2.淘宝或者闲鱼花钱让别人破解(我查了貌似没有这个型号)3.手摸手自己折腾自己搞 3. 优点破解后的好处:1.可以将光猫变成桥接模式，然后用自己的">
+<meta name="keywords" content="crack">
 <meta property="og:type" content="article">
-<meta property="og:title" content="安装和使用守护进程--Supervisor">
-<meta property="og:url" content="https://www.guaosi.com/2019/02/25/install-and-use-supervisor/index.html">
+<meta property="og:title" content="手摸手教你破解移动光猫吉比特--H2-3">
+<meta property="og:url" content="https://www.guaosi.com/2019/03/09/crack-china-mobile-optical-modem-h2-3/index.html">
 <meta property="og:site_name" content="guaosi的博客">
-<meta property="og:description" content="1. 起因&amp;#160; &amp;#160; &amp;#160; &amp;#160;在Linux上有时候需要开启一个阻塞进程来监听操作。当ssh连上服务器，直接运行一个阻塞进程，然后退出服务器时，这个阻塞进程也会跟着关闭。 2. 解决办法以下提供三种方案参考:  使用nohup ./xxx &amp;amp;将进程后台挂起，不过有效期只有12小时，会被自动杀进程。 使用screen建立窗口，将阻塞进程运行在该窗口内，这个窗口">
+<meta property="og:description" content="1. 起因&amp;#160; &amp;#160; &amp;#160; &amp;#160;过年期间家里装了2年免费的移动光纤(真香)，可是移动装机默认光猫都是路由模式，装机师傅以及移动人工客服都是拒绝给超级账户的。所以只能自己想办法解决。 2. 解决办法1.工信部投诉，百试百灵2.淘宝或者闲鱼花钱让别人破解(我查了貌似没有这个型号)3.手摸手自己折腾自己搞 3. 优点破解后的好处:1.可以将光猫变成桥接模式，然后用自己的">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-02-25T05:32:14.043Z">
+<meta property="og:image" content="https://www.guaosi.com/assets/blogImg/crack-china-mobile-optical-modem-h2-3/success-web-ui.png">
+<meta property="og:image" content="https://www.guaosi.com/assets/blogImg/crack-china-mobile-optical-modem-h2-3/login-web-ui.png">
+<meta property="og:updated_time" content="2019-03-09T11:29:51.804Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="安装和使用守护进程--Supervisor">
-<meta name="twitter:description" content="1. 起因&amp;#160; &amp;#160; &amp;#160; &amp;#160;在Linux上有时候需要开启一个阻塞进程来监听操作。当ssh连上服务器，直接运行一个阻塞进程，然后退出服务器时，这个阻塞进程也会跟着关闭。 2. 解决办法以下提供三种方案参考:  使用nohup ./xxx &amp;amp;将进程后台挂起，不过有效期只有12小时，会被自动杀进程。 使用screen建立窗口，将阻塞进程运行在该窗口内，这个窗口">
+<meta name="twitter:title" content="手摸手教你破解移动光猫吉比特--H2-3">
+<meta name="twitter:description" content="1. 起因&amp;#160; &amp;#160; &amp;#160; &amp;#160;过年期间家里装了2年免费的移动光纤(真香)，可是移动装机默认光猫都是路由模式，装机师傅以及移动人工客服都是拒绝给超级账户的。所以只能自己想办法解决。 2. 解决办法1.工信部投诉，百试百灵2.淘宝或者闲鱼花钱让别人破解(我查了貌似没有这个型号)3.手摸手自己折腾自己搞 3. 优点破解后的好处:1.可以将光猫变成桥接模式，然后用自己的">
+<meta name="twitter:image" content="https://www.guaosi.com/assets/blogImg/crack-china-mobile-optical-modem-h2-3/success-web-ui.png">
   
     <link rel="alternative" href="/atom.xml" title="guaosi的博客" type="application/atom+xml">
   
@@ -173,14 +176,14 @@ var _hmt = _hmt || [];
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-install-and-use-supervisor" class="article article-type-post " itemscope="" itemprop="blogPost">
+            <article id="post-crack-china-mobile-optical-modem-h2-3" class="article article-type-post " itemscope="" itemprop="blogPost">
   <div class="article-inner">
     
     <header class="article-header">
       
   
     <h1 class="article-title" itemprop="name">
-      安装和使用守护进程--Supervisor
+      手摸手教你破解移动光猫吉比特--H2-3
     </h1>
   
 
@@ -199,54 +202,64 @@ var _hmt = _hmt || [];
 
 
       
-      <a href="/2019/02/25/install-and-use-supervisor/" class="archive-article-date">
-  	<time datetime="2019-02-25T01:03:33.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-02-25</time>
+      <a href="/2019/03/09/crack-china-mobile-optical-modem-h2-3/" class="archive-article-date">
+  	<time datetime="2019-03-09T10:20:33.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-09</time>
 </a>
       
     </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-      <h1 id="1-起因"><a href="#1-起因" class="headerlink" title="1. 起因"></a>1. 起因</h1><p>&#160; &#160; &#160; &#160;在Linux上有时候需要开启一个阻塞进程来监听操作。当ssh连上服务器，直接运行一个阻塞进程，然后退出服务器时，这个阻塞进程也会跟着关闭。</p>
-<h1 id="2-解决办法"><a href="#2-解决办法" class="headerlink" title="2. 解决办法"></a>2. 解决办法</h1><p>以下提供三种方案参考:</p>
-<ol>
-<li>使用<code>nohup ./xxx &amp;</code>将进程后台挂起，不过有效期只有12小时，会被自动杀进程。</li>
-<li>使用<code>screen</code>建立窗口，将阻塞进程运行在该窗口内，这个窗口可以被多个物理窗口所复用(就是就算这次退出了服务器连接，下次再连进来还是依旧存在的)，貌似可以满足我们的要求了。但是如果阻塞进程出错，阻塞进程不会自动重新启动，需要我们手动干预。</li>
-<li>使用python开发的<code>Supervisor</code>守护进程。它可以很方便的监听、启动、停止、重启一个或多个进程。用Supervisor管理的进程，当一个进程意外被杀死，supervisort监听到进程死后，会自动将它重新拉起，很方便的做到进程自动恢复的功能，不再需要自己写shell脚本来控制。</li>
+      <h1 id="1-起因"><a href="#1-起因" class="headerlink" title="1. 起因"></a>1. 起因</h1><p>&#160; &#160; &#160; &#160;过年期间家里装了2年免费的移动光纤(真香)，可是移动装机默认光猫都是<code>路由模式</code>，装机师傅以及移动人工客服都是拒绝给超级账户的。所以只能自己想办法解决。</p>
+<h1 id="2-解决办法"><a href="#2-解决办法" class="headerlink" title="2. 解决办法"></a>2. 解决办法</h1><p>1.工信部投诉，百试百灵<br>2.淘宝或者闲鱼花钱让别人破解(我查了貌似没有这个型号)<br>3.手摸手自己折腾自己搞</p>
+<h1 id="3-优点"><a href="#3-优点" class="headerlink" title="3. 优点"></a>3. 优点</h1><p>破解后的好处:<br>1.可以将光猫变成<code>桥接模式</code>，然后用自己的路由器拨号，更稳定。<br>2.对光猫<code>h2-3</code>有完全控制能力，可以使用全部功能。<br>破解后的界面图如下:<br><img src="/assets/blogImg/crack-china-mobile-optical-modem-h2-3/success-web-ui.png" alt="success-web-ui"></p>
+<h1 id="4-准备"><a href="#4-准备" class="headerlink" title="4. 准备"></a>4. 准备</h1><p>1.一台确认已经开启<code>telnet</code>的电脑</p>
+<p>2.一台正常可用的主人公<code>h2-3光猫</code></p>
+<p>3.知道光猫的普通账户的账号密码(在光猫后面贴着)</p>
+<p>4.确认电脑与光猫在同一局域网内</p>
+<p>5.<code>Firefox</code>浏览器或者<code>Chrome</code>浏览器</p>
+<p>注意:如果想把光猫转成桥接模式，路由器来拨号的话，需要知道<code>宽带密码</code>是多少。如果不知道，建议先打<code>10086</code>人工客服下发重置密码的短信。</p>
+<h1 id="5-破解过程"><a href="#5-破解过程" class="headerlink" title="5. 破解过程"></a>5. 破解过程</h1><h2 id="5-1-打开光猫telnet"><a href="#5-1-打开光猫telnet" class="headerlink" title="5.1. 打开光猫telnet"></a>5.1. 打开光猫telnet</h2><p>1.首先打开浏览器，在扩展中安装<code>HTTP Header Live</code>插件(不知道怎么安装自行百度)。</p>
+<p>2.浏览器打开<br><figure class="highlight dts"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">http:</span><span class="comment">//192.168.1.1</span></span><br></pre></td></tr></table></figure></p>
+<p>看到光猫的登陆界面，使用普通账户进行登陆<br><img src="/assets/blogImg/crack-china-mobile-optical-modem-h2-3/login-web-ui.png" alt="login-web-ui"></p>
+<p>3.打开<code>HTTP Header Live</code>插件，在页面上随便点击一个页面，再次查看<code>HTTP Header Live</code>插件，捕捉到了<code>post</code>信息<br><a href="/assets/blogImg/crack-china-mobile-optical-modem-h2-3/http-header-live1.png">http-header-live1</a><br>我们需要使用它的header头来发送我们的消息，以此来修改光猫<code>telnet</code>的账号密码</p>
+<p>4.点击打开一个post<br><a href="/assets/blogImg/crack-china-mobile-optical-modem-h2-3/http-header-live2.png">http-header-live2</a></p>
+<p>修改链接为<br><figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http:<span class="regexp">//</span><span class="number">192.168</span>.<span class="number">1.1</span><span class="regexp">/boaform/</span>set_telenet_enabled.cgi</span><br></pre></td></tr></table></figure></p>
+<p>内容为：<br><figure class="highlight dts"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mode_name=set_telenet_enabled<span class="variable">&amp;nonedata</span>=<span class="number">0.3535281170047305</span><span class="variable">&amp;user_name</span>=root<span class="variable">&amp;user_password</span>=admin<span class="variable">&amp;telenet_enabled</span>=<span class="number">1</span><span class="variable">&amp;default_flag</span>=<span class="number">1</span></span><br></pre></td></tr></table></figure></p>
+<p><a href="/assets/blogImg/crack-china-mobile-optical-modem-h2-3/http-header-live3.png">http-header-live3</a><br>意思是将光猫的telnet账号密码分别设置为<code>root</code>与<code>admin</code></p>
+<p>5.然后点击右下角的<code>send</code>确认，会返回一个成功的页面，代表已经成功打开光猫的<code>telnet</code><br><a href="/assets/blogImg/crack-china-mobile-optical-modem-h2-3/success-info.png">success-info</a></p>
+<h2 id="5-2-登陆光猫telnet"><a href="#5-2-登陆光猫telnet" class="headerlink" title="5.2. 登陆光猫telnet"></a>5.2. 登陆光猫telnet</h2><ol>
+<li>打开<code>命令行</code>工具，输入</li>
 </ol>
-<a id="more"></a>
-<h1 id="3-安装配置Supervisor"><a href="#3-安装配置Supervisor" class="headerlink" title="3. 安装配置Supervisor"></a>3. 安装配置Supervisor</h1><h2 id="3-1-安装"><a href="#3-1-安装" class="headerlink" title="3.1. 安装"></a>3.1. 安装</h2><h3 id="3-1-1-Centos安装"><a href="#3-1-1-Centos安装" class="headerlink" title="3.1.1. Centos安装"></a>3.1.1. Centos安装</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">yum <span class="keyword">install</span> epel-<span class="keyword">release</span></span><br><span class="line">yum <span class="keyword">install</span> -y supervisor</span><br></pre></td></tr></table></figure>
-<h3 id="3-1-2-Ubuntu安装"><a href="#3-1-2-Ubuntu安装" class="headerlink" title="3.1.2. Ubuntu安装"></a>3.1.2. Ubuntu安装</h3><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt-<span class="builtin-name">get</span> install supervisor</span><br></pre></td></tr></table></figure>
-<h2 id="3-2-配置"><a href="#3-2-配置" class="headerlink" title="3.2. 配置"></a>3.2. 配置</h2><p>在<code>/etc/supervisor/</code>目录下有个<code>conf.d</code>的文件夹和<code>supervisord.conf</code>配置文件。打开配置文件<br><figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">vim</span> supervisord.<span class="keyword">conf</span></span><br></pre></td></tr></table></figure></p>
-<p>我们可以看到<br><figure class="highlight crystal"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[<span class="keyword">include</span>]</span><br><span class="line">files = <span class="regexp">/etc/supervisor</span><span class="regexp">/conf.d/</span>*.conf</span><br></pre></td></tr></table></figure></p>
-<p>意思是<code>Supervisor</code>在启动的时候会加载conf.d目录下所有的conf配置文件。<br>下面给出2个参考配置的案例</p>
-<h3 id="3-2-1-horizon守护进程配置参考"><a href="#3-2-1-horizon守护进程配置参考" class="headerlink" title="3.2.1. horizon守护进程配置参考"></a>3.2.1. horizon守护进程配置参考</h3><p>laravel的horizon守护进程配置<br><figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">cd</span> /etc/supervisor/<span class="keyword">conf</span>.d/</span><br><span class="line"><span class="keyword">vim</span> horizon.<span class="keyword">conf</span></span><br></pre></td></tr></table></figure></p>
-<p>填入以下内容<br><figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">[program:horizon]</span></span><br><span class="line"><span class="attr">process_name</span>=%(program_name)s</span><br><span class="line"><span class="attr">command</span>=php /home/wwwroot/www.guaosi.com/artisan horizon ; 阻塞进程执行的命令</span><br><span class="line"><span class="attr">autostart</span>=<span class="literal">true</span> ; 阻塞进程是否跟着Supervisor一起开机自动</span><br><span class="line"><span class="attr">autorestart</span>=<span class="literal">true</span> ; 阻塞进程被异常退出是否自动重启</span><br><span class="line"><span class="attr">user</span>=www ; 由哪个用户执行阻塞进程的命令</span><br><span class="line"><span class="attr">redirect_stderr</span>=<span class="literal">true</span></span><br><span class="line"><span class="attr">stdout_logfile</span>=/home/wwwroot/www.guaosi.com/storage/logs/horizon.log ; 阻塞进程打印到控制台的内容写到哪里</span><br></pre></td></tr></table></figure></p>
-<h3 id="3-2-2-yii2的队列守护进程配置参考"><a href="#3-2-2-yii2的队列守护进程配置参考" class="headerlink" title="3.2.2. yii2的队列守护进程配置参考"></a>3.2.2. yii2的队列守护进程配置参考</h3><figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">cd</span> /etc/supervisor/<span class="keyword">conf</span>.d/</span><br><span class="line"><span class="keyword">vim</span> yii2-queue.<span class="keyword">conf</span></span><br></pre></td></tr></table></figure>
-<p>填入以下内容<br><figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">[program:yii-queue-worker]</span></span><br><span class="line"><span class="attr">process_name</span>=%(program_name)s_%(process_num)<span class="number">02</span>d</span><br><span class="line"><span class="attr">command</span>=/usr/bin/php7.<span class="number">2</span> /home/wwwroot/www.guaosi.com/yii queue/listen --verbose=<span class="number">1</span> --color=<span class="number">0</span> ; 阻塞进程执行的命令</span><br><span class="line"><span class="attr">autostart</span>=<span class="literal">true</span> ; 阻塞进程是否跟着Supervisor一起开机自动</span><br><span class="line"><span class="attr">autorestart</span>=<span class="literal">true</span> ; 阻塞进程被异常退出是否自动重启</span><br><span class="line"><span class="attr">user</span>=www ; 由哪个用户执行阻塞进程的命令</span><br><span class="line"><span class="attr">numprocs</span>=<span class="number">10</span> ; 启动几个阻塞进程</span><br><span class="line"><span class="attr">redirect_stderr</span>=<span class="literal">true</span></span><br><span class="line"><span class="attr">stdout_logfile</span>=/home/wwwroot/www.guaosi.com/runtime/logs/yii2-queue.log ; 阻塞进程打印到控制台的内容写到哪里</span><br></pre></td></tr></table></figure></p>
-<h2 id="3-3-启动服务"><a href="#3-3-启动服务" class="headerlink" title="3.3. 启动服务"></a>3.3. 启动服务</h2><h3 id="3-3-1-Centos启动"><a href="#3-3-1-Centos启动" class="headerlink" title="3.3.1. Centos启动"></a>3.3.1. Centos启动</h3><figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl <span class="literal">start</span> supervisord</span><br></pre></td></tr></table></figure>
-<h3 id="3-3-2-Ubuntu启动"><a href="#3-3-2-Ubuntu启动" class="headerlink" title="3.3.2. Ubuntu启动"></a>3.3.2. Ubuntu启动</h3><figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">supervisord -c <span class="regexp">/etc/</span>supervisor<span class="regexp">/supervisord.conf</span></span><br></pre></td></tr></table></figure>
-<h2 id="3-4-开机自启"><a href="#3-4-开机自启" class="headerlink" title="3.4. 开机自启"></a>3.4. 开机自启</h2><h3 id="3-4-1-Centos开机自启"><a href="#3-4-1-Centos开机自启" class="headerlink" title="3.4.1. Centos开机自启"></a>3.4.1. Centos开机自启</h3><p>新建文件<code>supervisord.service</code><br><figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#supervisord.service</span></span><br><span class="line"></span><br><span class="line"><span class="section">[Unit]</span> </span><br><span class="line"><span class="attr">Description</span>=Supervisor daemon</span><br><span class="line"></span><br><span class="line"><span class="section">[Service]</span> </span><br><span class="line"><span class="attr">Type</span>=forking </span><br><span class="line"><span class="attr">ExecStart</span>=/usr/bin/supervisord -c /etc/supervisord.conf </span><br><span class="line"><span class="attr">ExecStop</span>=/usr/bin/supervisorctl shutdown </span><br><span class="line"><span class="attr">ExecReload</span>=/usr/bin/supervisorctl reload </span><br><span class="line"><span class="attr">KillMode</span>=process </span><br><span class="line"><span class="attr">Restart</span>=<span class="literal">on</span>-failure </span><br><span class="line"><span class="attr">RestartSec</span>=<span class="number">42</span>s</span><br><span class="line"></span><br><span class="line"><span class="section">[Install]</span> </span><br><span class="line"><span class="attr">WantedBy</span>=multi-user.target</span><br></pre></td></tr></table></figure></p>
-<p>将文件拷贝到<code>/usr/lib/systemd/system/</code><br><figure class="highlight crystal"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cp supervisord.service /usr/<span class="class"><span class="keyword">lib</span>/<span class="title">systemd</span>/<span class="title">system</span>/</span></span><br></pre></td></tr></table></figure></p>
-<p>启动服务<br><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl <span class="builtin-name">enable</span> supervisord</span><br></pre></td></tr></table></figure></p>
-<p>验证一下是否为开机启动<br><figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl <span class="keyword">is</span>-enabled supervisord</span><br></pre></td></tr></table></figure></p>
-<h3 id="3-4-2-Ubuntu开机自启"><a href="#3-4-2-Ubuntu开机自启" class="headerlink" title="3.4.2. Ubuntu开机自启"></a>3.4.2. Ubuntu开机自启</h3><p>编辑<code>/etc/rc.local</code>文件<br><figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vi /etc/rc.<span class="keyword">local</span></span><br></pre></td></tr></table></figure></p>
-<p>在<code>exit 0</code>之前加入以下命令<br><figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="regexp">/usr/</span>local<span class="regexp">/bin/</span>supervisord</span><br></pre></td></tr></table></figure></p>
-<p>保存并退出<br>最后修改<code>rc.local</code>权限<br><figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod +x /etc/rc.<span class="keyword">local</span></span><br></pre></td></tr></table></figure></p>
-<h2 id="3-5-常用命令"><a href="#3-5-常用命令" class="headerlink" title="3.5. 常用命令"></a>3.5. 常用命令</h2><p>重新启动配置中的所有程序</p>
-<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">supervisorctl reload</span></span><br></pre></td></tr></table></figure>
-<p>启动某个进程(program_name=你配置中写的程序名称)</p>
-<figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">supervisorctl <span class="literal">start</span> program_name</span><br></pre></td></tr></table></figure>
-<p>查看正在守候的进程</p>
-<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">supervisorctl</span></span><br></pre></td></tr></table></figure>
-<p>停止某一进程 (program_name=你配置中写的程序名称)</p>
-<figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">supervisorctl <span class="built_in">stop</span> program_name</span><br></pre></td></tr></table></figure>
-<p>重启某一进程 (program_name=你配置中写的程序名称)</p>
-<figure class="highlight maxima"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">supervisorctl <span class="built_in">restart</span> program_name</span><br></pre></td></tr></table></figure>
-<p>停止全部进程</p>
-<figure class="highlight fortran"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">supervisorctl <span class="keyword">stop</span> <span class="built_in">all</span></span><br></pre></td></tr></table></figure>
-<p>注意：显示用stop停止掉的进程，用reload或者update都不会自动重启。</p>
-<h1 id="4-注意"><a href="#4-注意" class="headerlink" title="4. 注意"></a>4. 注意</h1><p>被<code>Supervisor</code>守护的进程都是<code>常驻内存</code>的，即如果<code>修改了被守护的进程的源码</code>，需要重启对这个进程的守护才能生效，否则还是未修改前的。<br><figure class="highlight maxima"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">supervisorctl <span class="built_in">restart</span> program_name</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">telnet</span> 192<span class="selector-class">.168</span><span class="selector-class">.1</span><span class="selector-class">.1</span></span><br></pre></td></tr></table></figure>
+<p>连接上后，在<code>OpenWrt login</code>提示时输入账号<code>root</code>，在<code>Password</code>提示时输入密码<code>admin</code>，然后回车。即可成功登陆进光猫的<code>telnet</code></p>
+<p><a href="/assets/blogImg/crack-china-mobile-optical-modem-h2-3/telnet-login-success.png">telnet-login-success</a></p>
+<p>2.切换到配置文件目录<br><figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">cd</span> <span class="string">/config/worka</span></span><br></pre></td></tr></table></figure></p>
+<p>然后我们查看一下文件<br><figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ls</span> -<span class="keyword">al</span></span><br></pre></td></tr></table></figure></p>
+<p>如果使用的是<code>windows</code>的<code>cmd</code>，那么可以使用<br><figure class="highlight dos"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">dir</span></span><br></pre></td></tr></table></figure></p>
+<p><a href="/assets/blogImg/crack-china-mobile-optical-modem-h2-3/telnet-dir-file.png">telnet-dir-file</a></p>
+<p>其中，<code>backup_lastgood.xml</code>与<code>lastgood.xml</code>是我们后面需要修改的文件</p>
+<h2 id="5-3-修改配置文件"><a href="#5-3-修改配置文件" class="headerlink" title="5.3. 修改配置文件"></a>5.3. 修改配置文件</h2><p>1.我们查看一下<code>backup_lastgood.xml</code>里面的内容<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">vim</span> <span class="selector-tag">backup_lastgood</span><span class="selector-class">.xml</span></span><br></pre></td></tr></table></figure></p>
+<p>然后搜索<code>TeleAccountName</code>,就可以看到存放的账号以及密码<br><a href="/assets/blogImg/crack-china-mobile-optical-modem-h2-3/telnet-modify.png">telnet-modify</a></p>
+<p>其中，<code>TeleAccountName</code>和<code>TeleAccountPassword</code>分别代表超级账户的账号密码。<code>UserAccountName</code>和<code>UserAccountPassword</code>分别代表普通账户的账号密码。</p>
+<p>2.现在我们来分析一下,<code>UserAccountName</code>的Value是<code>user</code>，跟我们普通账户的账号相同。那密码<code>UserAccountPassword</code>又是什么含义。</p>
+<p>比如，此时我的<code>UserAccountPassword</code>的值为<br><figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">61</span>,<span class="number">62</span>,<span class="number">64</span>,<span class="number">66</span>,<span class="number">6</span>e,<span class="number">68</span>,<span class="number">00</span>,<span class="number">00</span>,<span class="number">00.</span>.....</span><br></pre></td></tr></table></figure></p>
+<p>我光猫背面的密码是<br><figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">abdfnh</span></span><br></pre></td></tr></table></figure></p>
+<p>此时不难发现,密码字母所对应的<code>ASCII</code>数字，<code>十六进制</code>转换后与<code>UserAccountPassword</code>的值是相同的。</p>
+<p>3.知道这个原理后，我们就可以将密码修改成我们喜欢的密码了。大家自行在查找字符所对应的<code>ASCII</code>数字的<code>十六进制</code>是多少即可，将其替换。</p>
+<p>4.为了方便，我们将普通密码与超级密码设置成相同的，即把<code>TeleAccountPassword</code>所对应的内容替换为<code>UserAccountPassword</code>的内容。</p>
+<ol start="5">
+<li><code>lastgood.xml</code>与<code>backup_lastgood.xml</code>内容基本是相同的，一样替换<code>TeleAccountPassword</code>的内容即可。</li>
+</ol>
+<h2 id="5-4-生效"><a href="#5-4-生效" class="headerlink" title="5.4. 生效"></a>5.4. 生效</h2><p>输入<br><figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">reboot</span></span><br></pre></td></tr></table></figure></p>
+<p>重启光猫，2分钟后登陆<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">192<span class="selector-class">.168</span><span class="selector-class">.1</span><span class="selector-class">.1</span></span><br></pre></td></tr></table></figure></p>
+<p>输入超级账号<br><figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">CMCCAdmin</span></span><br></pre></td></tr></table></figure></p>
+<p>自己自定义的密码(比如我刚刚是与普通用户密码设置相同)<br><figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">abdfnh</span></span><br></pre></td></tr></table></figure></p>
+<p>登陆成功，代表破解成功。</p>
+<h2 id="5-5-桥接模式"><a href="#5-5-桥接模式" class="headerlink" title="5.5. 桥接模式"></a>5.5. 桥接模式</h2><p><code>网络</code>-<code>宽带设置</code>，然后点击<code>2_INTERNET_R_VID_400</code>,将连接模式从<code>Route</code>改成<code>Brige</code>,保存即可。</p>
+<h1 id="6-注意"><a href="#6-注意" class="headerlink" title="6. 注意"></a>6. 注意</h1><p>1.有可能修改成自己自定义密码后，自定义密码不会生效，此时有可能是光猫恢复成了万能密码，也就是<br><figure class="highlight gcode"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">aD<span class="name">m8</span>H<span class="meta">%</span>MdA</span><br></pre></td></tr></table></figure></p>
+<p>可以登录尝试看看。</p>
+<p>2.如果你忘记了自己的宽带密码，拨打人工重置下发的话，光猫也会被移动远程重置信息。此时按照本教程重新再破解一次即可。</p>
 
       
 
@@ -260,7 +273,7 @@ var _hmt = _hmt || [];
           
           <br>
           <strong>本文链接：</strong>
-          <a rel="license" href="https://www.guaosi.com/2019/02/25/install-and-use-supervisor/">https://www.guaosi.com/2019/02/25/install-and-use-supervisor/</a>
+          <a rel="license" href="https://www.guaosi.com/2019/03/09/crack-china-mobile-optical-modem-h2-3/">https://www.guaosi.com/2019/03/09/crack-china-mobile-optical-modem-h2-3/</a>
           <br>
           <strong>版权声明：</strong>
           本博客所有文章除特别声明外，均采用
@@ -320,11 +333,7 @@ var _hmt = _hmt || [];
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">linux</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">python</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">crack</a>
         		</li>
       		
 		</ul>
@@ -380,7 +389,7 @@ var _hmt = _hmt || [];
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACL0lEQVR42u3aQXKcQAwF0Ln/pcnWVQ7kS8KuIF6vphgM/WYhSy19PvE6vqzq9e/fVt9y28LAwHgs47hcyT1nLz57TrKHfG8YGBjvYZw9+uxzssUkgJ49Od8bBgYGxvU9eXjN00cMDAyMexm9lPG/C7gYGBgPYSRFbJ44Xj95kobeUItjYGA8kJGfuv/+5x/pb2BgYDyKcRRXktJNksWjtTAwMHYz5kdpedmZD2H09oOBgbGVUW1SJq+cj2JcB/e/XMHAwHgBo5f8VccpqsdtSWvzNMPFwMBYxOgNTNx1pdrOLCSRGBgYqxnzJmWSMublbm8EBAMDYx8jGbNItlUtRHtlbfS/AgMDYx0jOdLqpXdVdm9oDAMDYzdjPgDRC9l5OI7COgYGxmpGtfWYsHvhNW9bFloCGBgY6xi9UJvfPx8C+/QWBgbGOkY1Way+ZhLKR8MWGBgYj2XcW8T2fpRe8nfavMTAwFjHqJav+RarZWqvRVoYtsDAwFjEuE7C8rCbj2vkwxb/CMcYGBivYVSHHqoFbU4d5bkYGBhLGZMU8KfL3eg6BgbGyxh5MjdpSVYbk1FPAwMDYx3jKK75oEaePhb+CgMDYzVjEuwmQ2P5MVz1CA8DA2MrY1J85u3GyXjHKMZjYGAsYkwO8XtP66V9US2OgYGBESR/vYGw3ogGBgYGxrx5MK+no4IZAwPjBYykiK0mc/Nhi8L9GBgYqxnV0nGCTNLH5NtmUxMDA+N5jD+JaSy61+klUwAAAABJRU5ErkJggg==" alt="微信分享二维码">
+      <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACs0lEQVR42u3asa7jMAwEwPz/T79rrrgmzi4pBe+AcRUkhq1RQSokX6/4+nm8Zk/49/t3n9/9evjCw8PDu7D0d5hk0bMnvFtnvd14eHh413jJ456jbgJ73rjk13zNeHh4eL+H12La9DPbRDw8PLz/kZeXJ57vnG0rHh4e3vd5m5DdHo6ToP/uzou1Fjw8PLxtx+pAkrj3+Up/Dw8PD2/dVU8C7uzIm5QzNuv8+wQ8PDy8C7w84G5aU23Tqy1efLgTDw8P7yjvRiF11rhqW2jR2vDw8PAu8J4flxQm2sCdFGSTjShSCx4eHt5RXnLT7LjcbtxmDR/+K+Dh4eFd4LXhu/1mtjWzlPMhg+Hh4eEd4iVBeVacPVWSyI/jUX8PDw8Pb81LQvBmnitf0CYNvC1G4OHh4R3l1aE2fmgOmBUvipMzHh4e3gVeOzTQll8TzKwU8lzCwMPDw/smL19QW86YJYn8Gzw8PLzbvLwNnyeJdl9bdp6W8PDw8O7x8oCeLDT53L5r1njDw8PDu8HbFFLbVla7rOTt0cABHh4e3td5bVjPF5eUcfMUsurv4eHh4ZW8zfhUG8qHZYU4Jbw2Fx4eHl7Ma0uoeXpoN65NMNF78fDw8C7w2pLu7Hh99vhbD3Lh4eHhXeOdOjrPRhD2Q1d4eHh43+HloXl2mD5V9s03YliEwcPDw1vwZmOjNwYR8hZdlPHw8PDwLvM2yaNlH+jO5UdqPDw8vAXvp7zyPZuNouaNt+hXPDw8vAu8TWs/LwfMDsdtmjmWT/Dw8PAC3uY1+XPaJ7SljWImAg8PD+8Qrz3g7lPIqTLEcHQADw8P7xfw8jLBJvTXx2s8PDy8X89LqPmYQlu8+LAsPDw8vKO8tlCbtMRmRd68DRa1vvDw8PAu8PajVLPS7X4o4XXqwsPDw0t5fwAFvH2Cwan1ogAAAABJRU5ErkJggg==" alt="微信分享二维码">
     </div>
 </div>
 
@@ -394,18 +403,9 @@ var _hmt = _hmt || [];
 
 <nav id="article-nav">
   
-    <a href="/2019/02/25/automatically-cancel-the-order/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          指定时间自动取消订单
-        
-      </div>
-    </a>
   
-  
-    <a href="/2019/02/22/onedrive-olyindex-oneindex-aria-ariang/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">oneDrive+olaIndex/oneIndex+aria2+ariaNg 制作个人大容量网盘，支持离线下载</div>
+    <a href="/2019/02/26/laravel-api-initialization-preparation/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">手摸手教你让Laravel开发Api更得心应手</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -432,7 +432,7 @@ var _hmt = _hmt || [];
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-起因"><span class="toc-number">1.</span> <span class="toc-text">1. 起因</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-解决办法"><span class="toc-number">2.</span> <span class="toc-text">2. 解决办法</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-安装配置Supervisor"><span class="toc-number">3.</span> <span class="toc-text">3. 安装配置Supervisor</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#3-1-安装"><span class="toc-number">3.1.</span> <span class="toc-text">3.1. 安装</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-1-Centos安装"><span class="toc-number">3.1.1.</span> <span class="toc-text">3.1.1. Centos安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-2-Ubuntu安装"><span class="toc-number">3.1.2.</span> <span class="toc-text">3.1.2. Ubuntu安装</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-2-配置"><span class="toc-number">3.2.</span> <span class="toc-text">3.2. 配置</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-1-horizon守护进程配置参考"><span class="toc-number">3.2.1.</span> <span class="toc-text">3.2.1. horizon守护进程配置参考</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-2-yii2的队列守护进程配置参考"><span class="toc-number">3.2.2.</span> <span class="toc-text">3.2.2. yii2的队列守护进程配置参考</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-3-启动服务"><span class="toc-number">3.3.</span> <span class="toc-text">3.3. 启动服务</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-3-1-Centos启动"><span class="toc-number">3.3.1.</span> <span class="toc-text">3.3.1. Centos启动</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-3-2-Ubuntu启动"><span class="toc-number">3.3.2.</span> <span class="toc-text">3.3.2. Ubuntu启动</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-4-开机自启"><span class="toc-number">3.4.</span> <span class="toc-text">3.4. 开机自启</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-4-1-Centos开机自启"><span class="toc-number">3.4.1.</span> <span class="toc-text">3.4.1. Centos开机自启</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-4-2-Ubuntu开机自启"><span class="toc-number">3.4.2.</span> <span class="toc-text">3.4.2. Ubuntu开机自启</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-5-常用命令"><span class="toc-number">3.5.</span> <span class="toc-text">3.5. 常用命令</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4-注意"><span class="toc-number">4.</span> <span class="toc-text">4. 注意</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-起因"><span class="toc-number">1.</span> <span class="toc-text">1. 起因</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-解决办法"><span class="toc-number">2.</span> <span class="toc-text">2. 解决办法</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-优点"><span class="toc-number">3.</span> <span class="toc-text">3. 优点</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4-准备"><span class="toc-number">4.</span> <span class="toc-text">4. 准备</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#5-破解过程"><span class="toc-number">5.</span> <span class="toc-text">5. 破解过程</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#5-1-打开光猫telnet"><span class="toc-number">5.1.</span> <span class="toc-text">5.1. 打开光猫telnet</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-2-登陆光猫telnet"><span class="toc-number">5.2.</span> <span class="toc-text">5.2. 登陆光猫telnet</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-3-修改配置文件"><span class="toc-number">5.3.</span> <span class="toc-text">5.3. 修改配置文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-4-生效"><span class="toc-number">5.4.</span> <span class="toc-text">5.4. 生效</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-5-桥接模式"><span class="toc-number">5.5.</span> <span class="toc-text">5.5. 桥接模式</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#6-注意"><span class="toc-number">6.</span> <span class="toc-text">6. 注意</span></a></li></ol>
                     </div>
                 </span>
             </div>
@@ -448,7 +448,7 @@ var _hmt = _hmt || [];
 
 
 
-<div id="SOHUCS" sid="install-and-use-supervisor"></div> 
+<div id="SOHUCS" sid="crack-china-mobile-optical-modem-h2-3"></div> 
 <script type="text/javascript"> 
 (function(){ 
 var appid = "cytWxLdY3"; 
