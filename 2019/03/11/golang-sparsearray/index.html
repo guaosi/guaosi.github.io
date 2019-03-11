@@ -6,20 +6,22 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="https://www.guaosi.com">
-  <title>安装php扩展--Fileinfo | guaosi的博客</title>
+  <title>golang算法与数据结构：稀疏数组(sparsearray) | guaosi的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="1. 起因&amp;#160; &amp;#160; &amp;#160; &amp;#160;在编译安装php或者lnmp安装的时候，可能由于服务器的配置不够(内存小于1G)，会将fileinfo扩展默认不安装，已保证php可以正常安装。可是有的时候我们又必须安装fileinfo扩展。">
-<meta name="keywords" content="php">
+  <meta name="description" content="1. 基本介绍&amp;#160; &amp;#160; &amp;#160; &amp;#160;当一个数组中大部分元素为0，或者为同一个值的数组时，可以使用稀疏数组来保存该数组。 2. 处理方法1) 记录数组一共有几行几列，有多少个不同的值2) 思想:把具有不同值的元素的行列及值记录在一个小规模的数组中，从而缩小程序的规模">
+<meta name="keywords" content="golang,算法,数据结构">
 <meta property="og:type" content="article">
-<meta property="og:title" content="安装php扩展--Fileinfo">
-<meta property="og:url" content="https://www.guaosi.com/2019/02/22/install-php-fileinfo/index.html">
+<meta property="og:title" content="golang算法与数据结构：稀疏数组(sparsearray)">
+<meta property="og:url" content="https://www.guaosi.com/2019/03/11/golang-sparsearray/index.html">
 <meta property="og:site_name" content="guaosi的博客">
-<meta property="og:description" content="1. 起因&amp;#160; &amp;#160; &amp;#160; &amp;#160;在编译安装php或者lnmp安装的时候，可能由于服务器的配置不够(内存小于1G)，会将fileinfo扩展默认不安装，已保证php可以正常安装。可是有的时候我们又必须安装fileinfo扩展。">
+<meta property="og:description" content="1. 基本介绍&amp;#160; &amp;#160; &amp;#160; &amp;#160;当一个数组中大部分元素为0，或者为同一个值的数组时，可以使用稀疏数组来保存该数组。 2. 处理方法1) 记录数组一共有几行几列，有多少个不同的值2) 思想:把具有不同值的元素的行列及值记录在一个小规模的数组中，从而缩小程序的规模">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-02-25T01:05:01.603Z">
+<meta property="og:image" content="https://www.guaosi.com/assets/blogImg/data-structures-and-algorithms/sparsearray/sparsearray原理图.png">
+<meta property="og:updated_time" content="2019-03-11T07:20:44.013Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="安装php扩展--Fileinfo">
-<meta name="twitter:description" content="1. 起因&amp;#160; &amp;#160; &amp;#160; &amp;#160;在编译安装php或者lnmp安装的时候，可能由于服务器的配置不够(内存小于1G)，会将fileinfo扩展默认不安装，已保证php可以正常安装。可是有的时候我们又必须安装fileinfo扩展。">
+<meta name="twitter:title" content="golang算法与数据结构：稀疏数组(sparsearray)">
+<meta name="twitter:description" content="1. 基本介绍&amp;#160; &amp;#160; &amp;#160; &amp;#160;当一个数组中大部分元素为0，或者为同一个值的数组时，可以使用稀疏数组来保存该数组。 2. 处理方法1) 记录数组一共有几行几列，有多少个不同的值2) 思想:把具有不同值的元素的行列及值记录在一个小规模的数组中，从而缩小程序的规模">
+<meta name="twitter:image" content="https://www.guaosi.com/assets/blogImg/data-structures-and-algorithms/sparsearray/sparsearray原理图.png">
   
     <link rel="alternative" href="/atom.xml" title="guaosi的博客" type="application/atom+xml">
   
@@ -173,14 +175,14 @@ var _hmt = _hmt || [];
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-install-php-fileinfo" class="article article-type-post " itemscope="" itemprop="blogPost">
+            <article id="post-golang-sparsearray" class="article article-type-post " itemscope="" itemprop="blogPost">
   <div class="article-inner">
     
     <header class="article-header">
       
   
     <h1 class="article-title" itemprop="name">
-      安装php扩展--Fileinfo
+      golang算法与数据结构：稀疏数组(sparsearray)
     </h1>
   
 
@@ -199,22 +201,20 @@ var _hmt = _hmt || [];
 
 
       
-      <a href="/2019/02/22/install-php-fileinfo/" class="archive-article-date">
-  	<time datetime="2019-02-22T01:32:35.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-02-22</time>
+      <a href="/2019/03/11/golang-sparsearray/" class="archive-article-date">
+  	<time datetime="2019-03-11T05:45:11.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-11</time>
 </a>
       
     </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-      <h1 id="1-起因"><a href="#1-起因" class="headerlink" title="1. 起因"></a>1. 起因</h1><p>&#160; &#160; &#160; &#160;在编译安装php或者lnmp安装的时候，可能由于服务器的配置不够(内存小于1G)，会将fileinfo扩展默认不安装，已保证php可以正常安装。可是有的时候我们又必须安装fileinfo扩展。<br><a id="more"></a></p>
-<h1 id="2-解决"><a href="#2-解决" class="headerlink" title="2. 解决"></a>2. 解决</h1><h2 id="2-1-下载php的源码编译包"><a href="#2-1-下载php的源码编译包" class="headerlink" title="2.1. 下载php的源码编译包"></a>2.1. 下载php的源码编译包</h2><p>php源码包下载地址(下载与当前安装的php相同版本的源码包): <a href="http://www.php.net/downloads.php" target="_blank" rel="noopener">http://www.php.net/downloads.php</a><br>如果是lnmp安装的，则在<code>lnmp下载处/src/</code>下可以看到php的源码包。</p>
-<h2 id="2-2-安装fileinfo"><a href="#2-2-安装fileinfo" class="headerlink" title="2.2. 安装fileinfo"></a>2.2. 安装fileinfo</h2><p>以lnmp1.5安装位置为例,我安装的是php7.2.6版本<br><figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">tar xvf php-<span class="number">7.2</span>.<span class="number">6</span>.tar.bz2</span><br><span class="line">cd php-<span class="number">7.2</span>.<span class="number">6</span><span class="regexp">/ext/</span>fileinfo</span><br><span class="line">phpize</span><br><span class="line">.<span class="regexp">/configure --with-php-config=/u</span>sr<span class="regexp">/local/</span>php<span class="regexp">/bin/</span>php-config</span><br><span class="line">make &amp;&amp; make install</span><br></pre></td></tr></table></figure></p>
-<p>当<code>make &amp;&amp; make install</code>时报错提示内存不够时，可以参考<a href="https://www.guaosi.com/2019/02/21/linux-add-virtual-memory/">Linux虚拟内存设置</a>解决</p>
-<h2 id="2-3-开启fileinfo扩展"><a href="#2-3-开启fileinfo扩展" class="headerlink" title="2.3. 开启fileinfo扩展"></a>2.3. 开启fileinfo扩展</h2><p>以lnmp安装位置为例<br><figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim <span class="regexp">/usr/</span>local<span class="regexp">/php/</span>etc<span class="regexp">/php.ini</span></span><br></pre></td></tr></table></figure></p>
-<p>在最后一行加上<br><figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">[FileInfo]</span></span><br><span class="line"><span class="attr">extension</span> = fileinfo.so</span><br></pre></td></tr></table></figure></p>
-<p>保存退出后，重启php-fpm<br><figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">service php-fpm restart</span></span><br></pre></td></tr></table></figure></p>
-
+      <h1 id="1-基本介绍"><a href="#1-基本介绍" class="headerlink" title="1. 基本介绍"></a>1. 基本介绍</h1><p>&#160; &#160; &#160; &#160;当一个数组中大部分元素为0，或者为同一个值的数组时，可以使用稀疏数组来保存该数组。</p>
+<h1 id="2-处理方法"><a href="#2-处理方法" class="headerlink" title="2. 处理方法"></a>2. 处理方法</h1><p>1) 记录数组一共有几行几列，有多少个不同的值<br>2) 思想:把具有不同值的元素的行列及值记录在一个小规模的数组中，从而缩小程序的规模</p>
+<a id="more"></a>
+<h1 id="3-举例说明"><a href="#3-举例说明" class="headerlink" title="3. 举例说明"></a>3. 举例说明</h1><p><img src="/assets/blogImg/data-structures-and-algorithms/sparsearray/sparsearray原理图.png" alt="sparsearray原理图"></p>
+<h1 id="4-实践"><a href="#4-实践" class="headerlink" title="4. 实践"></a>4. 实践</h1><h2 id="4-1-原始数组转稀疏数组"><a href="#4-1-原始数组转稀疏数组" class="headerlink" title="4.1. 原始数组转稀疏数组"></a>4.1. 原始数组转稀疏数组</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">"bufio"</span></span><br><span class="line">	<span class="string">"fmt"</span></span><br><span class="line">	<span class="string">"os"</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> valNode <span class="keyword">struct</span> &#123;</span><br><span class="line">	row <span class="keyword">int</span></span><br><span class="line">	col <span class="keyword">int</span></span><br><span class="line">	val <span class="keyword">int</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	<span class="comment">//初始化原始数组</span></span><br><span class="line">	<span class="keyword">var</span> chapmap [<span class="number">11</span>][<span class="number">11</span>]<span class="keyword">int</span></span><br><span class="line">	chapmap[<span class="number">1</span>][<span class="number">2</span>] = <span class="number">1</span> <span class="comment">//黑子</span></span><br><span class="line">	chapmap[<span class="number">2</span>][<span class="number">3</span>] = <span class="number">2</span> <span class="comment">//白字</span></span><br><span class="line">	<span class="comment">//输出原始数组</span></span><br><span class="line">	<span class="keyword">for</span> _, value := <span class="keyword">range</span> chapmap &#123;</span><br><span class="line">		<span class="keyword">for</span> _, v := <span class="keyword">range</span> value &#123;</span><br><span class="line">			fmt.Printf(<span class="string">"%d\t"</span>, v)</span><br><span class="line">		&#125;</span><br><span class="line">		fmt.Println()</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">//创建结构体切片</span></span><br><span class="line">	<span class="keyword">var</span> val_node []valNode</span><br><span class="line">	<span class="comment">//初始化，先记录一下稀疏数组的行列以及默认值</span></span><br><span class="line">	<span class="keyword">var</span> node = valNode&#123;</span><br><span class="line">		row: <span class="number">11</span>,</span><br><span class="line">		col: <span class="number">11</span>,</span><br><span class="line">		val: <span class="number">0</span>,</span><br><span class="line">	&#125;</span><br><span class="line">	val_node = <span class="built_in">append</span>(val_node, node)</span><br><span class="line"></span><br><span class="line">	<span class="comment">//将原始数组转稀疏组数</span></span><br><span class="line">	<span class="keyword">for</span> i, value := <span class="keyword">range</span> chapmap &#123;</span><br><span class="line">		<span class="keyword">for</span> j, v := <span class="keyword">range</span> value &#123;</span><br><span class="line">			<span class="keyword">if</span> v != <span class="number">0</span> &#123;</span><br><span class="line">				<span class="keyword">var</span> node = valNode&#123;</span><br><span class="line">					row: i,</span><br><span class="line">					col: j,</span><br><span class="line">					val: v,</span><br><span class="line">				&#125;</span><br><span class="line">				val_node = <span class="built_in">append</span>(val_node, node)</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">var</span> path <span class="keyword">string</span> = <span class="string">"./save.data"</span></span><br><span class="line">	<span class="comment">//通过只写方式，如果不存在则创建方式打开一个文件，权限为666</span></span><br><span class="line">	file, err := os.OpenFile(path, os.O_WRONLY|os.O_CREATE, <span class="number">0666</span>)</span><br><span class="line">	<span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">		fmt.Println(<span class="string">"file create error:"</span>, err)</span><br><span class="line">		<span class="keyword">return</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">defer</span> file.Close()</span><br><span class="line">	<span class="comment">//使用带缓冲区的方式写入</span></span><br><span class="line">	<span class="keyword">var</span> write *bufio.Writer = bufio.NewWriter(file)</span><br><span class="line"></span><br><span class="line">	<span class="comment">//输出稀疏数组,同时写入文件</span></span><br><span class="line">	<span class="keyword">for</span> i, value := <span class="keyword">range</span> val_node &#123;</span><br><span class="line">		fmt.Printf(<span class="string">"%d:%d %d %d\n"</span>, i, value.row, value.col, value.val)</span><br><span class="line">		info := fmt.Sprintf(<span class="string">"%d %d %d\r\n"</span>, value.row, value.col, value.val)</span><br><span class="line">		<span class="comment">//将内容全部写到缓存区</span></span><br><span class="line">		write.WriteString(info)</span><br><span class="line">	&#125;</span><br><span class="line">	write.Flush()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="4-2-稀疏数组转原始数组"><a href="#4-2-稀疏数组转原始数组" class="headerlink" title="4.2. 稀疏数组转原始数组"></a>4.2. 稀疏数组转原始数组</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">"bufio"</span></span><br><span class="line">	<span class="string">"fmt"</span></span><br><span class="line">	<span class="string">"io"</span></span><br><span class="line">	<span class="string">"os"</span></span><br><span class="line">	<span class="string">"strconv"</span></span><br><span class="line">	<span class="string">"strings"</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> valNode <span class="keyword">struct</span> &#123;</span><br><span class="line">	row <span class="keyword">int</span></span><br><span class="line">	col <span class="keyword">int</span></span><br><span class="line">	val <span class="keyword">int</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	<span class="keyword">var</span> val_node []valNode</span><br><span class="line">	<span class="keyword">var</span> path <span class="keyword">string</span> = <span class="string">"../save.data"</span></span><br><span class="line">	file, err := os.Open(path)</span><br><span class="line">	<span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">		fmt.Println(<span class="string">"file open error:"</span>, err)</span><br><span class="line">		<span class="keyword">return</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">defer</span> file.Close()</span><br><span class="line">	reader := bufio.NewReader(file)</span><br><span class="line">	<span class="keyword">var</span> node = valNode&#123;&#125;</span><br><span class="line">	<span class="keyword">for</span> &#123;</span><br><span class="line">		line, bu_err := reader.ReadString(<span class="string">'\n'</span>) <span class="comment">//指定每次读取到换行就结束</span></span><br><span class="line">		<span class="keyword">if</span> bu_err == io.EOF &#123;</span><br><span class="line">			<span class="comment">//如果读到最后，则会报io.EOF错误</span></span><br><span class="line">			<span class="keyword">break</span></span><br><span class="line">		&#125;</span><br><span class="line">		<span class="comment">//将文件中保存的内容重新变成稀疏数组</span></span><br><span class="line">		arr := strings.Split(line, <span class="string">" "</span>)</span><br><span class="line">		row, err := strconv.Atoi(arr[<span class="number">0</span>])</span><br><span class="line">		<span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">			fmt.Println(<span class="string">"转换错误 error = "</span>, err)</span><br><span class="line">			<span class="keyword">return</span></span><br><span class="line">		&#125;</span><br><span class="line">		col, err := strconv.Atoi(arr[<span class="number">1</span>])</span><br><span class="line">		<span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">			fmt.Println(<span class="string">"转换错误 error = "</span>, err)</span><br><span class="line">			<span class="keyword">return</span></span><br><span class="line">		&#125;</span><br><span class="line">		val, err := strconv.Atoi(strings.TrimRight(arr[<span class="number">2</span>], <span class="string">"\r\n"</span>))</span><br><span class="line">		<span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">			fmt.Println(<span class="string">"转换错误 error = "</span>, err)</span><br><span class="line">			<span class="keyword">return</span></span><br><span class="line">		&#125;</span><br><span class="line">		node.row = row</span><br><span class="line">		node.col = col</span><br><span class="line">		node.val = val</span><br><span class="line">		val_node = <span class="built_in">append</span>(val_node, node)</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">//构建动态二维数组</span></span><br><span class="line">	<span class="keyword">var</span> chapmap [][]<span class="keyword">int</span> = <span class="built_in">make</span>([][]<span class="keyword">int</span>, val_node[<span class="number">0</span>].row) <span class="comment">//有多少行</span></span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span> i := <span class="number">0</span>; i &lt; val_node[<span class="number">0</span>].row; i++ &#123;</span><br><span class="line">		chapmap[i] = <span class="built_in">make</span>([]<span class="keyword">int</span>, val_node[<span class="number">0</span>].col)</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">//将动态二维数组先设置成默认值</span></span><br><span class="line">	<span class="keyword">for</span> i, value := <span class="keyword">range</span> chapmap &#123;</span><br><span class="line">		<span class="keyword">for</span> j, _ := <span class="keyword">range</span> value &#123;</span><br><span class="line">			chapmap[i][j] = val_node[<span class="number">0</span>].val</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">//再将稀疏数组转回原始数组</span></span><br><span class="line">	<span class="keyword">for</span> i, value := <span class="keyword">range</span> val_node &#123;</span><br><span class="line">		<span class="keyword">if</span> i != <span class="number">0</span> &#123;</span><br><span class="line">			chapmap[value.row][value.col] = value.val</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">//输出最后的原始数组</span></span><br><span class="line">	<span class="keyword">for</span> _, value := <span class="keyword">range</span> chapmap &#123;</span><br><span class="line">		<span class="keyword">for</span> _, v := <span class="keyword">range</span> value &#123;</span><br><span class="line">			fmt.Printf(<span class="string">"%d\t"</span>, v)</span><br><span class="line">		&#125;</span><br><span class="line">		fmt.Println()</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
 
       
@@ -227,7 +227,7 @@ var _hmt = _hmt || [];
           
           <br>
           <strong>本文链接：</strong>
-          <a rel="license" href="https://www.guaosi.com/2019/02/22/install-php-fileinfo/">https://www.guaosi.com/2019/02/22/install-php-fileinfo/</a>
+          <a rel="license" href="https://www.guaosi.com/2019/03/11/golang-sparsearray/">https://www.guaosi.com/2019/03/11/golang-sparsearray/</a>
           <br>
           <strong>版权声明：</strong>
           本博客所有文章除特别声明外，均采用
@@ -287,7 +287,15 @@ var _hmt = _hmt || [];
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">php</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">golang</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">算法</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">数据结构</a>
         		</li>
       		
 		</ul>
@@ -343,7 +351,7 @@ var _hmt = _hmt || [];
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACNElEQVR42u3aS27jMBAFQN//0hogqwAZy+81lcGIKq4Mh7FYWjT6w9crXsfX+vn5fM/3lT8l318vDAyM2zKO03XOON+ffP/z0Mn+v1AxMDAewMgDaBJSc9J6cMfAwMB4t6c9aB5GMTAwMK4KuLM0MUkQMTAwMFaK2HeMPE2cBdyLa3EMDIwbMlYGA7/9+R/NNzAwMP5jxlGuOl0rR5XHaGFgYOzNSFppSZJ3Xqy2Lbn8N4vDYWBg3JaRF5wzzHkIbkvlt99gYGA8hpEPLNujtFc0WjwGBsbejHygeP6Aq4aX+Ysomm4YGBhbMFpMniDm4Lx5N5zHYmBgbMHIL0bMStnZX9viFgMDYz9GMT2IQ94spM7GpRgYGM9hzBr37Ugywc+uZWBgYDyZkV/YarteeeF6QcDFwMDYmtEeOkkukzK43YOBgbE3Y+UobQHcttjyohcDA2NvxlWNs+JtxaRi2ICBgfEAxuzCVpImXjWw/PAsDAyMrRkrrfn2Klg7eJi1+TAwMPZjJP+WBMH1EWY7nKhnrRgYGDdntG36vFk2SzSX5hsYGBjbMVaKxiNY+VBhFnCjBBEDA+PmjKNcs6HmylDhXcDFwMB4DqMNdrM2WfKbyUHb6x0YGBg7MZIg+xvjzDZ8F5kjBgbGpoxZkD0/7uvS9eEpGBgYGJdemJj95ofXhIGBgVFe+WrHCevJKwYGxhMYSRGbfN/ubBPB6LIFBgbGdoz1AvLaF5E05oYYDAyM+zH+AIyt8C78V3d0AAAAAElFTkSuQmCC" alt="微信分享二维码">
+      <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACKElEQVR42u3ayw7DIAxE0fz/T1Op2yYwY0Ol2JdV1SoJJwvXD65LXuO75t//fn66av4U96oLBgwYDRhjuubbfXr8/D7K3fS9wYABow9DCabzx+uBOBbEF3uGAQMGjAQ1H6BhwIABY1fA1dPBvUEZBgwYfRhKEat8P9+uzj5Yi8OAAeOFDHcw8M/PB+cbMGDAeAljmMtNCt3CeIQWDBgwajOUIeL8e73QjSWXxkACBgwYRRlK435X000PwcprvQm1MGDAaMDIH55ww25mJAADBow+jL1t+nMtfiXFhAEDRlWGPqrUC063fFW2vnjdMGDAaMzQ08cY2C2VH0tZGDBglGboR7tiRaZbGLvJIgwYMPow3MaZS1Vek5smwoABow/DTdf0wBprrrnHPmDAgNGBoQwFddLp8af0jwEDBoxyjNgD9DDtHvzSX9bifwMGDBhFGbGWmR3dE4HVqL9hwIDRhhErJjPjTPdVSgEXBgwYL2coW0m1wELpoH3MAgYMGKUZ+aMVsRHmJS/pWhgwYDRgxJI/Zdg55KWH15trYcCAUZqRae7rZao+YNCD7yJBhAEDRiHGMJeSUOZTT/uFwoABozTDLSb1BpxCzfBgwIDRjaEHWXfrGZ7dnoMBA0YDxt4Wf+ZX/aqbgAsDBoz2jNhGMwfCjKfDgAEDRihE7jp+YYwwYcCAUZqRPwbhDikzRfLiHC4MGDDKMU4ETeW4mHvn2BgVBgwYL2d8AL0lQc/vqyPsAAAAAElFTkSuQmCC" alt="微信分享二维码">
     </div>
 </div>
 
@@ -357,18 +365,18 @@ var _hmt = _hmt || [];
 
 <nav id="article-nav">
   
-    <a href="/2019/02/22/onedrive-olyindex-oneindex-aria-ariang/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2019/03/11/golang-tcp-socket/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          oneDrive+olaIndex/oneIndex+aria2+ariaNg 制作个人大容量网盘，支持离线下载
+          记一次golang网络编程开发聊天室有感
         
       </div>
     </a>
   
   
-    <a href="/2019/02/21/linux-add-virtual-memory/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Linux虚拟内存设置</div>
+    <a href="/2019/03/09/crack-china-mobile-optical-modem-h2-3/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">手摸手教你破解移动光猫吉比特--H2-3</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -395,7 +403,7 @@ var _hmt = _hmt || [];
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-起因"><span class="toc-number">1.</span> <span class="toc-text">1. 起因</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-解决"><span class="toc-number">2.</span> <span class="toc-text">2. 解决</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#2-1-下载php的源码编译包"><span class="toc-number">2.1.</span> <span class="toc-text">2.1. 下载php的源码编译包</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-2-安装fileinfo"><span class="toc-number">2.2.</span> <span class="toc-text">2.2. 安装fileinfo</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-3-开启fileinfo扩展"><span class="toc-number">2.3.</span> <span class="toc-text">2.3. 开启fileinfo扩展</span></a></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-基本介绍"><span class="toc-number">1.</span> <span class="toc-text">1. 基本介绍</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-处理方法"><span class="toc-number">2.</span> <span class="toc-text">2. 处理方法</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-举例说明"><span class="toc-number">3.</span> <span class="toc-text">3. 举例说明</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4-实践"><span class="toc-number">4.</span> <span class="toc-text">4. 实践</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#4-1-原始数组转稀疏数组"><span class="toc-number">4.1.</span> <span class="toc-text">4.1. 原始数组转稀疏数组</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-2-稀疏数组转原始数组"><span class="toc-number">4.2.</span> <span class="toc-text">4.2. 稀疏数组转原始数组</span></a></li></ol></li></ol>
                     </div>
                 </span>
             </div>
@@ -411,7 +419,7 @@ var _hmt = _hmt || [];
 
 
 
-<div id="SOHUCS" sid="install-php-fileinfo"></div> 
+<div id="SOHUCS" sid="golang-sparsearray"></div> 
 <script type="text/javascript"> 
 (function(){ 
 var appid = "cytWxLdY3"; 

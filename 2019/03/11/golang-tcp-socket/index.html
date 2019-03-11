@@ -6,20 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="https://www.guaosi.com">
-  <title>安装php扩展--Fileinfo | guaosi的博客</title>
+  <title>记一次golang网络编程开发聊天室有感 | guaosi的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="1. 起因&amp;#160; &amp;#160; &amp;#160; &amp;#160;在编译安装php或者lnmp安装的时候，可能由于服务器的配置不够(内存小于1G)，会将fileinfo扩展默认不安装，已保证php可以正常安装。可是有的时候我们又必须安装fileinfo扩展。">
-<meta name="keywords" content="php">
+  <meta name="description" content="1. 起因&amp;#160; &amp;#160; &amp;#160; &amp;#160;一直都是使用PHP的B/S开发(不知道swoole的socket算不算)，很想尝试一下C/S开发是什么感觉。于是乎，就做了一个聊天室，这是一个网络编程几乎必做的项目。">
+<meta name="keywords" content="golang,tcp,网络编程">
 <meta property="og:type" content="article">
-<meta property="og:title" content="安装php扩展--Fileinfo">
-<meta property="og:url" content="https://www.guaosi.com/2019/02/22/install-php-fileinfo/index.html">
+<meta property="og:title" content="记一次golang网络编程开发聊天室有感">
+<meta property="og:url" content="https://www.guaosi.com/2019/03/11/golang-tcp-socket/index.html">
 <meta property="og:site_name" content="guaosi的博客">
-<meta property="og:description" content="1. 起因&amp;#160; &amp;#160; &amp;#160; &amp;#160;在编译安装php或者lnmp安装的时候，可能由于服务器的配置不够(内存小于1G)，会将fileinfo扩展默认不安装，已保证php可以正常安装。可是有的时候我们又必须安装fileinfo扩展。">
+<meta property="og:description" content="1. 起因&amp;#160; &amp;#160; &amp;#160; &amp;#160;一直都是使用PHP的B/S开发(不知道swoole的socket算不算)，很想尝试一下C/S开发是什么感觉。于是乎，就做了一个聊天室，这是一个网络编程几乎必做的项目。">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-02-25T01:05:01.603Z">
+<meta property="og:updated_time" content="2019-03-11T07:19:08.354Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="安装php扩展--Fileinfo">
-<meta name="twitter:description" content="1. 起因&amp;#160; &amp;#160; &amp;#160; &amp;#160;在编译安装php或者lnmp安装的时候，可能由于服务器的配置不够(内存小于1G)，会将fileinfo扩展默认不安装，已保证php可以正常安装。可是有的时候我们又必须安装fileinfo扩展。">
+<meta name="twitter:title" content="记一次golang网络编程开发聊天室有感">
+<meta name="twitter:description" content="1. 起因&amp;#160; &amp;#160; &amp;#160; &amp;#160;一直都是使用PHP的B/S开发(不知道swoole的socket算不算)，很想尝试一下C/S开发是什么感觉。于是乎，就做了一个聊天室，这是一个网络编程几乎必做的项目。">
   
     <link rel="alternative" href="/atom.xml" title="guaosi的博客" type="application/atom+xml">
   
@@ -173,14 +173,14 @@ var _hmt = _hmt || [];
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-install-php-fileinfo" class="article article-type-post " itemscope="" itemprop="blogPost">
+            <article id="post-golang-tcp-socket" class="article article-type-post " itemscope="" itemprop="blogPost">
   <div class="article-inner">
     
     <header class="article-header">
       
   
     <h1 class="article-title" itemprop="name">
-      安装php扩展--Fileinfo
+      记一次golang网络编程开发聊天室有感
     </h1>
   
 
@@ -199,21 +199,25 @@ var _hmt = _hmt || [];
 
 
       
-      <a href="/2019/02/22/install-php-fileinfo/" class="archive-article-date">
-  	<time datetime="2019-02-22T01:32:35.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-02-22</time>
+      <a href="/2019/03/11/golang-tcp-socket/" class="archive-article-date">
+  	<time datetime="2019-03-11T06:47:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-11</time>
 </a>
       
     </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-      <h1 id="1-起因"><a href="#1-起因" class="headerlink" title="1. 起因"></a>1. 起因</h1><p>&#160; &#160; &#160; &#160;在编译安装php或者lnmp安装的时候，可能由于服务器的配置不够(内存小于1G)，会将fileinfo扩展默认不安装，已保证php可以正常安装。可是有的时候我们又必须安装fileinfo扩展。<br><a id="more"></a></p>
-<h1 id="2-解决"><a href="#2-解决" class="headerlink" title="2. 解决"></a>2. 解决</h1><h2 id="2-1-下载php的源码编译包"><a href="#2-1-下载php的源码编译包" class="headerlink" title="2.1. 下载php的源码编译包"></a>2.1. 下载php的源码编译包</h2><p>php源码包下载地址(下载与当前安装的php相同版本的源码包): <a href="http://www.php.net/downloads.php" target="_blank" rel="noopener">http://www.php.net/downloads.php</a><br>如果是lnmp安装的，则在<code>lnmp下载处/src/</code>下可以看到php的源码包。</p>
-<h2 id="2-2-安装fileinfo"><a href="#2-2-安装fileinfo" class="headerlink" title="2.2. 安装fileinfo"></a>2.2. 安装fileinfo</h2><p>以lnmp1.5安装位置为例,我安装的是php7.2.6版本<br><figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">tar xvf php-<span class="number">7.2</span>.<span class="number">6</span>.tar.bz2</span><br><span class="line">cd php-<span class="number">7.2</span>.<span class="number">6</span><span class="regexp">/ext/</span>fileinfo</span><br><span class="line">phpize</span><br><span class="line">.<span class="regexp">/configure --with-php-config=/u</span>sr<span class="regexp">/local/</span>php<span class="regexp">/bin/</span>php-config</span><br><span class="line">make &amp;&amp; make install</span><br></pre></td></tr></table></figure></p>
-<p>当<code>make &amp;&amp; make install</code>时报错提示内存不够时，可以参考<a href="https://www.guaosi.com/2019/02/21/linux-add-virtual-memory/">Linux虚拟内存设置</a>解决</p>
-<h2 id="2-3-开启fileinfo扩展"><a href="#2-3-开启fileinfo扩展" class="headerlink" title="2.3. 开启fileinfo扩展"></a>2.3. 开启fileinfo扩展</h2><p>以lnmp安装位置为例<br><figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim <span class="regexp">/usr/</span>local<span class="regexp">/php/</span>etc<span class="regexp">/php.ini</span></span><br></pre></td></tr></table></figure></p>
-<p>在最后一行加上<br><figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">[FileInfo]</span></span><br><span class="line"><span class="attr">extension</span> = fileinfo.so</span><br></pre></td></tr></table></figure></p>
-<p>保存退出后，重启php-fpm<br><figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">service php-fpm restart</span></span><br></pre></td></tr></table></figure></p>
+      <h1 id="1-起因"><a href="#1-起因" class="headerlink" title="1. 起因"></a>1. 起因</h1><p>&#160; &#160; &#160; &#160;一直都是使用PHP的<code>B/S</code>开发(不知道swoole的socket算不算)，很想尝试一下<code>C/S</code>开发是什么感觉。于是乎，就做了一个聊天室，这是一个网络编程几乎必做的项目。</p>
+<a id="more"></a>
+<h1 id="2-有感"><a href="#2-有感" class="headerlink" title="2. 有感"></a>2. 有感</h1><p>果然，<code>C/S</code>开发就是比<code>B/S</code>麻烦的多，因为<code>B/S</code>的协议都是已经定义好的，照着这个逻辑写就行。<code>C/S</code>需要自己来制定协议，比如发送数据包之前，应该先制作一个数据包，专门记录将要发送数据包的长度。先行发送这个记录长度的数据包，然后再发送真正的数据包。</p>
+<p>服务端也一样，先接收长度数据包后再接收真正的数据包，验证长度是否有误，是否有丢包。</p>
+<p>当然，这些在<code>B/S</code>里是完全不会让我们写的，因为这些底层已经全都封装好了，都不需要考虑丢包问题。</p>
+<p>这或许是一件好事，不会让人操心这个，因为这东西确实很繁琐。但是也可能是一件坏事，因为我们会少了一些底层知识认知。</p>
+<p>下面放一段用于读取数据与发送数据的代码</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> utils</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">"encoding/binary"</span></span><br><span class="line">	<span class="string">"encoding/json"</span></span><br><span class="line">	<span class="string">"fmt"</span></span><br><span class="line">	<span class="string">"go_code/chatroom1/common/message"</span></span><br><span class="line">	<span class="string">"io"</span></span><br><span class="line">	<span class="string">"net"</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">type Transfer struct &#123;</span><br><span class="line">	Conn net.Conn</span><br><span class="line">	buf  [<span class="number">8096</span>]byte</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//发送传入的message.Message</span></span><br><span class="line">func (<span class="keyword">this</span> *Transfer) WritePkg(mess *message.Message) (err error) &#123;</span><br><span class="line">	<span class="comment">//1.先计算传入的长度,并且发送长度包</span></span><br><span class="line"></span><br><span class="line">	<span class="comment">//1.1 json化</span></span><br><span class="line">	messByte, err := json.Marshal(*mess)</span><br><span class="line">	<span class="keyword">if</span> err != nil &#123;</span><br><span class="line">		fmt.Println(<span class="string">"json.Marshal fail error ="</span>, err)</span><br><span class="line">		<span class="keyword">return</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">//1.2 计算长度,转化为byte</span></span><br><span class="line">	<span class="comment">//因为是Uint32，表示4个字节。4个字节需要4个byte，一个字节8位，4个就是2的32次方</span></span><br><span class="line">	<span class="comment">//最大可以表示4G的数据长度</span></span><br><span class="line">	binary.BigEndian.PutUint32(<span class="keyword">this</span>.buf[:<span class="number">4</span>], uint32(len(messByte)))</span><br><span class="line">	<span class="comment">//1.4 发送长度</span></span><br><span class="line">	_, err = <span class="keyword">this</span>.Conn.Write(<span class="keyword">this</span>.buf[:<span class="number">4</span>])</span><br><span class="line">	<span class="keyword">if</span> err != nil &#123;</span><br><span class="line">		fmt.Println(<span class="string">"发送数据长度失败,error = "</span>, err)</span><br><span class="line">		<span class="keyword">return</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">//2.再发送真正的内容</span></span><br><span class="line">	_, err = <span class="keyword">this</span>.Conn.Write(messByte)</span><br><span class="line">	<span class="keyword">if</span> err != nil &#123;</span><br><span class="line">		fmt.Println(<span class="string">"发送内容失败,error = "</span>, err)</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//用于将接收包进行反json化</span></span><br><span class="line">func (<span class="keyword">this</span> *Transfer) ReadPkg() (mess message.Message, err error) &#123;</span><br><span class="line">	n, err := <span class="keyword">this</span>.Conn.Read(<span class="keyword">this</span>.buf[:<span class="number">4</span>])</span><br><span class="line">	<span class="keyword">if</span> err != nil || n != <span class="number">4</span> &#123;</span><br><span class="line">		<span class="keyword">if</span> err == io.EOF &#123;</span><br><span class="line">			fmt.Println(<span class="string">"客户端异常退出，关闭连接,error = "</span>, err)</span><br><span class="line">		&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">			fmt.Println(<span class="string">"读取数据错误,error = "</span>, err)</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">//将接收到的byte再转回数字</span></span><br><span class="line">	pkg_len := binary.BigEndian.Uint32(<span class="keyword">this</span>.buf[:<span class="number">4</span>])</span><br><span class="line">	n, err = <span class="keyword">this</span>.Conn.Read(<span class="keyword">this</span>.buf[:pkg_len])</span><br><span class="line">	<span class="keyword">if</span> err != nil || n != int(pkg_len) &#123;</span><br><span class="line">		<span class="keyword">if</span> err == io.EOF &#123;</span><br><span class="line">			fmt.Println(<span class="string">"客户端异常退出，关闭连接,error = "</span>, err)</span><br><span class="line">		&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">			fmt.Println(<span class="string">"读取数据错误,error = "</span>, err)</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span></span><br><span class="line">	&#125;</span><br><span class="line">	err = json.Unmarshal(<span class="keyword">this</span>.buf[:pkg_len], &amp;mess)</span><br><span class="line">	<span class="keyword">if</span> err != nil &#123;</span><br><span class="line">		fmt.Println(<span class="string">"json.Unmarshal error = "</span>, err)</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="3-项目"><a href="#3-项目" class="headerlink" title="3. 项目"></a>3. 项目</h1><p>专门详解项目里每个文件的具体作用，篇幅又是很长，还是直接体验结果吧(README.md 有相关功能介绍)。</p>
+<p>项目地址: </p>
+<p><a href="https://github.com/guaosi/golang_tcp_chatroom" target="_blank" rel="noopener">https://github.com/guaosi/golang_tcp_chatroom</a></p>
 
       
 
@@ -227,7 +231,7 @@ var _hmt = _hmt || [];
           
           <br>
           <strong>本文链接：</strong>
-          <a rel="license" href="https://www.guaosi.com/2019/02/22/install-php-fileinfo/">https://www.guaosi.com/2019/02/22/install-php-fileinfo/</a>
+          <a rel="license" href="https://www.guaosi.com/2019/03/11/golang-tcp-socket/">https://www.guaosi.com/2019/03/11/golang-tcp-socket/</a>
           <br>
           <strong>版权声明：</strong>
           本博客所有文章除特别声明外，均采用
@@ -287,7 +291,15 @@ var _hmt = _hmt || [];
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">php</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">golang</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">tcp</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">网络编程</a>
         		</li>
       		
 		</ul>
@@ -343,7 +355,7 @@ var _hmt = _hmt || [];
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACNElEQVR42u3aS27jMBAFQN//0hogqwAZy+81lcGIKq4Mh7FYWjT6w9crXsfX+vn5fM/3lT8l318vDAyM2zKO03XOON+ffP/z0Mn+v1AxMDAewMgDaBJSc9J6cMfAwMB4t6c9aB5GMTAwMK4KuLM0MUkQMTAwMFaK2HeMPE2cBdyLa3EMDIwbMlYGA7/9+R/NNzAwMP5jxlGuOl0rR5XHaGFgYOzNSFppSZJ3Xqy2Lbn8N4vDYWBg3JaRF5wzzHkIbkvlt99gYGA8hpEPLNujtFc0WjwGBsbejHygeP6Aq4aX+Ysomm4YGBhbMFpMniDm4Lx5N5zHYmBgbMHIL0bMStnZX9viFgMDYz9GMT2IQ94spM7GpRgYGM9hzBr37Ugywc+uZWBgYDyZkV/YarteeeF6QcDFwMDYmtEeOkkukzK43YOBgbE3Y+UobQHcttjyohcDA2NvxlWNs+JtxaRi2ICBgfEAxuzCVpImXjWw/PAsDAyMrRkrrfn2Klg7eJi1+TAwMPZjJP+WBMH1EWY7nKhnrRgYGDdntG36vFk2SzSX5hsYGBjbMVaKxiNY+VBhFnCjBBEDA+PmjKNcs6HmylDhXcDFwMB4DqMNdrM2WfKbyUHb6x0YGBg7MZIg+xvjzDZ8F5kjBgbGpoxZkD0/7uvS9eEpGBgYGJdemJj95ofXhIGBgVFe+WrHCevJKwYGxhMYSRGbfN/ubBPB6LIFBgbGdoz1AvLaF5E05oYYDAyM+zH+AIyt8C78V3d0AAAAAElFTkSuQmCC" alt="微信分享二维码">
+      <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACG0lEQVR42u3aMW7EMAwEwPz/05c2zV12RSWApVEVBLaO44IQKX59xev1Y/38T/78u2fat0YLAwPjsYzXx/XumRyThJj/7tt9MDAwLmAkQXxOlMmTu9I6BgYGRh56/pOfk2/7ITAwMDDa7fKDY1vcYmBgYLRFbHs0/Fyg5ofLzbU4BgbGAxl5efn/f//J/QYGBsajGK9ytReW7Q6LUWFgYBzNyBNcEuhkt/kOGBgYNzDWSta2GF4byIhiwMDAOJQxaWPlQeettLU2HAYGxp2MXYOnu8YyfknWGBgYRzMmQxVtayxJspNIMDAw7mG0jbb5sFeSmqMUjIGBcTQjgbUXnHmqXdsnImFgYBzBaJPppGRt23n5Z8XAwLiHsatltjYoll9b/jJmgYGBcRxj8lreeouSZplwR6daDAyMRzHWmln5eERSBueRRMMWGBgYhzLywa82cbcl6+LzGBgYFzDycNtSs70EzRN60W7DwMB4OCNJkWuXkW1Ak0+AgYFxDyOfzpiMauXTH3kkGBgY9zDa7eqmWNyMa5t3GBgY9zDmV4l5GbzrQgIDA+MGxqtc7aFtLej6LQwMjKMZ7WXh2lBpewGwVkhjYGCczZgk2RzfXpTW3xsDA+MCRp4od6XU+dUCBgYGRt7QXztWzg+OGBgYGLsGTOf1dDKUhoGBcQMj+fldQ2N5+l4ctsDAwDiOMSodxyMXkySLgYFxAeMb2px+TG61zEgAAAAASUVORK5CYII=" alt="微信分享二维码">
     </div>
 </div>
 
@@ -357,18 +369,9 @@ var _hmt = _hmt || [];
 
 <nav id="article-nav">
   
-    <a href="/2019/02/22/onedrive-olyindex-oneindex-aria-ariang/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          oneDrive+olaIndex/oneIndex+aria2+ariaNg 制作个人大容量网盘，支持离线下载
-        
-      </div>
-    </a>
   
-  
-    <a href="/2019/02/21/linux-add-virtual-memory/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Linux虚拟内存设置</div>
+    <a href="/2019/03/11/golang-sparsearray/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">golang算法与数据结构：稀疏数组(sparsearray)</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -395,7 +398,7 @@ var _hmt = _hmt || [];
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-起因"><span class="toc-number">1.</span> <span class="toc-text">1. 起因</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-解决"><span class="toc-number">2.</span> <span class="toc-text">2. 解决</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#2-1-下载php的源码编译包"><span class="toc-number">2.1.</span> <span class="toc-text">2.1. 下载php的源码编译包</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-2-安装fileinfo"><span class="toc-number">2.2.</span> <span class="toc-text">2.2. 安装fileinfo</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-3-开启fileinfo扩展"><span class="toc-number">2.3.</span> <span class="toc-text">2.3. 开启fileinfo扩展</span></a></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-起因"><span class="toc-number">1.</span> <span class="toc-text">1. 起因</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-有感"><span class="toc-number">2.</span> <span class="toc-text">2. 有感</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-项目"><span class="toc-number">3.</span> <span class="toc-text">3. 项目</span></a></li></ol>
                     </div>
                 </span>
             </div>
@@ -411,7 +414,7 @@ var _hmt = _hmt || [];
 
 
 
-<div id="SOHUCS" sid="install-php-fileinfo"></div> 
+<div id="SOHUCS" sid="golang-tcp-socket"></div> 
 <script type="text/javascript"> 
 (function(){ 
 var appid = "cytWxLdY3"; 
