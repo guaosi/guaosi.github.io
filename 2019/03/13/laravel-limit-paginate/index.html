@@ -6,20 +6,24 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="https://www.guaosi.com">
-  <title>相册 | guaosi的博客</title>
+  <title>Laravel的限制条数再分页 | guaosi的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="相片 	视频  指弹_女儿情         指弹_友谊地久天长         指弹_Always with me">
-<meta name="keywords" content="guaosi,guaosi的博客,后端,PHP,Linux,golang,python,开发者,程序猿,程序媛,极客,编程,代码,开源,IT网站,docker">
-<meta property="og:type" content="website">
-<meta property="og:title" content="相册">
-<meta property="og:url" content="https://www.guaosi.com/photos/videos.html">
+  <meta name="description" content="需求&amp;#160; &amp;#160; &amp;#160; &amp;#160; 有这么一个需求，我想取出一个表(比如user表)中，按照某一排序规则(比如按照时间倒叙)，取出前100条，进行分页，每页10条。应该如何实现？自然而然可能会这样写下: 1$users = User::orderBy(&apos;id&apos;,&apos;desc&apos;)-&amp;gt;limit(100)-&amp;gt;paginate(10) 最后打印结果可以发现，limit并">
+<meta name="keywords" content="PHP,Laravel">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Laravel的限制条数再分页">
+<meta property="og:url" content="https://www.guaosi.com/2019/03/13/laravel-limit-paginate/index.html">
 <meta property="og:site_name" content="guaosi的博客">
-<meta property="og:description" content="相片 	视频  指弹_女儿情         指弹_友谊地久天长         指弹_Always with me">
+<meta property="og:description" content="需求&amp;#160; &amp;#160; &amp;#160; &amp;#160; 有这么一个需求，我想取出一个表(比如user表)中，按照某一排序规则(比如按照时间倒叙)，取出前100条，进行分页，每页10条。应该如何实现？自然而然可能会这样写下: 1$users = User::orderBy(&apos;id&apos;,&apos;desc&apos;)-&amp;gt;limit(100)-&amp;gt;paginate(10) 最后打印结果可以发现，limit并">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-11-30T08:04:00.000Z">
+<meta property="og:image" content="https://www.guaosi.com/assets/blogImg/laravel-limit-paginate/users-data.png">
+<meta property="og:image" content="https://www.guaosi.com/assets/blogImg/laravel-limit-paginate/array_paginate.png">
+<meta property="og:image" content="https://www.guaosi.com/assets/blogImg/laravel-limit-paginate/object_paginate.png">
+<meta property="og:updated_time" content="2019-03-13T06:32:11.020Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="相册">
-<meta name="twitter:description" content="相片 	视频  指弹_女儿情         指弹_友谊地久天长         指弹_Always with me">
+<meta name="twitter:title" content="Laravel的限制条数再分页">
+<meta name="twitter:description" content="需求&amp;#160; &amp;#160; &amp;#160; &amp;#160; 有这么一个需求，我想取出一个表(比如user表)中，按照某一排序规则(比如按照时间倒叙)，取出前100条，进行分页，每页10条。应该如何实现？自然而然可能会这样写下: 1$users = User::orderBy(&apos;id&apos;,&apos;desc&apos;)-&amp;gt;limit(100)-&amp;gt;paginate(10) 最后打印结果可以发现，limit并">
+<meta name="twitter:image" content="https://www.guaosi.com/assets/blogImg/laravel-limit-paginate/users-data.png">
   
     <link rel="alternative" href="/atom.xml" title="guaosi的博客" type="application/atom+xml">
   
@@ -169,14 +173,14 @@ var _hmt = _hmt || [];
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-photos" class="article article-type-post " itemscope="" itemprop="blogPost">
+            <article id="post-laravel-limit-paginate" class="article article-type-post " itemscope="" itemprop="blogPost">
   <div class="article-inner">
     
     <header class="article-header">
       
   
     <h1 class="article-title" itemprop="name">
-      相册
+      Laravel的限制条数再分页
     </h1>
   
 
@@ -195,41 +199,50 @@ var _hmt = _hmt || [];
 
 
       
+      <a href="/2019/03/13/laravel-limit-paginate/" class="archive-article-date">
+  	<time datetime="2019-03-13T05:00:27.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-13</time>
+</a>
+      
     </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-      <link rel="stylesheet" href="./ins.css">
-<div class="photos-btn-wrap">
-	<a class="photos-btn" href="/photos">相片</a>
-	<a class="photos-btn active" href="/photos/videos.html">视频</a>
-</div>
-<center><h1>指弹_女儿情</h1></center>
-<hr>
-<center>
-<div class="video-container">
-<iframe height="80%" width="80%" src="http://player.youku.com/embed/XMjUzMzY4OTM3Ng==" frameborder="0" allowfullscreen>
-</iframe>
-</div>
-</center>
-<hr>
-<center><h1>指弹_友谊地久天长</h1></center>
-<hr>
-<center>
-<div class="video-container">
-<iframe height="80%" width="80%" src="http://player.youku.com/embed/XMjQ5MDExOTY2MA==" frameborder="0" allowfullscreen>
-</iframe>
-</div>
-</center>
-<hr>
-<center><h1>指弹_Always with me</h1></center>
-<hr>
-<center>
-<div class="video-container">
-<iframe height="80%" width="80%" src="http://player.youku.com/embed/XMjQ4MDQyNTQ0MA==" frameborder="0" allowfullscreen>
-</iframe>
-</div>
-</center>
+      <h1 id="需求"><a href="#需求" class="headerlink" title="需求"></a>需求</h1><p>&#160; &#160; &#160; &#160; 有这么一个需求，我想取出一个表(比如<code>user</code>表)中，按照某一排序规则(比如按照时间倒叙)，取出前<code>100</code>条，进行分页，每页<code>10</code>条。应该如何实现？自然而然可能会这样写下:</p>
+<figure class="highlight livescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$users = User::orderBy<span class="function"><span class="params">(<span class="string">'id'</span>,<span class="string">'desc'</span>)</span>-&gt;</span>limit<span class="function"><span class="params">(<span class="number">100</span>)</span>-&gt;</span>paginate(<span class="number">10</span>)</span><br></pre></td></tr></table></figure>
+<p>最后打印结果可以发现，<code>limit</code>并未生效，依旧是将所有结果进行分页。</p>
+<a id="more"></a>
+<h1 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h1><p>&#160; &#160; &#160; &#160; 本文中用到的<code>user</code>模型，数据，控制器，路由之类的都已经在另一篇文章 <a href="https://www.guaosi.com/2019/02/26/laravel-api-initialization-preparation/">手摸手教你让Laravel开发Api更得心应手</a> 创建好了。</p>
+<p><code>users</code>表中的数据</p>
+<p><img src="/assets/blogImg/laravel-limit-paginate/users-data.png" alt="users-data"></p>
+<h1 id="限制条数再分页"><a href="#限制条数再分页" class="headerlink" title="限制条数再分页"></a>限制条数再分页</h1><p>继续通过<code>paginate</code>方法来分页以及行不通了。确幸<code>Laravel</code>框架给我们提供了自定义分页类，我们通过使用自定义分页类来达到我们限制条数再分页的需求。</p>
+<p>下面我们分别讲解<code>数组手动分页</code>以及<code>模型对象手动分页</code></p>
+<h2 id="需求-1"><a href="#需求-1" class="headerlink" title="需求"></a>需求</h2><p>通过<code>id</code>来倒叙排序，并且取出前6条来分页，每页2条数据</p>
+<h2 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h2><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">index1</span><span class="params">(Request $request)</span></span>&#123;</span><br><span class="line">    <span class="comment">//将对象结果集转为数组结果集</span></span><br><span class="line">    $data = User::orderBy(<span class="string">'id'</span>,<span class="string">'desc'</span>)-&gt;limit(<span class="number">6</span>)-&gt;get()-&gt;toArray();</span><br><span class="line">    <span class="comment">//传入页数，默认值为1</span></span><br><span class="line">    $page = $request-&gt;page ?? <span class="number">1</span>;</span><br><span class="line">    <span class="comment">//每页的条数</span></span><br><span class="line">    $perPage = <span class="number">2</span>;</span><br><span class="line">    <span class="comment">//计算每页分页的初始位置</span></span><br><span class="line">    $offset = ($page * $perPage) - $perPage;</span><br><span class="line">    <span class="comment">//实例化LengthAwarePaginator类，并传入对应的参数</span></span><br><span class="line">    $data = <span class="keyword">new</span> LengthAwarePaginator(array_slice($data, $offset, $perPage, <span class="keyword">true</span>), count($data), $perPage,$page, [<span class="string">'path'</span> =&gt; $request-&gt;url(), <span class="string">'query'</span> =&gt; $request-&gt;query()]);</span><br><span class="line">    <span class="keyword">return</span> $data;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h3><p>符合我们的需求</p>
+<p><img src="/assets/blogImg/laravel-limit-paginate/array_paginate.png" alt="array_paginate"></p>
+<h3 id="适用"><a href="#适用" class="headerlink" title="适用"></a>适用</h3><p>比较适用于自建的数组想进行分页。</p>
+<p>因为一开始就被转换为数组了，所以想要用模型中的方法是不可能了。</p>
+<h3 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h3><p>1.无法使用对应模型里的方法。</p>
+<p>2.内置的Api资源无法正常使用。</p>
+<p>当我们的<code>UserResource.php</code>里的内容为这样时:</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">UserResource</span> <span class="keyword">extends</span> <span class="title">JsonResource</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">toArray</span><span class="params">($request)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> [</span><br><span class="line">            <span class="string">'id'</span>=&gt;<span class="keyword">$this</span>-&gt;id,</span><br><span class="line">            <span class="string">'name'</span> =&gt; <span class="keyword">$this</span>-&gt;name,</span><br><span class="line">            <span class="string">'status'</span> =&gt; UserEnum::getStatusName(<span class="keyword">$this</span>-&gt;status),</span><br><span class="line">            <span class="string">'created_at'</span>=&gt;(string)<span class="keyword">$this</span>-&gt;created_at,</span><br><span class="line">            <span class="string">'updated_at'</span>=&gt;(string)<span class="keyword">$this</span>-&gt;updated_at</span><br><span class="line">        ];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>此时在控制器中使用Api资源来返回结果<br><figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">return</span> UserResource::collection(<span class="variable">$data</span>);</span><br></pre></td></tr></table></figure></p>
+<p>报错，提示<code>Trying to get property &#39;id&#39; of non-object</code>。这是由于我们传入到内置分页类中的是数组而不是一开始的对象形式，所以提示找不到这个属性。我们只需要进行一些稍微的修改。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">toArray</span><span class="params">($request)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> [</span><br><span class="line">        <span class="string">'id'</span>=&gt;<span class="keyword">$this</span>-&gt;resource[<span class="string">'id'</span>],</span><br><span class="line">        <span class="string">'name'</span> =&gt; <span class="keyword">$this</span>-&gt;resource[<span class="string">'name'</span>],</span><br><span class="line">        <span class="string">'status'</span> =&gt; UserEnum::getStatusName(<span class="keyword">$this</span>-&gt;resource[<span class="string">'status'</span>]),</span><br><span class="line">        <span class="string">'created_at'</span>=&gt;(string)<span class="keyword">$this</span>-&gt;resource[<span class="string">'created_at'</span>],</span><br><span class="line">        <span class="string">'updated_at'</span>=&gt;(string)<span class="keyword">$this</span>-&gt;resource[<span class="string">'updated_at'</span>]</span><br><span class="line">    ];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>此时返回结果正常，但是不会报错。但是还是有很多问题，比如，无法使用<code>数据包裹</code>,<code>条件关联</code>等等。因为传入的分页是数组而不是对象导致的。</p>
+<p>所以说，数组来进行分页，只适用于自己构建的数据数组。</p>
+<h2 id="对象"><a href="#对象" class="headerlink" title="对象"></a>对象</h2><p>接着解决上面的痛点，一开始我们就将对象结果集转为了数组结果集（百度上千篇一律都是转成了数组结果集），所以让导致模型方法以及Api资源都不能很好地使用。</p>
+<p>现在我们不转换为数组，直接用对象结果集来进行自定义分页。</p>
+<p>先来看一个函数</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="title">array_slice</span><span class="params">()</span></span></span><br></pre></td></tr></table></figure>
+<p>这是上面数组能进行分页的关键，可以指定从第几个元素开始，显示几个元素。</p>
+<p>那对象结果集是否有类似的方法可以调用？这样我们就可以做出对象结果集的分页了。答案是有的。<a href="https://learnku.com/docs/laravel/5.7/collections/2279#941767" target="_blank" rel="noopener">文档中</a>的集合方法<code>slice()</code>拥有一样的功能。</p>
+<h3 id="代码-1"><a href="#代码-1" class="headerlink" title="代码"></a>代码</h3><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">index</span><span class="params">(Request $request)</span></span>&#123;</span><br><span class="line">    $data = User::orderBy(<span class="string">'id'</span>,<span class="string">'desc'</span>)-&gt;limit(<span class="number">6</span>)-&gt;get();</span><br><span class="line">    <span class="comment">//传入页数，默认值为1</span></span><br><span class="line">    $page = $request-&gt;page ?? <span class="number">1</span>;</span><br><span class="line">    <span class="comment">//每页的条数</span></span><br><span class="line">    $perPage = <span class="number">2</span>;</span><br><span class="line">    <span class="comment">//计算每页分页的初始位置</span></span><br><span class="line">    $offset = ($page * $perPage) - $perPage;</span><br><span class="line">    <span class="comment">//实例化LengthAwarePaginator类，并传入对应的参数</span></span><br><span class="line">    $data = <span class="keyword">new</span> LengthAwarePaginator($data-&gt;slice($offset,$perPage), count($data), $perPage,$page, [<span class="string">'path'</span> =&gt; $request-&gt;url(), <span class="string">'query'</span> =&gt; $request-&gt;query()]);</span><br><span class="line">    <span class="keyword">return</span> UserResource::collection($data);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>此时<code>UserResource.php</code>文件中的内容为<br><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">UserResource</span> <span class="keyword">extends</span> <span class="title">JsonResource</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">toArray</span><span class="params">($request)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> [</span><br><span class="line">            <span class="string">'id'</span>=&gt;<span class="keyword">$this</span>-&gt;id,</span><br><span class="line">            <span class="string">'name'</span> =&gt; <span class="keyword">$this</span>-&gt;name,</span><br><span class="line">            <span class="string">'status'</span> =&gt; UserEnum::getStatusName(<span class="keyword">$this</span>-&gt;status),</span><br><span class="line">            <span class="string">'created_at'</span>=&gt;(string)<span class="keyword">$this</span>-&gt;created_at,</span><br><span class="line">            <span class="string">'updated_at'</span>=&gt;(string)<span class="keyword">$this</span>-&gt;updated_at</span><br><span class="line">        ];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="测试-1"><a href="#测试-1" class="headerlink" title="测试"></a>测试</h3><p>没有任何错误，符合我们的要求</p>
+<p><img src="/assets/blogImg/laravel-limit-paginate/object_paginate.png" alt="object_paginate"></p>
+<h3 id="适用-1"><a href="#适用-1" class="headerlink" title="适用"></a>适用</h3><p>非自建数组，想使用模型的方法或者使用Api资源。</p>
+
       
 
       
@@ -242,7 +255,7 @@ var _hmt = _hmt || [];
           
           <br>
           <strong>本文链接：</strong>
-          <a rel="license" href="https://www.guaosi.com/photos/videos.html">https://www.guaosi.com/photos/videos.html</a>
+          <a rel="license" href="https://www.guaosi.com/2019/03/13/laravel-limit-paginate/">https://www.guaosi.com/2019/03/13/laravel-limit-paginate/</a>
           <br>
           <strong>版权声明：</strong>
           本博客所有文章除特别声明外，均采用
@@ -297,6 +310,21 @@ var _hmt = _hmt || [];
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">PHP</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Laravel</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
@@ -347,7 +375,7 @@ var _hmt = _hmt || [];
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAK4AAACuCAAAAACKZ2kyAAAByUlEQVR42u3aO27DMBAFQN//0kqbIpTfI0XaCIaVIQvUSMViP3y94nUN1u9/R3fe7/basXBxcZe51+3K78mfkrzkcH9cXNyD3NEDRveMriQr2X94HRcX94u5yQ73u+Hi4v4/bpKs3Jc6uLi438/N05G8vElebGOthouLu8DNmxr7fm/p7+Li4k5xr3LlJU2evhRPx8XFPcKdS1/a5mlSIBVpEy4u7ke5eTEzVyzNfRpcXNyT3Pb4RT5QmWuFvElxcHFxt3GTALRy9CpPgKIGCi4u7kFuHqrW26xt8+WPQIaLi7uZ25Y0K4ctVlKf+kvg4uIucJNSJ0992gZK/pTh5AcXF3cDNwlG7dZtUdSOYXBxcXdz37QhphKglSSmrtVwcXE3cFeKnzY9ykew0Z24uLibuXPHLPJWyMNNFlxc3IPcfIu5QxvJaxe1Gi4u7kFuG5LaYNeOZotcDBcX9yHuVa62NFopsXBxcT/FbY9YPdvgSPaZfBlcXNxlbjtSnStdkvIpKpBwcXEPcldGpPnANYmgRa2Gi4v7Zdx2pFo3RnFxcf8F99lwNhTi4uIe5D41JmkDWfuBcHFxz3DnBp9zhzbmCiFcXNyD3B8Zl3Gw+lInXQAAAABJRU5ErkJggg==" alt="微信分享二维码">
+      <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACMUlEQVR42u3awXKCUAwFUP//p+22nQ56k2A7hMPKQZB3WMS8JI9HfDy/HUfnv397dP3ve5OnnHZgYGBclvF8eRw9IL8rWWLy3KNrMDAw7sN4HRCPPufhuBfWk7VhYGBg5EtPAm7vSgwMDIwJI/mdJMj+c8DFwMC4CCPfjuZhN9p8/v1eHAMD44KMXlj8m88f6W9gYGBcivEsHvOWwOvCXHNVGBgYqxl5gMtTxnzMorBBTX4BAwNjNaO30Gq4rG6Am6U9DAyMdYzqEFhvkOKsQY3DFWJgYKxmzMNf/gombYZm6Q0DA2MFIymlTc4n1fvqNvVN1RADA2MdYzI8Ud0A94poHwzBGBgYF2EkaV/v214ArSaLP/43MDAwljKSZCvf1uaJ47ypediJxcDAuAEjv7mXDlZhhXsxMDCWMp7FY/LI+RBYtPfFwMBYxzi3J1h9WdXmZfW5GBgYmxhnFfonyEkjAQMDYzcj375Wk7bkFeRlvvLMCAYGxiLGJI2rtg0moxWj3BYDA2MFY1IUm4TR6vjXmzMYGBg3YFR/Oi/AVcc1ei8RAwPjDoxq+KuW9avDFuV7MTAwljJ6wxZ5c7HX+Myfi4GBcQfGWTE7b21W+6vVFBMDA2MroxpkJ4lgb4ys+aYxMDDWMXqBr5fMTdK+N3kuBgYGRitN7C2xTMXAwMCIh73mAxnJCg83sRgYGKsZ1VJ+Ph4xGbbIk0sMDIzdjNHW8aRhi+pgWbOpiYGBcT3GF0s2k2Ggg0o3AAAAAElFTkSuQmCC" alt="微信分享二维码">
     </div>
 </div>
 
@@ -358,6 +386,16 @@ var _hmt = _hmt || [];
   </div>
 </article>
 
+
+<nav id="article-nav">
+  
+  
+    <a href="/2019/03/12/golang-circle-queue/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">golang算法与数据结构：环形队列(queue)</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
 
 
 <aside class="wrap-side-operation">
@@ -373,6 +411,19 @@ var _hmt = _hmt || [];
         </div>
         
         
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#需求"><span class="toc-number">1.</span> <span class="toc-text">需求</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#准备"><span class="toc-number">2.</span> <span class="toc-text">准备</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#限制条数再分页"><span class="toc-number">3.</span> <span class="toc-text">限制条数再分页</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#需求-1"><span class="toc-number">3.1.</span> <span class="toc-text">需求</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#数组"><span class="toc-number">3.2.</span> <span class="toc-text">数组</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#代码"><span class="toc-number">3.2.1.</span> <span class="toc-text">代码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#测试"><span class="toc-number">3.2.2.</span> <span class="toc-text">测试</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#适用"><span class="toc-number">3.2.3.</span> <span class="toc-text">适用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#缺点"><span class="toc-number">3.2.4.</span> <span class="toc-text">缺点</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#对象"><span class="toc-number">3.3.</span> <span class="toc-text">对象</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#代码-1"><span class="toc-number">3.3.1.</span> <span class="toc-text">代码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#测试-1"><span class="toc-number">3.3.2.</span> <span class="toc-text">测试</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#适用-1"><span class="toc-number">3.3.3.</span> <span class="toc-text">适用</span></a></li></ol></li></ol></li></ol>
+                    </div>
+                </span>
+            </div>
+        </div>
+        
     </div>
 </aside>
 
@@ -383,7 +434,7 @@ var _hmt = _hmt || [];
 
 
 
-<div id="SOHUCS" sid="photos"></div> 
+<div id="SOHUCS" sid="laravel-limit-paginate"></div> 
 <script type="text/javascript"> 
 (function(){ 
 var appid = "cytWxLdY3"; 
@@ -423,7 +474,7 @@ window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="tex
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
