@@ -6,19 +6,24 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="https://www.guaosi.com">
-  <title>guaosi的博客</title>
+  <title>golang算法与数据结构：排序(sort) | guaosi的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="guaosi,guaosi的博客,后端,PHP,Linux,golang,python,开发者,程序猿,程序媛,极客,编程,代码,开源,IT网站,docker">
-<meta name="keywords" content="guaosi,guaosi的博客,后端,PHP,Linux,golang,python,开发者,程序猿,程序媛,极客,编程,代码,开源,IT网站,docker">
-<meta property="og:type" content="website">
-<meta property="og:title" content="guaosi的博客">
-<meta property="og:url" content="https://www.guaosi.com/page/2/index.html">
+  <meta name="description" content="1. 介绍排序是将一组数据，依指定的顺序进行排列的过程, 常见的排序:1)冒泡排序2)选择排序3)插入排序4)快速排序">
+<meta name="keywords" content="golang,算法,数据结构">
+<meta property="og:type" content="article">
+<meta property="og:title" content="golang算法与数据结构：排序(sort)">
+<meta property="og:url" content="https://www.guaosi.com/2019/03/15/golang-sort/index.html">
 <meta property="og:site_name" content="guaosi的博客">
-<meta property="og:description" content="guaosi,guaosi的博客,后端,PHP,Linux,golang,python,开发者,程序猿,程序媛,极客,编程,代码,开源,IT网站,docker">
+<meta property="og:description" content="1. 介绍排序是将一组数据，依指定的顺序进行排列的过程, 常见的排序:1)冒泡排序2)选择排序3)插入排序4)快速排序">
 <meta property="og:locale" content="default">
+<meta property="og:image" content="https://www.guaosi.com/assets/blogImg/data-structures-and-algorithms/sort/selectsort.png">
+<meta property="og:image" content="https://www.guaosi.com/assets/blogImg/data-structures-and-algorithms/sort/insertsort.png">
+<meta property="og:image" content="https://www.guaosi.com/assets/blogImg/data-structures-and-algorithms/sort/quicksort.png">
+<meta property="og:updated_time" content="2019-03-15T06:13:25.520Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="guaosi的博客">
-<meta name="twitter:description" content="guaosi,guaosi的博客,后端,PHP,Linux,golang,python,开发者,程序猿,程序媛,极客,编程,代码,开源,IT网站,docker">
+<meta name="twitter:title" content="golang算法与数据结构：排序(sort)">
+<meta name="twitter:description" content="1. 介绍排序是将一组数据，依指定的顺序进行排列的过程, 常见的排序:1)冒泡排序2)选择排序3)插入排序4)快速排序">
+<meta name="twitter:image" content="https://www.guaosi.com/assets/blogImg/data-structures-and-algorithms/sort/selectsort.png">
   
     <link rel="alternative" href="/atom.xml" title="guaosi的博客" type="application/atom+xml">
   
@@ -168,16 +173,14 @@ var _hmt = _hmt || [];
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-    <article id="post-automatically-cancel-the-order" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
+            <article id="post-golang-sort" class="article article-type-post " itemscope="" itemprop="blogPost">
   <div class="article-inner">
     
     <header class="article-header">
       
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/02/25/automatically-cancel-the-order/">指定时间自动取消订单</a>
+    <h1 class="article-title" itemprop="name">
+      golang算法与数据结构：排序(sort)
     </h1>
   
 
@@ -185,35 +188,105 @@ var _hmt = _hmt || [];
 
       <br>
       
+      <a class="cloud-tie-join-count" href="javascript:void(0);" style="color:gray;font-size:14px;">
+        <span class="icon-sort"></span>
+        <span id="busuanzi_container_page_pv" style="color:#ef7522;font-size:14px;">
+          阅读数: <span id="busuanzi_value_page_pv"></span>次 &nbsp;&nbsp;
+        </span>
+      </a>
+      
 
 
 
       
-      <a href="/2019/02/25/automatically-cancel-the-order/" class="archive-article-date">
-  	<time datetime="2019-02-25T05:26:22.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-02-25</time>
+      <a href="/2019/03/15/golang-sort/" class="archive-article-date">
+  	<time datetime="2019-03-15T06:02:31.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-15</time>
 </a>
       
     </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-      <h1 id="1-起因"><a href="#1-起因" class="headerlink" title="1. 起因"></a>1. 起因</h1><p>&#160; &#160; &#160; &#160;在电商网站或者外卖网站，通常都有会一种需求。当一个用户下单后没有支付，此时库存量已经减少，需要取消订单才能回复库存量。取消订单有2种方式:<code>1.用户手动取消</code>,<code>2.系统在指定时间过后，比如淘宝的30分钟，自动取消</code>。<br>&#160; &#160; &#160; &#160;那么，应该如何来实现系统在指定时间过后,自动取消订单?<br>
-      
-      <a class="article-more-a" href="/2019/02/25/automatically-cancel-the-order/#more">
-        more >></a>
-      
+      <h1 id="1-介绍"><a href="#1-介绍" class="headerlink" title="1. 介绍"></a>1. 介绍</h1><p>排序是将一组数据，依指定的顺序进行排列的过程, 常见的排序:<br>1)冒泡排序<br>2)选择排序<br>3)插入排序<br>4)快速排序</p>
+<a id="more"></a>
+<h1 id="2-冒泡排序"><a href="#2-冒泡排序" class="headerlink" title="2. 冒泡排序"></a>2. 冒泡排序</h1><h2 id="2-1-思想"><a href="#2-1-思想" class="headerlink" title="2.1. 思想"></a>2.1. 思想</h2><p>通过对待排序序列从后向前(从下标较大的元素开始) ,依次比较相邻元素的排序码，若发现逆序则交换，使排序码较小的元素逐渐从后部移向前部(从下标较大的单元移向下标较小的单元)，就象水底下的气泡一样逐渐向上冒。</p>
+<p>因为排序的过程中，各元素不断接近自己的位置，如果一趟比较下来没有进行过交换，就说明序列有序，因此要在排序过程中设置一个标志flag判断元素是否进行过交换。 从而减少不必要的比较。</p>
+<h2 id="2-2-实现"><a href="#2-2-实现" class="headerlink" title="2.2. 实现"></a>2.2. 实现</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">"fmt"</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">bubbleSort</span><span class="params">(arr *[6]<span class="keyword">int</span>)</span></span> &#123;</span><br><span class="line">	<span class="keyword">for</span> i := <span class="number">0</span>; i &lt; <span class="built_in">len</span>(arr)<span class="number">-1</span>; i++ &#123;</span><br><span class="line">		<span class="keyword">for</span> j := <span class="number">0</span>; j &lt; <span class="built_in">len</span>(arr)-i<span class="number">-1</span>; j++ &#123;</span><br><span class="line">			<span class="keyword">if</span> arr[j] &lt; arr[j+<span class="number">1</span>] &#123;</span><br><span class="line">				arr[j], arr[j+<span class="number">1</span>] = arr[j+<span class="number">1</span>], arr[j]</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	<span class="keyword">var</span> arr = [<span class="number">6</span>]<span class="keyword">int</span>&#123;<span class="number">6</span>, <span class="number">5</span>, <span class="number">9</span>, <span class="number">3</span>, <span class="number">1</span>, <span class="number">3</span>&#125;</span><br><span class="line">	bubbleSort(&amp;arr)</span><br><span class="line">	fmt.Println(arr)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="3-选择排序"><a href="#3-选择排序" class="headerlink" title="3. 选择排序"></a>3. 选择排序</h1><p>选择式排序也属于内部排序法，是从欲排序的数据中，按指定的规则选出某一元素，经过和其他元素重整，再依原则交换位置后达到排序的目的。</p>
+<h2 id="3-1-思想"><a href="#3-1-思想" class="headerlink" title="3.1. 思想"></a>3.1. 思想</h2><p>选择排序(select sorting)也是一种简单的排序方法。</p>
+<p>它的基本思想是:第一次从 R[0]~R[n-1]中选 取最小值，与R[0]交换，第二次从 R[1]~R[n-1]中选取最小值，与R[1]交换，第三次从 R[2]~R[n-1]中选取最小值，与R[2]交换，…，第 i 次从 R[i-1]~R[n-1]中选取最小值，与 R[i-1]交换，…, 第 n-1 次从 R[n-2]~R[n-1]中选取最小值，与 R[n-2]交换，总共通过 n-1 次，得到一个按排序码从小到大排列的有序序列。</p>
+<h2 id="3-2-分析"><a href="#3-2-分析" class="headerlink" title="3.2. 分析"></a>3.2. 分析</h2><p><img src="/assets/blogImg/data-structures-and-algorithms/sort/selectsort.png" alt="selectsort"></p>
+<h2 id="3-3-实现"><a href="#3-3-实现" class="headerlink" title="3.3. 实现"></a>3.3. 实现</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">"fmt"</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">selectSort</span><span class="params">(arr *[6]<span class="keyword">int</span>)</span></span> &#123;</span><br><span class="line">	<span class="keyword">for</span> i := <span class="number">0</span>; i &lt; <span class="built_in">len</span>(arr)<span class="number">-1</span>; i++ &#123;</span><br><span class="line">		maxIndex := i + <span class="number">1</span></span><br><span class="line">		<span class="keyword">for</span> j := i + <span class="number">1</span>; j &lt; <span class="built_in">len</span>(arr); j++ &#123;</span><br><span class="line">			<span class="comment">//找到最大的下标</span></span><br><span class="line">			<span class="keyword">if</span> arr[maxIndex] &lt; arr[j] &#123;</span><br><span class="line">				maxIndex = j</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span> arr[i] &lt; arr[maxIndex] &#123;</span><br><span class="line">			arr[i], arr[maxIndex] = arr[maxIndex], arr[i]</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	<span class="keyword">var</span> arr = [<span class="number">6</span>]<span class="keyword">int</span>&#123;<span class="number">6</span>, <span class="number">5</span>, <span class="number">9</span>, <span class="number">3</span>, <span class="number">1</span>, <span class="number">3</span>&#125;</span><br><span class="line">	selectSort(&amp;arr)</span><br><span class="line">	fmt.Println(arr)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="4-插入排序"><a href="#4-插入排序" class="headerlink" title="4. 插入排序"></a>4. 插入排序</h1><p>插入式排序属于内部排序法，是对于欲排序的元素以插入的方式找寻该元素的适当位置，以达到排序的目的。</p>
+<h2 id="4-1-思想"><a href="#4-1-思想" class="headerlink" title="4.1. 思想"></a>4.1. 思想</h2><p>插入排序(Insertion Sorting)的基本思想是:把 n 个待排序的元素看成为一个有序表和一个无序表，开始时有序表中只包含一个元素，无序表中包含有 n-1 个元素，排序过程中每次从无序表中取出第一个 元素，把它的排序码依次与有序表元素的排序码进行比较，将它插入到有序表中的适当位置，使之成为新的有序表。</p>
+<h2 id="4-2-分析"><a href="#4-2-分析" class="headerlink" title="4.2. 分析"></a>4.2. 分析</h2><p><img src="/assets/blogImg/data-structures-and-algorithms/sort/insertsort.png" alt="insertsort"></p>
+<h2 id="4-3-实现"><a href="#4-3-实现" class="headerlink" title="4.3. 实现"></a>4.3. 实现</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">"fmt"</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">insertSort</span><span class="params">(arr *[6]<span class="keyword">int</span>)</span></span> &#123;</span><br><span class="line">	<span class="keyword">for</span> i := <span class="number">1</span>; i &lt; <span class="built_in">len</span>(arr); i++ &#123;</span><br><span class="line">		index := i - <span class="number">1</span>  <span class="comment">//指向当前元素的前一个元素下标</span></span><br><span class="line">		value := arr[i] <span class="comment">//当前元素的值</span></span><br><span class="line">		<span class="keyword">for</span> &#123;</span><br><span class="line">			<span class="keyword">if</span> index &gt;= <span class="number">0</span> &amp;&amp; arr[index] &lt; value &#123;</span><br><span class="line">				<span class="comment">//证明还没有找到，需要继续往下找</span></span><br><span class="line"></span><br><span class="line">				<span class="comment">//把值往后复制</span></span><br><span class="line">				arr[index+<span class="number">1</span>] = arr[index]</span><br><span class="line"></span><br><span class="line">				<span class="comment">//坐标往前挪动</span></span><br><span class="line">				index--</span><br><span class="line">			&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">				<span class="comment">//index &lt; 0 是用来判断是不是已经找完了数组的全部。</span></span><br><span class="line">				<span class="comment">//如果找完了，证明就是最大</span></span><br><span class="line">				<span class="keyword">break</span></span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="comment">//有可能原地不动，此时就不要交换了</span></span><br><span class="line">		<span class="keyword">if</span> index+<span class="number">1</span> != i &#123;</span><br><span class="line">			arr[index+<span class="number">1</span>] = value</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	<span class="keyword">var</span> arr = [<span class="number">6</span>]<span class="keyword">int</span>&#123;<span class="number">6</span>, <span class="number">5</span>, <span class="number">9</span>, <span class="number">3</span>, <span class="number">1</span>, <span class="number">3</span>&#125;</span><br><span class="line">	insertSort(&amp;arr)</span><br><span class="line">	fmt.Println(arr)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="5-快速排序"><a href="#5-快速排序" class="headerlink" title="5. 快速排序"></a>5. 快速排序</h1><p>快速排序(Quicksort)是对冒泡排序的一种改进。</p>
+<h2 id="5-1-思想"><a href="#5-1-思想" class="headerlink" title="5.1. 思想"></a>5.1. 思想</h2><p>通过一趟排序将要排序的数据分割成独立的两部分，其中一部分的所有数据都比另外一部分的所有数据都要小，然后再按此方法对这两部分数据分别进行快速排序，整个排序过程可以递归进行，以此达到整个数据变成有序序列</p>
+<h2 id="5-2-分析"><a href="#5-2-分析" class="headerlink" title="5.2. 分析"></a>5.2. 分析</h2><p><img src="/assets/blogImg/data-structures-and-algorithms/sort/quicksort.png" alt="quicksort"></p>
+<h2 id="5-3-实现"><a href="#5-3-实现" class="headerlink" title="5.3. 实现"></a>5.3. 实现</h2><p>以中点作为判断标准(与上面分析图找的判断标准不同，上面分析图找的是最右边)<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line">package main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">"fmt"</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="comment">//快速排序</span></span><br><span class="line"><span class="comment">//说明</span></span><br><span class="line"><span class="comment">//1. left 表示 数组左边的下标</span></span><br><span class="line"><span class="comment">//2. right 表示数组右边的下标</span></span><br><span class="line"><span class="comment">//3 array 表示要排序的数组</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">QuickSort</span><span class="params">(<span class="keyword">left</span> int, <span class="keyword">right</span> int, array *[<span class="number">11</span>]int)</span></span> &#123;</span><br><span class="line">	l := <span class="keyword">left</span></span><br><span class="line">	r := <span class="keyword">right</span></span><br><span class="line">	<span class="comment">// pivot 是中轴， 支点</span></span><br><span class="line">	pivot := array[(<span class="keyword">left</span>+<span class="keyword">right</span>)/<span class="number">2</span>]</span><br><span class="line">	<span class="comment">//for 循环的目标是将比 pivot 小的数放到 左边 // 比 pivot 大的数放到 右边</span></span><br><span class="line">	<span class="comment">//for 循环结束后无论pivot，在哪里。它的左边永远会比他小，它的右边永远比他大。</span></span><br><span class="line">	<span class="keyword">for</span> l &lt; r &#123;</span><br><span class="line">		<span class="comment">//从 pivot 的左边找到大于等于 pivot 的值</span></span><br><span class="line">		<span class="keyword">for</span> array[l] &lt; pivot &#123;</span><br><span class="line">			l++</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="comment">//从 pivot 的右边边找到小于等于 pivot 的值</span></span><br><span class="line">		<span class="keyword">for</span> array[r] &gt; pivot &#123;</span><br><span class="line">			r--</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="comment">// 当l==r时，证明这一轮已经全部找完了，退出循环，进行递归</span></span><br><span class="line">		<span class="keyword">if</span> l == r &#123;</span><br><span class="line">			l++</span><br><span class="line">			r--</span><br><span class="line">			<span class="keyword">break</span></span><br><span class="line">		&#125;</span><br><span class="line">		<span class="comment">//交换有可能是2个大小的值在两边进行交换，也有可能是我们的中间值会被交换。</span></span><br><span class="line">		<span class="comment">//不过结果都会是中间件的左边都是会比它小的数，右边都是比它大的数</span></span><br><span class="line">		array[l], array[r] = array[r], array[l]</span><br><span class="line"></span><br><span class="line">		<span class="comment">//后面两步是因为l或者r其中有一个指向了中间值，进行了交换。</span></span><br><span class="line">		<span class="comment">//交换位置后，另一个值刚刚跟中间值已经比较过一次了，所以直接跳过</span></span><br><span class="line">		<span class="keyword">if</span> array[l] == pivot &#123;</span><br><span class="line">			r--</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span> array[r] == pivot &#123;</span><br><span class="line">			l++</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">// 向左递归</span></span><br><span class="line">	<span class="keyword">if</span> <span class="keyword">left</span> &lt; r &#123;</span><br><span class="line">		<span class="type">QuickSort</span>(<span class="keyword">left</span>, r, array)</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">// 向右递归</span></span><br><span class="line">	<span class="keyword">if</span> <span class="keyword">right</span> &gt; l &#123;</span><br><span class="line">		<span class="type">QuickSort</span>(l, <span class="keyword">right</span>, array)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	arr := [<span class="number">11</span>]int&#123;-<span class="number">9</span>, <span class="number">78</span>, <span class="number">0</span>, -<span class="number">900</span>, <span class="number">23</span>, -<span class="number">567</span>, <span class="number">70</span>, <span class="number">123</span>, <span class="number">90</span>, -<span class="number">23</span>, -<span class="number">1200</span>&#125;</span><br><span class="line">	fmt.<span class="type">Println</span>(<span class="string">"初始"</span>, arr)</span><br><span class="line">	<span class="comment">//调用快速排序</span></span><br><span class="line">	<span class="type">QuickSort</span>(<span class="number">0</span>, len(arr)-<span class="number">1</span>, &amp;arr)</span><br><span class="line">	fmt.<span class="type">Println</span>(<span class="string">"main.."</span>)</span><br><span class="line">	fmt.<span class="type">Println</span>(arr)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="5-4-提示"><a href="#5-4-提示" class="headerlink" title="5.4. 提示"></a>5.4. 提示</h2><p>可以先把递归代码注释，专门理解下面代码。这段代码的执行完毕后，设置的数，比它小的肯定都在它左边，比它大的都在它右边</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> l &lt; r &#123;</span><br><span class="line">	<span class="comment">//从 pivot 的左边找到大于等于 pivot 的值</span></span><br><span class="line">	<span class="keyword">for</span> <span class="built_in">array</span>[l] &lt; pivot &#123;</span><br><span class="line">		l++</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">//从 pivot 的右边边找到小于等于 pivot 的值</span></span><br><span class="line">	<span class="keyword">for</span> <span class="built_in">array</span>[r] &gt; pivot &#123;</span><br><span class="line">		r--</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">// 当l==r时，证明这一轮已经全部找完了，退出循环，进行递归</span></span><br><span class="line">	<span class="keyword">if</span> l == r &#123;</span><br><span class="line">		l++</span><br><span class="line">		r--</span><br><span class="line">		<span class="keyword">break</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">//交换有可能是2个大小的值在两边进行交换，也有可能是我们的中间值会被交换。</span></span><br><span class="line">	<span class="comment">//不过结果都会是中间件的左边都是会比它小的数，右边都是比它大的数</span></span><br><span class="line">	<span class="built_in">array</span>[l], <span class="built_in">array</span>[r] = <span class="built_in">array</span>[r], <span class="built_in">array</span>[l]</span><br><span class="line"></span><br><span class="line">	<span class="comment">//后面两步是因为l或者r其中有一个指向了中间值，进行了交换。</span></span><br><span class="line">	<span class="comment">//交换位置后，另一个值刚刚跟中间值已经比较过一次了，所以直接跳过</span></span><br><span class="line">	<span class="keyword">if</span> <span class="built_in">array</span>[l] == pivot &#123;</span><br><span class="line">		r--</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span> <span class="built_in">array</span>[r] == pivot &#123;</span><br><span class="line">		l++</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
 
       
 
       
-        <div class="declare" hidden="hidden"></div>
+        <div class="declare">
+          <strong>本文作者：</strong>
+          
+            guaosi
+          
+          <br>
+          <strong>本文链接：</strong>
+          <a rel="license" href="https://www.guaosi.com/2019/03/15/golang-sort/">https://www.guaosi.com/2019/03/15/golang-sort/</a>
+          <br>
+          <strong>版权声明：</strong>
+          本博客所有文章除特别声明外，均采用
+          <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/3.0/">CC BY-NC-SA 3.0 许可协议</a>
+          
+            <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/3.0/"><img alt="知识共享许可协议" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/3.0/80x15.png"></a>
+          
+          进行许可。转载请注明出处！
+        </div>
       
 
 
 
       
-    </p></div>
+      <div class="page-reward">
+        <a href="javascript:;" class="page-reward-btn tooltip-top">
+          <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>
+                    谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/assets/img/alipay.png">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/assets/img/wechat.png">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+        </a>
+      </div>
+      
+    </div>
 
 
 
@@ -226,15 +299,15 @@ var _hmt = _hmt || [];
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">redis</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">golang</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">php</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">算法</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">linux</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">数据结构</a>
         		</li>
       		
 		</ul>
@@ -243,17 +316,75 @@ var _hmt = _hmt || [];
       
 
       
-      <p class="article-more-link">
-        <a class="article-more-a" href="/2019/02/25/automatically-cancel-the-order/">
-          展开全文 >></a>
-      </p>
-      
 
+      
+      
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACJklEQVR42u3aUY7DIAxF0ex/05kVhNxn05FiLl9V1YBPKllgc1143Mux/n1tlesXQ4YMGZ9lkBDX369nJiHydR/nkSFDxgEMEsT6N/wpTuXrypAhQwZJrOk2kSd6GTJkyEgZ68/rINa/kSFDhow1I0186WaRJOU1bNtZXIYMGR9k8Kr7/3/+SX9DhgwZn2Lc4eAbvk66jKOSIUPGaEZavicBpSF22gkyZMg4gcGPjmkDsnZ1jL+ax/9BhgwZ4xi1g2vK7hxceQtBhgwZsxmdtMi3ejzo9JKHDBkyZjN4Jr7bg1+2iFOwDBkyRjPSqfnGEdX5cGpGa8mQIWMoI32g1oDslPbQPDJkyDiGwTMYP9ymFT4Sz0sLU4YMGUMZtXZjsEw4G5nz8fgqQ4aMoQxSVuPbvr0bTXRIliFDxgGMtGVYu8fRaRi8rCVDhozRDL5AenDtvxQyZMiQcQ6DJDgSNG9D1gp8KAYZMmQMZdQCIqU6PkP6CtD/IEOGjKGMNM11NnP8EIuurMmQIeMARic57t0m1q5fyJAh4xxG7QpF2oysJe6XVWTIkDGUcYcjDbEWdPyUDBkyRjPSwyc6TOKDK79UkTYPZMiQMY+RpshaM5Kn7zTRy5Ah4xxGmih5cZ+k1H4BToYMGTLSNmctgfJXEN8ZkSFDxpGMzvauVsh7eVaGDBkHMNKrFbvaALz09pJ2ZciQMZqRLrCrJNcp2xWbmjJkyPge4w8BCrwq56wr7wAAAABJRU5ErkJggg==" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
       
       <div class="clearfix"></div>
     </div>
   </div>
 </article>
+
+
+<nav id="article-nav">
+  
+  
+    <a href="/2019/03/14/golang-linkedlist/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">golang算法与数据结构：链表(linkedlist)</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
@@ -268,720 +399,39 @@ var _hmt = _hmt || [];
         </div>
         
         
-    </div>
-</aside>
-
-
-
-  
-    <article id="post-install-and-use-supervisor" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
-  <div class="article-inner">
-    
-    <header class="article-header">
-      
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/02/25/install-and-use-supervisor/">安装和使用守护进程--Supervisor</a>
-    </h1>
-  
-
-      <!-- 显示阅读和评论数 -->
-
-      <br>
-      
-
-
-
-      
-      <a href="/2019/02/25/install-and-use-supervisor/" class="archive-article-date">
-  	<time datetime="2019-02-25T01:03:33.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-02-25</time>
-</a>
-      
-    </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-      <h1 id="1-起因"><a href="#1-起因" class="headerlink" title="1. 起因"></a>1. 起因</h1><p>&#160; &#160; &#160; &#160;在Linux上有时候需要开启一个阻塞进程来监听操作。当ssh连上服务器，直接运行一个阻塞进程，然后退出服务器时，这个阻塞进程也会跟着关闭。</p>
-<h1 id="2-解决办法"><a href="#2-解决办法" class="headerlink" title="2. 解决办法"></a>2. 解决办法</h1><p>以下提供三种方案参考:</p>
-<ol>
-<li>使用<code>nohup ./xxx &amp;</code>将进程后台挂起，不过有效期只有12小时，会被自动杀进程。</li>
-<li>使用<code>screen</code>建立窗口，将阻塞进程运行在该窗口内，这个窗口可以被多个物理窗口所复用(就是就算这次退出了服务器连接，下次再连进来还是依旧存在的)，貌似可以满足我们的要求了。但是如果阻塞进程出错，阻塞进程不会自动重新启动，需要我们手动干预。</li>
-<li>使用python开发的<code>Supervisor</code>守护进程。它可以很方便的监听、启动、停止、重启一个或多个进程。用Supervisor管理的进程，当一个进程意外被杀死，supervisort监听到进程死后，会自动将它重新拉起，很方便的做到进程自动恢复的功能，不再需要自己写shell脚本来控制。</li>
-</ol>
-      
-      <a class="article-more-a" href="/2019/02/25/install-and-use-supervisor/#more">
-        more >></a>
-      
-      
-
-      
-
-      
-        <div class="declare" hidden="hidden"></div>
-      
-
-
-
-      
-    </div>
-
-
-
-
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">linux</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">python</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-      <p class="article-more-link">
-        <a class="article-more-a" href="/2019/02/25/install-and-use-supervisor/">
-          展开全文 >></a>
-      </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-介绍"><span class="toc-number">1.</span> <span class="toc-text">1. 介绍</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-冒泡排序"><span class="toc-number">2.</span> <span class="toc-text">2. 冒泡排序</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#2-1-思想"><span class="toc-number">2.1.</span> <span class="toc-text">2.1. 思想</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-2-实现"><span class="toc-number">2.2.</span> <span class="toc-text">2.2. 实现</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-选择排序"><span class="toc-number">3.</span> <span class="toc-text">3. 选择排序</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#3-1-思想"><span class="toc-number">3.1.</span> <span class="toc-text">3.1. 思想</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-2-分析"><span class="toc-number">3.2.</span> <span class="toc-text">3.2. 分析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-3-实现"><span class="toc-number">3.3.</span> <span class="toc-text">3.3. 实现</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4-插入排序"><span class="toc-number">4.</span> <span class="toc-text">4. 插入排序</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#4-1-思想"><span class="toc-number">4.1.</span> <span class="toc-text">4.1. 思想</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-2-分析"><span class="toc-number">4.2.</span> <span class="toc-text">4.2. 分析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-3-实现"><span class="toc-number">4.3.</span> <span class="toc-text">4.3. 实现</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#5-快速排序"><span class="toc-number">5.</span> <span class="toc-text">5. 快速排序</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#5-1-思想"><span class="toc-number">5.1.</span> <span class="toc-text">5.1. 思想</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-2-分析"><span class="toc-number">5.2.</span> <span class="toc-text">5.2. 分析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-3-实现"><span class="toc-number">5.3.</span> <span class="toc-text">5.3. 实现</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-4-提示"><span class="toc-number">5.4.</span> <span class="toc-text">5.4. 提示</span></a></li></ol></li></ol>
+                    </div>
+                </span>
             </div>
         </div>
         
-        
     </div>
 </aside>
 
 
 
-  
-    <article id="post-onedrive-olyindex-oneindex-aria-ariang" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
-  <div class="article-inner">
-    
-    <header class="article-header">
-      
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/02/22/onedrive-olyindex-oneindex-aria-ariang/">oneDrive+olaIndex/oneIndex+aria2+ariaNg 制作个人大容量网盘，支持离线下载</a>
-    </h1>
-  
 
-      <!-- 显示阅读和评论数 -->
 
-      <br>
-      
 
 
 
-      
-      <a href="/2019/02/22/onedrive-olyindex-oneindex-aria-ariang/" class="archive-article-date">
-  	<time datetime="2019-02-22T05:13:25.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-02-22</time>
-</a>
-      
-    </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-      <h1 id="1-起因"><a href="#1-起因" class="headerlink" title="1. 起因"></a>1. 起因</h1><p>&#160; &#160; &#160; &#160;随着网速的提升，越来越多人选择使用网络云盘来存储自己的文件资料。国内代表有<code>百度云</code>以及<code>腾讯云</code>，<code>天翼云</code>等，国外则是<code>oneDrive</code>，<code>谷歌云盘</code>，<code>dropbox</code>等。国内云盘虽然都打着大<code>容量</code>的旗号，但是不开会员下载速度就被恶心<code>限速</code>。国外的网盘则需要科学上网，并且容量也小，优点就是不限速。<br>&#160; &#160; &#160; &#160;微软的oneDrive虽然网页版在国内会被墙，但是客户端是正常使用的，并且不限速，只是普通的微软账号的oneDrive只有5G。<br>&#160; &#160; &#160; &#160;微软有一个产品，叫做<code>office365</code>,如果是教育版则可以让oneDrive变成1T或者5T。用国内教育邮箱注册的office365一般是1T，并且只能使用网页版的office365套件。如果是使用国外教育邮箱注册的，则可以使用桌面版的office365套件(就是office办公软件全家桶，正版！)<br>
-      
-      <a class="article-more-a" href="/2019/02/22/onedrive-olyindex-oneindex-aria-ariang/#more">
-        more >></a>
-      
-      
+<div id="SOHUCS" sid="golang-sort"></div> 
+<script type="text/javascript"> 
+(function(){ 
+var appid = "cytWxLdY3"; 
+var conf = "prod_f314382998643222116abeab50bbbc4f"; 
+var width = window.innerWidth || document.documentElement.clientWidth; 
+if (width < 960) { 
+window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="//changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>'); } else { var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("//changyan.sohu.com/upload/changyan.js",function(){window.changyan.api.config({appid:appid,conf:conf})}); } })(); </script>
 
-      
 
-      
-        <div class="declare" hidden="hidden"></div>
-      
-
-
-
-      
-    </p></div>
-
-
-
-
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">lnmp</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">服务器</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">onedrive</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-      <p class="article-more-link">
-        <a class="article-more-a" href="/2019/02/22/onedrive-olyindex-oneindex-aria-ariang/">
-          展开全文 >></a>
-      </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-  
-    <article id="post-install-php-fileinfo" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
-  <div class="article-inner">
-    
-    <header class="article-header">
-      
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/02/22/install-php-fileinfo/">安装php扩展--Fileinfo</a>
-    </h1>
-  
-
-      <!-- 显示阅读和评论数 -->
-
-      <br>
-      
-
-
-
-      
-      <a href="/2019/02/22/install-php-fileinfo/" class="archive-article-date">
-  	<time datetime="2019-02-22T01:32:35.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-02-22</time>
-</a>
-      
-    </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-      <h1 id="1-起因"><a href="#1-起因" class="headerlink" title="1. 起因"></a>1. 起因</h1><p>&#160; &#160; &#160; &#160;在编译安装php或者lnmp安装的时候，可能由于服务器的配置不够(内存小于1G)，会将fileinfo扩展默认不安装，已保证php可以正常安装。可是有的时候我们又必须安装fileinfo扩展。<br>
-      
-      <a class="article-more-a" href="/2019/02/22/install-php-fileinfo/#more">
-        more >></a>
-      
-      
-
-      
-
-      
-        <div class="declare" hidden="hidden"></div>
-      
-
-
-
-      
-    </p></div>
-
-
-
-
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">php</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-      <p class="article-more-link">
-        <a class="article-more-a" href="/2019/02/22/install-php-fileinfo/">
-          展开全文 >></a>
-      </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-  
-    <article id="post-linux-add-virtual-memory" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
-  <div class="article-inner">
-    
-    <header class="article-header">
-      
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/02/21/linux-add-virtual-memory/">Linux虚拟内存设置</a>
-    </h1>
-  
-
-      <!-- 显示阅读和评论数 -->
-
-      <br>
-      
-
-
-
-      
-      <a href="/2019/02/21/linux-add-virtual-memory/" class="archive-article-date">
-  	<time datetime="2019-02-21T02:32:35.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-02-21</time>
-</a>
-      
-    </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-      <h1 id="1-起因"><a href="#1-起因" class="headerlink" title="1. 起因"></a>1. 起因</h1><p>&#160; &#160; &#160; &#160;开发过程中，可能会碰到安装某个扩展需要扩大本服务器的内存，但是给的硬件内存只有那么点，该如何处理呢？<br>Linux上开启虚拟内存即可解决。</p>
-      
-      <a class="article-more-a" href="/2019/02/21/linux-add-virtual-memory/#more">
-        more >></a>
-      
-      
-
-      
-
-      
-        <div class="declare" hidden="hidden"></div>
-      
-
-
-
-      
-    </div>
-
-
-
-
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Linux</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-      <p class="article-more-link">
-        <a class="article-more-a" href="/2019/02/21/linux-add-virtual-memory/">
-          展开全文 >></a>
-      </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-  
-    <article id="post-environment-by-lnmp" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
-  <div class="article-inner">
-    
-    <header class="article-header">
-      
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/12/18/environment-by-lnmp/">使用lnmp快速构建线上环境并搭建项目成功上线</a>
-    </h1>
-  
-
-      <!-- 显示阅读和评论数 -->
-
-      <br>
-      
-
-
-
-      
-      <a href="/2018/12/18/environment-by-lnmp/" class="archive-article-date">
-  	<time datetime="2018-12-18T07:20:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-12-18</time>
-</a>
-      
-    </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-      <h1 id="1-前提"><a href="#1-前提" class="headerlink" title="1. 前提"></a>1. 前提</h1><p>本文适合:</p>
-<p>1.已经在linux虚拟机上搭建过环境，可以正常访问的，但是没有搭建在真实服务器上。</p>
-<p>2.需要有略微的<code>linux</code>基础。</p>
-<p>3.有自己的小项目或者demo，如果没有，会<code>composer</code>安装框架也是可以的。</p>
-<p>因为本文适合偷懒使用，如果没有丝毫搭建经验的，所以我建议最好是创建一台虚拟机，自己手动安装<code>nginx</code>,<code>php</code>,<code>MySQL</code>，让内网可以上线访问。有了相关的认识，再来看本文效果是最好的。</p>
-      
-      <a class="article-more-a" href="/2018/12/18/environment-by-lnmp/#more">
-        more >></a>
-      
-      
-
-      
-
-      
-        <div class="declare" hidden="hidden"></div>
-      
-
-
-
-      
-    </div>
-
-
-
-
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">php</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">lnmp</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">服务器</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-      <p class="article-more-link">
-        <a class="article-more-a" href="/2018/12/18/environment-by-lnmp/">
-          展开全文 >></a>
-      </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-  
-    <article id="post-complex-two-dimensional-arrays" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
-  <div class="article-inner">
-    
-    <header class="article-header">
-      
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/12/14/complex-two-dimensional-arrays/">二维数组的巧妙整合</a>
-    </h1>
-  
-
-      <!-- 显示阅读和评论数 -->
-
-      <br>
-      
-
-
-
-      
-      <a href="/2018/12/14/complex-two-dimensional-arrays/" class="archive-article-date">
-  	<time datetime="2018-12-14T06:58:15.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-12-14</time>
-</a>
-      
-    </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-      <h1 id="1-起因"><a href="#1-起因" class="headerlink" title="1. 起因"></a>1. 起因</h1><p>在工作中，经常会遇到多个多维数组或者orm对象数组需要整合的情况。通过整合好数据，然后输出给前端。</p>
-<h1 id="2-数据"><a href="#2-数据" class="headerlink" title="2. 数据"></a>2. 数据</h1><p>比如现在，有2个orm对象，他们的表间关系存在不明显，互相没有做模型关联，但是id相同。</p>
-      
-      <a class="article-more-a" href="/2018/12/14/complex-two-dimensional-arrays/#more">
-        more >></a>
-      
-      
-
-      
-
-      
-        <div class="declare" hidden="hidden"></div>
-      
-
-
-
-      
-    </div>
-
-
-
-
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">php</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-      <p class="article-more-link">
-        <a class="article-more-a" href="/2018/12/14/complex-two-dimensional-arrays/">
-          展开全文 >></a>
-      </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-  
-    <article id="post-git-auto-change" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
-  <div class="article-inner">
-    
-    <header class="article-header">
-      
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/12/06/git-auto-change/">git pull或git checkout 后保持权限不变</a>
-    </h1>
-  
-
-      <!-- 显示阅读和评论数 -->
-
-      <br>
-      
-
-
-
-      
-      <a href="/2018/12/06/git-auto-change/" class="archive-article-date">
-  	<time datetime="2018-12-06T08:43:14.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-12-06</time>
-</a>
-      
-    </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-      <h1 id="1-起因"><a href="#1-起因" class="headerlink" title="1. 起因"></a>1. 起因</h1><p>&#160; &#160; &#160; &#160;服务器上的项目,一般都是使用用户组<code>www-data</code>或者<code>www</code>来保证权限安全,不会使用<code>root</code>的。但是<code>git pull</code>下来的新文件或者修改的文件,则会把原有的文件的权限更改为644,用户组改为root。</p>
-      
-      <a class="article-more-a" href="/2018/12/06/git-auto-change/#more">
-        more >></a>
-      
-      
-
-      
-
-      
-        <div class="declare" hidden="hidden"></div>
-      
-
-
-
-      
-    </div>
-
-
-
-
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">git</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-      <p class="article-more-link">
-        <a class="article-more-a" href="/2018/12/06/git-auto-change/">
-          展开全文 >></a>
-      </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-  
-  
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/">Next &raquo;</a>
-    </nav>
-  
 
 
           </div>
@@ -1011,8 +461,8 @@ var _hmt = _hmt || [];
     <script>
 	var yiliaConfig = {
 		mathjax: false,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
