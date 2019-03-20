@@ -22,7 +22,7 @@
 <meta property="og:image" content="https://www.guaosi.com/assets/blogImg/laravel-with-limit-and-group-show-zero/books-sql-origin-result.png">
 <meta property="og:image" content="https://www.guaosi.com/assets/blogImg/laravel-with-limit-and-group-show-zero/books-sql-result.png">
 <meta property="og:image" content="https://www.guaosi.com/assets/blogImg/laravel-with-limit-and-group-show-zero/books-query-builder.png">
-<meta property="og:updated_time" content="2019-03-19T02:27:46.444Z">
+<meta property="og:updated_time" content="2019-03-19T02:31:12.359Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Laravel关联查询限制条数和分组查询显示为零的结果">
 <meta name="twitter:description" content="1. 需求目前有这样两个需求: 1) 查询用户，显示用户的信息以及他写过的书籍。如果用户有书籍，则显示，最多显示2本。如果没有，则不显示书籍。 2) 显示用户的id号以及对应的书籍件数(只用SQL实现，不使用业务逻辑)。">
@@ -233,7 +233,7 @@ var _hmt = _hmt || [];
 <figure class="highlight n1ql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="keyword">distinct</span> <span class="symbol">`u`</span>.<span class="symbol">`id`</span>,<span class="symbol">`u`</span>.<span class="symbol">`name`</span>,<span class="built_in">IFNULL</span>( <span class="symbol">`b`</span>.<span class="symbol">`num`</span>, <span class="number">0</span> ) <span class="keyword">AS</span> num <span class="keyword">from</span> <span class="symbol">`users`</span> <span class="keyword">as</span> <span class="symbol">`u`</span> <span class="keyword">left</span> <span class="keyword">join</span> (<span class="keyword">select</span> <span class="symbol">`user_id`</span>,<span class="built_in">count</span>(*) <span class="keyword">as</span> <span class="symbol">`num`</span> <span class="keyword">from</span> books <span class="keyword">group</span> <span class="keyword">by</span> <span class="symbol">`user_id`</span>) <span class="keyword">as</span> <span class="symbol">`b`</span> <span class="keyword">on</span> <span class="symbol">`u`</span>.id = <span class="symbol">`b`</span>.user_id</span><br></pre></td></tr></table></figure>
 <p>符合我们的需求。</p>
 <p><img src="/assets/blogImg/laravel-with-limit-and-group-show-zero/books-sql-result.png" alt="books-sql-result"></p>
-<h2 id="4-2-Laravel框架中使用"><a href="#4-2-Laravel框架中使用" class="headerlink" title="4.2. Laravel框架中使用"></a>4.2. Laravel框架中使用</h2><p>写SQL很容易，那我们应该如何在框架中使用呢?同时我们再附加一个条件，只要id为<code>1</code>,<code>2</code>,<code>3</code>,<code>4</code>,<code>5</code>的用户。</p>
+<h2 id="4-2-Laravel框架中使用"><a href="#4-2-Laravel框架中使用" class="headerlink" title="4.2. Laravel框架中使用"></a>4.2. Laravel框架中使用</h2><p>写SQL很容易，那我们应该如何在框架中使用呢(不允许查完再用业务逻辑后获得答案)?同时我们再附加一个条件，只要id为<code>1</code>,<code>2</code>,<code>3</code>,<code>4</code>,<code>5</code>的用户。</p>
 <h3 id="4-2-1-直接编写"><a href="#4-2-1-直接编写" class="headerlink" title="4.2.1. 直接编写"></a>4.2.1. 直接编写</h3><p>查询<a href="https://learnku.com/docs/laravel/5.8/queries/3926#joins" target="_blank" rel="noopener">Laravel手册</a>，参考<code>查询构造器</code>的<code>高级join语句</code>，我们会立刻想到下面这样编写<br><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">test3</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="comment">//统计出所有内部员工的user_id</span></span><br><span class="line">    $user_ids = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>];</span><br><span class="line">    $users = User::selectRaw(<span class="string">'u.id,IFNULL( b.number, 0 ) AS number'</span>)</span><br><span class="line">        -&gt;from(<span class="string">'users as u'</span>)</span><br><span class="line">        -&gt;distinct()</span><br><span class="line">        -&gt;whereIn(<span class="string">'id'</span>, $user_ids)</span><br><span class="line">        -&gt;leftJoin(<span class="string">'books as b'</span>,<span class="function"><span class="keyword">function</span> <span class="params">($join)</span> <span class="title">use</span><span class="params">($user_ids)</span></span>&#123;</span><br><span class="line">               $join-&gt;selectRaw(<span class="string">'user_id,count(*) as number'</span>)-&gt;whereIn(<span class="string">'user_id'</span>, $user_ids)-&gt;groupBy(<span class="string">'user_id'</span>)-&gt;on(<span class="string">'u.id'</span>, <span class="string">'='</span>, <span class="string">'b.user_id'</span>);</span><br><span class="line">            &#125;)</span><br><span class="line">        -&gt;get();</span><br><span class="line">    <span class="keyword">return</span> $users;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>测试的时候我们发现报了错<br><figure class="highlight n1ql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Unknown column 'b.number' in 'field list' (SQL: <span class="keyword">select</span> <span class="keyword">distinct</span> u.id,<span class="built_in">IFNULL</span>( b.<span class="keyword">number</span>, <span class="number">0</span> ) <span class="keyword">AS</span> <span class="keyword">number</span> <span class="keyword">from</span> <span class="symbol">`users`</span> <span class="keyword">as</span> <span class="symbol">`u`</span> <span class="keyword">left</span> <span class="keyword">join</span> <span class="symbol">`books`</span> <span class="keyword">as</span> <span class="symbol">`b`</span> <span class="keyword">on</span> <span class="symbol">`user_id`</span> <span class="keyword">in</span> (<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>) <span class="keyword">and</span> <span class="symbol">`u`</span>.<span class="symbol">`id`</span> = <span class="symbol">`b`</span>.<span class="symbol">`user_id`</span> <span class="keyword">where</span> <span class="symbol">`id`</span> <span class="keyword">in</span> (<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>))</span><br></pre></td></tr></table></figure></p>
 <p>最后的SQL语句跟我们想象中的不太一样。</p>
@@ -393,6 +393,15 @@ var _hmt = _hmt || [];
 
 
 <nav id="article-nav">
+  
+    <a href="/2019/03/20/golang-value-passing-and-reference-passing/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          golang易错点:值传递和引用传递
+        
+      </div>
+    </a>
   
   
     <a href="/2019/03/17/golang-hash-table/" id="article-nav-older" class="article-nav-link-wrap">
@@ -578,6 +587,10 @@ window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="tex
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">php</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">linux</a>
               </li>
              
@@ -586,15 +599,7 @@ window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="tex
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">php</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Linux</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">redis</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -603,6 +608,10 @@ window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="tex
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">服务器</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">redis</a>
               </li>
              
               <li class="article-tag-list-item">

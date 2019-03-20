@@ -2,9 +2,16 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://www.guaosi.com/2019/03/20/golang-value-passing-and-reference-passing/</loc>
+    
+    <lastmod>2019-03-20T06:29:33.970Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://www.guaosi.com/2019/03/19/laravel-with-limit-and-group-show-zero/</loc>
     
-    <lastmod>2019-03-19T02:27:46.444Z</lastmod>
+    <lastmod>2019-03-19T02:31:12.359Z</lastmod>
     
   </url>
   
