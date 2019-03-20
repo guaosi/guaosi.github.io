@@ -9,7 +9,7 @@
   <title>golang易错点:值传递和引用传递 | guaosi的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="1. 起因我们知道golang有值传递与引用传递两种传递方式。 值类型: 基本数据类型int系列，float系列，bool，string，数组和结构体struct 引用类型: 指针，slice切片，map，管道chan，interface等 这两者的区别是，值传递相当于是复制了一份。而引用传递，是复制了相同的指针地址。如下图所示:">
-<meta name="keywords" content="PHP,Laravel">
+<meta name="keywords" content="golang">
 <meta property="og:type" content="article">
 <meta property="og:title" content="golang易错点:值传递和引用传递">
 <meta property="og:url" content="https://www.guaosi.com/2019/03/20/golang-value-passing-and-reference-passing/index.html">
@@ -19,7 +19,7 @@
 <meta property="og:image" content="https://www.guaosi.com/assets/blogImg/golang-value-passing-and-reference-passing/value-passing-and-reference-passing.png">
 <meta property="og:image" content="https://www.guaosi.com/assets/blogImg/golang-value-passing-and-reference-passing/指向分析.png">
 <meta property="og:image" content="https://www.guaosi.com/assets/blogImg/golang-value-passing-and-reference-passing/slice数据结构.png">
-<meta property="og:updated_time" content="2019-03-20T06:29:33.970Z">
+<meta property="og:updated_time" content="2019-03-20T06:33:56.684Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="golang易错点:值传递和引用传递">
 <meta name="twitter:description" content="1. 起因我们知道golang有值传递与引用传递两种传递方式。 值类型: 基本数据类型int系列，float系列，bool，string，数组和结构体struct 引用类型: 指针，slice切片，map，管道chan，interface等 这两者的区别是，值传递相当于是复制了一份。而引用传递，是复制了相同的指针地址。如下图所示:">
@@ -308,11 +308,7 @@ var _hmt = _hmt || [];
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">PHP</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Laravel</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">golang</a>
         		</li>
       		
 		</ul>
@@ -558,14 +554,6 @@ window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="tex
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">PHP</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Laravel</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">php</a>
               </li>
              
@@ -578,7 +566,19 @@ window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="tex
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">PHP</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Laravel</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Linux</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">redis</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -587,10 +587,6 @@ window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="tex
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">服务器</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">redis</a>
               </li>
              
               <li class="article-tag-list-item">
