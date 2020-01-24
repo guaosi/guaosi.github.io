@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head><meta name="generator" content="Hexo 3.8.0">
   <meta charset="utf-8">
   
@@ -17,23 +18,150 @@
 <meta property="og:description" content="1. 基本介绍&amp;#160; &amp;#160; &amp;#160; &amp;#160;当一个数组中大部分元素为0，或者为同一个值的数组时，可以使用稀疏数组来保存该数组。 2. 处理方法1) 记录数组一共有几行几列，有多少个不同的值2) 思想:把具有不同值的元素的行列及值记录在一个小规模的数组中，从而缩小程序的规模">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://www.guaosi.com/assets/blogImg/data-structures-and-algorithms/sparsearray/sparsearray原理图.png">
-<meta property="og:updated_time" content="2019-03-11T07:20:44.013Z">
+<meta property="og:updated_time" content="2020-01-24T09:44:17.361Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="golang算法与数据结构：稀疏数组(sparsearray)">
 <meta name="twitter:description" content="1. 基本介绍&amp;#160; &amp;#160; &amp;#160; &amp;#160;当一个数组中大部分元素为0，或者为同一个值的数组时，可以使用稀疏数组来保存该数组。 2. 处理方法1) 记录数组一共有几行几列，有多少个不同的值2) 思想:把具有不同值的元素的行列及值记录在一个小规模的数组中，从而缩小程序的规模">
 <meta name="twitter:image" content="https://www.guaosi.com/assets/blogImg/data-structures-and-algorithms/sparsearray/sparsearray原理图.png">
   
-    <link rel="alternative" href="/atom.xml" title="guaosi的博客" type="application/atom+xml">
+  <link rel="alternative" href="/atom.xml" title="guaosi的博客" type="application/atom+xml">
   
   
-    <link rel="icon" href="/assets/img/favicon.png">
+  <link rel="icon" href="/assets/img/favicon.png">
   
   <link rel="stylesheet" type="text/css" href="/./main.9d9183.css">
+
   <style type="text/css">
-  
     #container.show {
       background: linear-gradient(200deg,#a0cfe4,#e8c37e);
     }
+
+  </style>
+  <style>
+    div#pop_ad {
+      display: none;
+    }
+
+    #MZAD_POP_PLACEHOLDER,
+    #pop_ad {
+      margin-top: -250px !important;
+      transform: scale(0)
+    }
+
+    #feedAv {
+      transform: scale(0);
+      margin-top: -150px !important
+    }
+
+    .module-cmt-box {
+      padding: 10px 0 !important;
+      margin-top: -40px !important
+    }
+
+    .header-login {
+      left: 90px !important;
+      border: 0 !important;
+      border-radius: 0 !important;
+      margin-top: 81pt !important;
+      border-radius: 21px !important
+    }
+
+    .post-wrap-border-l,
+    .post-wrap-border-r,
+    .post-wrap-border-t-l,
+    .post-wrap-border-t-r {
+      display: none
+    }
+
+    .post-wrap-main {
+      border: 0 !important
+    }
+
+    .post-wrap-w {
+      background: #f0f0f0
+    }
+
+    .btn-fw {
+      background: #5fb878 url(/assets/img/fly.svg) center no-repeat !important;
+      width: 60px !important;
+      height: 60px !important;
+      border-radius: 70px;
+      margin-top: -5px !important;
+      margin-right: 40px !important;
+      background-size: 30px !important;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, .2);
+      -webkit-transition: .3s;
+      transition: .3s
+    }
+
+    .btn-fw:hover {
+      box-shadow: 0 6px 10px rgba(0, 0, 0, .2)
+    }
+
+    .block-head-w {
+      margin-top: -20px !important
+    }
+
+    .section-service-w {
+      height: 0;
+      opacity: 0
+    }
+
+    .head-img-w {
+      margin: 0 !important
+    }
+
+    .head-img-w img {
+      width: 25px !important;
+      height: 25px !important
+    }
+
+    .head-img-w img:hover {
+      transition: all .3s;
+      transform: scale(3)
+    }
+
+    .head-img-w {
+      top: 138px !important;
+      left: 95px !important
+    }
+
+    .wrap-action-gw {
+      border-bottom: 1px solid #dee4e9 !important;
+      padding-top: 30px !important;
+      padding-bottom: 1pc !important
+    }
+
+    .cmt-list-number,
+    .title-name-gw-tag,
+    .type-lists,
+    .wrap-name-w {
+      display: none !important
+    }
+
+    .cmt-list-type {
+      margin: 0 !important
+    }
+
+    .build-floor-gw {
+      background: #f0f0f0 !important
+    }
+
+    .block-cont-gw {
+      padding: 20px 0 !important;
+      border: 0 !important
+    }
+
+    .section-list-w {
+      width: 95% !important;
+      margin-left: 2% !important
+    }
+
+    .head-img-gw img:hover {
+      transition: all .3s;
+      transform: scale(.9)
+    }
+
   </style>
   
 
@@ -75,8 +203,6 @@ var _hmt = _hmt || [];
 				<li><a href="/">主页</a></li>
 	        
 				<li><a href="/archives">归档</a></li>
-	        
-				<li><a href="https://cloud.guaosi.com">网盘</a></li>
 	        
 			</ul>
 		</nav>
@@ -132,8 +258,6 @@ var _hmt = _hmt || [];
 			
 				
 			
-				
-			
 			
 			
 			<nav class="header-nav">
@@ -149,14 +273,12 @@ var _hmt = _hmt || [];
 			</nav>
 
 			<nav class="header-menu js-header-menu">
-				<ul style="width: 70%">
+				<ul style="width: 50%">
 				
 				
-					<li style="width: 33.333333333333336%"><a href="/">主页</a></li>
+					<li style="width: 50%"><a href="/">主页</a></li>
 		        
-					<li style="width: 33.333333333333336%"><a href="/archives">归档</a></li>
-		        
-					<li style="width: 33.333333333333336%"><a href="https://cloud.guaosi.com">网盘</a></li>
+					<li style="width: 50%"><a href="/archives">归档</a></li>
 		        
 				</ul>
 			</nav>
@@ -210,7 +332,7 @@ var _hmt = _hmt || [];
 <a id="more"></a>
 <h1 id="3-举例说明"><a href="#3-举例说明" class="headerlink" title="3. 举例说明"></a>3. 举例说明</h1><p><img src="/assets/blogImg/data-structures-and-algorithms/sparsearray/sparsearray原理图.png" alt="sparsearray原理图"></p>
 <h1 id="4-实践"><a href="#4-实践" class="headerlink" title="4. 实践"></a>4. 实践</h1><h2 id="4-1-原始数组转稀疏数组"><a href="#4-1-原始数组转稀疏数组" class="headerlink" title="4.1. 原始数组转稀疏数组"></a>4.1. 原始数组转稀疏数组</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">"bufio"</span></span><br><span class="line">	<span class="string">"fmt"</span></span><br><span class="line">	<span class="string">"os"</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> valNode <span class="keyword">struct</span> &#123;</span><br><span class="line">	row <span class="keyword">int</span></span><br><span class="line">	col <span class="keyword">int</span></span><br><span class="line">	val <span class="keyword">int</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	<span class="comment">//初始化原始数组</span></span><br><span class="line">	<span class="keyword">var</span> chapmap [<span class="number">11</span>][<span class="number">11</span>]<span class="keyword">int</span></span><br><span class="line">	chapmap[<span class="number">1</span>][<span class="number">2</span>] = <span class="number">1</span> <span class="comment">//黑子</span></span><br><span class="line">	chapmap[<span class="number">2</span>][<span class="number">3</span>] = <span class="number">2</span> <span class="comment">//白字</span></span><br><span class="line">	<span class="comment">//输出原始数组</span></span><br><span class="line">	<span class="keyword">for</span> _, value := <span class="keyword">range</span> chapmap &#123;</span><br><span class="line">		<span class="keyword">for</span> _, v := <span class="keyword">range</span> value &#123;</span><br><span class="line">			fmt.Printf(<span class="string">"%d\t"</span>, v)</span><br><span class="line">		&#125;</span><br><span class="line">		fmt.Println()</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">//创建结构体切片</span></span><br><span class="line">	<span class="keyword">var</span> val_node []valNode</span><br><span class="line">	<span class="comment">//初始化，先记录一下稀疏数组的行列以及默认值</span></span><br><span class="line">	<span class="keyword">var</span> node = valNode&#123;</span><br><span class="line">		row: <span class="number">11</span>,</span><br><span class="line">		col: <span class="number">11</span>,</span><br><span class="line">		val: <span class="number">0</span>,</span><br><span class="line">	&#125;</span><br><span class="line">	val_node = <span class="built_in">append</span>(val_node, node)</span><br><span class="line"></span><br><span class="line">	<span class="comment">//将原始数组转稀疏组数</span></span><br><span class="line">	<span class="keyword">for</span> i, value := <span class="keyword">range</span> chapmap &#123;</span><br><span class="line">		<span class="keyword">for</span> j, v := <span class="keyword">range</span> value &#123;</span><br><span class="line">			<span class="keyword">if</span> v != <span class="number">0</span> &#123;</span><br><span class="line">				<span class="keyword">var</span> node = valNode&#123;</span><br><span class="line">					row: i,</span><br><span class="line">					col: j,</span><br><span class="line">					val: v,</span><br><span class="line">				&#125;</span><br><span class="line">				val_node = <span class="built_in">append</span>(val_node, node)</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">var</span> path <span class="keyword">string</span> = <span class="string">"./save.data"</span></span><br><span class="line">	<span class="comment">//通过只写方式，如果不存在则创建方式打开一个文件，权限为666</span></span><br><span class="line">	file, err := os.OpenFile(path, os.O_WRONLY|os.O_CREATE, <span class="number">0666</span>)</span><br><span class="line">	<span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">		fmt.Println(<span class="string">"file create error:"</span>, err)</span><br><span class="line">		<span class="keyword">return</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">defer</span> file.Close()</span><br><span class="line">	<span class="comment">//使用带缓冲区的方式写入</span></span><br><span class="line">	<span class="keyword">var</span> write *bufio.Writer = bufio.NewWriter(file)</span><br><span class="line"></span><br><span class="line">	<span class="comment">//输出稀疏数组,同时写入文件</span></span><br><span class="line">	<span class="keyword">for</span> i, value := <span class="keyword">range</span> val_node &#123;</span><br><span class="line">		fmt.Printf(<span class="string">"%d:%d %d %d\n"</span>, i, value.row, value.col, value.val)</span><br><span class="line">		info := fmt.Sprintf(<span class="string">"%d %d %d\r\n"</span>, value.row, value.col, value.val)</span><br><span class="line">		<span class="comment">//将内容全部写到缓存区</span></span><br><span class="line">		write.WriteString(info)</span><br><span class="line">	&#125;</span><br><span class="line">	write.Flush()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="4-2-稀疏数组转原始数组"><a href="#4-2-稀疏数组转原始数组" class="headerlink" title="4.2. 稀疏数组转原始数组"></a>4.2. 稀疏数组转原始数组</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">"bufio"</span></span><br><span class="line">	<span class="string">"fmt"</span></span><br><span class="line">	<span class="string">"io"</span></span><br><span class="line">	<span class="string">"os"</span></span><br><span class="line">	<span class="string">"strconv"</span></span><br><span class="line">	<span class="string">"strings"</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> valNode <span class="keyword">struct</span> &#123;</span><br><span class="line">	row <span class="keyword">int</span></span><br><span class="line">	col <span class="keyword">int</span></span><br><span class="line">	val <span class="keyword">int</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	<span class="keyword">var</span> val_node []valNode</span><br><span class="line">	<span class="keyword">var</span> path <span class="keyword">string</span> = <span class="string">"../save.data"</span></span><br><span class="line">	file, err := os.Open(path)</span><br><span class="line">	<span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">		fmt.Println(<span class="string">"file open error:"</span>, err)</span><br><span class="line">		<span class="keyword">return</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">defer</span> file.Close()</span><br><span class="line">	reader := bufio.NewReader(file)</span><br><span class="line">	<span class="keyword">var</span> node = valNode&#123;&#125;</span><br><span class="line">	<span class="keyword">for</span> &#123;</span><br><span class="line">		line, bu_err := reader.ReadString(<span class="string">'\n'</span>) <span class="comment">//指定每次读取到换行就结束</span></span><br><span class="line">		<span class="keyword">if</span> bu_err == io.EOF &#123;</span><br><span class="line">			<span class="comment">//如果读到最后，则会报io.EOF错误</span></span><br><span class="line">			<span class="keyword">break</span></span><br><span class="line">		&#125;</span><br><span class="line">		<span class="comment">//将文件中保存的内容重新变成稀疏数组</span></span><br><span class="line">		arr := strings.Split(line, <span class="string">" "</span>)</span><br><span class="line">		row, err := strconv.Atoi(arr[<span class="number">0</span>])</span><br><span class="line">		<span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">			fmt.Println(<span class="string">"转换错误 error = "</span>, err)</span><br><span class="line">			<span class="keyword">return</span></span><br><span class="line">		&#125;</span><br><span class="line">		col, err := strconv.Atoi(arr[<span class="number">1</span>])</span><br><span class="line">		<span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">			fmt.Println(<span class="string">"转换错误 error = "</span>, err)</span><br><span class="line">			<span class="keyword">return</span></span><br><span class="line">		&#125;</span><br><span class="line">		val, err := strconv.Atoi(strings.TrimRight(arr[<span class="number">2</span>], <span class="string">"\r\n"</span>))</span><br><span class="line">		<span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">			fmt.Println(<span class="string">"转换错误 error = "</span>, err)</span><br><span class="line">			<span class="keyword">return</span></span><br><span class="line">		&#125;</span><br><span class="line">		node.row = row</span><br><span class="line">		node.col = col</span><br><span class="line">		node.val = val</span><br><span class="line">		val_node = <span class="built_in">append</span>(val_node, node)</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">//构建动态二维数组</span></span><br><span class="line">	<span class="keyword">var</span> chapmap [][]<span class="keyword">int</span> = <span class="built_in">make</span>([][]<span class="keyword">int</span>, val_node[<span class="number">0</span>].row) <span class="comment">//有多少行</span></span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span> i := <span class="number">0</span>; i &lt; val_node[<span class="number">0</span>].row; i++ &#123;</span><br><span class="line">		chapmap[i] = <span class="built_in">make</span>([]<span class="keyword">int</span>, val_node[<span class="number">0</span>].col)</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">//将动态二维数组先设置成默认值</span></span><br><span class="line">	<span class="keyword">for</span> i, value := <span class="keyword">range</span> chapmap &#123;</span><br><span class="line">		<span class="keyword">for</span> j, _ := <span class="keyword">range</span> value &#123;</span><br><span class="line">			chapmap[i][j] = val_node[<span class="number">0</span>].val</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">//再将稀疏数组转回原始数组</span></span><br><span class="line">	<span class="keyword">for</span> i, value := <span class="keyword">range</span> val_node &#123;</span><br><span class="line">		<span class="keyword">if</span> i != <span class="number">0</span> &#123;</span><br><span class="line">			chapmap[value.row][value.col] = value.val</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">//输出最后的原始数组</span></span><br><span class="line">	<span class="keyword">for</span> _, value := <span class="keyword">range</span> chapmap &#123;</span><br><span class="line">		<span class="keyword">for</span> _, v := <span class="keyword">range</span> value &#123;</span><br><span class="line">			fmt.Printf(<span class="string">"%d\t"</span>, v)</span><br><span class="line">		&#125;</span><br><span class="line">		fmt.Println()</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="4-2-稀疏数组转原始数组"><a href="#4-2-稀疏数组转原始数组" class="headerlink" title="4.2. 稀疏数组转原始数组"></a>4.2. 稀疏数组转原始数组</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">"bufio"</span></span><br><span class="line">	<span class="string">"fmt"</span></span><br><span class="line">	<span class="string">"io"</span></span><br><span class="line">	<span class="string">"os"</span></span><br><span class="line">	<span class="string">"strconv"</span></span><br><span class="line">	<span class="string">"strings"</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> valNode <span class="keyword">struct</span> &#123;</span><br><span class="line">	row <span class="keyword">int</span></span><br><span class="line">	col <span class="keyword">int</span></span><br><span class="line">	val <span class="keyword">int</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	<span class="keyword">var</span> val_node []valNode</span><br><span class="line">	<span class="keyword">var</span> path <span class="keyword">string</span> = <span class="string">"../save.data"</span></span><br><span class="line">	file, err := os.Open(path)</span><br><span class="line">	<span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">		fmt.Println(<span class="string">"file open error:"</span>, err)</span><br><span class="line">		<span class="keyword">return</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">defer</span> file.Close()</span><br><span class="line">	reader := bufio.NewReader(file)</span><br><span class="line">	<span class="keyword">var</span> node = valNode&#123;&#125;</span><br><span class="line">	<span class="keyword">for</span> &#123;</span><br><span class="line">		line, bu_err := reader.ReadString(<span class="string">'\n'</span>) <span class="comment">//指定每次读取到换行就结束</span></span><br><span class="line">		<span class="keyword">if</span> bu_err == io.EOF &#123;</span><br><span class="line">			<span class="comment">//如果读到最后，则会报io.EOF错误</span></span><br><span class="line">			<span class="keyword">break</span></span><br><span class="line">		&#125;</span><br><span class="line">		<span class="comment">//将文件中保存的内容重新变成稀疏数组</span></span><br><span class="line">		arr := strings.Split(line, <span class="string">" "</span>)</span><br><span class="line">		row, err := strconv.Atoi(arr[<span class="number">0</span>])</span><br><span class="line">		<span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">			fmt.Println(<span class="string">"转换错误 error = "</span>, err)</span><br><span class="line">			<span class="keyword">return</span></span><br><span class="line">		&#125;</span><br><span class="line">		col, err := strconv.Atoi(arr[<span class="number">1</span>])</span><br><span class="line">		<span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">			fmt.Println(<span class="string">"转换错误 error = "</span>, err)</span><br><span class="line">			<span class="keyword">return</span></span><br><span class="line">		&#125;</span><br><span class="line">		val, err := strconv.Atoi(strings.TrimRight(arr[<span class="number">2</span>], <span class="string">"\r\n"</span>))</span><br><span class="line">		<span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">			fmt.Println(<span class="string">"转换错误 error = "</span>, err)</span><br><span class="line">			<span class="keyword">return</span></span><br><span class="line">		&#125;</span><br><span class="line">		node.row = row</span><br><span class="line">		node.col = col</span><br><span class="line">		node.val = val</span><br><span class="line">		val_node = <span class="built_in">append</span>(val_node, node)</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">//构建动态二维数组</span></span><br><span class="line">	<span class="keyword">var</span> chapmap [][]<span class="keyword">int</span> = <span class="built_in">make</span>([][]<span class="keyword">int</span>, val_node[<span class="number">0</span>].row) <span class="comment">//有多少行</span></span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span> i := <span class="number">0</span>; i &lt; val_node[<span class="number">0</span>].row; i++ &#123;</span><br><span class="line">		chapmap[i] = <span class="built_in">make</span>([]<span class="keyword">int</span>, val_node[<span class="number">0</span>].col)</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">//将动态二维数组先设置成默认值</span></span><br><span class="line">	<span class="keyword">for</span> i, value := <span class="keyword">range</span> chapmap &#123;</span><br><span class="line">		<span class="keyword">for</span> j, _ := <span class="keyword">range</span> value &#123;</span><br><span class="line">			chapmap[i][j] = val_node[<span class="number">0</span>].val</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">//再将稀疏数组转回原始数组</span></span><br><span class="line">	<span class="keyword">for</span> i, value := <span class="keyword">range</span> val_node &#123;</span><br><span class="line">		<span class="keyword">if</span> i != <span class="number">0</span> &#123;</span><br><span class="line">			chapmap[value.row][value.col] = value.val</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">//输出最后的原始数组</span></span><br><span class="line">	<span class="keyword">for</span> _, value := <span class="keyword">range</span> chapmap &#123;</span><br><span class="line">		<span class="keyword">for</span> _, v := <span class="keyword">range</span> value &#123;</span><br><span class="line">			fmt.Printf(<span class="string">"%d\t"</span>, v)</span><br><span class="line">		&#125;</span><br><span class="line">		fmt.Println()</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
 
       
@@ -434,7 +556,7 @@ window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="tex
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2019 guaosi
+    		&copy; 2020 guaosi
 			</div>
 			<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
 			</script>
@@ -518,7 +640,19 @@ window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="tex
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">测试</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Web</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">crack</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">git</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -531,10 +665,6 @@ window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="tex
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">数据结构</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">git</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -554,14 +684,6 @@ window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="tex
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">php</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Linux</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">PHP</a>
               </li>
              
@@ -570,15 +692,31 @@ window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="tex
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">redis</a>
+                <a href="javascript:void(0)" class="js-tag color1">Linux</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">lnmp</a>
+                <a href="javascript:void(0)" class="js-tag color3">网络</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">服务器</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">HTTP</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">redis</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">php</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">lnmp</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -641,7 +779,7 @@ window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="tex
     
     	<section class="tools-section tools-section-me" q-show="aboutme">
   	  	
-  	  		<div class="aboutme-wrap" id="js-aboutme">闽南师范大学2014级网络工程渣渣学子一枚。</div>
+  	  		<div class="aboutme-wrap" id="js-aboutme">自古人生何其乐，偷得浮生半日闲</div>
   	  	
     	</section>
     

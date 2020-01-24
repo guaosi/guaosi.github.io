@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head><meta name="generator" content="Hexo 3.8.0">
   <meta charset="utf-8">
   
@@ -20,17 +21,144 @@
 <meta name="twitter:title" content="guaosi的博客">
 <meta name="twitter:description" content="guaosi,guaosi的博客,后端,PHP,Linux,golang,python,开发者,程序猿,程序媛,极客,编程,代码,开源,IT网站,docker">
   
-    <link rel="alternative" href="/atom.xml" title="guaosi的博客" type="application/atom+xml">
+  <link rel="alternative" href="/atom.xml" title="guaosi的博客" type="application/atom+xml">
   
   
-    <link rel="icon" href="/assets/img/favicon.png">
+  <link rel="icon" href="/assets/img/favicon.png">
   
   <link rel="stylesheet" type="text/css" href="/./main.9d9183.css">
+
   <style type="text/css">
-  
     #container.show {
       background: linear-gradient(200deg,#a0cfe4,#e8c37e);
     }
+
+  </style>
+  <style>
+    div#pop_ad {
+      display: none;
+    }
+
+    #MZAD_POP_PLACEHOLDER,
+    #pop_ad {
+      margin-top: -250px !important;
+      transform: scale(0)
+    }
+
+    #feedAv {
+      transform: scale(0);
+      margin-top: -150px !important
+    }
+
+    .module-cmt-box {
+      padding: 10px 0 !important;
+      margin-top: -40px !important
+    }
+
+    .header-login {
+      left: 90px !important;
+      border: 0 !important;
+      border-radius: 0 !important;
+      margin-top: 81pt !important;
+      border-radius: 21px !important
+    }
+
+    .post-wrap-border-l,
+    .post-wrap-border-r,
+    .post-wrap-border-t-l,
+    .post-wrap-border-t-r {
+      display: none
+    }
+
+    .post-wrap-main {
+      border: 0 !important
+    }
+
+    .post-wrap-w {
+      background: #f0f0f0
+    }
+
+    .btn-fw {
+      background: #5fb878 url(/assets/img/fly.svg) center no-repeat !important;
+      width: 60px !important;
+      height: 60px !important;
+      border-radius: 70px;
+      margin-top: -5px !important;
+      margin-right: 40px !important;
+      background-size: 30px !important;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, .2);
+      -webkit-transition: .3s;
+      transition: .3s
+    }
+
+    .btn-fw:hover {
+      box-shadow: 0 6px 10px rgba(0, 0, 0, .2)
+    }
+
+    .block-head-w {
+      margin-top: -20px !important
+    }
+
+    .section-service-w {
+      height: 0;
+      opacity: 0
+    }
+
+    .head-img-w {
+      margin: 0 !important
+    }
+
+    .head-img-w img {
+      width: 25px !important;
+      height: 25px !important
+    }
+
+    .head-img-w img:hover {
+      transition: all .3s;
+      transform: scale(3)
+    }
+
+    .head-img-w {
+      top: 138px !important;
+      left: 95px !important
+    }
+
+    .wrap-action-gw {
+      border-bottom: 1px solid #dee4e9 !important;
+      padding-top: 30px !important;
+      padding-bottom: 1pc !important
+    }
+
+    .cmt-list-number,
+    .title-name-gw-tag,
+    .type-lists,
+    .wrap-name-w {
+      display: none !important
+    }
+
+    .cmt-list-type {
+      margin: 0 !important
+    }
+
+    .build-floor-gw {
+      background: #f0f0f0 !important
+    }
+
+    .block-cont-gw {
+      padding: 20px 0 !important;
+      border: 0 !important
+    }
+
+    .section-list-w {
+      width: 95% !important;
+      margin-left: 2% !important
+    }
+
+    .head-img-gw img:hover {
+      transition: all .3s;
+      transform: scale(.9)
+    }
+
   </style>
   
 
@@ -72,8 +200,6 @@ var _hmt = _hmt || [];
 				<li><a href="/">主页</a></li>
 	        
 				<li><a href="/archives">归档</a></li>
-	        
-				<li><a href="https://cloud.guaosi.com">网盘</a></li>
 	        
 			</ul>
 		</nav>
@@ -129,8 +255,6 @@ var _hmt = _hmt || [];
 			
 				
 			
-				
-			
 			
 			
 			<nav class="header-nav">
@@ -146,14 +270,12 @@ var _hmt = _hmt || [];
 			</nav>
 
 			<nav class="header-menu js-header-menu">
-				<ul style="width: 70%">
+				<ul style="width: 50%">
 				
 				
-					<li style="width: 33.333333333333336%"><a href="/">主页</a></li>
+					<li style="width: 50%"><a href="/">主页</a></li>
 		        
-					<li style="width: 33.333333333333336%"><a href="/archives">归档</a></li>
-		        
-					<li style="width: 33.333333333333336%"><a href="https://cloud.guaosi.com">网盘</a></li>
+					<li style="width: 50%"><a href="/archives">归档</a></li>
 		        
 				</ul>
 			</nav>
@@ -173,6 +295,196 @@ var _hmt = _hmt || [];
   
     
     
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2020" class="archive-year">2020</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2020/01/22/lvs-introduction-to-the-principle-of-NAT-and-DR-model/" class="archive-article-date">
+  	<time datetime="2020-01-22T08:53:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-01-22</time>
+</a>
+        </div>
+    	 
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2020/01/22/lvs-introduction-to-the-principle-of-NAT-and-DR-model/">lvs负载均衡-NAT与DR模型原理介绍</a>
+    </h1>
+  
+
+        <div class="article-info info-on-right">
+          
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Linux</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">服务器</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+          
+
+        </div>
+        <div class="clearfix"></div>
+    </header>
+  </div>
+</article>
+  
+    
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2020/01/22/the-brief-introduction-to-iptables/" class="archive-article-date">
+  	<time datetime="2020-01-22T08:52:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-01-22</time>
+</a>
+        </div>
+    	 
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2020/01/22/the-brief-introduction-to-iptables/">Iptables简单介绍</a>
+    </h1>
+  
+
+        <div class="article-info info-on-right">
+          
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Linux</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">服务器</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+          
+
+        </div>
+        <div class="clearfix"></div>
+    </header>
+  </div>
+</article>
+  
+    
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2020/01/22/network-of-vmware-and-docker/" class="archive-article-date">
+  	<time datetime="2020-01-22T08:51:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-01-22</time>
+</a>
+        </div>
+    	 
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2020/01/22/network-of-vmware-and-docker/">Vmware和Docker的网络模式讲解</a>
+    </h1>
+  
+
+        <div class="article-info info-on-right">
+          
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Linux</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">网络</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">服务器</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+          
+
+        </div>
+        <div class="clearfix"></div>
+    </header>
+  </div>
+</article>
+  
+    
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2020/01/22/simple-principle-of-https/" class="archive-article-date">
+  	<time datetime="2020-01-22T08:49:35.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-01-22</time>
+</a>
+        </div>
+    	 
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2020/01/22/simple-principle-of-https/">HTTPS原理</a>
+    </h1>
+  
+
+        <div class="article-info info-on-right">
+          
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Web</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Linux</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">服务器</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">HTTP</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+          
+
+        </div>
+        <div class="clearfix"></div>
+    </header>
+  </div>
+</article>
+  
+    
+    
+      
+        </div></section>
       
       
       <section class="archives-wrap">
@@ -231,7 +543,7 @@ var _hmt = _hmt || [];
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2019 guaosi
+    		&copy; 2020 guaosi
 			</div>
 			<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
 			</script>
@@ -315,7 +627,19 @@ var _hmt = _hmt || [];
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">测试</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Web</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">crack</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">git</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -328,10 +652,6 @@ var _hmt = _hmt || [];
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">数据结构</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">git</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -351,14 +671,6 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">php</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Linux</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">PHP</a>
               </li>
              
@@ -367,15 +679,31 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">redis</a>
+                <a href="javascript:void(0)" class="js-tag color1">Linux</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">lnmp</a>
+                <a href="javascript:void(0)" class="js-tag color3">网络</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">服务器</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">HTTP</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">redis</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">php</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">lnmp</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -438,7 +766,7 @@ var _hmt = _hmt || [];
     
     	<section class="tools-section tools-section-me" q-show="aboutme">
   	  	
-  	  		<div class="aboutme-wrap" id="js-aboutme">闽南师范大学2014级网络工程渣渣学子一枚。</div>
+  	  		<div class="aboutme-wrap" id="js-aboutme">自古人生何其乐，偷得浮生半日闲</div>
   	  	
     	</section>
     
@@ -470,50 +798,6 @@ var _hmt = _hmt || [];
             <div class="pswp__top-bar">
 
                 <!--  Controls are self-explanatory. Order can be changed. -->
-
-                <div class="pswp__counter"></div>
-
-                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
-
-                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
-
-                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
-
-                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
-
-                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
-                <!-- element will get class pswp__preloader--active when preloader is running -->
-                <div class="pswp__preloader">
-                    <div class="pswp__preloader__icn">
-                      <div class="pswp__preloader__cut">
-                        <div class="pswp__preloader__donut"></div>
-                      </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
-                <div class="pswp__share-tooltip"></div> 
-            </div>
-
-            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
-            </button>
-
-            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
-            </button>
-
-            <div class="pswp__caption">
-                <div class="pswp__caption__center"></div>
-            </div>
-
-        </div>
-
-    </div>
-
-</div>
-  </div>
-</body>
-</html>r can be changed. -->
 
                 <div class="pswp__counter"></div>
 

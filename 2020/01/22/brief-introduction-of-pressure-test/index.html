@@ -1,39 +1,165 @@
 <!DOCTYPE html>
 <html>
+
 <head><meta name="generator" content="Hexo 3.8.0">
   <meta charset="utf-8">
   
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="https://www.guaosi.com">
-  <title>golang算法与数据结构：环形队列(queue) | guaosi的博客</title>
+  <title>压力测试简单介绍 | guaosi的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="1. 基本介绍 队列是一个有序列表，可以用数组或是链表来实现。  遵循先入先出的原则。即:先存入队列的数据，要先取出。后存入的要后取出">
-<meta name="keywords" content="golang,算法,数据结构">
+  <meta name="description" content="压力测试压力测试（Stress Test），也称为强度测试、负载测试。 压力测试时模拟实际应用的软硬件环境以及用户使用过程的系统负荷，长时间或超大负荷地运行测试软件，来测试被测系统的性能、可靠性、稳定性等。">
+<meta name="keywords" content="测试,Web">
 <meta property="og:type" content="article">
-<meta property="og:title" content="golang算法与数据结构：环形队列(queue)">
-<meta property="og:url" content="https://www.guaosi.com/2019/03/12/golang-circle-queue/index.html">
+<meta property="og:title" content="压力测试简单介绍">
+<meta property="og:url" content="https://www.guaosi.com/2020/01/22/brief-introduction-of-pressure-test/index.html">
 <meta property="og:site_name" content="guaosi的博客">
-<meta property="og:description" content="1. 基本介绍 队列是一个有序列表，可以用数组或是链表来实现。  遵循先入先出的原则。即:先存入队列的数据，要先取出。后存入的要后取出">
+<meta property="og:description" content="压力测试压力测试（Stress Test），也称为强度测试、负载测试。 压力测试时模拟实际应用的软硬件环境以及用户使用过程的系统负荷，长时间或超大负荷地运行测试软件，来测试被测系统的性能、可靠性、稳定性等。">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="https://www.guaosi.com/assets/blogImg/data-structures-and-algorithms/queue/queue原理图.png">
-<meta property="og:updated_time" content="2019-03-12T09:05:17.356Z">
+<meta property="og:updated_time" content="2020-01-24T09:44:17.355Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="golang算法与数据结构：环形队列(queue)">
-<meta name="twitter:description" content="1. 基本介绍 队列是一个有序列表，可以用数组或是链表来实现。  遵循先入先出的原则。即:先存入队列的数据，要先取出。后存入的要后取出">
-<meta name="twitter:image" content="https://www.guaosi.com/assets/blogImg/data-structures-and-algorithms/queue/queue原理图.png">
+<meta name="twitter:title" content="压力测试简单介绍">
+<meta name="twitter:description" content="压力测试压力测试（Stress Test），也称为强度测试、负载测试。 压力测试时模拟实际应用的软硬件环境以及用户使用过程的系统负荷，长时间或超大负荷地运行测试软件，来测试被测系统的性能、可靠性、稳定性等。">
   
-    <link rel="alternative" href="/atom.xml" title="guaosi的博客" type="application/atom+xml">
+  <link rel="alternative" href="/atom.xml" title="guaosi的博客" type="application/atom+xml">
   
   
-    <link rel="icon" href="/assets/img/favicon.png">
+  <link rel="icon" href="/assets/img/favicon.png">
   
   <link rel="stylesheet" type="text/css" href="/./main.9d9183.css">
+
   <style type="text/css">
-  
     #container.show {
       background: linear-gradient(200deg,#a0cfe4,#e8c37e);
     }
+
+  </style>
+  <style>
+    div#pop_ad {
+      display: none;
+    }
+
+    #MZAD_POP_PLACEHOLDER,
+    #pop_ad {
+      margin-top: -250px !important;
+      transform: scale(0)
+    }
+
+    #feedAv {
+      transform: scale(0);
+      margin-top: -150px !important
+    }
+
+    .module-cmt-box {
+      padding: 10px 0 !important;
+      margin-top: -40px !important
+    }
+
+    .header-login {
+      left: 90px !important;
+      border: 0 !important;
+      border-radius: 0 !important;
+      margin-top: 81pt !important;
+      border-radius: 21px !important
+    }
+
+    .post-wrap-border-l,
+    .post-wrap-border-r,
+    .post-wrap-border-t-l,
+    .post-wrap-border-t-r {
+      display: none
+    }
+
+    .post-wrap-main {
+      border: 0 !important
+    }
+
+    .post-wrap-w {
+      background: #f0f0f0
+    }
+
+    .btn-fw {
+      background: #5fb878 url(/assets/img/fly.svg) center no-repeat !important;
+      width: 60px !important;
+      height: 60px !important;
+      border-radius: 70px;
+      margin-top: -5px !important;
+      margin-right: 40px !important;
+      background-size: 30px !important;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, .2);
+      -webkit-transition: .3s;
+      transition: .3s
+    }
+
+    .btn-fw:hover {
+      box-shadow: 0 6px 10px rgba(0, 0, 0, .2)
+    }
+
+    .block-head-w {
+      margin-top: -20px !important
+    }
+
+    .section-service-w {
+      height: 0;
+      opacity: 0
+    }
+
+    .head-img-w {
+      margin: 0 !important
+    }
+
+    .head-img-w img {
+      width: 25px !important;
+      height: 25px !important
+    }
+
+    .head-img-w img:hover {
+      transition: all .3s;
+      transform: scale(3)
+    }
+
+    .head-img-w {
+      top: 138px !important;
+      left: 95px !important
+    }
+
+    .wrap-action-gw {
+      border-bottom: 1px solid #dee4e9 !important;
+      padding-top: 30px !important;
+      padding-bottom: 1pc !important
+    }
+
+    .cmt-list-number,
+    .title-name-gw-tag,
+    .type-lists,
+    .wrap-name-w {
+      display: none !important
+    }
+
+    .cmt-list-type {
+      margin: 0 !important
+    }
+
+    .build-floor-gw {
+      background: #f0f0f0 !important
+    }
+
+    .block-cont-gw {
+      padding: 20px 0 !important;
+      border: 0 !important
+    }
+
+    .section-list-w {
+      width: 95% !important;
+      margin-left: 2% !important
+    }
+
+    .head-img-gw img:hover {
+      transition: all .3s;
+      transform: scale(.9)
+    }
+
   </style>
   
 
@@ -76,8 +202,6 @@ var _hmt = _hmt || [];
 	        
 				<li><a href="/archives">归档</a></li>
 	        
-				<li><a href="https://cloud.guaosi.com">网盘</a></li>
-	        
 			</ul>
 		</nav>
 		<nav class="header-smart-menu">
@@ -98,7 +222,7 @@ var _hmt = _hmt || [];
 				
 					<a class="github" target="_blank" href="https://github.com/guaosi" title="github"><i class="icon-github"></i></a>
 		        
-					<a class="mail" target="_blank" href="mailto:guaosi100@mail.com" title="mail"><i class="icon-mail"></i></a>
+					<a class="mail" target="_blank" href="mailto:guaosi100@gmail.com" title="mail"><i class="icon-mail"></i></a>
 		        
 					<a class="rss" target="_blank" href="/atom.xml" title="rss"><i class="icon-rss"></i></a>
 		        
@@ -132,8 +256,6 @@ var _hmt = _hmt || [];
 			
 				
 			
-				
-			
 			
 			
 			<nav class="header-nav">
@@ -141,7 +263,7 @@ var _hmt = _hmt || [];
 					
 						<a class="github" target="_blank" href="https://github.com/guaosi" title="github"><i class="icon-github"></i></a>
 			        
-						<a class="mail" target="_blank" href="mailto:guaosi100@mail.com" title="mail"><i class="icon-mail"></i></a>
+						<a class="mail" target="_blank" href="mailto:guaosi100@gmail.com" title="mail"><i class="icon-mail"></i></a>
 			        
 						<a class="rss" target="_blank" href="/atom.xml" title="rss"><i class="icon-rss"></i></a>
 			        
@@ -149,14 +271,12 @@ var _hmt = _hmt || [];
 			</nav>
 
 			<nav class="header-menu js-header-menu">
-				<ul style="width: 70%">
+				<ul style="width: 50%">
 				
 				
-					<li style="width: 33.333333333333336%"><a href="/">主页</a></li>
+					<li style="width: 50%"><a href="/">主页</a></li>
 		        
-					<li style="width: 33.333333333333336%"><a href="/archives">归档</a></li>
-		        
-					<li style="width: 33.333333333333336%"><a href="https://cloud.guaosi.com">网盘</a></li>
+					<li style="width: 50%"><a href="/archives">归档</a></li>
 		        
 				</ul>
 			</nav>
@@ -171,14 +291,14 @@ var _hmt = _hmt || [];
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-golang-circle-queue" class="article article-type-post " itemscope="" itemprop="blogPost">
+            <article id="post-brief-introduction-of-pressure-test" class="article article-type-post " itemscope="" itemprop="blogPost">
   <div class="article-inner">
     
     <header class="article-header">
       
   
     <h1 class="article-title" itemprop="name">
-      golang算法与数据结构：环形队列(queue)
+      压力测试简单介绍
     </h1>
   
 
@@ -197,42 +317,80 @@ var _hmt = _hmt || [];
 
 
       
-      <a href="/2019/03/12/golang-circle-queue/" class="archive-article-date">
-  	<time datetime="2019-03-12T08:46:28.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-12</time>
+      <a href="/2020/01/22/brief-introduction-of-pressure-test/" class="archive-article-date">
+  	<time datetime="2020-01-22T08:50:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-01-22</time>
 </a>
       
     </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-      <h1 id="1-基本介绍"><a href="#1-基本介绍" class="headerlink" title="1. 基本介绍"></a>1. 基本介绍</h1><ul>
-<li><p>队列是一个有序列表，可以用数组或是链表来实现。</p>
-</li>
-<li><p>遵循先入先出的原则。即:先存入队列的数据，要先取出。后存入的要后取出</p>
-</li>
-</ul>
+      <h1 id="压力测试"><a href="#压力测试" class="headerlink" title="压力测试"></a>压力测试</h1><p>压力测试（Stress Test），也称为强度测试、负载测试。</p>
+<p>压力测试时模拟实际应用的软硬件环境以及用户使用过程的系统负荷，长时间或超大负荷地运行测试软件，来测试被测系统的性能、可靠性、稳定性等。</p>
 <a id="more"></a>
-<h1 id="2-数组模拟队列"><a href="#2-数组模拟队列" class="headerlink" title="2. 数组模拟队列"></a>2. 数组模拟队列</h1><ul>
-<li><p>队列本身是有序列表，若使用数组的结构来存储队列的数据，则队列数组的声明如下 其中maxSize是该队列的最大容量。</p>
-</li>
-<li><p>因为队列的输出、输入是分别从前后端来处理，因此需要两个交量front及rear分别记录队列前后端的下标，front 会随着数据输出而改变，而rear则是随着数据输入而改变。如图所示:<br><img src="/assets/blogImg/data-structures-and-algorithms/queue/queue原理图.png" alt="queue原理图"></p>
-</li>
+<h2 id="压力测试的目的"><a href="#压力测试的目的" class="headerlink" title="压力测试的目的"></a>压力测试的目的</h2><p>以Web为例，关注项</p>
+<ul>
+<li>并发量</li>
+<li>响应速度</li>
+<li>容错能力</li>
 </ul>
-<h2 id="2-1-非环形队列-数组实现"><a href="#2-1-非环形队列-数组实现" class="headerlink" title="2.1. 非环形队列(数组实现)"></a>2.1. 非环形队列(数组实现)</h2><p>当我们将数据存入队列时称为” addqueue”, addqueue的处理需要有两个步骤:<br>1)将尾指针往后移: rear+1，front== rear [空]</p>
-<p>2)若尾指针rear小于等于队列的最大下标MaxSize-1,则将数据存入rear所指的数组元素中，否则无法存入数据。rear == MaxSize-1[队列满]</p>
-<h3 id="2-1-1-思路分析"><a href="#2-1-1-思路分析" class="headerlink" title="2.1.1. 思路分析"></a>2.1.1. 思路分析</h3><p>1.创建一个数组arrary, 作为队列的一个字段</p>
-<ol start="2">
-<li>front,表示队列头部,初始化为-1</li>
-<li>rear,表示队列尾部,初始化为-1<br>4.完成队列的基本查找</li>
-</ol>
-<figure class="highlight 1c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">AddQueue <span class="comment">//加入数据到队列</span></span><br><span class="line">GetQueue <span class="comment">//从队列取出数据</span></span><br><span class="line">ShowQueue <span class="comment">//显示队列</span></span><br></pre></td></tr></table></figure>
-<h3 id="2-1-2-实现"><a href="#2-1-2-实现" class="headerlink" title="2.1.2. 实现"></a>2.1.2. 实现</h3><figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">"errors"</span></span><br><span class="line">	<span class="string">"fmt"</span></span><br><span class="line">	<span class="string">"os"</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="comment">//创建结构体来管理</span></span><br><span class="line">type Queue struct &#123;</span><br><span class="line">	maxSize <span class="keyword">int</span>    <span class="comment">//队列最大长度</span></span><br><span class="line">	array   [<span class="number">5</span>]<span class="keyword">int</span> <span class="comment">//数组模拟队列</span></span><br><span class="line">	front   <span class="keyword">int</span>    <span class="comment">//指向队首(不包括第一个元素)</span></span><br><span class="line">	rear    <span class="keyword">int</span>    <span class="comment">// 指向队尾(包括最后一个元素)</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func (<span class="keyword">this</span> *Queue) addQueue(num <span class="keyword">int</span>) (err error) &#123;</span><br><span class="line">	<span class="keyword">if</span> <span class="keyword">this</span>.rear == <span class="keyword">this</span>.maxSize-<span class="number">1</span> &#123;</span><br><span class="line">		<span class="comment">//证明已经是队尾元素了，不能再加了</span></span><br><span class="line">		<span class="keyword">return</span> errors.<span class="keyword">New</span>(<span class="string">"queue full"</span>)</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">this</span>.rear++</span><br><span class="line">	<span class="keyword">this</span>.array[<span class="keyword">this</span>.rear] = num</span><br><span class="line">	<span class="keyword">return</span></span><br><span class="line">&#125;</span><br><span class="line">func (<span class="keyword">this</span> *Queue) getQueue() (num <span class="keyword">int</span>, err error) &#123;</span><br><span class="line">	<span class="keyword">if</span> <span class="keyword">this</span>.front == <span class="keyword">this</span>.rear &#123;</span><br><span class="line">		<span class="comment">//证明头尾指针已经到了一起，队列元素为空</span></span><br><span class="line">		err = errors.<span class="keyword">New</span>(<span class="string">"queue empty"</span>)</span><br><span class="line">		<span class="keyword">return</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">this</span>.front++</span><br><span class="line">	num = <span class="keyword">this</span>.array[<span class="keyword">this</span>.front]</span><br><span class="line">	<span class="keyword">return</span></span><br><span class="line">&#125;</span><br><span class="line">func (<span class="keyword">this</span> *Queue) showQueue() &#123;</span><br><span class="line">	fmt.<span class="keyword">Println</span>(<span class="string">"当前队列:"</span>)</span><br><span class="line">	<span class="keyword">for</span> i := <span class="keyword">this</span>.front + <span class="number">1</span>; i &lt;= <span class="keyword">this</span>.rear; i++ &#123;</span><br><span class="line">		fmt.Printf(<span class="string">"array[%d]=%d\n"</span>, i, <span class="keyword">this</span>.array[i])</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">func main() &#123;</span><br><span class="line">	var key string</span><br><span class="line">	var queue = &amp;Queue&#123;</span><br><span class="line">		maxSize: <span class="number">5</span>,</span><br><span class="line">		rear:    -<span class="number">1</span>,</span><br><span class="line">		front:   -<span class="number">1</span>,</span><br><span class="line">	&#125;</span><br><span class="line">	var num <span class="keyword">int</span></span><br><span class="line">	<span class="keyword">for</span> &#123;</span><br><span class="line">		fmt.<span class="keyword">Println</span>(<span class="string">"show 查看队列:"</span>)</span><br><span class="line">		fmt.<span class="keyword">Println</span>(<span class="string">"add 添加数据到队列"</span>)</span><br><span class="line">		fmt.<span class="keyword">Println</span>(<span class="string">"get 从队列获取元素"</span>)</span><br><span class="line">		fmt.<span class="keyword">Println</span>(<span class="string">"exit 退出"</span>)</span><br><span class="line">		fmt.<span class="keyword">Println</span>(<span class="string">"请输入操作名称:"</span>)</span><br><span class="line">		fmt.Scanf(<span class="string">"%s\n"</span>, &amp;key)</span><br><span class="line">		<span class="keyword">switch</span> key &#123;</span><br><span class="line">		<span class="keyword">case</span> <span class="string">"show"</span>:</span><br><span class="line">			queue.showQueue()</span><br><span class="line">		<span class="keyword">case</span> <span class="string">"add"</span>:</span><br><span class="line">			fmt.<span class="keyword">Println</span>(<span class="string">"请输入数据:"</span>)</span><br><span class="line">			fmt.Scanf(<span class="string">"%d\n"</span>, &amp;num)</span><br><span class="line">			err := queue.addQueue(num)</span><br><span class="line">			<span class="keyword">if</span> err != nil &#123;</span><br><span class="line">				fmt.<span class="keyword">Println</span>(err.Error())</span><br><span class="line">			&#125;</span><br><span class="line">		<span class="keyword">case</span> <span class="string">"get"</span>:</span><br><span class="line">			num, err := queue.getQueue()</span><br><span class="line">			<span class="keyword">if</span> err != nil &#123;</span><br><span class="line">				fmt.<span class="keyword">Println</span>(err.Error())</span><br><span class="line">			&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">				fmt.<span class="keyword">Println</span>(num)</span><br><span class="line">			&#125;</span><br><span class="line">		<span class="keyword">case</span> <span class="string">"exit"</span>:</span><br><span class="line">			os.Exit(<span class="number">0</span>)</span><br><span class="line">		<span class="keyword">default</span>:</span><br><span class="line">			fmt.<span class="keyword">Println</span>(<span class="string">"输入有误，请重新输入"</span>)</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="2-2-环形队列实现-数组实现"><a href="#2-2-环形队列实现-数组实现" class="headerlink" title="2.2. 环形队列实现(数组实现)"></a>2.2. 环形队列实现(数组实现)</h2><p>对前面的数组模拟队列的优化，充分利用数组，因此将数组看做是一个环形的。(通过取模的方式来实现)</p>
-<p>提醒:</p>
-<p>1) 尾索引的下一个尾头索引是表示队列满，即将队列容量空出一个作为约定，这个在判断队列满的时候需要注意<code>(tail+1)%maxSize == head</code> [满]</p>
-<p>2) tail == head [空]</p>
-<h3 id="2-2-1-思路分析"><a href="#2-2-1-思路分析" class="headerlink" title="2.2.1. 思路分析"></a>2.2.1. 思路分析</h3><p>1) 什么时候表示队列满 <code>(tail + 1) % maxSize = hedd</code><br>2) <code>tail == head</code> 表示空<br>3) 初始化时， <code>tail=0，head=0</code><br>4) 怎么统计该队列有多少个元素 <code>(tail + maxSize - head ) % maxSize</code></p>
-<h3 id="2-2-2-实现"><a href="#2-2-2-实现" class="headerlink" title="2.2.2. 实现"></a>2.2.2. 实现</h3><figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">"errors"</span></span><br><span class="line">	<span class="string">"fmt"</span></span><br><span class="line">	<span class="string">"os"</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">type circleQueue struct &#123;</span><br><span class="line">	maxSize <span class="keyword">int</span></span><br><span class="line">	array   [<span class="number">5</span>]<span class="keyword">int</span></span><br><span class="line">	head    <span class="keyword">int</span> <span class="comment">//指向队首，包含队首元素。先弹出，指针再向下移动</span></span><br><span class="line">	tail    <span class="keyword">int</span> <span class="comment">//指向队尾，不包含队尾元素。先推入，指针再向下移动</span></span><br><span class="line">	<span class="comment">//这里的包含不包含的意思是，当直接取 this.array[head] 或者 this.array[tail]时，是否有值</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func (<span class="keyword">this</span> *circleQueue) <span class="keyword">Push</span>(num <span class="keyword">int</span>) (err error) &#123;</span><br><span class="line">	<span class="comment">//判断队列是否已满</span></span><br><span class="line">	<span class="comment">//因为是+1来判断是否到达了头指针，如果回到头指针，证明队列就满了</span></span><br><span class="line">	<span class="comment">//故意将数组留了一个位置，来判断是否到达头指针。因为tail是不包含队尾的</span></span><br><span class="line">	<span class="keyword">if</span> (<span class="keyword">this</span>.tail+<span class="number">1</span>)%<span class="keyword">this</span>.maxSize == <span class="keyword">this</span>.head &#123;</span><br><span class="line">		err = errors.<span class="keyword">New</span>(<span class="string">"queue full"</span>)</span><br><span class="line">		<span class="keyword">return</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">this</span>.array[<span class="keyword">this</span>.tail] = num</span><br><span class="line">	<span class="keyword">this</span>.tail = (<span class="keyword">this</span>.tail + <span class="number">1</span>) % <span class="keyword">this</span>.maxSize</span><br><span class="line">	<span class="keyword">return</span></span><br><span class="line">&#125;</span><br><span class="line">func (<span class="keyword">this</span> *circleQueue) <span class="keyword">Pop</span>() (num <span class="keyword">int</span>, err error) &#123;</span><br><span class="line">	<span class="comment">//判断队列是否为空</span></span><br><span class="line">	<span class="keyword">if</span> <span class="keyword">this</span>.head == <span class="keyword">this</span>.tail &#123;</span><br><span class="line">		err = errors.<span class="keyword">New</span>(<span class="string">"queue empty"</span>)</span><br><span class="line">		<span class="keyword">return</span></span><br><span class="line">	&#125;</span><br><span class="line">	num = <span class="keyword">this</span>.array[<span class="keyword">this</span>.head]</span><br><span class="line">	<span class="keyword">this</span>.head = (<span class="keyword">this</span>.head + <span class="number">1</span>) % <span class="keyword">this</span>.maxSize</span><br><span class="line">	<span class="keyword">return</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//</span></span><br><span class="line">func (<span class="keyword">this</span> *circleQueue) <span class="keyword">Size</span>() (num <span class="keyword">int</span>) &#123;</span><br><span class="line">	<span class="comment">//因为tail有可能回到0开始，所以需要加上长度</span></span><br><span class="line">	<span class="comment">//取模是因为这是一个万能公式，可以通用</span></span><br><span class="line">	<span class="keyword">return</span> (<span class="keyword">this</span>.tail + <span class="keyword">this</span>.maxSize - <span class="keyword">this</span>.head) % <span class="keyword">this</span>.maxSize</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func (<span class="keyword">this</span> *circleQueue) List() &#123;</span><br><span class="line">	<span class="keyword">size</span> := <span class="keyword">this</span>.<span class="keyword">Size</span>()</span><br><span class="line">	<span class="keyword">if</span> <span class="keyword">size</span> == <span class="number">0</span> &#123;</span><br><span class="line">		fmt.<span class="keyword">Println</span>(<span class="string">"队列为空"</span>)</span><br><span class="line">	&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">		tempHead := <span class="keyword">this</span>.head</span><br><span class="line">		<span class="keyword">for</span> i := <span class="number">0</span>; i &lt; <span class="keyword">size</span>; i++ &#123;</span><br><span class="line">			fmt.Printf(<span class="string">"array[%d]=%d "</span>, tempHead, <span class="keyword">this</span>.array[tempHead])</span><br><span class="line">			tempHead = (tempHead + <span class="number">1</span>) % <span class="keyword">this</span>.maxSize</span><br><span class="line">		&#125;</span><br><span class="line">		fmt.<span class="keyword">Println</span>()</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func main() &#123;</span><br><span class="line">	var key string</span><br><span class="line">	var queue = &amp;circleQueue&#123;</span><br><span class="line">		maxSize: <span class="number">5</span>,</span><br><span class="line">		head:    <span class="number">0</span>,</span><br><span class="line">		tail:    <span class="number">0</span>,</span><br><span class="line">	&#125;</span><br><span class="line">	var num <span class="keyword">int</span></span><br><span class="line">	<span class="keyword">for</span> &#123;</span><br><span class="line">		fmt.<span class="keyword">Println</span>(<span class="string">"show 查看队列:"</span>)</span><br><span class="line">		fmt.<span class="keyword">Println</span>(<span class="string">"add 添加数据到队列"</span>)</span><br><span class="line">		fmt.<span class="keyword">Println</span>(<span class="string">"get 从队列获取元素"</span>)</span><br><span class="line">		fmt.<span class="keyword">Println</span>(<span class="string">"exit 退出"</span>)</span><br><span class="line">		fmt.<span class="keyword">Println</span>(<span class="string">"请输入操作名称:"</span>)</span><br><span class="line">		fmt.Scanf(<span class="string">"%s\n"</span>, &amp;key)</span><br><span class="line">		<span class="keyword">switch</span> key &#123;</span><br><span class="line">		<span class="keyword">case</span> <span class="string">"show"</span>:</span><br><span class="line">			queue.List()</span><br><span class="line">		<span class="keyword">case</span> <span class="string">"add"</span>:</span><br><span class="line">			fmt.<span class="keyword">Println</span>(<span class="string">"请输入数据:"</span>)</span><br><span class="line">			fmt.Scanf(<span class="string">"%d\n"</span>, &amp;num)</span><br><span class="line">			err := queue.<span class="keyword">Push</span>(num)</span><br><span class="line">			<span class="keyword">if</span> err != nil &#123;</span><br><span class="line">				fmt.<span class="keyword">Println</span>(err.Error())</span><br><span class="line">			&#125;</span><br><span class="line">		<span class="keyword">case</span> <span class="string">"get"</span>:</span><br><span class="line">			num, err := queue.<span class="keyword">Pop</span>()</span><br><span class="line">			<span class="keyword">if</span> err != nil &#123;</span><br><span class="line">				fmt.<span class="keyword">Println</span>(err.Error())</span><br><span class="line">			&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">				fmt.<span class="keyword">Println</span>(num)</span><br><span class="line">			&#125;</span><br><span class="line">		<span class="keyword">case</span> <span class="string">"exit"</span>:</span><br><span class="line">			os.Exit(<span class="number">0</span>)</span><br><span class="line">		<span class="keyword">default</span>:</span><br><span class="line">			fmt.<span class="keyword">Println</span>(<span class="string">"输入有误，请重新输入"</span>)</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="常见Web压力测试工具"><a href="#常见Web压力测试工具" class="headerlink" title="常见Web压力测试工具"></a>常见Web压力测试工具</h2><ul>
+<li>http_load</li>
+<li>JMeter</li>
+<li>ab</li>
+<li>LoadRunner</li>
+<li>Web bench</li>
+</ul>
+<h2 id="ab用法详解"><a href="#ab用法详解" class="headerlink" title="ab用法详解"></a>ab用法详解</h2><table>
+<thead>
+<tr>
+<th style="text-align:center">参数</th>
+<th style="text-align:center">含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">-n</td>
+<td style="text-align:center">请求总数</td>
+</tr>
+<tr>
+<td style="text-align:center">-c</td>
+<td style="text-align:center">并发请求个数</td>
+</tr>
+<tr>
+<td style="text-align:center">-t</td>
+<td style="text-align:center">测试所进行的最大秒数</td>
+</tr>
+<tr>
+<td style="text-align:center">-v</td>
+<td style="text-align:center">显示详细信息</td>
+</tr>
+<tr>
+<td style="text-align:center">-k</td>
+<td style="text-align:center">启用Keeplived功能。一个HTTP会话中执行多个请求</td>
+</tr>
+<tr>
+<td style="text-align:center">-p</td>
+<td style="text-align:center">post-file 包含了POST数据的文件</td>
+</tr>
+<tr>
+<td style="text-align:center">-i</td>
+<td style="text-align:center">执行HEAD请求，只获取头信息</td>
+</tr>
+<tr>
+<td style="text-align:center">-h</td>
+<td style="text-align:center">显示帮助信息</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>-c跟-n的不同：如果-n的值是20000，代表一共会发送20000个请求，-c是5，则表示这20000个请求分5个用户同时发送，每个用户发送4000个请求。</p>
+</blockquote>
+<h2 id="案例"><a href="#案例" class="headerlink" title="案例"></a>案例</h2><figure class="highlight tap"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 一共1000个请求，100个用户同时发送，每个用户发10个</span></span><br><span class="line">ab -n<span class="number"> 1000 </span>-c<span class="number"> 100 </span>localhost/index.php</span><br><span class="line"></span><br><span class="line">This is ApacheBench, Version 2.3 &lt;$Revision:<span class="number"> 655654 </span>$&gt;</span><br><span class="line">Copyright<span class="number"> 1996 </span>Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/</span><br><span class="line">Licensed to The Apache Software Foundation, http://www.apache.org/</span><br><span class="line"></span><br><span class="line">Benchmarking localhost (be patient)</span><br><span class="line">Completed<span class="number"> 100 </span>requests</span><br><span class="line">Completed<span class="number"> 200 </span>requests</span><br><span class="line">Completed<span class="number"> 300 </span>requests</span><br><span class="line">Completed<span class="number"> 400 </span>requests</span><br><span class="line">Completed<span class="number"> 500 </span>requests</span><br><span class="line">Completed<span class="number"> 600 </span>requests</span><br><span class="line">Completed<span class="number"> 700 </span>requests</span><br><span class="line">Completed<span class="number"> 800 </span>requests</span><br><span class="line">Completed<span class="number"> 900 </span>requests</span><br><span class="line">Completed<span class="number"> 1000 </span>requests</span><br><span class="line">Finished<span class="number"> 1000 </span>requests</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Server Software:        Apache/2.2.25 (服务器软件名称及版本信息)</span><br><span class="line">Server Hostname:        localhost (服务器主机名)</span><br><span class="line">Server Port:           <span class="number"> 80 </span>(服务器端口)</span><br><span class="line">Document Path:          /index.php (供测试的URL路径)</span><br><span class="line">Document Length:       <span class="number"> 10 </span>bytes (供测试的URL返回的文档大小)</span><br><span class="line">Concurrency Level:     <span class="number"> 100 </span>(并发数)</span><br><span class="line">Time taken for tests:   0.247 seconds (压力测试消耗的总时间)</span><br><span class="line">Complete requests:     <span class="number"> 1000 </span>(压力测试的总次数)</span><br><span class="line">Failed requests:       <span class="number"> 0 </span>(失败的请求数（当有失败时，证明此时存在瓶颈问题）)</span><br><span class="line">Write errors:          <span class="number"> 0 </span>(网络连接写入错误数)</span><br><span class="line">Total transferred:     <span class="number"> 198000 </span>bytes (传输的总数据量)</span><br><span class="line">HTML transferred:      <span class="number"> 10000 </span>bytes (HTML文档的总数据量)</span><br><span class="line">Requests per second:    4048.34 [<span class="comment">#/sec] (mean) (平均每秒的请求数)</span></span><br><span class="line">Time per request:       2.47 [ms] (mean) (所有并发用户(这里是100)都请求一次的平均时间(247ms/100))</span><br><span class="line">Time per request:       0.247 [ms] (mean, across all concurrent requests) (单个用户请求一次的平均时间(247,s/1000))</span><br><span class="line">Transfer rate:          782.78 [Kbytes/sec] received (传输速率，单位：KB/s)</span><br><span class="line">Connection Times (ms)</span><br><span class="line">              min  mean[+/-sd] median   max</span><br><span class="line">Connect:       <span class="number"> 0 </span>  <span class="number"> 0 </span>  0.3     <span class="number"> 0 </span>      1</span><br><span class="line">Processing:    <span class="number"> 6 </span> <span class="number"> 23 </span>  4.2    <span class="number"> 24 </span>     30</span><br><span class="line">Waiting:       <span class="number"> 5 </span> <span class="number"> 20 </span>  5.3    <span class="number"> 21 </span>     29</span><br><span class="line">Total:         <span class="number"> 6 </span> <span class="number"> 23 </span>  4.2    <span class="number"> 24 </span>     30</span><br><span class="line"></span><br><span class="line">Percentage of the requests served within a certain time (ms)</span><br><span class="line">  50%     24</span><br><span class="line">  66%     25</span><br><span class="line">  75%     26</span><br><span class="line">  80%     26</span><br><span class="line">  90%     27</span><br><span class="line">  95%     27</span><br><span class="line">  98%     28</span><br><span class="line">  99%     29</span><br><span class="line"> 100%    <span class="number"> 30 </span>(longest request)</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>Linux内核打开套接字的数量是有限的(socket:Too many open files)，当n和c过大时，此时系统会拒接(一般是1024)。可以通过ulimit -n 来解除套接字的限制。</p>
+</blockquote>
+
       
 
       
@@ -245,7 +403,7 @@ var _hmt = _hmt || [];
           
           <br>
           <strong>本文链接：</strong>
-          <a rel="license" href="https://www.guaosi.com/2019/03/12/golang-circle-queue/">https://www.guaosi.com/2019/03/12/golang-circle-queue/</a>
+          <a rel="license" href="https://www.guaosi.com/2020/01/22/brief-introduction-of-pressure-test/">https://www.guaosi.com/2020/01/22/brief-introduction-of-pressure-test/</a>
           <br>
           <strong>版权声明：</strong>
           本博客所有文章除特别声明外，均采用
@@ -305,15 +463,11 @@ var _hmt = _hmt || [];
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">golang</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">测试</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">算法</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">数据结构</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Web</a>
         		</li>
       		
 		</ul>
@@ -369,7 +523,7 @@ var _hmt = _hmt || [];
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACJUlEQVR42u3aUW6DQAwFwNz/0ukFGvJsQyvM8BWpS9ghkuu1/XrF1zu4jtdXn/K64sLAwLgtI9nc8Xar39x77pdXg4GB8QDGp00cf05W5mH0E+N4bxgYGBjzNdXtYmBgYJwbcI/TxzzI/vP/DQwMjJswksNkNVzmCWKeXJ5wFsfAwLghI0/m/v7zJf0NDAyMWzHexes4OUtCbbXoFu0KAwNjNaN61JwX3fLUs7wfDAyMpYzJoMP8qDkZ6fjld8DAwFjKqN5cbQz0QnbzWRgYGKsZk2B3biNh1MLEwMBYzUi2kqd01VZo9TD8pdyGgYGxmnF1uX8yFhYV4zAwMJYyeqNg1ZVJ6pn89eNLx8DAWM2YDIHND7rR2ToI+hgYGLsZ1bJ7nsb1wms1JW12DzAwMG7FmN+cJ4K9UJuvwcDAeDKjOvpQLujH7HywAwMDYxMjb0Pm6eAkUDbXY2BgPIbRazROhr2qLYSPT8fAwFjNyJOws0YlknSwWvjDwMB4DqPahiwMPRSPwXkb9ZeAi4GBsZrRC5pJ0b8HLrcTMDAwHsCojkH0hkonIfvLXRgYGEsZ7+KVDGRcV1D70nfFwMBYyqimaGcNSUwOunnCioGBsYnRC7LJFpNvLjQp8zeNgYGxlHFdEb/3Cqq7xcDAwEg2mqePvdENDAwMjF5ATEjz83QyPouBgfEERl7Kn5TYqkE5H+PAwMDYzageHa9oT/aCLAYGxgMYPy/5dHILf6nCAAAAAElFTkSuQmCC" alt="微信分享二维码">
+      <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACsklEQVR42u3aQW7jQAwEwPz/07uXPSwQ2+kmZwwHKJ2MSJamfNAwTX59xcefJ8f/Z79f//oOz57y/fpn9zx24OHh4R1aevKwZ39Jrm/ZybMe3AEPDw/vGi95TSdnN+zkbL5mPDw8vE/m5dcnR74x4OHh4f1eXr7QJFZ4veXg4eHhfQ6vDWpnC9o863rWgoeHh9dVrVEX6XM+X+nv4eHh4a276smLO4lcNyX1bJ3/7oCHh4d3gZe/cGel9qmSffYsPDw8vBu8fChqFuDOQo3ZUMKDFeLh4eFd4M0aS/lj2q0ib78VGwYeHh7eNd6m2E1ChHvUYX8PDw8Pb8TbDwS020kLW3X28PDw8C7zZq2sTYjQRsZ5FPI0a8HDw8M7ytsUx7MF5T9QuwnVl+Lh4eGVvHx7aAPczdhWNPXwujTHw8PDu8xbJcFxUb4vtYugBA8PD+8yr416Z+V4vkm0IwsP7oOHh4d3mbcpr5Piu8Xn8XEURuDh4eEd5Z0aL2i79u0AQbs94OHh4d3mbYaf8obWPrQtfj48PDy8C7w8DmiL5v1YVXv2hzAXDw8P7xAvX2LSppqVwm8dusLDw8Nb85JX7YzaHvkQQ7vN4OHh4b2Tt1/uZptJwo7oDnh4eHhv5LWhQPJaz2PcfLjhh4gEDw8P7zKvfTW3pE0zLGcXnTQ8PDy8BW/2Us4b+bMNIN9a6skyPDw8vDWvjQzOsk+FIMOEGA8PD28ByyOGU4NTs29FwS4eHh7eBd7+HZtvALPiu/18eAvBw8PDWwQBye1mbar256i3DTw8PLxrvGRwKh+xSpZ7NnN4+hc8PDy8j+Htx7PaMaw8Vi5GB/Dw8PA+gDcbBWgHs4rmGR4eHt41Xtv02lOjgvjlaqPRLjw8PLwLvNk//LMRrnZZbdR7LM/Aw8PDe/zdv6ePc6glMbcfAAAAAElFTkSuQmCC" alt="微信分享二维码">
     </div>
 </div>
 
@@ -383,18 +537,18 @@ var _hmt = _hmt || [];
 
 <nav id="article-nav">
   
-    <a href="/2019/03/13/laravel-limit-paginate/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2020/01/22/network-of-vmware-and-docker/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          Laravel的限制条数再分页
+          Vmware和Docker的网络模式讲解
         
       </div>
     </a>
   
   
-    <a href="/2019/03/11/golang-tcp-socket/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">记一次golang网络编程开发聊天室有感</div>
+    <a href="/2020/01/22/simple-principle-of-https/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">HTTPS原理</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -421,7 +575,7 @@ var _hmt = _hmt || [];
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-基本介绍"><span class="toc-number">1.</span> <span class="toc-text">1. 基本介绍</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-数组模拟队列"><span class="toc-number">2.</span> <span class="toc-text">2. 数组模拟队列</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#2-1-非环形队列-数组实现"><span class="toc-number">2.1.</span> <span class="toc-text">2.1. 非环形队列(数组实现)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-1-思路分析"><span class="toc-number">2.1.1.</span> <span class="toc-text">2.1.1. 思路分析</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-2-实现"><span class="toc-number">2.1.2.</span> <span class="toc-text">2.1.2. 实现</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-2-环形队列实现-数组实现"><span class="toc-number">2.2.</span> <span class="toc-text">2.2. 环形队列实现(数组实现)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-1-思路分析"><span class="toc-number">2.2.1.</span> <span class="toc-text">2.2.1. 思路分析</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-2-实现"><span class="toc-number">2.2.2.</span> <span class="toc-text">2.2.2. 实现</span></a></li></ol></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#压力测试"><span class="toc-number">1.</span> <span class="toc-text">压力测试</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#压力测试的目的"><span class="toc-number">1.1.</span> <span class="toc-text">压力测试的目的</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#常见Web压力测试工具"><span class="toc-number">1.2.</span> <span class="toc-text">常见Web压力测试工具</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ab用法详解"><span class="toc-number">1.3.</span> <span class="toc-text">ab用法详解</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#案例"><span class="toc-number">1.4.</span> <span class="toc-text">案例</span></a></li></ol></li></ol>
                     </div>
                 </span>
             </div>
@@ -437,7 +591,7 @@ var _hmt = _hmt || [];
 
 
 
-<div id="SOHUCS" sid="golang-circle-queue"></div> 
+<div id="SOHUCS" sid="brief-introduction-of-pressure-test"></div> 
 <script type="text/javascript"> 
 (function(){ 
 var appid = "cytWxLdY3"; 
@@ -456,7 +610,7 @@ window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="tex
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2019 guaosi
+    		&copy; 2020 guaosi
 			</div>
 			<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
 			</script>
@@ -540,7 +694,11 @@ window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="tex
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">git</a>
+                <a href="javascript:void(0)" class="js-tag color3">测试</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Web</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -548,23 +706,7 @@ window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="tex
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">redis</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">php</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">linux</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">lnmp</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">服务器</a>
+                <a href="javascript:void(0)" class="js-tag color4">git</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -580,15 +722,19 @@ window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="tex
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">python</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">tcp</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">网络编程</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">linux</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">python</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -604,11 +750,35 @@ window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="tex
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">docker</a>
+                <a href="javascript:void(0)" class="js-tag color3">网络</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">服务器</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">HTTP</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">redis</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">php</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">lnmp</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">onedrive</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">docker</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -663,7 +833,7 @@ window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="tex
     
     	<section class="tools-section tools-section-me" q-show="aboutme">
   	  	
-  	  		<div class="aboutme-wrap" id="js-aboutme">闽南师范大学2014级网络工程渣渣学子一枚。</div>
+  	  		<div class="aboutme-wrap" id="js-aboutme">自古人生何其乐，偷得浮生半日闲</div>
   	  	
     	</section>
     

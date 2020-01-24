@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head><meta name="generator" content="Hexo 3.8.0">
   <meta charset="utf-8">
   
@@ -9,7 +10,7 @@
   <title>使用lnmp快速构建线上环境并搭建项目成功上线 | guaosi的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="1. 前提本文适合: 1.已经在linux虚拟机上搭建过环境，可以正常访问的，但是没有搭建在真实服务器上。 2.需要有略微的linux基础。 3.有自己的小项目或者demo，如果没有，会composer安装框架也是可以的。 因为本文适合偷懒使用，如果没有丝毫搭建经验的，所以我建议最好是创建一台虚拟机，自己手动安装nginx,php,MySQL，让内网可以上线访问。有了相关的认识，再来看本文效果是最">
-<meta name="keywords" content="php,lnmp,服务器">
+<meta name="keywords" content="服务器,php,lnmp">
 <meta property="og:type" content="article">
 <meta property="og:title" content="使用lnmp快速构建线上环境并搭建项目成功上线">
 <meta property="og:url" content="https://www.guaosi.com/2018/12/18/environment-by-lnmp/index.html">
@@ -17,23 +18,150 @@
 <meta property="og:description" content="1. 前提本文适合: 1.已经在linux虚拟机上搭建过环境，可以正常访问的，但是没有搭建在真实服务器上。 2.需要有略微的linux基础。 3.有自己的小项目或者demo，如果没有，会composer安装框架也是可以的。 因为本文适合偷懒使用，如果没有丝毫搭建经验的，所以我建议最好是创建一台虚拟机，自己手动安装nginx,php,MySQL，让内网可以上线访问。有了相关的认识，再来看本文效果是最">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://www.guaosi.com/assets/blogImg/tencent-domain-name.png">
-<meta property="og:updated_time" content="2019-03-09T10:27:01.928Z">
+<meta property="og:updated_time" content="2020-01-24T09:44:17.359Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="使用lnmp快速构建线上环境并搭建项目成功上线">
 <meta name="twitter:description" content="1. 前提本文适合: 1.已经在linux虚拟机上搭建过环境，可以正常访问的，但是没有搭建在真实服务器上。 2.需要有略微的linux基础。 3.有自己的小项目或者demo，如果没有，会composer安装框架也是可以的。 因为本文适合偷懒使用，如果没有丝毫搭建经验的，所以我建议最好是创建一台虚拟机，自己手动安装nginx,php,MySQL，让内网可以上线访问。有了相关的认识，再来看本文效果是最">
 <meta name="twitter:image" content="https://www.guaosi.com/assets/blogImg/tencent-domain-name.png">
   
-    <link rel="alternative" href="/atom.xml" title="guaosi的博客" type="application/atom+xml">
+  <link rel="alternative" href="/atom.xml" title="guaosi的博客" type="application/atom+xml">
   
   
-    <link rel="icon" href="/assets/img/favicon.png">
+  <link rel="icon" href="/assets/img/favicon.png">
   
   <link rel="stylesheet" type="text/css" href="/./main.9d9183.css">
+
   <style type="text/css">
-  
     #container.show {
       background: linear-gradient(200deg,#a0cfe4,#e8c37e);
     }
+
+  </style>
+  <style>
+    div#pop_ad {
+      display: none;
+    }
+
+    #MZAD_POP_PLACEHOLDER,
+    #pop_ad {
+      margin-top: -250px !important;
+      transform: scale(0)
+    }
+
+    #feedAv {
+      transform: scale(0);
+      margin-top: -150px !important
+    }
+
+    .module-cmt-box {
+      padding: 10px 0 !important;
+      margin-top: -40px !important
+    }
+
+    .header-login {
+      left: 90px !important;
+      border: 0 !important;
+      border-radius: 0 !important;
+      margin-top: 81pt !important;
+      border-radius: 21px !important
+    }
+
+    .post-wrap-border-l,
+    .post-wrap-border-r,
+    .post-wrap-border-t-l,
+    .post-wrap-border-t-r {
+      display: none
+    }
+
+    .post-wrap-main {
+      border: 0 !important
+    }
+
+    .post-wrap-w {
+      background: #f0f0f0
+    }
+
+    .btn-fw {
+      background: #5fb878 url(/assets/img/fly.svg) center no-repeat !important;
+      width: 60px !important;
+      height: 60px !important;
+      border-radius: 70px;
+      margin-top: -5px !important;
+      margin-right: 40px !important;
+      background-size: 30px !important;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, .2);
+      -webkit-transition: .3s;
+      transition: .3s
+    }
+
+    .btn-fw:hover {
+      box-shadow: 0 6px 10px rgba(0, 0, 0, .2)
+    }
+
+    .block-head-w {
+      margin-top: -20px !important
+    }
+
+    .section-service-w {
+      height: 0;
+      opacity: 0
+    }
+
+    .head-img-w {
+      margin: 0 !important
+    }
+
+    .head-img-w img {
+      width: 25px !important;
+      height: 25px !important
+    }
+
+    .head-img-w img:hover {
+      transition: all .3s;
+      transform: scale(3)
+    }
+
+    .head-img-w {
+      top: 138px !important;
+      left: 95px !important
+    }
+
+    .wrap-action-gw {
+      border-bottom: 1px solid #dee4e9 !important;
+      padding-top: 30px !important;
+      padding-bottom: 1pc !important
+    }
+
+    .cmt-list-number,
+    .title-name-gw-tag,
+    .type-lists,
+    .wrap-name-w {
+      display: none !important
+    }
+
+    .cmt-list-type {
+      margin: 0 !important
+    }
+
+    .build-floor-gw {
+      background: #f0f0f0 !important
+    }
+
+    .block-cont-gw {
+      padding: 20px 0 !important;
+      border: 0 !important
+    }
+
+    .section-list-w {
+      width: 95% !important;
+      margin-left: 2% !important
+    }
+
+    .head-img-gw img:hover {
+      transition: all .3s;
+      transform: scale(.9)
+    }
+
   </style>
   
 
@@ -75,8 +203,6 @@ var _hmt = _hmt || [];
 				<li><a href="/">主页</a></li>
 	        
 				<li><a href="/archives">归档</a></li>
-	        
-				<li><a href="https://cloud.guaosi.com">网盘</a></li>
 	        
 			</ul>
 		</nav>
@@ -132,8 +258,6 @@ var _hmt = _hmt || [];
 			
 				
 			
-				
-			
 			
 			
 			<nav class="header-nav">
@@ -149,14 +273,12 @@ var _hmt = _hmt || [];
 			</nav>
 
 			<nav class="header-menu js-header-menu">
-				<ul style="width: 70%">
+				<ul style="width: 50%">
 				
 				
-					<li style="width: 33.333333333333336%"><a href="/">主页</a></li>
+					<li style="width: 50%"><a href="/">主页</a></li>
 		        
-					<li style="width: 33.333333333333336%"><a href="/archives">归档</a></li>
-		        
-					<li style="width: 33.333333333333336%"><a href="https://cloud.guaosi.com">网盘</a></li>
+					<li style="width: 50%"><a href="/archives">归档</a></li>
 		        
 				</ul>
 			</nav>
@@ -268,7 +390,7 @@ var _hmt = _hmt || [];
 <p>修改修改<code>www.guaosi.com.conf</code>的配置<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim /usr/local/nginx/conf/vhost/www<span class="selector-class">.guaosi</span><span class="selector-class">.com</span><span class="selector-class">.conf</span></span><br></pre></td></tr></table></figure></p>
 <p>在 <code>listen 80;</code>后面加入下面代码<br><figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">listen</span> <span class="number">443</span> ssl;</span><br><span class="line"><span class="attribute">ssl</span> <span class="literal">on</span>;</span><br><span class="line"><span class="attribute">ssl_certificate</span> 证书存在位置;</span><br><span class="line"><span class="attribute">ssl_certificate_key</span> 证书存在位置;</span><br></pre></td></tr></table></figure></p>
 <p>参考案例<br><figure class="highlight axapta"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">server</span></span><br><span class="line">    &#123;</span><br><span class="line">        listen <span class="number">80</span>;</span><br><span class="line">        listen <span class="number">443</span> ssl;</span><br><span class="line">        ssl on;</span><br><span class="line">        ssl_certificate /usr/cert/www/ssl.crt;</span><br><span class="line">        ssl_certificate_key /usr/cert/www/ssl.key;</span><br><span class="line">        <span class="meta">#listen [::]:80;</span></span><br><span class="line">        server_name www.guaosi.com ;</span><br><span class="line">        <span class="keyword">index</span> <span class="keyword">index</span>.html <span class="keyword">index</span>.htm <span class="keyword">index</span>.php <span class="keyword">default</span>.html <span class="keyword">default</span>.htm <span class="keyword">default</span>.php;</span><br><span class="line">    ......</span><br></pre></td></tr></table></figure></p>
-<h3 id="6-2-3-强制跳转HTTPS"><a href="#6-2-3-强制跳转HTTPS" class="headerlink" title="6.2.3. 强制跳转HTTPS"></a>6.2.3. 强制跳转HTTPS</h3><p>如果想http强制https，只要<code>让80端口的强制重定向https</code>即可。可以参考这样设置<br><figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">server</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">#listen 80;</span></span><br><span class="line">        <span class="comment">#listen [::]:80;</span></span><br><span class="line">        <span class="attribute">listen</span> <span class="number">443</span> ssl;</span><br><span class="line">        <span class="attribute">ssl</span> <span class="literal">on</span>;</span><br><span class="line">        <span class="attribute">ssl_certificate</span> /usr/cert/cloud/ssl.crt;</span><br><span class="line">        <span class="attribute">ssl_certificate_key</span> /usr/cert/cloud/ssl.key;</span><br><span class="line">        <span class="attribute">server_name</span> cloud.guaosi.com ;</span><br><span class="line">        <span class="attribute">index</span> index.html index.htm index.php default.html default.htm default.php;</span><br><span class="line">        <span class="attribute">root</span>  /home/wwwroot/cloud.guaosi.com/public;</span><br><span class="line">        <span class="attribute">set</span> <span class="variable">$basedir</span> <span class="string">"open_basedir=/home/wwwroot/cloud.guaosi.com/:/tmp/:/proc/"</span>;</span><br><span class="line">        <span class="attribute">include</span> rewrite/none.conf;</span><br><span class="line">        <span class="comment">#error_page   404   /404.html;</span></span><br><span class="line">        <span class="comment"># Deny access to PHP files in specific directory</span></span><br><span class="line">        <span class="comment">#location ~ /(wp-content|uploads|wp-includes|images)/.*\.php$ &#123; deny all; &#125;</span></span><br><span class="line"></span><br><span class="line">        <span class="attribute">include</span> enable-php.conf;</span><br><span class="line"></span><br><span class="line">        <span class="attribute">location</span> / &#123;</span><br><span class="line">                <span class="attribute">try_files</span> <span class="variable">$uri</span> <span class="variable">$uri</span>/ /index.php?<span class="variable">$args</span>;</span><br><span class="line">         &#125;</span><br><span class="line">        <span class="attribute">access_log</span> <span class="literal">off</span>;</span><br><span class="line">    &#125;</span><br><span class="line">server</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="attribute">listen</span> <span class="number">80</span>;</span><br><span class="line">        <span class="attribute">server_name</span> cloud.guaosi.com ;</span><br><span class="line">        <span class="attribute">return</span> <span class="number">301</span> https://<span class="variable">$server_name</span><span class="variable">$request_uri</span>;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="6-2-3-强制跳转HTTPS"><a href="#6-2-3-强制跳转HTTPS" class="headerlink" title="6.2.3. 强制跳转HTTPS"></a>6.2.3. 强制跳转HTTPS</h3><p>如果想http强制https，只要<code>让80端口的强制重定向https</code>即可。可以参考这样设置<br><figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">server</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">#listen 80;</span></span><br><span class="line">        <span class="comment">#listen [::]:80;</span></span><br><span class="line">        <span class="attribute">listen</span> <span class="number">443</span> ssl;</span><br><span class="line">        <span class="attribute">ssl</span> <span class="literal">on</span>;</span><br><span class="line">        <span class="attribute">ssl_certificate</span> /usr/cert/cloud/ssl.crt;</span><br><span class="line">        <span class="attribute">ssl_certificate_key</span> /usr/cert/cloud/ssl.key;</span><br><span class="line">        <span class="attribute">server_name</span> cloud.guaosi.com ;</span><br><span class="line">        <span class="attribute">index</span> index.html index.htm index.php default.html default.htm default.php;</span><br><span class="line">        <span class="attribute">root</span>  /home/wwwroot/cloud.guaosi.com/public;</span><br><span class="line">        <span class="attribute">set</span> <span class="variable">$basedir</span> <span class="string">"open_basedir=/home/wwwroot/cloud.guaosi.com/:/tmp/:/proc/"</span>;</span><br><span class="line">        <span class="attribute">include</span> rewrite/none.conf;</span><br><span class="line">        <span class="comment">#error_page   404   /404.html;</span></span><br><span class="line">        <span class="comment"># Deny access to PHP files in specific directory</span></span><br><span class="line">        <span class="comment">#location ~ /(wp-content|uploads|wp-includes|images)/.*\.php$ &#123; deny all; &#125;</span></span><br><span class="line"></span><br><span class="line">        <span class="attribute">include</span> enable-php.conf;</span><br><span class="line"></span><br><span class="line">        <span class="attribute">location</span> / &#123;</span><br><span class="line">                <span class="attribute">try_files</span> <span class="variable">$uri</span> <span class="variable">$uri</span>/ /index.php?<span class="variable">$args</span>;</span><br><span class="line">         &#125;</span><br><span class="line">        <span class="attribute">access_log</span> <span class="literal">off</span>;</span><br><span class="line">    &#125;</span><br><span class="line">server</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="attribute">listen</span> <span class="number">80</span>;</span><br><span class="line">        <span class="attribute">server_name</span> cloud.guaosi.com ;</span><br><span class="line">        <span class="attribute">return</span> <span class="number">301</span> https://<span class="variable">$server_name</span><span class="variable">$request_uri</span>;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></p>
 <h3 id="6-2-4-无法删除项目"><a href="#6-2-4-无法删除项目" class="headerlink" title="6.2.4. 无法删除项目"></a>6.2.4. 无法删除项目</h3><p>因为LNMP 1.2开始PHP防跨目录限制使用<code>.user.ini</code>，该文件在网站根目录下，<code>.user.ini</code>文件无法直接修改。所以需要先解锁<code>.user.ini</code>文件。<br>执行下面的命令<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chattr -<span class="selector-tag">i</span> /home/wwwroot/www<span class="selector-class">.guaosi</span><span class="selector-class">.com</span>/<span class="selector-class">.user</span><span class="selector-class">.ini</span></span><br></pre></td></tr></table></figure></p>
 
       
@@ -343,15 +465,15 @@ var _hmt = _hmt || [];
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">服务器</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
         			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">php</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
         			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">lnmp</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">服务器</a>
         		</li>
       		
 		</ul>
@@ -459,7 +581,7 @@ var _hmt = _hmt || [];
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-前提"><span class="toc-number">1.</span> <span class="toc-text">1. 前提</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-起因"><span class="toc-number">2.</span> <span class="toc-text">2. 起因</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-配置域名"><span class="toc-number">3.</span> <span class="toc-text">3. 配置域名</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#3-1-域名问题"><span class="toc-number">3.1.</span> <span class="toc-text">3.1.  域名问题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-1-域名是什么？"><span class="toc-number">3.1.1.</span> <span class="toc-text">3.1.1. 域名是什么？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-2-域名如何知道我们服务器在哪里"><span class="toc-number">3.1.2.</span> <span class="toc-text">3.1.2. 域名如何知道我们服务器在哪里</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-2-没有服务器或者域名"><span class="toc-number">3.2.</span> <span class="toc-text">3.2. 没有服务器或者域名</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-3-拥有自己的服务器以及域名"><span class="toc-number">3.3.</span> <span class="toc-text">3.3. 拥有自己的服务器以及域名</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4-安装LNMP"><span class="toc-number">4.</span> <span class="toc-text">4. 安装LNMP</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#5-配置虚拟站点"><span class="toc-number">5.</span> <span class="toc-text">5. 配置虚拟站点</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#5-1-添加虚拟站点"><span class="toc-number">5.1.</span> <span class="toc-text">5.1. 添加虚拟站点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-2-修改vhost配置文件"><span class="toc-number">5.2.</span> <span class="toc-text">5.2. 修改vhost配置文件</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#6-测试项目上线"><span class="toc-number">6.</span> <span class="toc-text">6. 测试项目上线</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#6-1-将项目放入线上"><span class="toc-number">6.1.</span> <span class="toc-text">6.1. 将项目放入线上</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#6-1-1-composer"><span class="toc-number">6.1.1.</span> <span class="toc-text">6.1.1. composer</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-1-2-FTP上传"><span class="toc-number">6.1.2.</span> <span class="toc-text">6.1.2. FTP上传</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-1-3-git"><span class="toc-number">6.1.3.</span> <span class="toc-text">6.1.3. git</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-1-4-其他"><span class="toc-number">6.1.4.</span> <span class="toc-text">6.1.4. 其他</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-2-遇到的问题"><span class="toc-number">6.2.</span> <span class="toc-text">6.2. 遇到的问题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#6-2-1-多站点白屏问题"><span class="toc-number">6.2.1.</span> <span class="toc-text">6.2.1. 多站点白屏问题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-2-2-添加SSL证书-HTTPS"><span class="toc-number">6.2.2.</span> <span class="toc-text">6.2.2. 添加SSL证书(HTTPS)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-2-3-强制跳转HTTPS"><span class="toc-number">6.2.3.</span> <span class="toc-text">6.2.3. 强制跳转HTTPS</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-2-4-无法删除项目"><span class="toc-number">6.2.4.</span> <span class="toc-text">6.2.4. 无法删除项目</span></a></li></ol></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-前提"><span class="toc-number">1.</span> <span class="toc-text">1. 前提</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-起因"><span class="toc-number">2.</span> <span class="toc-text">2. 起因</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-配置域名"><span class="toc-number">3.</span> <span class="toc-text">3. 配置域名</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#3-1-域名问题"><span class="toc-number">3.1.</span> <span class="toc-text">3.1.  域名问题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-1-域名是什么？"><span class="toc-number">3.1.1.</span> <span class="toc-text">3.1.1. 域名是什么？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-2-域名如何知道我们服务器在哪里"><span class="toc-number">3.1.2.</span> <span class="toc-text">3.1.2. 域名如何知道我们服务器在哪里</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-2-没有服务器或者域名"><span class="toc-number">3.2.</span> <span class="toc-text">3.2. 没有服务器或者域名</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-3-拥有自己的服务器以及域名"><span class="toc-number">3.3.</span> <span class="toc-text">3.3. 拥有自己的服务器以及域名</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4-安装LNMP"><span class="toc-number">4.</span> <span class="toc-text">4. 安装LNMP</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#5-配置虚拟站点"><span class="toc-number">5.</span> <span class="toc-text">5. 配置虚拟站点</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#5-1-添加虚拟站点"><span class="toc-number">5.1.</span> <span class="toc-text">5.1. 添加虚拟站点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-2-修改vhost配置文件"><span class="toc-number">5.2.</span> <span class="toc-text">5.2. 修改vhost配置文件</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#6-测试项目上线"><span class="toc-number">6.</span> <span class="toc-text">6. 测试项目上线</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#6-1-将项目放入线上"><span class="toc-number">6.1.</span> <span class="toc-text">6.1. 将项目放入线上</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#6-1-1-composer"><span class="toc-number">6.1.1.</span> <span class="toc-text">6.1.1. composer</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-1-2-FTP上传"><span class="toc-number">6.1.2.</span> <span class="toc-text">6.1.2. FTP上传</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-1-3-git"><span class="toc-number">6.1.3.</span> <span class="toc-text">6.1.3. git</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-1-4-其他"><span class="toc-number">6.1.4.</span> <span class="toc-text">6.1.4. 其他</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-2-遇到的问题"><span class="toc-number">6.2.</span> <span class="toc-text">6.2. 遇到的问题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#6-2-1-多站点白屏问题"><span class="toc-number">6.2.1.</span> <span class="toc-text">6.2.1. 多站点白屏问题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-2-2-添加SSL证书-HTTPS"><span class="toc-number">6.2.2.</span> <span class="toc-text">6.2.2. 添加SSL证书(HTTPS)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-2-3-强制跳转HTTPS"><span class="toc-number">6.2.3.</span> <span class="toc-text">6.2.3. 强制跳转HTTPS</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-2-4-无法删除项目"><span class="toc-number">6.2.4.</span> <span class="toc-text">6.2.4. 无法删除项目</span></a></li></ol></li></ol></li></ol>
                     </div>
                 </span>
             </div>
@@ -494,7 +616,7 @@ window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="tex
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2019 guaosi
+    		&copy; 2020 guaosi
 			</div>
 			<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
 			</script>
@@ -578,7 +700,19 @@ window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="tex
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">测试</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Web</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">crack</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">git</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -591,10 +725,6 @@ window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="tex
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">数据结构</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">git</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -614,14 +744,6 @@ window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="tex
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">php</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Linux</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">PHP</a>
               </li>
              
@@ -630,15 +752,31 @@ window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="tex
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">redis</a>
+                <a href="javascript:void(0)" class="js-tag color1">Linux</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">lnmp</a>
+                <a href="javascript:void(0)" class="js-tag color3">网络</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">服务器</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">HTTP</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">redis</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">php</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">lnmp</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -701,7 +839,7 @@ window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="tex
     
     	<section class="tools-section tools-section-me" q-show="aboutme">
   	  	
-  	  		<div class="aboutme-wrap" id="js-aboutme">闽南师范大学2014级网络工程渣渣学子一枚。</div>
+  	  		<div class="aboutme-wrap" id="js-aboutme">自古人生何其乐，偷得浮生半日闲</div>
   	  	
     	</section>
     

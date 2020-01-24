@@ -2,9 +2,72 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://www.guaosi.com/2020/01/22/lvs-introduction-to-the-principle-of-NAT-and-DR-model/</loc>
+    
+    <lastmod>2020-01-24T09:51:10.565Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://www.guaosi.com/2020/01/22/simple-principle-of-https/</loc>
+    
+    <lastmod>2020-01-24T09:44:17.367Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://www.guaosi.com/2020/01/22/the-brief-introduction-to-iptables/</loc>
+    
+    <lastmod>2020-01-24T09:44:17.367Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://www.guaosi.com/2019/02/26/laravel-api-initialization-preparation/</loc>
     
-    <lastmod>2019-03-24T05:05:46.778Z</lastmod>
+    <lastmod>2020-01-24T09:44:17.366Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://www.guaosi.com/2020/01/22/network-of-vmware-and-docker/</loc>
+    
+    <lastmod>2020-01-24T09:44:17.366Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://www.guaosi.com/2019/02/22/install-php-fileinfo/</loc>
+    
+    <lastmod>2020-01-24T09:44:17.363Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://www.guaosi.com/2019/03/11/golang-sparsearray/</loc>
+    
+    <lastmod>2020-01-24T09:44:17.361Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://www.guaosi.com/2018/12/18/environment-by-lnmp/</loc>
+    
+    <lastmod>2020-01-24T09:44:17.359Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://www.guaosi.com/2018/12/14/complex-two-dimensional-arrays/</loc>
+    
+    <lastmod>2020-01-24T09:44:17.358Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://www.guaosi.com/2020/01/22/brief-introduction-of-pressure-test/</loc>
+    
+    <lastmod>2020-01-24T09:44:17.355Z</lastmod>
     
   </url>
   
@@ -79,13 +142,6 @@
   </url>
   
   <url>
-    <loc>https://www.guaosi.com/2019/03/11/golang-sparsearray/</loc>
-    
-    <lastmod>2019-03-11T07:20:44.013Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://www.guaosi.com/2019/03/11/golang-tcp-socket/</loc>
     
     <lastmod>2019-03-11T07:19:08.354Z</lastmod>
@@ -100,13 +156,6 @@
   </url>
   
   <url>
-    <loc>https://www.guaosi.com/2018/12/18/environment-by-lnmp/</loc>
-    
-    <lastmod>2019-03-09T10:27:01.928Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://www.guaosi.com/2019/02/25/automatically-cancel-the-order/</loc>
     
     <lastmod>2019-02-25T08:40:03.459Z</lastmod>
@@ -117,13 +166,6 @@
     <loc>https://www.guaosi.com/2019/02/25/install-and-use-supervisor/</loc>
     
     <lastmod>2019-02-25T05:32:14.043Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://www.guaosi.com/2019/02/22/install-php-fileinfo/</loc>
-    
-    <lastmod>2019-02-25T01:05:01.603Z</lastmod>
     
   </url>
   
@@ -145,13 +187,6 @@
     <loc>https://www.guaosi.com/2019/02/21/linux-add-virtual-memory/</loc>
     
     <lastmod>2019-02-22T06:53:18.283Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://www.guaosi.com/2018/12/14/complex-two-dimensional-arrays/</loc>
-    
-    <lastmod>2018-12-18T07:24:11.000Z</lastmod>
     
   </url>
   
