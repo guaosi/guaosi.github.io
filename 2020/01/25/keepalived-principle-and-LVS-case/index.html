@@ -7,20 +7,24 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="https://www.guaosi.com">
-  <title>压力测试简单介绍 | guaosi的博客</title>
+  <title>KeepAlived原理与LVS案例 | guaosi的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="压力测试压力测试（Stress Test），也称为强度测试、负载测试。 压力测试时模拟实际应用的软硬件环境以及用户使用过程的系统负荷，长时间或超大负荷地运行测试软件，来测试被测系统的性能、可靠性、稳定性等。 压力测试的目的以Web为例，关注项  并发量 响应速度 容错能力">
-<meta name="keywords" content="测试,Web">
+  <meta name="description" content="VRRP原理基本概念VRRP（Virtual Router Redundancy Protocol，虚拟路由器冗余协议）将可以承担网关功能的一组路由器加入到备份组中，形成一台虚拟路由器，这样主机的网关设置成虚拟网关，就能够实现冗余。">
+<meta name="keywords" content="Linux,服务器,高可用">
 <meta property="og:type" content="article">
-<meta property="og:title" content="压力测试简单介绍">
-<meta property="og:url" content="https://www.guaosi.com/2020/01/22/brief-introduction-of-pressure-test/index.html">
+<meta property="og:title" content="KeepAlived原理与LVS案例">
+<meta property="og:url" content="https://www.guaosi.com/2020/01/25/keepalived-principle-and-LVS-case/index.html">
 <meta property="og:site_name" content="guaosi的博客">
-<meta property="og:description" content="压力测试压力测试（Stress Test），也称为强度测试、负载测试。 压力测试时模拟实际应用的软硬件环境以及用户使用过程的系统负荷，长时间或超大负荷地运行测试软件，来测试被测系统的性能、可靠性、稳定性等。 压力测试的目的以Web为例，关注项  并发量 响应速度 容错能力">
+<meta property="og:description" content="VRRP原理基本概念VRRP（Virtual Router Redundancy Protocol，虚拟路由器冗余协议）将可以承担网关功能的一组路由器加入到备份组中，形成一台虚拟路由器，这样主机的网关设置成虚拟网关，就能够实现冗余。">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-01-25T14:24:24.516Z">
+<meta property="og:image" content="https://www.guaosi.com/assets/blogImg/keepalived-principle-and-LVS-case/VRRP原理.jpg">
+<meta property="og:image" content="https://www.guaosi.com/assets/blogImg/keepalived-principle-and-LVS-case/KeepAlived架构图.jpg">
+<meta property="og:image" content="https://www.guaosi.com/assets/blogImg/keepalived-principle-and-LVS-case/KeepAlived+Lvs架构.jpg">
+<meta property="og:updated_time" content="2020-01-25T14:31:44.441Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="压力测试简单介绍">
-<meta name="twitter:description" content="压力测试压力测试（Stress Test），也称为强度测试、负载测试。 压力测试时模拟实际应用的软硬件环境以及用户使用过程的系统负荷，长时间或超大负荷地运行测试软件，来测试被测系统的性能、可靠性、稳定性等。 压力测试的目的以Web为例，关注项  并发量 响应速度 容错能力">
+<meta name="twitter:title" content="KeepAlived原理与LVS案例">
+<meta name="twitter:description" content="VRRP原理基本概念VRRP（Virtual Router Redundancy Protocol，虚拟路由器冗余协议）将可以承担网关功能的一组路由器加入到备份组中，形成一台虚拟路由器，这样主机的网关设置成虚拟网关，就能够实现冗余。">
+<meta name="twitter:image" content="https://www.guaosi.com/assets/blogImg/keepalived-principle-and-LVS-case/VRRP原理.jpg">
   
   <link rel="alternative" href="/atom.xml" title="guaosi的博客" type="application/atom+xml">
   
@@ -291,14 +295,14 @@ var _hmt = _hmt || [];
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-brief-introduction-of-pressure-test" class="article article-type-post " itemscope="" itemprop="blogPost">
+            <article id="post-keepalived-principle-and-LVS-case" class="article article-type-post " itemscope="" itemprop="blogPost">
   <div class="article-inner">
     
     <header class="article-header">
       
   
     <h1 class="article-title" itemprop="name">
-      压力测试简单介绍
+      KeepAlived原理与LVS案例
     </h1>
   
 
@@ -317,82 +321,151 @@ var _hmt = _hmt || [];
 
 
       
-      <a href="/2020/01/22/brief-introduction-of-pressure-test/" class="archive-article-date">
-  	<time datetime="2020-01-22T08:50:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-01-22</time>
+      <a href="/2020/01/25/keepalived-principle-and-LVS-case/" class="archive-article-date">
+  	<time datetime="2020-01-25T14:19:58.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-01-25</time>
 </a>
       
     </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-      <h1 id="压力测试"><a href="#压力测试" class="headerlink" title="压力测试"></a>压力测试</h1><p>压力测试（Stress Test），也称为强度测试、负载测试。</p>
-<p>压力测试时模拟实际应用的软硬件环境以及用户使用过程的系统负荷，长时间或超大负荷地运行测试软件，来测试被测系统的性能、可靠性、稳定性等。</p>
-<h2 id="压力测试的目的"><a href="#压力测试的目的" class="headerlink" title="压力测试的目的"></a>压力测试的目的</h2><p>以Web为例，关注项</p>
-<ul>
-<li>并发量</li>
-<li>响应速度</li>
-<li>容错能力</li>
-</ul>
+      <h1 id="VRRP原理"><a href="#VRRP原理" class="headerlink" title="VRRP原理"></a>VRRP原理</h1><h2 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h2><p>VRRP（Virtual Router Redundancy Protocol，虚拟路由器冗余协议）将可以承担网关功能的一组路由器加入到备份组中，形成一台虚拟路由器，这样主机的网关设置成虚拟网关，就能够实现冗余。</p>
 <a id="more"></a>
-<h2 id="常见Web压力测试工具"><a href="#常见Web压力测试工具" class="headerlink" title="常见Web压力测试工具"></a>常见Web压力测试工具</h2><ul>
-<li>http_load</li>
-<li>JMeter</li>
-<li>ab</li>
-<li>LoadRunner</li>
-<li>Web bench</li>
+<h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><p>VRRP将局域网内的一组路由器划分在一起，称为一个备份组。备份组由一个Master路由器和多个Backup路由器组成，功能上相当于一台虚拟路由器。</p>
+<p>VRRP备份组具有以下特点：</p>
+<ul>
+<li><p>虚拟路由器具有IP地址，称为虚拟IP地址。局域网内的主机仅需要知道这个虚拟路由器的IP地址，并将其设置为缺省路由的下一跳地址。</p>
+</li>
+<li><p>网络内的主机通过这个虚拟路由器与外部网络进行通信。</p>
+</li>
+<li><p>备份组内的路由器根据优先级，选举出Master路由器，承担网关功能。其他路由器作为Backup路由器，当Master路由器发生故障时，取代Master继续履行网关职责，从而保证网络内的主机不间断地与外部网络进行通信。</p>
+</li>
 </ul>
-<h2 id="ab用法详解"><a href="#ab用法详解" class="headerlink" title="ab用法详解"></a>ab用法详解</h2><table>
+<h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p><img src="/assets/blogImg/keepalived-principle-and-LVS-case/VRRP原理.jpg" alt="VRRP原理"></p>
+<p>当PC想发送报文到外网时，需要先经过网关，若Master无法正常工作，此时VIP会主动漂浮到Backup。但是由于之前使用的是Master作为网关，此时各个客户端(PC)里arp缓存表里记录的是Master的Mac地址，此时依旧会将报文发往Master。</p>
+<p>所以需要在客户端(PC)与网关之间引入一个软件，来使用VMAC。VMAC来自行进行选择真实可用的网关Mac。</p>
+<h2 id="核心概念"><a href="#核心概念" class="headerlink" title="核心概念"></a>核心概念</h2><ul>
+<li>虚拟路由器 - 有一个Master和多个Backup组成</li>
+<li>Master路由器 - 实际承载报文转发的节点，主节点</li>
+<li>Backup路由器 - 主节点故障后转移节点，备用结点</li>
+<li>虚拟IP地址 - 虚拟路由对外提供服务的IP地址</li>
+<li>IP地址拥有者 - 真实提供服务的节点，通常为主节点</li>
+<li>虚拟MAC地址 - 回应ARP请求时使用的虚拟MAC地址</li>
+<li>优先级 - VRRP根据优先级确定主备节点角色</li>
+</ul>
+<h1 id="KeepAlived"><a href="#KeepAlived" class="headerlink" title="KeepAlived"></a>KeepAlived</h1><h2 id="功能简介"><a href="#功能简介" class="headerlink" title="功能简介"></a>功能简介</h2><ul>
+<li>服务器服务的故障转移</li>
+<li>通常用于对负载均衡器做高可用</li>
+</ul>
+<blockquote>
+<p>当Master故障时，会主动将VIP浮动到Backup上，此时Backup会发送广播包，通知所有客户端（gratuitous arp），更新此时VIP对应的Mac地址为Backup。</p>
+</blockquote>
+<blockquote>
+<p>VIP作为子网卡漂浮在真实网卡上</p>
+</blockquote>
+<h2 id="架构图"><a href="#架构图" class="headerlink" title="架构图"></a>架构图</h2><p><img src="/assets/blogImg/keepalived-principle-and-LVS-case/KeepAlived架构图.jpg" alt="KeepAlived架构图"></p>
+<h2 id="核心概念-1"><a href="#核心概念-1" class="headerlink" title="核心概念"></a>核心概念</h2><ul>
+<li>vrrp stack - vrrp协议的实现</li>
+<li>ipvs wrapper - 为集群内的节点生成ipvs规则</li>
+<li>checkers - 对集群内所有的RS做健康状态检测</li>
+<li>控制组件 - 配置文件解析和加载</li>
+</ul>
+<blockquote>
+<p>KeepAlived就是对VRRP协议的具体实现，并且最先开始是为了LVS的DS以及RS做的KeepAlived。KeepAlived放在DS上，它不仅仅可以检测DS集群上的健康状态，更可以直接检测该DS后的RS集群的健康状态，这样有故障的RS就不会被DS转发到。</p>
+</blockquote>
+<h2 id="适用场景"><a href="#适用场景" class="headerlink" title="适用场景"></a>适用场景</h2><h3 id="高可用LVS"><a href="#高可用LVS" class="headerlink" title="高可用LVS"></a>高可用LVS</h3><ul>
+<li>虚拟IP的转移</li>
+<li>生成ipvs规则</li>
+<li>RS健康状态检测</li>
+</ul>
+<h3 id="高可用其他服务"><a href="#高可用其他服务" class="headerlink" title="高可用其他服务"></a>高可用其他服务</h3><ul>
+<li>虚拟IP的转移</li>
+<li>编写脚本实现服务启动/停止</li>
+<li>RS健康状态检测</li>
+</ul>
+<h2 id="案例"><a href="#案例" class="headerlink" title="案例"></a>案例</h2><h3 id="集群配置前提-最佳实践"><a href="#集群配置前提-最佳实践" class="headerlink" title="集群配置前提(最佳实践)"></a>集群配置前提(最佳实践)</h3><ul>
+<li>各节点时间同步</li>
+<li>各主机可以基于/etc/hosts配置进行主机名解析后通信</li>
+<li>各节点可以免密钥通信</li>
+<li>确保iptables以及selinux关闭</li>
+</ul>
+<figure class="highlight vala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta"># 关闭防火墙</span></span><br><span class="line">systemctl stop firewalld</span><br><span class="line"></span><br><span class="line"><span class="meta"># 永久关闭防火墙</span></span><br><span class="line">systemctl disable firewalld</span><br><span class="line"></span><br><span class="line"><span class="meta"># 关闭SELinux</span></span><br><span class="line">setenforce <span class="number">0</span></span><br><span class="line"></span><br><span class="line"><span class="meta"># 查看SELinux</span></span><br><span class="line">getenforce</span><br><span class="line"></span><br><span class="line"><span class="meta"># 安装KeepAlived</span></span><br><span class="line">yum install keepalived -y</span><br><span class="line"></span><br><span class="line"><span class="meta"># 编辑KeepAlived配置文件</span></span><br><span class="line">vim /etc/keepalived/keepalived.conf</span><br><span class="line"></span><br><span class="line"><span class="meta"># 查看KeepAlived日志</span></span><br><span class="line">tail -f /<span class="keyword">var</span>/log/messages</span><br><span class="line"></span><br><span class="line"><span class="meta"># 开启KeepAlived</span></span><br><span class="line">systemctl start keepalived</span><br></pre></td></tr></table></figure>
+<h3 id="查看配置文件"><a href="#查看配置文件" class="headerlink" title="查看配置文件"></a>查看配置文件</h3><figure class="highlight tap"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line">cat /etc/keepalived/keepalived.conf</span><br><span class="line"></span><br><span class="line">! Configuration File for keepalived              </span><br><span class="line"></span><br><span class="line">global_defs &#123;                        <span class="comment">#全局定义部分</span></span><br><span class="line">   notification_email &#123;              <span class="comment">#设置警报邮箱</span></span><br><span class="line">     acassen@firewall.loc            <span class="comment">#邮箱</span></span><br><span class="line">     failover@firewall.loc</span><br><span class="line">     sysadmin@firewall.loc</span><br><span class="line">   &#125;</span><br><span class="line">   notification_email_from Alexandre.Cassen@firewall.loc      <span class="comment">#设置发件人地址</span></span><br><span class="line">   smtp_server 192.168.50.1        <span class="comment">#设置smtp server地址</span></span><br><span class="line">   smtp_connect_timeout<span class="number"> 30 </span>         <span class="comment">#设置smtp超时连接时间    以上参数可以不配置</span></span><br><span class="line">   router_id LVS_DEVEL               <span class="comment">#是Keepalived服务器的路由标识在一个局域网内，这个标识（router_id）是唯一的</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">vrrp_instance VI_1 &#123;      <span class="comment">#VRRP实例定义区块名字是VI_1</span></span><br><span class="line">    state MASTER          <span class="comment">#表示当前实例VI_1的角色状态这个状态只能有MASTER和BACKUP两种状态，并且需要大写这些字符。MASTER为正式工作的状态，BACKUP为备用的状态</span></span><br><span class="line">    interface eth0       <span class="comment">#指定把VIP作为子网卡绑定到哪个真实网卡上</span></span><br><span class="line">    virtual_router_id<span class="number"> 51 </span><span class="comment">#虚拟路由ID标识,这个标识最好是一个数字,在一个keepalived.conf配置中是唯一的, MASTER和BACKUP配置中相同实例的virtual_router_id必须是一致的.</span></span><br><span class="line">    <span class="comment"># nopreempt # 是否开启恢复抢占，当写上这代码时开启抢占恢复模式，默认没有这代码</span></span><br><span class="line">    priority<span class="number"> 100 </span>               <span class="comment">#priority为优先级 越大越优先</span></span><br><span class="line">    advert_int<span class="number"> 1 </span>              <span class="comment">#为同步通知间隔。MASTER与BACKUP之间通信检查的时间间隔，单位为秒，默认为1.</span></span><br><span class="line">    authentication &#123;           <span class="comment">#authentication为权限认证配置不要改动,同一vrrp实例的MASTER与BACKUP使用相同的密码才能正常通信。</span></span><br><span class="line">        auth_type PASS</span><br><span class="line">        auth_pass 1111</span><br><span class="line">    &#125;</span><br><span class="line">    virtual_ipaddress &#123;         <span class="comment">#设置虚拟IP地址</span></span><br><span class="line">        192.168.50.16         <span class="comment">#此格式ip a显示 ifconfig不显示</span></span><br><span class="line">        192.168.50.17/24 dev eth0 label eth0:1    <span class="comment">#绑定接口为eth0，别名为eth0：1</span></span><br><span class="line">   &#125;</span><br><span class="line"><span class="comment">#至此为止以上为实现高可用配置,如只需使用高可用功能下边配置可删除</span></span><br><span class="line"><span class="comment">#以下为虚拟服务器定义部分</span></span><br><span class="line">virtual_server 192.168.50.16<span class="number"> 80 </span>&#123;      <span class="comment">#设置虚拟服务器,指定虚拟IP和端口</span></span><br><span class="line">    delay_loop<span class="number"> 6 </span>                          <span class="comment">#健康检查时间为6秒</span></span><br><span class="line">    lb_algo rr                               <span class="comment">#设置负载调度算法 rr算法</span></span><br><span class="line">    lb_kind NAT                            <span class="comment">#设置负载均衡机制 #有NAT,TUN和DR三种模式可选</span></span><br><span class="line">    nat_mask 255.255.255.0         <span class="comment">#非NAT模式注释掉此行  注释用!号</span></span><br><span class="line">    persistence_timeout<span class="number"> 50 </span>          <span class="comment">#连接保留时间,若50秒还有该用户的请求，则直接分配上一次分配的RS机器。50秒无响应则下一次该用户请求重新分配节点</span></span><br><span class="line">    protocol TCP                           <span class="comment">#指定转发协议为TCP </span></span><br><span class="line">    real_server 192.168.5.150<span class="number"> 80 </span>&#123;      <span class="comment">#RS节点1</span></span><br><span class="line">        weight<span class="number"> 1 </span>               <span class="comment">#权重</span></span><br><span class="line">        TCP_CHECK &#123;             <span class="comment">#节点健康检查</span></span><br><span class="line">        connect_timeout<span class="number"> 8 </span>      <span class="comment">#延迟超时时间</span></span><br><span class="line">        nb_get_retry<span class="number"> 3 </span>         <span class="comment">#重试次数</span></span><br><span class="line">        delay_before_retry<span class="number"> 3 </span>   <span class="comment">#延迟重试次数</span></span><br><span class="line">        connect_port<span class="number"> 80 </span>        <span class="comment">#利用80端口检查</span></span><br><span class="line">    		&#125;</span><br><span class="line">    &#125;</span><br><span class="line">    real_server 192.168.50.149<span class="number"> 80 </span>&#123;      <span class="comment">#RS节点2</span></span><br><span class="line">        weight 1</span><br><span class="line">        TCP_CHECK &#123;</span><br><span class="line">        connect_timeout 8</span><br><span class="line">        nb_get_retry 3</span><br><span class="line">        delay_before_retry 3</span><br><span class="line">        connect_port<span class="number"> 80 </span></span><br><span class="line">    		&#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="实现虚拟IP转移"><a href="#实现虚拟IP转移" class="headerlink" title="实现虚拟IP转移"></a>实现虚拟IP转移</h3><h4 id="实验规划"><a href="#实验规划" class="headerlink" title="实验规划"></a>实验规划</h4><p>2台Linux，一主一备</p>
+<table>
 <thead>
 <tr>
-<th style="text-align:center">参数</th>
-<th style="text-align:center">含义</th>
+<th style="text-align:center">节点</th>
+<th style="text-align:center">IP</th>
+<th style="text-align:center">系统</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align:center">-n</td>
-<td style="text-align:center">请求总数</td>
+<td style="text-align:center">node1(Master)</td>
+<td style="text-align:center">192.168.184.30 vip:192.168.184.100</td>
+<td style="text-align:center">CentOS 7</td>
 </tr>
 <tr>
-<td style="text-align:center">-c</td>
-<td style="text-align:center">并发请求个数</td>
-</tr>
-<tr>
-<td style="text-align:center">-t</td>
-<td style="text-align:center">测试所进行的最大秒数</td>
-</tr>
-<tr>
-<td style="text-align:center">-v</td>
-<td style="text-align:center">显示详细信息</td>
-</tr>
-<tr>
-<td style="text-align:center">-k</td>
-<td style="text-align:center">启用Keeplived功能。一个HTTP会话中执行多个请求</td>
-</tr>
-<tr>
-<td style="text-align:center">-p</td>
-<td style="text-align:center">post-file 包含了POST数据的文件</td>
-</tr>
-<tr>
-<td style="text-align:center">-i</td>
-<td style="text-align:center">执行HEAD请求，只获取头信息</td>
-</tr>
-<tr>
-<td style="text-align:center">-h</td>
-<td style="text-align:center">显示帮助信息</td>
+<td style="text-align:center">node2(Backup)</td>
+<td style="text-align:center">192.168.184.40 vip: 192.168.184.100</td>
+<td style="text-align:center">CentOS 7</td>
 </tr>
 </tbody>
 </table>
+<h4 id="配置文件"><a href="#配置文件" class="headerlink" title="配置文件"></a>配置文件</h4><h5 id="Master"><a href="#Master" class="headerlink" title="Master"></a>Master</h5><figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">! Configuration File for keepalived</span><br><span class="line">global_defs &#123;</span><br><span class="line">   notification_email &#123;</span><br><span class="line">    guaosi@qq.com</span><br><span class="line">   &#125;</span><br><span class="line">   notification_email_from guaosi@vip.qq.com</span><br><span class="line">   smtp_server <span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span></span><br><span class="line">   smtp_connect_timeout <span class="number">30</span></span><br><span class="line">   router_id LVS_DEVEL            </span><br><span class="line">   vrrp_skip_check_adv_addr</span><br><span class="line">   vrrp_strict</span><br><span class="line">   vrrp_garp_interval <span class="number">0</span></span><br><span class="line">   vrrp_gna_interval <span class="number">0</span></span><br><span class="line">&#125;</span><br><span class="line">vrrp_instance VI_1 &#123;          </span><br><span class="line">    <span class="section">state</span> MASTER               </span><br><span class="line">    interface ens33</span><br><span class="line">    virtual_router_id <span class="number">55</span>      </span><br><span class="line">    priority <span class="number">100</span></span><br><span class="line">    # nopreempt # 是否开启恢复抢占，当写上这代码时开启抢占恢复模式，默认没有这代码</span><br><span class="line">    advert_int <span class="number">1</span></span><br><span class="line">    authentication &#123;</span><br><span class="line">        auth_type PASS</span><br><span class="line">        auth_pass <span class="number">123456</span></span><br><span class="line">    &#125;</span><br><span class="line">    virtual_ipaddress &#123;</span><br><span class="line">    		<span class="number">192.168</span><span class="number">.184</span><span class="number">.100</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="Backup"><a href="#Backup" class="headerlink" title="Backup"></a>Backup</h5><figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">! Configuration File for keepalived</span><br><span class="line">global_defs &#123;</span><br><span class="line">   notification_email &#123;</span><br><span class="line">    guaosi@qq.com</span><br><span class="line">   &#125;</span><br><span class="line">   notification_email_from guaosi@vip.qq.com</span><br><span class="line">   smtp_server <span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span></span><br><span class="line">   smtp_connect_timeout <span class="number">30</span></span><br><span class="line">   router_id LVS_DEVEL            </span><br><span class="line">   vrrp_skip_check_adv_addr</span><br><span class="line">   vrrp_strict</span><br><span class="line">   vrrp_garp_interval <span class="number">0</span></span><br><span class="line">   vrrp_gna_interval <span class="number">0</span></span><br><span class="line">&#125;</span><br><span class="line">vrrp_instance VII_1 &#123;     # 与Master不相同         </span><br><span class="line">    <span class="section">state</span> BACKUP # 标志为备               </span><br><span class="line">    interface ens33 # 选择VIP浮动的真实网卡，与Master相同</span><br><span class="line">    virtual_router_id <span class="number">55</span>   # 与Master相同   </span><br><span class="line">    priority <span class="number">99</span> # 优先级，需比Master低         </span><br><span class="line">    advert_int <span class="number">1</span></span><br><span class="line">    authentication &#123;</span><br><span class="line">        auth_type PASS</span><br><span class="line">        auth_pass <span class="number">123456</span> # 与Master相同</span><br><span class="line">    &#125;</span><br><span class="line">    virtual_ipaddress &#123;</span><br><span class="line">    		<span class="number">192.168</span><span class="number">.184</span><span class="number">.100</span> # 与Master相同</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h4><p>如果先启动Backup上的KeepAlived时，此时Backup会先查找该局域网内是否有Master节点，如果没有，此时它会认为Master可能已经掉线。会将VIP漂浮在自己的真实网卡上作为子网卡，将自己提升为Master，并且通知局域网内所有客户端更新mac(gratuitous arp)。</p>
+<p>当Master启动KeepAlived后，会通知Backup，此时Backup会自行将等级从Master下降为Backup，此时由Master作为Master节点，并且通知局域网内所有客户端更新mac(gratuitous arp)。如果不想Master上线后下降Backup从Master下降为Backup，在配置文件中添加<code>nopreempt</code>即可</p>
+<h3 id="实现KeepAlived-LVS高可用"><a href="#实现KeepAlived-LVS高可用" class="headerlink" title="实现KeepAlived+LVS高可用"></a>实现KeepAlived+LVS高可用</h3><h4 id="实验规划-1"><a href="#实验规划-1" class="headerlink" title="实验规划"></a>实验规划</h4><table>
+<thead>
+<tr>
+<th style="text-align:center">节点</th>
+<th style="text-align:center">IP</th>
+<th style="text-align:center">系统</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">DS(Master)</td>
+<td style="text-align:center">192.168.184.100(VIP)  192.168.184.30(DIP)</td>
+<td style="text-align:center">CentOS 7</td>
+</tr>
+<tr>
+<td style="text-align:center">DS(Backup)</td>
+<td style="text-align:center">192.168.184.100(VIP)  192.168.184.40(DIP)</td>
+<td style="text-align:center">CentOS 7</td>
+</tr>
+<tr>
+<td style="text-align:center">RS1</td>
+<td style="text-align:center">192.168.184.50(RIP)</td>
+<td style="text-align:center">CentOS 7</td>
+</tr>
+<tr>
+<td style="text-align:center">Rs2</td>
+<td style="text-align:center">192.168.184.60(RIP)</td>
+<td style="text-align:center">CentOS 7</td>
+</tr>
+</tbody>
+</table>
+<h4 id="架构图-1"><a href="#架构图-1" class="headerlink" title="架构图"></a>架构图</h4><p><img src="/assets/blogImg/keepalived-principle-and-LVS-case/KeepAlived+Lvs架构.jpg" alt="KeepAlived+Lvs架构"></p>
+<h4 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h4><h5 id="DS"><a href="#DS" class="headerlink" title="DS"></a>DS</h5><p>安装服务</p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum -y <span class="keyword">install</span> ipvsadm keepalived</span><br></pre></td></tr></table></figure>
+<p>Master配置</p>
+<figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line">! Configuration File for keepalived</span><br><span class="line">global_defs &#123;</span><br><span class="line">   notification_email &#123;</span><br><span class="line">    guaosi@qq.com</span><br><span class="line">   &#125;</span><br><span class="line">   notification_email_from guaosi@vip.qq.com</span><br><span class="line">   smtp_server <span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span></span><br><span class="line">   smtp_connect_timeout <span class="number">30</span></span><br><span class="line">   router_id LVS_DEVEL</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">vrrp_instance VI_1 &#123;          </span><br><span class="line">    <span class="section">state</span> MASTER               </span><br><span class="line">    interface ens33</span><br><span class="line">    virtual_router_id <span class="number">55</span>      </span><br><span class="line">    priority <span class="number">100</span></span><br><span class="line">    # nopreempt # 是否开启恢复抢占，当写上这代码时开启抢占恢复模式，默认没有这代码</span><br><span class="line">    advert_int <span class="number">1</span></span><br><span class="line">    authentication &#123;</span><br><span class="line">        auth_type PASS</span><br><span class="line">        auth_pass <span class="number">123456</span></span><br><span class="line">    &#125;</span><br><span class="line">    virtual_ipaddress &#123;</span><br><span class="line">    		<span class="number">192.168</span><span class="number">.184</span><span class="number">.100</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">virtual_server <span class="number">192.168</span><span class="number">.184</span><span class="number">.100</span> <span class="number">3306</span> &#123;      #设置虚拟VIP以及指定<span class="number">3306</span>端口</span><br><span class="line">    delay_loop <span class="number">6</span>                           #健康检查时间为<span class="number">6</span>秒</span><br><span class="line">    lb_algo rr                               #设置负载调度算法 rr算法</span><br><span class="line">    lb_kind DR                            #设置负载均衡机制为DR模式</span><br><span class="line">    protocol TCP                           #指定转发协议为TCP </span><br><span class="line">    real_server <span class="number">192.168</span><span class="number">.184</span><span class="number">.50</span> <span class="number">3306</span> &#123;      #RS节点<span class="number">1</span></span><br><span class="line">        weight <span class="number">1</span>                #权重</span><br><span class="line">        TCP_CHECK &#123;             #节点健康检查</span><br><span class="line">        connect_timeout <span class="number">2</span>       #延迟超时时间</span><br><span class="line">        connect_port <span class="number">3306</span>       #利用<span class="number">3306</span>端口检查</span><br><span class="line">    		&#125;</span><br><span class="line">    &#125;</span><br><span class="line">    real_server <span class="number">192.168</span><span class="number">.184</span><span class="number">.60</span> <span class="number">3306</span> &#123;      #RS节点<span class="number">2</span></span><br><span class="line">        weight <span class="number">1</span>                #权重</span><br><span class="line">        TCP_CHECK &#123;             #节点健康检查</span><br><span class="line">        connect_timeout <span class="number">2</span>       #延迟超时时间</span><br><span class="line">        connect_port <span class="number">3306</span>       #利用<span class="number">3306</span>端口检查</span><br><span class="line">    		&#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Backup配置</p>
+<figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line">! Configuration File for keepalived</span><br><span class="line">global_defs &#123;</span><br><span class="line">   notification_email &#123;</span><br><span class="line">    guaosi@qq.com</span><br><span class="line">   &#125;</span><br><span class="line">   notification_email_from guaosi@vip.qq.com</span><br><span class="line">   smtp_server <span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span></span><br><span class="line">   smtp_connect_timeout <span class="number">30</span></span><br><span class="line">   router_id LVS_DEVEL</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">vrrp_instance VII_1 &#123;     # 与Master不相同         </span><br><span class="line">    <span class="section">state</span> BACKUP # 标志为备               </span><br><span class="line">    interface ens33 # 选择VIP浮动的真实网卡，与Master相同</span><br><span class="line">    virtual_router_id <span class="number">55</span>   # 与Master相同   </span><br><span class="line">    priority <span class="number">99</span> # 优先级，需比Master低         </span><br><span class="line">    advert_int <span class="number">1</span></span><br><span class="line">    authentication &#123;</span><br><span class="line">        auth_type PASS</span><br><span class="line">        auth_pass <span class="number">123456</span> # 与Master相同</span><br><span class="line">    &#125;</span><br><span class="line">    virtual_ipaddress &#123;</span><br><span class="line">    		<span class="number">192.168</span><span class="number">.184</span><span class="number">.100</span> # 与Master相同</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">virtual_server <span class="number">192.168</span><span class="number">.184</span><span class="number">.100</span> <span class="number">3306</span> &#123;      #设置虚拟VIP以及指定<span class="number">3306</span>端口</span><br><span class="line">    delay_loop <span class="number">6</span>                           #健康检查时间为<span class="number">6</span>秒</span><br><span class="line">    lb_algo rr                               #设置负载调度算法 rr算法</span><br><span class="line">    lb_kind DR                            #设置负载均衡机制为DR模式</span><br><span class="line">    protocol TCP                           #指定转发协议为TCP </span><br><span class="line">    real_server <span class="number">192.168</span><span class="number">.184</span><span class="number">.50</span> <span class="number">3306</span> &#123;      #RS节点<span class="number">1</span></span><br><span class="line">        weight <span class="number">1</span>                #权重</span><br><span class="line">        TCP_CHECK &#123;             #节点健康检查</span><br><span class="line">        connect_timeout <span class="number">2</span>       #延迟超时时间</span><br><span class="line">        connect_port <span class="number">3306</span>       #利用<span class="number">3306</span>端口检查</span><br><span class="line">    		&#125;</span><br><span class="line">    &#125;</span><br><span class="line">    real_server <span class="number">192.168</span><span class="number">.184</span><span class="number">.60</span> <span class="number">3306</span> &#123;      #RS节点<span class="number">2</span></span><br><span class="line">        weight <span class="number">1</span>                #权重</span><br><span class="line">        TCP_CHECK &#123;             #节点健康检查</span><br><span class="line">        connect_timeout <span class="number">2</span>       #延迟超时时间</span><br><span class="line">        connect_port <span class="number">3306</span>       #利用<span class="number">3306</span>端口检查</span><br><span class="line">    		&#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <blockquote>
-<p>-c跟-n的不同：如果-n的值是20000，代表一共会发送20000个请求，-c是5，则表示这20000个请求分4000次顺序发送，每次并发发送5个请求。</p>
-</blockquote>
-<h2 id="案例"><a href="#案例" class="headerlink" title="案例"></a>案例</h2><figure class="highlight tap"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 一共1000个请求，分10次顺序发送，每次并发发100个</span></span><br><span class="line">ab -n<span class="number"> 1000 </span>-c<span class="number"> 100 </span>localhost/index.php</span><br><span class="line"></span><br><span class="line">This is ApacheBench, Version 2.3 &lt;$Revision:<span class="number"> 655654 </span>$&gt;</span><br><span class="line">Copyright<span class="number"> 1996 </span>Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/</span><br><span class="line">Licensed to The Apache Software Foundation, http://www.apache.org/</span><br><span class="line"></span><br><span class="line">Benchmarking localhost (be patient)</span><br><span class="line">Completed<span class="number"> 100 </span>requests</span><br><span class="line">Completed<span class="number"> 200 </span>requests</span><br><span class="line">Completed<span class="number"> 300 </span>requests</span><br><span class="line">Completed<span class="number"> 400 </span>requests</span><br><span class="line">Completed<span class="number"> 500 </span>requests</span><br><span class="line">Completed<span class="number"> 600 </span>requests</span><br><span class="line">Completed<span class="number"> 700 </span>requests</span><br><span class="line">Completed<span class="number"> 800 </span>requests</span><br><span class="line">Completed<span class="number"> 900 </span>requests</span><br><span class="line">Completed<span class="number"> 1000 </span>requests</span><br><span class="line">Finished<span class="number"> 1000 </span>requests</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Server Software:        Apache/2.2.25 (服务器软件名称及版本信息)</span><br><span class="line">Server Hostname:        localhost (服务器主机名)</span><br><span class="line">Server Port:           <span class="number"> 80 </span>(服务器端口)</span><br><span class="line">Document Path:          /index.php (供测试的URL路径)</span><br><span class="line">Document Length:       <span class="number"> 10 </span>bytes (供测试的URL返回的文档大小)</span><br><span class="line">Concurrency Level:     <span class="number"> 100 </span>(并发数)</span><br><span class="line">Time taken for tests:   0.247 seconds (压力测试消耗的总时间)</span><br><span class="line">Complete requests:     <span class="number"> 1000 </span>(压力测试的总次数)</span><br><span class="line">Failed requests:       <span class="number"> 0 </span>(失败的请求数（当有失败时，证明此时存在瓶颈问题）)</span><br><span class="line">Write errors:          <span class="number"> 0 </span>(网络连接写入错误数)</span><br><span class="line">Total transferred:     <span class="number"> 198000 </span>bytes (传输的总数据量)</span><br><span class="line">HTML transferred:      <span class="number"> 10000 </span>bytes (HTML文档的总数据量)</span><br><span class="line">Requests per second:    4048.34 [<span class="comment">#/sec] (mean) (平均每秒的请求数)</span></span><br><span class="line">Time per request:       2.47 [ms] (mean) (一次并发请求一次的平均时间(247ms/100))</span><br><span class="line">Time per request:       0.247 [ms] (mean, across all concurrent requests) (单个用户请求一次的平均时间(247ms/1000))</span><br><span class="line">Transfer rate:          782.78 [Kbytes/sec] received (传输速率，单位：KB/s)</span><br><span class="line">Connection Times (ms)</span><br><span class="line">              min  mean[+/-sd] median   max</span><br><span class="line">Connect:       <span class="number"> 0 </span>  <span class="number"> 0 </span>  0.3     <span class="number"> 0 </span>      1</span><br><span class="line">Processing:    <span class="number"> 6 </span> <span class="number"> 23 </span>  4.2    <span class="number"> 24 </span>     30</span><br><span class="line">Waiting:       <span class="number"> 5 </span> <span class="number"> 20 </span>  5.3    <span class="number"> 21 </span>     29</span><br><span class="line">Total:         <span class="number"> 6 </span> <span class="number"> 23 </span>  4.2    <span class="number"> 24 </span>     30</span><br><span class="line"></span><br><span class="line">Percentage of the requests served within a certain time (ms)</span><br><span class="line">  50%     24</span><br><span class="line">  66%     25</span><br><span class="line">  75%     26</span><br><span class="line">  80%     26å</span><br><span class="line">  90%     27</span><br><span class="line">  95%     27</span><br><span class="line">  98%     28</span><br><span class="line">  99%     29</span><br><span class="line"> 100%    <span class="number"> 30 </span>(longest request)</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>Linux每个进程，当需要访问外部时，都会打开一个套接字进行信息交互，默认是一个进程可以同时打开1024个套接字。当c过大，导致当前连接总数量超过套接字数量时，就会报错(socket:Too many open files)。可以通过查询 ulimit -n 查询默认套接字数量以及ulimit -n 65534 更改套接字限制大小。</p>
+<p>注意，KeepAlived本身就是为了LVS制作的，所以在KeepAlived的配置文件里配置了LVS规则，就不用再使用ipvsadm编写规则了。</p>
 </blockquote>
 <blockquote>
-<p>当同一台机器访问本服务器瞬间请求过多时，Linux内核会自动开启保护机制，拒绝访问。此时设置为0关闭该保护机制。echo 0 &gt; /proc/sys/net/ipv4/tcp_syncookies</p>
+<p>无论是Master或者Backup启动KeepAlived时，都会马上给本机加上ipvsadm的规则，只是Backup的真实网卡上没有子网卡VIP罢了</p>
 </blockquote>
+<blockquote>
+<p>当监听到其中一台RS没有相应时，KeepAlived会操作ipvsadm，将该节点移除出规则。当节点恢复后，KeepAlived又会操作ipvsadm将该节点添加回ipvsadm规则里。</p>
+</blockquote>
+<h5 id="RS"><a href="#RS" class="headerlink" title="RS"></a>RS</h5><p>与<code>lvs负载均衡-NAT与DR模型原理介绍</code>中的DR模式配置大体相同</p>
+<figure class="highlight dts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta"># arp_ignore</span></span><br><span class="line">echo <span class="number">1</span> &gt; <span class="meta-keyword">/proc/</span>sys<span class="meta-keyword">/net/</span>ipv4<span class="meta-keyword">/conf/</span>all/arp_ignore</span><br><span class="line">echo <span class="number">1</span> &gt; <span class="meta-keyword">/proc/</span>sys<span class="meta-keyword">/net/</span>ipv4<span class="meta-keyword">/conf/</span>ens33/arp_ignore</span><br><span class="line"></span><br><span class="line"><span class="meta"># arp_announce</span></span><br><span class="line">echo <span class="number">2</span> &gt; <span class="meta-keyword">/proc/</span>sys<span class="meta-keyword">/net/</span>ipv4<span class="meta-keyword">/conf/</span>all/arp_announce</span><br><span class="line">echo <span class="number">2</span> &gt; <span class="meta-keyword">/proc/</span>sys<span class="meta-keyword">/net/</span>ipv4<span class="meta-keyword">/conf/</span>ens33/arp_announce</span><br><span class="line"></span><br><span class="line"><span class="meta"># 子网卡添加VIP.只能自己在一个网段，自己和自己通信。从而不对任何其他的非本ip的arp包做出响应</span></span><br><span class="line">ifconfig lo:<span class="number">0</span> <span class="number">192.168</span><span class="number">.184</span><span class="number">.100</span> netmask <span class="number">255.255</span><span class="number">.255</span><span class="number">.255</span> broadcast <span class="number">192.168</span><span class="number">.184</span><span class="number">.100</span> up</span><br><span class="line"></span><br><span class="line"><span class="meta"># 添加路由，让访问192.168.184.100的报文指定从lo:0网卡发出去（可以忽略不写，系统自动添加）</span></span><br><span class="line">route add -host <span class="number">192.168</span><span class="number">.184</span><span class="number">.100</span> dev lo:<span class="number">0</span></span><br></pre></td></tr></table></figure>
 
       
 
@@ -406,7 +479,7 @@ var _hmt = _hmt || [];
           
           <br>
           <strong>本文链接：</strong>
-          <a rel="license" href="https://www.guaosi.com/2020/01/22/brief-introduction-of-pressure-test/">https://www.guaosi.com/2020/01/22/brief-introduction-of-pressure-test/</a>
+          <a rel="license" href="https://www.guaosi.com/2020/01/25/keepalived-principle-and-LVS-case/">https://www.guaosi.com/2020/01/25/keepalived-principle-and-LVS-case/</a>
           <br>
           <strong>版权声明：</strong>
           本博客所有文章除特别声明外，均采用
@@ -466,11 +539,15 @@ var _hmt = _hmt || [];
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">测试</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Linux</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Web</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">服务器</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">高可用</a>
         		</li>
       		
 		</ul>
@@ -526,7 +603,7 @@ var _hmt = _hmt || [];
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACsklEQVR42u3aQW7jQAwEwPz/07uXPSwQ2+kmZwwHKJ2MSJamfNAwTX59xcefJ8f/Z79f//oOz57y/fpn9zx24OHh4R1aevKwZ39Jrm/ZybMe3AEPDw/vGi95TSdnN+zkbL5mPDw8vE/m5dcnR74x4OHh4f1eXr7QJFZ4veXg4eHhfQ6vDWpnC9o863rWgoeHh9dVrVEX6XM+X+nv4eHh4a276smLO4lcNyX1bJ3/7oCHh4d3gZe/cGel9qmSffYsPDw8vBu8fChqFuDOQo3ZUMKDFeLh4eFd4M0aS/lj2q0ib78VGwYeHh7eNd6m2E1ChHvUYX8PDw8Pb8TbDwS020kLW3X28PDw8C7zZq2sTYjQRsZ5FPI0a8HDw8M7ytsUx7MF5T9QuwnVl+Lh4eGVvHx7aAPczdhWNPXwujTHw8PDu8xbJcFxUb4vtYugBA8PD+8yr416Z+V4vkm0IwsP7oOHh4d3mbcpr5Piu8Xn8XEURuDh4eEd5Z0aL2i79u0AQbs94OHh4d3mbYaf8obWPrQtfj48PDy8C7w8DmiL5v1YVXv2hzAXDw8P7xAvX2LSppqVwm8dusLDw8Nb85JX7YzaHvkQQ7vN4OHh4b2Tt1/uZptJwo7oDnh4eHhv5LWhQPJaz2PcfLjhh4gEDw8P7zKvfTW3pE0zLGcXnTQ8PDy8BW/2Us4b+bMNIN9a6skyPDw8vDWvjQzOsk+FIMOEGA8PD28ByyOGU4NTs29FwS4eHh7eBd7+HZtvALPiu/18eAvBw8PDWwQBye1mbar256i3DTw8PLxrvGRwKh+xSpZ7NnN4+hc8PDy8j+Htx7PaMaw8Vi5GB/Dw8PA+gDcbBWgHs4rmGR4eHt41Xtv02lOjgvjlaqPRLjw8PLwLvNk//LMRrnZZbdR7LM/Aw8PDe/zdv6ePc6glMbcfAAAAAElFTkSuQmCC" alt="微信分享二维码">
+      <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACtUlEQVR42u3awW6kQAwE0Pz/T2elPWW1GVJl02QOj9MIBejHgXbK/viIj8+/x9ffX88k117//f/3v/5984GHh4c3Wvqr4/rWn8Fx/YLaI18zHh4e3mle/rFut4fkZV3frX3deHh4eO/Dy296F6Atr/Hw8PDejZcsd/YRb++Dh4eH9w68/J//dqu4DguuzzyateDh4eHFvFkD7Hd/H+/v4eHh4Y266pvPbhs93LW2f+6Mh4eHd4A3G6JqB7PyBtjsxf1wLR4eHt6tvHwo6vqTnVzV3jkPfF/+DR4eHt4B3ubBm6B21iqbvTI8PDy8e3mzOGDf1mrj2mEsgoeHh3eMl0cGbZTQhsL5euoAFw8PD+9WXvI5zm86ixJm29UPhTUeHh7eYV4L2wwQtKMJw00LDw8P70HeLIRNXs1sLGAYeeDh4eEd4LUlb77o2XBAEhkn4wt4eHh453jJcvOgIXlwDshbZS/P4OHh4R3gtS38FtBuP7NwZFhS4+Hh4a15RWNpMTJ173OTp+Dh4eHdyys+rzFpFrkmhXIS/n7zHwMeHh7eYd7szGZ8Kjmf4/Hw8PBO8/ICty2C8+GqTWlevHQ8PDy8Y7wZY/+yZgFEsRXh4eHh3crLl7tf4qyMzscU8PDw8J7hrS4YbQz7kj0f58LDw8N7npfHBElpnh95HFyU3Xh4eHg38fJYYfawvOyetbuiMAIPDw/vGC8vZ2dhQR6CzAp6PDw8vNO8TZmbbwn7srttj30zU4aHh4d3E2+znyStrDaunY1k7UNnPDw8vJaXf5RnAUQ+NJB87usGGB4eHt4x3ubBm85bG1LUsQUeHh7em/FmgwI5rN0Miv4eHh4e3iO8vNTOm15tINsOIuDh4eGd482aT/nSZ8MEm3AEDw8P7xxv0wBrS+382nyT2Axp4eHh4ZW8P3wgnHEONzvdAAAAAElFTkSuQmCC" alt="微信分享二维码">
     </div>
 </div>
 
@@ -540,18 +617,9 @@ var _hmt = _hmt || [];
 
 <nav id="article-nav">
   
-    <a href="/2020/01/22/network-of-vmware-and-docker/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          Vmware和Docker的网络模式讲解
-        
-      </div>
-    </a>
   
-  
-    <a href="/2020/01/22/simple-principle-of-https/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">HTTPS原理</div>
+    <a href="/2020/01/22/lvs-introduction-to-the-principle-of-NAT-and-DR-model/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">lvs负载均衡-NAT与DR模型原理介绍</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -578,7 +646,7 @@ var _hmt = _hmt || [];
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#压力测试"><span class="toc-number">1.</span> <span class="toc-text">压力测试</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#压力测试的目的"><span class="toc-number">1.1.</span> <span class="toc-text">压力测试的目的</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#常见Web压力测试工具"><span class="toc-number">1.2.</span> <span class="toc-text">常见Web压力测试工具</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ab用法详解"><span class="toc-number">1.3.</span> <span class="toc-text">ab用法详解</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#案例"><span class="toc-number">1.4.</span> <span class="toc-text">案例</span></a></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#VRRP原理"><span class="toc-number">1.</span> <span class="toc-text">VRRP原理</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#基本概念"><span class="toc-number">1.1.</span> <span class="toc-text">基本概念</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#原理"><span class="toc-number">1.2.</span> <span class="toc-text">原理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#分析"><span class="toc-number">1.3.</span> <span class="toc-text">分析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#核心概念"><span class="toc-number">1.4.</span> <span class="toc-text">核心概念</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#KeepAlived"><span class="toc-number">2.</span> <span class="toc-text">KeepAlived</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#功能简介"><span class="toc-number">2.1.</span> <span class="toc-text">功能简介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#架构图"><span class="toc-number">2.2.</span> <span class="toc-text">架构图</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#核心概念-1"><span class="toc-number">2.3.</span> <span class="toc-text">核心概念</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#适用场景"><span class="toc-number">2.4.</span> <span class="toc-text">适用场景</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#高可用LVS"><span class="toc-number">2.4.1.</span> <span class="toc-text">高可用LVS</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#高可用其他服务"><span class="toc-number">2.4.2.</span> <span class="toc-text">高可用其他服务</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#案例"><span class="toc-number">2.5.</span> <span class="toc-text">案例</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#集群配置前提-最佳实践"><span class="toc-number">2.5.1.</span> <span class="toc-text">集群配置前提(最佳实践)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#查看配置文件"><span class="toc-number">2.5.2.</span> <span class="toc-text">查看配置文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#实现虚拟IP转移"><span class="toc-number">2.5.3.</span> <span class="toc-text">实现虚拟IP转移</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#实验规划"><span class="toc-number">2.5.3.1.</span> <span class="toc-text">实验规划</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#配置文件"><span class="toc-number">2.5.3.2.</span> <span class="toc-text">配置文件</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#Master"><span class="toc-number">2.5.3.2.1.</span> <span class="toc-text">Master</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Backup"><span class="toc-number">2.5.3.2.2.</span> <span class="toc-text">Backup</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#注意"><span class="toc-number">2.5.3.3.</span> <span class="toc-text">注意</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#实现KeepAlived-LVS高可用"><span class="toc-number">2.5.4.</span> <span class="toc-text">实现KeepAlived+LVS高可用</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#实验规划-1"><span class="toc-number">2.5.4.1.</span> <span class="toc-text">实验规划</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#架构图-1"><span class="toc-number">2.5.4.2.</span> <span class="toc-text">架构图</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#配置"><span class="toc-number">2.5.4.3.</span> <span class="toc-text">配置</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#DS"><span class="toc-number">2.5.4.3.1.</span> <span class="toc-text">DS</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#RS"><span class="toc-number">2.5.4.3.2.</span> <span class="toc-text">RS</span></a></li></ol></li></ol></li></ol></li></ol></li></ol>
                     </div>
                 </span>
             </div>
@@ -594,7 +662,7 @@ var _hmt = _hmt || [];
 
 
 
-<div id="SOHUCS" sid="brief-introduction-of-pressure-test"></div> 
+<div id="SOHUCS" sid="keepalived-principle-and-LVS-case"></div> 
 <script type="text/javascript"> 
 (function(){ 
 var appid = "cytWxLdY3"; 
