@@ -7,15 +7,15 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="https://www.guaosi.com">
-  <title>入门RabbitMQ之核心概念 | guaosi的博客</title>
+  <title>入门RabbitMQ之核心概念(Golang演示) | guaosi的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="入门RabbitMQ之核心概念简介RabbitMQ是一个开源的消息代理和队列服务器，用来通过普通协议在完全不同的应用之间共享数据，RabbitMQ是使用Erlang语言来编写的，并且RabbitMQ是基于AMQP协议的。官网：http://www.rabbitmq.com/ 哪些大厂在用，为什么？国内主要有滴滴、美团、头条、去哪儿、艺龙等互联网大厂都在使用RabblitMQ，主要原因如下：  开源">
+  <meta name="description" content="入门RabbitMQ之核心概念(Golang演示)简介RabbitMQ是一个开源的消息代理和队列服务器，用来通过普通协议在完全不同的应用之间共享数据，RabbitMQ是使用Erlang语言来编写的，并且RabbitMQ是基于AMQP协议的。官网：http://www.rabbitmq.com/ 哪些大厂在用，为什么？国内主要有滴滴、美团、头条、去哪儿、艺龙等互联网大厂都在使用RabblitMQ，主">
 <meta name="keywords" content="消息队列,中间件,RabbitMQ">
 <meta property="og:type" content="article">
-<meta property="og:title" content="入门RabbitMQ之核心概念">
+<meta property="og:title" content="入门RabbitMQ之核心概念(Golang演示)">
 <meta property="og:url" content="https://www.guaosi.com/2020/01/28/core-concepts-of-rabbitmq-with-golang/index.html">
 <meta property="og:site_name" content="guaosi的博客">
-<meta property="og:description" content="入门RabbitMQ之核心概念简介RabbitMQ是一个开源的消息代理和队列服务器，用来通过普通协议在完全不同的应用之间共享数据，RabbitMQ是使用Erlang语言来编写的，并且RabbitMQ是基于AMQP协议的。官网：http://www.rabbitmq.com/ 哪些大厂在用，为什么？国内主要有滴滴、美团、头条、去哪儿、艺龙等互联网大厂都在使用RabblitMQ，主要原因如下：  开源">
+<meta property="og:description" content="入门RabbitMQ之核心概念(Golang演示)简介RabbitMQ是一个开源的消息代理和队列服务器，用来通过普通协议在完全不同的应用之间共享数据，RabbitMQ是使用Erlang语言来编写的，并且RabbitMQ是基于AMQP协议的。官网：http://www.rabbitmq.com/ 哪些大厂在用，为什么？国内主要有滴滴、美团、头条、去哪儿、艺龙等互联网大厂都在使用RabblitMQ，主">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://www.guaosi.com/assets/blogImg/core-concepts-of-rabbitmq/AMQP-协议模型.jpg">
 <meta property="og:image" content="https://www.guaosi.com/assets/blogImg/core-concepts-of-rabbitmq/RabbitMQ-整体架构图.jpg">
@@ -25,10 +25,10 @@
 <meta property="og:image" content="https://www.guaosi.com/assets/blogImg/core-concepts-of-rabbitmq/RabbitMQ-服务管控台.png">
 <meta property="og:image" content="https://www.guaosi.com/assets/blogImg/core-concepts-of-rabbitmq/RabbitMQ-默认Exchange.jpg">
 <meta property="og:image" content="https://www.guaosi.com/assets/blogImg/core-concepts-of-rabbitmq/RabbitMQ-Expiration-Message.jpg">
-<meta property="og:updated_time" content="2020-01-28T09:48:33.754Z">
+<meta property="og:updated_time" content="2020-01-28T11:44:00.396Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="入门RabbitMQ之核心概念">
-<meta name="twitter:description" content="入门RabbitMQ之核心概念简介RabbitMQ是一个开源的消息代理和队列服务器，用来通过普通协议在完全不同的应用之间共享数据，RabbitMQ是使用Erlang语言来编写的，并且RabbitMQ是基于AMQP协议的。官网：http://www.rabbitmq.com/ 哪些大厂在用，为什么？国内主要有滴滴、美团、头条、去哪儿、艺龙等互联网大厂都在使用RabblitMQ，主要原因如下：  开源">
+<meta name="twitter:title" content="入门RabbitMQ之核心概念(Golang演示)">
+<meta name="twitter:description" content="入门RabbitMQ之核心概念(Golang演示)简介RabbitMQ是一个开源的消息代理和队列服务器，用来通过普通协议在完全不同的应用之间共享数据，RabbitMQ是使用Erlang语言来编写的，并且RabbitMQ是基于AMQP协议的。官网：http://www.rabbitmq.com/ 哪些大厂在用，为什么？国内主要有滴滴、美团、头条、去哪儿、艺龙等互联网大厂都在使用RabblitMQ，主">
 <meta name="twitter:image" content="https://www.guaosi.com/assets/blogImg/core-concepts-of-rabbitmq/AMQP-协议模型.jpg">
   
   <link rel="alternative" href="/atom.xml" title="guaosi的博客" type="application/atom+xml">
@@ -307,7 +307,7 @@ var _hmt = _hmt || [];
       
   
     <h1 class="article-title" itemprop="name">
-      入门RabbitMQ之核心概念
+      入门RabbitMQ之核心概念(Golang演示)
     </h1>
   
 
@@ -334,7 +334,7 @@ var _hmt = _hmt || [];
     
     <div class="article-entry" itemprop="articleBody">
       
-      <h1 id="入门RabbitMQ之核心概念"><a href="#入门RabbitMQ之核心概念" class="headerlink" title="入门RabbitMQ之核心概念"></a>入门RabbitMQ之核心概念</h1><h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>RabbitMQ是一个开源的消息代理和队列服务器，用来通过普通协议在完全不同的应用之间共享数据，RabbitMQ是使用Erlang语言来编写的，并且RabbitMQ是基于AMQP协议的。<br>官网：<a href="http://www.rabbitmq.com/" target="_blank" rel="noopener">http://www.rabbitmq.com/</a></p>
+      <h1 id="入门RabbitMQ之核心概念-Golang演示"><a href="#入门RabbitMQ之核心概念-Golang演示" class="headerlink" title="入门RabbitMQ之核心概念(Golang演示)"></a>入门RabbitMQ之核心概念(Golang演示)</h1><h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>RabbitMQ是一个开源的消息代理和队列服务器，用来通过普通协议在完全不同的应用之间共享数据，RabbitMQ是使用Erlang语言来编写的，并且RabbitMQ是基于AMQP协议的。<br>官网：<a href="http://www.rabbitmq.com/" target="_blank" rel="noopener">http://www.rabbitmq.com/</a></p>
 <h3 id="哪些大厂在用，为什么？"><a href="#哪些大厂在用，为什么？" class="headerlink" title="哪些大厂在用，为什么？"></a>哪些大厂在用，为什么？</h3><p>国内主要有滴滴、美团、头条、去哪儿、艺龙等互联网大厂都在使用RabblitMQ，主要原因如下：</p>
 <ul>
 <li>开源、性能优秀，稳定性保障</li>
@@ -644,7 +644,7 @@ var _hmt = _hmt || [];
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#入门RabbitMQ之核心概念"><span class="toc-number">1.</span> <span class="toc-text">入门RabbitMQ之核心概念</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#简介"><span class="toc-number">1.1.</span> <span class="toc-text">简介</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#哪些大厂在用，为什么？"><span class="toc-number">1.1.1.</span> <span class="toc-text">哪些大厂在用，为什么？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#RabbitMQ高性能的原因"><span class="toc-number">1.1.2.</span> <span class="toc-text">RabbitMQ高性能的原因</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#AMQP协议"><span class="toc-number">1.1.3.</span> <span class="toc-text">AMQP协议</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#AMQP协议模型"><span class="toc-number">1.1.3.1.</span> <span class="toc-text">AMQP协议模型</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#AMQP核心概念"><span class="toc-number">1.1.3.2.</span> <span class="toc-text">AMQP核心概念</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#Server"><span class="toc-number">1.1.3.2.1.</span> <span class="toc-text">Server</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Connection"><span class="toc-number">1.1.3.2.2.</span> <span class="toc-text">Connection</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Channel"><span class="toc-number">1.1.3.2.3.</span> <span class="toc-text">Channel</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Message"><span class="toc-number">1.1.3.2.4.</span> <span class="toc-text">Message</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Virtual-host"><span class="toc-number">1.1.3.2.5.</span> <span class="toc-text">Virtual host</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Exchange"><span class="toc-number">1.1.3.2.6.</span> <span class="toc-text">Exchange</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Binding"><span class="toc-number">1.1.3.2.7.</span> <span class="toc-text">Binding</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Routing-key"><span class="toc-number">1.1.3.2.8.</span> <span class="toc-text">Routing key</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Queue"><span class="toc-number">1.1.3.2.9.</span> <span class="toc-text">Queue</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#RabbitMQ整体架构"><span class="toc-number">1.1.4.</span> <span class="toc-text">RabbitMQ整体架构</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#环境安装"><span class="toc-number">1.2.</span> <span class="toc-text">环境安装</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#RPM安装"><span class="toc-number">1.2.1.</span> <span class="toc-text">RPM安装</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#下载必要的安装包"><span class="toc-number">1.2.1.1.</span> <span class="toc-text">下载必要的安装包</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#安装步骤"><span class="toc-number">1.2.1.2.</span> <span class="toc-text">安装步骤</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#修改配置"><span class="toc-number">1.2.1.3.</span> <span class="toc-text">修改配置</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#RabbitMQ命令"><span class="toc-number">1.2.1.4.</span> <span class="toc-text">RabbitMQ命令</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#RabbitMQ管控台"><span class="toc-number">1.2.1.5.</span> <span class="toc-text">RabbitMQ管控台</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Docker-compose安装"><span class="toc-number">1.2.2.</span> <span class="toc-text">Docker-compose安装</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#常用命令行指令"><span class="toc-number">1.3.</span> <span class="toc-text">常用命令行指令</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#基础指令"><span class="toc-number">1.3.1.</span> <span class="toc-text">基础指令</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#系统"><span class="toc-number">1.3.1.1.</span> <span class="toc-text">系统</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#用户"><span class="toc-number">1.3.1.2.</span> <span class="toc-text">用户</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#虚拟主机"><span class="toc-number">1.3.1.3.</span> <span class="toc-text">虚拟主机</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#交互"><span class="toc-number">1.3.1.4.</span> <span class="toc-text">交互</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#队列"><span class="toc-number">1.3.1.5.</span> <span class="toc-text">队列</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#高级指令"><span class="toc-number">1.3.2.</span> <span class="toc-text">高级指令</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#急速入门"><span class="toc-number">1.4.</span> <span class="toc-text">急速入门</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#涉及的相关对象或者概念"><span class="toc-number">1.4.1.</span> <span class="toc-text">涉及的相关对象或者概念</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#生产者模型构建"><span class="toc-number">1.4.2.</span> <span class="toc-text">生产者模型构建</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#消费者模型构建"><span class="toc-number">1.4.3.</span> <span class="toc-text">消费者模型构建</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#注意"><span class="toc-number">1.4.4.</span> <span class="toc-text">注意</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Default-Exchange"><span class="toc-number">1.4.5.</span> <span class="toc-text">Default Exchange</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#绑定、队列、消息、虚拟主机"><span class="toc-number">1.5.</span> <span class="toc-text">绑定、队列、消息、虚拟主机</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Binding-绑定"><span class="toc-number">1.5.1.</span> <span class="toc-text">Binding - 绑定</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Queue-消息队列"><span class="toc-number">1.5.2.</span> <span class="toc-text">Queue - 消息队列</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Message-消息"><span class="toc-number">1.5.3.</span> <span class="toc-text">Message - 消息</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#常用属性"><span class="toc-number">1.5.3.1.</span> <span class="toc-text">常用属性</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Message演示"><span class="toc-number">1.5.3.2.</span> <span class="toc-text">Message演示</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#生产端"><span class="toc-number">1.5.3.2.1.</span> <span class="toc-text">生产端</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#消费端"><span class="toc-number">1.5.3.2.2.</span> <span class="toc-text">消费端</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#运行说明"><span class="toc-number">1.5.3.2.3.</span> <span class="toc-text">运行说明</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Virtual-Host-虚拟主机"><span class="toc-number">1.5.4.</span> <span class="toc-text">Virtual Host - 虚拟主机</span></a></li></ol></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#入门RabbitMQ之核心概念-Golang演示"><span class="toc-number">1.</span> <span class="toc-text">入门RabbitMQ之核心概念(Golang演示)</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#简介"><span class="toc-number">1.1.</span> <span class="toc-text">简介</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#哪些大厂在用，为什么？"><span class="toc-number">1.1.1.</span> <span class="toc-text">哪些大厂在用，为什么？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#RabbitMQ高性能的原因"><span class="toc-number">1.1.2.</span> <span class="toc-text">RabbitMQ高性能的原因</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#AMQP协议"><span class="toc-number">1.1.3.</span> <span class="toc-text">AMQP协议</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#AMQP协议模型"><span class="toc-number">1.1.3.1.</span> <span class="toc-text">AMQP协议模型</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#AMQP核心概念"><span class="toc-number">1.1.3.2.</span> <span class="toc-text">AMQP核心概念</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#Server"><span class="toc-number">1.1.3.2.1.</span> <span class="toc-text">Server</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Connection"><span class="toc-number">1.1.3.2.2.</span> <span class="toc-text">Connection</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Channel"><span class="toc-number">1.1.3.2.3.</span> <span class="toc-text">Channel</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Message"><span class="toc-number">1.1.3.2.4.</span> <span class="toc-text">Message</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Virtual-host"><span class="toc-number">1.1.3.2.5.</span> <span class="toc-text">Virtual host</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Exchange"><span class="toc-number">1.1.3.2.6.</span> <span class="toc-text">Exchange</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Binding"><span class="toc-number">1.1.3.2.7.</span> <span class="toc-text">Binding</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Routing-key"><span class="toc-number">1.1.3.2.8.</span> <span class="toc-text">Routing key</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Queue"><span class="toc-number">1.1.3.2.9.</span> <span class="toc-text">Queue</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#RabbitMQ整体架构"><span class="toc-number">1.1.4.</span> <span class="toc-text">RabbitMQ整体架构</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#环境安装"><span class="toc-number">1.2.</span> <span class="toc-text">环境安装</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#RPM安装"><span class="toc-number">1.2.1.</span> <span class="toc-text">RPM安装</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#下载必要的安装包"><span class="toc-number">1.2.1.1.</span> <span class="toc-text">下载必要的安装包</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#安装步骤"><span class="toc-number">1.2.1.2.</span> <span class="toc-text">安装步骤</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#修改配置"><span class="toc-number">1.2.1.3.</span> <span class="toc-text">修改配置</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#RabbitMQ命令"><span class="toc-number">1.2.1.4.</span> <span class="toc-text">RabbitMQ命令</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#RabbitMQ管控台"><span class="toc-number">1.2.1.5.</span> <span class="toc-text">RabbitMQ管控台</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Docker-compose安装"><span class="toc-number">1.2.2.</span> <span class="toc-text">Docker-compose安装</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#常用命令行指令"><span class="toc-number">1.3.</span> <span class="toc-text">常用命令行指令</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#基础指令"><span class="toc-number">1.3.1.</span> <span class="toc-text">基础指令</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#系统"><span class="toc-number">1.3.1.1.</span> <span class="toc-text">系统</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#用户"><span class="toc-number">1.3.1.2.</span> <span class="toc-text">用户</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#虚拟主机"><span class="toc-number">1.3.1.3.</span> <span class="toc-text">虚拟主机</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#交互"><span class="toc-number">1.3.1.4.</span> <span class="toc-text">交互</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#队列"><span class="toc-number">1.3.1.5.</span> <span class="toc-text">队列</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#高级指令"><span class="toc-number">1.3.2.</span> <span class="toc-text">高级指令</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#急速入门"><span class="toc-number">1.4.</span> <span class="toc-text">急速入门</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#涉及的相关对象或者概念"><span class="toc-number">1.4.1.</span> <span class="toc-text">涉及的相关对象或者概念</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#生产者模型构建"><span class="toc-number">1.4.2.</span> <span class="toc-text">生产者模型构建</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#消费者模型构建"><span class="toc-number">1.4.3.</span> <span class="toc-text">消费者模型构建</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#注意"><span class="toc-number">1.4.4.</span> <span class="toc-text">注意</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Default-Exchange"><span class="toc-number">1.4.5.</span> <span class="toc-text">Default Exchange</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#绑定、队列、消息、虚拟主机"><span class="toc-number">1.5.</span> <span class="toc-text">绑定、队列、消息、虚拟主机</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Binding-绑定"><span class="toc-number">1.5.1.</span> <span class="toc-text">Binding - 绑定</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Queue-消息队列"><span class="toc-number">1.5.2.</span> <span class="toc-text">Queue - 消息队列</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Message-消息"><span class="toc-number">1.5.3.</span> <span class="toc-text">Message - 消息</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#常用属性"><span class="toc-number">1.5.3.1.</span> <span class="toc-text">常用属性</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Message演示"><span class="toc-number">1.5.3.2.</span> <span class="toc-text">Message演示</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#生产端"><span class="toc-number">1.5.3.2.1.</span> <span class="toc-text">生产端</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#消费端"><span class="toc-number">1.5.3.2.2.</span> <span class="toc-text">消费端</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#运行说明"><span class="toc-number">1.5.3.2.3.</span> <span class="toc-text">运行说明</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Virtual-Host-虚拟主机"><span class="toc-number">1.5.4.</span> <span class="toc-text">Virtual Host - 虚拟主机</span></a></li></ol></li></ol></li></ol>
                     </div>
                 </span>
             </div>
@@ -660,14 +660,49 @@ var _hmt = _hmt || [];
 
 
 
-<div id="SOHUCS" sid="core-concepts-of-rabbitmq-with-golang"></div> 
-<script type="text/javascript"> 
-(function(){ 
-var appid = "cytWxLdY3"; 
-var conf = "prod_f314382998643222116abeab50bbbc4f"; 
-var width = window.innerWidth || document.documentElement.clientWidth; 
-if (width < 960) { 
-window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="//changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>'); } else { var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("//changyan.sohu.com/upload/changyan.js",function(){window.changyan.api.config({appid:appid,conf:conf})}); } })(); </script>
+<div id="SOHUCS" sid="core-concepts-of-rabbitmq-with-golang"></div>
+<script type="text/javascript">
+  (function () {
+    var appid = "cytWxLdY3";
+    var conf = "prod_f314382998643222116abeab50bbbc4f";
+    var width = window.innerWidth || document.documentElement.clientWidth;
+    if (width < 960) {
+      window.document.write(
+        '<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="//changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' +
+        appid + '&conf=' + conf + '"><\/script>');
+    } else {
+      var loadJs = function (d, a) {
+        var c = document.getElementsByTagName("head")[0] || document.head || document.documentElement;
+        var b = document.createElement("script");
+        b.setAttribute("type", "text/javascript");
+        b.setAttribute("charset", "UTF-8");
+        b.setAttribute("src", d);
+        if (typeof a === "function") {
+          if (window.attachEvent) {
+            b.onreadystatechange = function () {
+              var e = b.readyState;
+              if (e === "loaded" || e === "complete") {
+                b.onreadystatechange = null;
+                a()
+              }
+            }
+          } else {
+            b.onload = a
+          }
+        }
+        c.appendChild(b)
+      };
+      loadJs("//changyan.sohu.com/upload/changyan.js", function () {
+        window.changyan.api.config({
+          appid: appid,
+          conf: conf
+        })
+      });
+    }
+  })();
+
+</script>
+
 
 
 
@@ -771,11 +806,11 @@ window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="tex
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">crack</a>
+                <a href="javascript:void(0)" class="js-tag color4">git</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">git</a>
+                <a href="javascript:void(0)" class="js-tag color1">crack</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -799,22 +834,6 @@ window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="tex
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Linux</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Python</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">PHP</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Laravel</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">消息队列</a>
               </li>
              
@@ -824,6 +843,22 @@ window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="tex
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">中间件</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">PHP</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Linux</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Python</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Laravel</a>
               </li>
              
               <li class="article-tag-list-item">

@@ -431,7 +431,7 @@ var _hmt = _hmt || [];
     
     <div class="article-entry" itemprop="articleBody">
       
-      <h1 id="入门RabbitMQ之交换机详解"><a href="#入门RabbitMQ之交换机详解" class="headerlink" title="入门RabbitMQ之交换机详解"></a>入门RabbitMQ之交换机详解</h1><h2 id="交换机详解"><a href="#交换机详解" class="headerlink" title="交换机详解"></a>交换机详解</h2><p>Exchange：交换机，接收消息，并根据路由键转发消息到绑定的队列<br>如图为官网提供的模型，蓝色框表示<code>Send Message</code>，Client端把消息投递到Exchange上，通过RoutingKey路由关系将消息路由到指定的队列，绿色框代表<code>Receive Message</code>，Client端和队列建立监听，然后去接收消息。红色框代表<code>RabbitMQ Server</code>，黄色框表示<code>RoutingKey</code>，即Exchange和Queue需要建立绑定关系。</p>
+      <h1 id="入门RabbitMQ之交换机详解-Golang演示"><a href="#入门RabbitMQ之交换机详解-Golang演示" class="headerlink" title="入门RabbitMQ之交换机详解(Golang演示)"></a>入门RabbitMQ之交换机详解(Golang演示)</h1><h2 id="交换机详解"><a href="#交换机详解" class="headerlink" title="交换机详解"></a>交换机详解</h2><p>Exchange：交换机，接收消息，并根据路由键转发消息到绑定的队列<br>如图为官网提供的模型，蓝色框表示<code>Send Message</code>，Client端把消息投递到Exchange上，通过RoutingKey路由关系将消息路由到指定的队列，绿色框代表<code>Receive Message</code>，Client端和队列建立监听，然后去接收消息。红色框代表<code>RabbitMQ Server</code>，黄色框表示<code>RoutingKey</code>，即Exchange和Queue需要建立绑定关系。</p>
 <p><img src="/assets/blogImg/detailed-introduction-to-the-rabbitmq-switch/RabbitMQ-Exchange原理图.jpg" alt="RabbitMQ-Exchange原理图"></p>
       
       <a class="article-more-a" href="/2020/01/28/detailed-introduction-to-the-rabbitmq-switch-with-golang/#more">
@@ -516,7 +516,7 @@ var _hmt = _hmt || [];
       
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2020/01/28/core-concepts-of-rabbitmq-with-golang/">入门RabbitMQ之核心概念</a>
+      <a class="article-title" href="/2020/01/28/core-concepts-of-rabbitmq-with-golang/">入门RabbitMQ之核心概念(Golang演示)</a>
     </h1>
   
 
@@ -536,7 +536,7 @@ var _hmt = _hmt || [];
     
     <div class="article-entry" itemprop="articleBody">
       
-      <h1 id="入门RabbitMQ之核心概念"><a href="#入门RabbitMQ之核心概念" class="headerlink" title="入门RabbitMQ之核心概念"></a>入门RabbitMQ之核心概念</h1><h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>RabbitMQ是一个开源的消息代理和队列服务器，用来通过普通协议在完全不同的应用之间共享数据，RabbitMQ是使用Erlang语言来编写的，并且RabbitMQ是基于AMQP协议的。<br>官网：<a href="http://www.rabbitmq.com/" target="_blank" rel="noopener">http://www.rabbitmq.com/</a></p>
+      <h1 id="入门RabbitMQ之核心概念-Golang演示"><a href="#入门RabbitMQ之核心概念-Golang演示" class="headerlink" title="入门RabbitMQ之核心概念(Golang演示)"></a>入门RabbitMQ之核心概念(Golang演示)</h1><h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>RabbitMQ是一个开源的消息代理和队列服务器，用来通过普通协议在完全不同的应用之间共享数据，RabbitMQ是使用Erlang语言来编写的，并且RabbitMQ是基于AMQP协议的。<br>官网：<a href="http://www.rabbitmq.com/" target="_blank" rel="noopener">http://www.rabbitmq.com/</a></p>
 <h3 id="哪些大厂在用，为什么？"><a href="#哪些大厂在用，为什么？" class="headerlink" title="哪些大厂在用，为什么？"></a>哪些大厂在用，为什么？</h3><p>国内主要有滴滴、美团、头条、去哪儿、艺龙等互联网大厂都在使用RabblitMQ，主要原因如下：</p>
 <ul>
 <li>开源、性能优秀，稳定性保障</li>
@@ -1250,11 +1250,11 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">crack</a>
+                <a href="javascript:void(0)" class="js-tag color4">git</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">git</a>
+                <a href="javascript:void(0)" class="js-tag color1">crack</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1278,22 +1278,6 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Linux</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Python</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">PHP</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Laravel</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">消息队列</a>
               </li>
              
@@ -1303,6 +1287,22 @@ var _hmt = _hmt || [];
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">中间件</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">PHP</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Linux</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Python</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Laravel</a>
               </li>
              
               <li class="article-tag-list-item">
