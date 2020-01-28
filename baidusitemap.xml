@@ -1,6 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://www.guaosi.com/2020/01/28/detailed-introduction-to-the-rabbitmq-switch/</loc>
+    <lastmod>2020-01-28T09:37:15.835Z</lastmod>
+  </url>  <url>
+    <loc>https://www.guaosi.com/2020/01/28/core-concepts-of-rabbitmq/</loc>
+    <lastmod>2020-01-28T09:37:10.131Z</lastmod>
+  </url>  <url>
+    <loc>https://www.guaosi.com/2020/01/28/introduction-to-mainstream-messaging-middleware/</loc>
+    <lastmod>2020-01-28T09:30:05.312Z</lastmod>
+  </url>  <url>
     <loc>https://www.guaosi.com/2018/11/30/docker-basic/</loc>
     <lastmod>2020-01-25T14:40:53.142Z</lastmod>
   </url>  <url>
