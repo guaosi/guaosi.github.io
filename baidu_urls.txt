@@ -1,4 +1,4 @@
-https://www.guaosi.com/2020/01/28/detailed-introduction-to-the-rabbitmq-switch/
-https://www.guaosi.com/2020/01/28/core-concepts-of-rabbitmq/
+https://www.guaosi.com/2020/01/28/detailed-introduction-to-the-rabbitmq-switch-with-golang/
+https://www.guaosi.com/2020/01/28/core-concepts-of-rabbitmq-with-golang/
 https://www.guaosi.com/2020/01/28/introduction-to-mainstream-messaging-middleware/
 https://www.guaosi.com/2020/01/25/keepalived-principle-and-LVS-case/

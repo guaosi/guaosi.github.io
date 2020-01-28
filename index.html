@@ -404,14 +404,14 @@ var _hmt = _hmt || [];
 
 
   
-    <article id="post-detailed-introduction-to-the-rabbitmq-switch" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
+    <article id="post-detailed-introduction-to-the-rabbitmq-switch-with-golang" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
   <div class="article-inner">
     
     <header class="article-header">
       
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2020/01/28/detailed-introduction-to-the-rabbitmq-switch/">入门RabbitMQ之交换机详解</a>
+      <a class="article-title" href="/2020/01/28/detailed-introduction-to-the-rabbitmq-switch-with-golang/">入门RabbitMQ之交换机详解(Golang演示)</a>
     </h1>
   
 
@@ -423,7 +423,7 @@ var _hmt = _hmt || [];
 
 
       
-      <a href="/2020/01/28/detailed-introduction-to-the-rabbitmq-switch/" class="archive-article-date">
+      <a href="/2020/01/28/detailed-introduction-to-the-rabbitmq-switch-with-golang/" class="archive-article-date">
   	<time datetime="2020-01-28T09:32:55.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-01-28</time>
 </a>
       
@@ -434,7 +434,7 @@ var _hmt = _hmt || [];
       <h1 id="入门RabbitMQ之交换机详解"><a href="#入门RabbitMQ之交换机详解" class="headerlink" title="入门RabbitMQ之交换机详解"></a>入门RabbitMQ之交换机详解</h1><h2 id="交换机详解"><a href="#交换机详解" class="headerlink" title="交换机详解"></a>交换机详解</h2><p>Exchange：交换机，接收消息，并根据路由键转发消息到绑定的队列<br>如图为官网提供的模型，蓝色框表示<code>Send Message</code>，Client端把消息投递到Exchange上，通过RoutingKey路由关系将消息路由到指定的队列，绿色框代表<code>Receive Message</code>，Client端和队列建立监听，然后去接收消息。红色框代表<code>RabbitMQ Server</code>，黄色框表示<code>RoutingKey</code>，即Exchange和Queue需要建立绑定关系。</p>
 <p><img src="/assets/blogImg/detailed-introduction-to-the-rabbitmq-switch/RabbitMQ-Exchange原理图.jpg" alt="RabbitMQ-Exchange原理图"></p>
       
-      <a class="article-more-a" href="/2020/01/28/detailed-introduction-to-the-rabbitmq-switch/#more">
+      <a class="article-more-a" href="/2020/01/28/detailed-introduction-to-the-rabbitmq-switch-with-golang/#more">
         more >></a>
       
       
@@ -479,7 +479,7 @@ var _hmt = _hmt || [];
 
       
       <p class="article-more-link">
-        <a class="article-more-a" href="/2020/01/28/detailed-introduction-to-the-rabbitmq-switch/">
+        <a class="article-more-a" href="/2020/01/28/detailed-introduction-to-the-rabbitmq-switch-with-golang/">
           展开全文 >></a>
       </p>
       
@@ -509,14 +509,14 @@ var _hmt = _hmt || [];
 
 
   
-    <article id="post-core-concepts-of-rabbitmq" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
+    <article id="post-core-concepts-of-rabbitmq-with-golang" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
   <div class="article-inner">
     
     <header class="article-header">
       
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2020/01/28/core-concepts-of-rabbitmq/">入门RabbitMQ之核心概念</a>
+      <a class="article-title" href="/2020/01/28/core-concepts-of-rabbitmq-with-golang/">入门RabbitMQ之核心概念</a>
     </h1>
   
 
@@ -528,7 +528,7 @@ var _hmt = _hmt || [];
 
 
       
-      <a href="/2020/01/28/core-concepts-of-rabbitmq/" class="archive-article-date">
+      <a href="/2020/01/28/core-concepts-of-rabbitmq-with-golang/" class="archive-article-date">
   	<time datetime="2020-01-28T09:31:55.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-01-28</time>
 </a>
       
@@ -546,7 +546,7 @@ var _hmt = _hmt || [];
 <li>保证数据不丢失的前提做到高可靠性、可用性</li>
 </ul>
       
-      <a class="article-more-a" href="/2020/01/28/core-concepts-of-rabbitmq/#more">
+      <a class="article-more-a" href="/2020/01/28/core-concepts-of-rabbitmq-with-golang/#more">
         more >></a>
       
       
@@ -591,7 +591,7 @@ var _hmt = _hmt || [];
 
       
       <p class="article-more-link">
-        <a class="article-more-a" href="/2020/01/28/core-concepts-of-rabbitmq/">
+        <a class="article-more-a" href="/2020/01/28/core-concepts-of-rabbitmq-with-golang/">
           展开全文 >></a>
       </p>
       
@@ -1278,7 +1278,19 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Linux</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Python</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">PHP</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Laravel</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1291,18 +1303,6 @@ var _hmt = _hmt || [];
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">中间件</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Laravel</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Linux</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Python</a>
               </li>
              
               <li class="article-tag-list-item">
