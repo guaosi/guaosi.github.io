@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://www.guaosi.com/2020/01/29/dive-into-the-advanced-features-of-rabbitmq-with-golang/</loc>
+    <lastmod>2020-01-29T09:55:00.191Z</lastmod>
+  </url>  <url>
     <loc>https://www.guaosi.com/2020/01/22/simple-principle-of-https/</loc>
-    <lastmod>2020-01-29T03:04:11.164Z</lastmod>
+    <lastmod>2020-01-29T09:51:33.044Z</lastmod>
   </url>  <url>
     <loc>https://www.guaosi.com/2020/01/28/introduction-to-mainstream-messaging-middleware/</loc>
     <lastmod>2020-01-29T03:03:44.488Z</lastmod>
