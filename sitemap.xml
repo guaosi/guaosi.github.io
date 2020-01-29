@@ -2,23 +2,37 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://www.guaosi.com/2020/01/28/detailed-introduction-to-the-rabbitmq-switch-with-golang/</loc>
+    <loc>https://www.guaosi.com/2020/01/22/simple-principle-of-https/</loc>
     
-    <lastmod>2020-01-28T11:44:03.552Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://www.guaosi.com/2020/01/28/core-concepts-of-rabbitmq-with-golang/</loc>
-    
-    <lastmod>2020-01-28T11:44:00.396Z</lastmod>
+    <lastmod>2020-01-29T03:04:11.164Z</lastmod>
     
   </url>
   
   <url>
     <loc>https://www.guaosi.com/2020/01/28/introduction-to-mainstream-messaging-middleware/</loc>
     
-    <lastmod>2020-01-28T09:30:05.312Z</lastmod>
+    <lastmod>2020-01-29T03:03:44.488Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://www.guaosi.com/2020/01/28/detailed-introduction-to-the-rabbitmq-switch-with-golang/</loc>
+    
+    <lastmod>2020-01-29T03:03:24.423Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://www.guaosi.com/2020/01/28/core-concepts-of-rabbitmq-with-golang/</loc>
+    
+    <lastmod>2020-01-29T03:03:19.720Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://www.guaosi.com/2020/01/22/brief-introduction-of-pressure-test/</loc>
+    
+    <lastmod>2020-01-29T03:03:14.375Z</lastmod>
     
   </url>
   
@@ -138,20 +152,6 @@
     <loc>https://www.guaosi.com/2020/01/25/keepalived-principle-and-LVS-case/</loc>
     
     <lastmod>2020-01-25T14:31:44.441Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://www.guaosi.com/2020/01/22/brief-introduction-of-pressure-test/</loc>
-    
-    <lastmod>2020-01-25T14:24:24.516Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://www.guaosi.com/2020/01/22/simple-principle-of-https/</loc>
-    
-    <lastmod>2020-01-24T09:44:17.367Z</lastmod>
     
   </url>
   

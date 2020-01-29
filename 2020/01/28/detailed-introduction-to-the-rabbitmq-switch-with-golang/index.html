@@ -9,13 +9,13 @@
   <link rel="dns-prefetch" href="https://www.guaosi.com">
   <title>入门RabbitMQ之交换机详解(Golang演示) | guaosi的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="入门RabbitMQ之交换机详解(Golang演示)交换机详解Exchange：交换机，接收消息，并根据路由键转发消息到绑定的队列如图为官网提供的模型，蓝色框表示Send Message，Client端把消息投递到Exchange上，通过RoutingKey路由关系将消息路由到指定的队列，绿色框代表Receive Message，Client端和队列建立监听，然后去接收消息。红色框代表Rabbit">
+  <meta name="description" content="交换机详解Exchange：交换机，接收消息，并根据路由键转发消息到绑定的队列如图为官网提供的模型，蓝色框表示Send Message，Client端把消息投递到Exchange上，通过RoutingKey路由关系将消息路由到指定的队列，绿色框代表Receive Message，Client端和队列建立监听，然后去接收消息。红色框代表RabbitMQ Server，黄色框表示RoutingKey，">
 <meta name="keywords" content="消息队列,中间件,RabbitMQ">
 <meta property="og:type" content="article">
 <meta property="og:title" content="入门RabbitMQ之交换机详解(Golang演示)">
 <meta property="og:url" content="https://www.guaosi.com/2020/01/28/detailed-introduction-to-the-rabbitmq-switch-with-golang/index.html">
 <meta property="og:site_name" content="guaosi的博客">
-<meta property="og:description" content="入门RabbitMQ之交换机详解(Golang演示)交换机详解Exchange：交换机，接收消息，并根据路由键转发消息到绑定的队列如图为官网提供的模型，蓝色框表示Send Message，Client端把消息投递到Exchange上，通过RoutingKey路由关系将消息路由到指定的队列，绿色框代表Receive Message，Client端和队列建立监听，然后去接收消息。红色框代表Rabbit">
+<meta property="og:description" content="交换机详解Exchange：交换机，接收消息，并根据路由键转发消息到绑定的队列如图为官网提供的模型，蓝色框表示Send Message，Client端把消息投递到Exchange上，通过RoutingKey路由关系将消息路由到指定的队列，绿色框代表Receive Message，Client端和队列建立监听，然后去接收消息。红色框代表RabbitMQ Server，黄色框表示RoutingKey，">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://www.guaosi.com/assets/blogImg/detailed-introduction-to-the-rabbitmq-switch/RabbitMQ-Exchange原理图.jpg">
 <meta property="og:image" content="https://www.guaosi.com/assets/blogImg/detailed-introduction-to-the-rabbitmq-switch/RabbitMQ-DirectExchange.jpg">
@@ -26,10 +26,10 @@
 <meta property="og:image" content="https://www.guaosi.com/assets/blogImg/detailed-introduction-to-the-rabbitmq-switch/RabbitMQ-Topic-Exchange.jpg">
 <meta property="og:image" content="https://www.guaosi.com/assets/blogImg/detailed-introduction-to-the-rabbitmq-switch/RabbitMQ-Topic-Exchange-unbind.jpg">
 <meta property="og:image" content="https://www.guaosi.com/assets/blogImg/detailed-introduction-to-the-rabbitmq-switch/RabbitMQ-Fanout-Exchange.jpg">
-<meta property="og:updated_time" content="2020-01-28T11:44:03.552Z">
+<meta property="og:updated_time" content="2020-01-29T03:03:24.423Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="入门RabbitMQ之交换机详解(Golang演示)">
-<meta name="twitter:description" content="入门RabbitMQ之交换机详解(Golang演示)交换机详解Exchange：交换机，接收消息，并根据路由键转发消息到绑定的队列如图为官网提供的模型，蓝色框表示Send Message，Client端把消息投递到Exchange上，通过RoutingKey路由关系将消息路由到指定的队列，绿色框代表Receive Message，Client端和队列建立监听，然后去接收消息。红色框代表Rabbit">
+<meta name="twitter:description" content="交换机详解Exchange：交换机，接收消息，并根据路由键转发消息到绑定的队列如图为官网提供的模型，蓝色框表示Send Message，Client端把消息投递到Exchange上，通过RoutingKey路由关系将消息路由到指定的队列，绿色框代表Receive Message，Client端和队列建立监听，然后去接收消息。红色框代表RabbitMQ Server，黄色框表示RoutingKey，">
 <meta name="twitter:image" content="https://www.guaosi.com/assets/blogImg/detailed-introduction-to-the-rabbitmq-switch/RabbitMQ-Exchange原理图.jpg">
   
   <link rel="alternative" href="/atom.xml" title="guaosi的博客" type="application/atom+xml">
@@ -335,7 +335,7 @@ var _hmt = _hmt || [];
     
     <div class="article-entry" itemprop="articleBody">
       
-      <h1 id="入门RabbitMQ之交换机详解-Golang演示"><a href="#入门RabbitMQ之交换机详解-Golang演示" class="headerlink" title="入门RabbitMQ之交换机详解(Golang演示)"></a>入门RabbitMQ之交换机详解(Golang演示)</h1><h2 id="交换机详解"><a href="#交换机详解" class="headerlink" title="交换机详解"></a>交换机详解</h2><p>Exchange：交换机，接收消息，并根据路由键转发消息到绑定的队列<br>如图为官网提供的模型，蓝色框表示<code>Send Message</code>，Client端把消息投递到Exchange上，通过RoutingKey路由关系将消息路由到指定的队列，绿色框代表<code>Receive Message</code>，Client端和队列建立监听，然后去接收消息。红色框代表<code>RabbitMQ Server</code>，黄色框表示<code>RoutingKey</code>，即Exchange和Queue需要建立绑定关系。</p>
+      <h2 id="交换机详解"><a href="#交换机详解" class="headerlink" title="交换机详解"></a>交换机详解</h2><p>Exchange：交换机，接收消息，并根据路由键转发消息到绑定的队列<br>如图为官网提供的模型，蓝色框表示<code>Send Message</code>，Client端把消息投递到Exchange上，通过RoutingKey路由关系将消息路由到指定的队列，绿色框代表<code>Receive Message</code>，Client端和队列建立监听，然后去接收消息。红色框代表<code>RabbitMQ Server</code>，黄色框表示<code>RoutingKey</code>，即Exchange和Queue需要建立绑定关系。</p>
 <p><img src="/assets/blogImg/detailed-introduction-to-the-rabbitmq-switch/RabbitMQ-Exchange原理图.jpg" alt="RabbitMQ-Exchange原理图"></p>
 <a id="more"></a>
 <h3 id="交换机类型"><a href="#交换机类型" class="headerlink" title="交换机类型"></a>交换机类型</h3><p>一般有这四种：</p>
@@ -602,7 +602,7 @@ var _hmt = _hmt || [];
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#入门RabbitMQ之交换机详解-Golang演示"><span class="toc-number">1.</span> <span class="toc-text">入门RabbitMQ之交换机详解(Golang演示)</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#交换机详解"><span class="toc-number">1.1.</span> <span class="toc-text">交换机详解</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#交换机类型"><span class="toc-number">1.1.1.</span> <span class="toc-text">交换机类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#交换机属性"><span class="toc-number">1.1.2.</span> <span class="toc-text">交换机属性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#注意"><span class="toc-number">1.1.3.</span> <span class="toc-text">注意</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Direct-Exchange"><span class="toc-number">1.1.4.</span> <span class="toc-text">Direct Exchange</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#生产端"><span class="toc-number">1.1.4.1.</span> <span class="toc-text">生产端</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#消费端"><span class="toc-number">1.1.4.2.</span> <span class="toc-text">消费端</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#运行说明"><span class="toc-number">1.1.4.3.</span> <span class="toc-text">运行说明</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#补充"><span class="toc-number">1.1.4.4.</span> <span class="toc-text">补充</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#一个队列多个routing-key"><span class="toc-number">1.1.4.5.</span> <span class="toc-text">一个队列多个routing key</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#一个routing-key多个队列"><span class="toc-number">1.1.4.6.</span> <span class="toc-text">一个routing key多个队列</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Topic-Exchange"><span class="toc-number">1.1.5.</span> <span class="toc-text">Topic Exchange</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#图解"><span class="toc-number">1.1.5.1.</span> <span class="toc-text">图解</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#生产端-1"><span class="toc-number">1.1.5.2.</span> <span class="toc-text">生产端</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#消费端-1"><span class="toc-number">1.1.5.3.</span> <span class="toc-text">消费端</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#运行说明-1"><span class="toc-number">1.1.5.4.</span> <span class="toc-text">运行说明</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Fanout-Exchange"><span class="toc-number">1.1.6.</span> <span class="toc-text">Fanout Exchange</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#生产端-2"><span class="toc-number">1.1.6.1.</span> <span class="toc-text">生产端</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#消费端-2"><span class="toc-number">1.1.6.2.</span> <span class="toc-text">消费端</span></a></li></ol></li></ol></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#交换机详解"><span class="toc-number">1.</span> <span class="toc-text">交换机详解</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#交换机类型"><span class="toc-number">1.1.</span> <span class="toc-text">交换机类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#交换机属性"><span class="toc-number">1.2.</span> <span class="toc-text">交换机属性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#注意"><span class="toc-number">1.3.</span> <span class="toc-text">注意</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Direct-Exchange"><span class="toc-number">1.4.</span> <span class="toc-text">Direct Exchange</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#生产端"><span class="toc-number">1.4.1.</span> <span class="toc-text">生产端</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#消费端"><span class="toc-number">1.4.2.</span> <span class="toc-text">消费端</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#运行说明"><span class="toc-number">1.4.3.</span> <span class="toc-text">运行说明</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#补充"><span class="toc-number">1.4.4.</span> <span class="toc-text">补充</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#一个队列多个routing-key"><span class="toc-number">1.4.5.</span> <span class="toc-text">一个队列多个routing key</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#一个routing-key多个队列"><span class="toc-number">1.4.6.</span> <span class="toc-text">一个routing key多个队列</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Topic-Exchange"><span class="toc-number">1.5.</span> <span class="toc-text">Topic Exchange</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#图解"><span class="toc-number">1.5.1.</span> <span class="toc-text">图解</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#生产端-1"><span class="toc-number">1.5.2.</span> <span class="toc-text">生产端</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#消费端-1"><span class="toc-number">1.5.3.</span> <span class="toc-text">消费端</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#运行说明-1"><span class="toc-number">1.5.4.</span> <span class="toc-text">运行说明</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Fanout-Exchange"><span class="toc-number">1.6.</span> <span class="toc-text">Fanout Exchange</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#生产端-2"><span class="toc-number">1.6.1.</span> <span class="toc-text">生产端</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#消费端-2"><span class="toc-number">1.6.2.</span> <span class="toc-text">消费端</span></a></li></ol></li></ol></li></ol>
                     </div>
                 </span>
             </div>
@@ -756,6 +756,10 @@ var _hmt = _hmt || [];
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">crack</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">测试</a>
               </li>
              
@@ -765,10 +769,6 @@ var _hmt = _hmt || [];
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">git</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">crack</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -792,18 +792,6 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">消息队列</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">MQ</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">中间件</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">PHP</a>
               </li>
              
@@ -813,6 +801,18 @@ var _hmt = _hmt || [];
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Python</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">消息队列</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">MQ</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">中间件</a>
               </li>
              
               <li class="article-tag-list-item">
