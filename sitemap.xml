@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://www.guaosi.com/2019/02/25/automatically-cancel-the-order/</loc>
+    
+    <lastmod>2020-01-29T09:59:47.732Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://www.guaosi.com/2020/01/29/dive-into-the-advanced-features-of-rabbitmq-with-golang/</loc>
     
     <lastmod>2020-01-29T09:55:00.191Z</lastmod>
@@ -131,13 +138,6 @@
     <loc>https://www.guaosi.com/2019/02/25/install-and-use-supervisor/</loc>
     
     <lastmod>2020-01-25T14:36:27.851Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://www.guaosi.com/2019/02/25/automatically-cancel-the-order/</loc>
-    
-    <lastmod>2020-01-25T14:36:05.419Z</lastmod>
     
   </url>
   
