@@ -26,7 +26,7 @@
 <meta property="og:image" content="https://www.guaosi.com/assets/blogImg/detailed-introduction-to-the-rabbitmq-switch/RabbitMQ-Topic-Exchange.jpg">
 <meta property="og:image" content="https://www.guaosi.com/assets/blogImg/detailed-introduction-to-the-rabbitmq-switch/RabbitMQ-Topic-Exchange-unbind.jpg">
 <meta property="og:image" content="https://www.guaosi.com/assets/blogImg/detailed-introduction-to-the-rabbitmq-switch/RabbitMQ-Fanout-Exchange.jpg">
-<meta property="og:updated_time" content="2020-01-29T03:03:24.423Z">
+<meta property="og:updated_time" content="2020-01-30T09:46:25.505Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="入门RabbitMQ之交换机详解(Golang演示)">
 <meta name="twitter:description" content="交换机详解Exchange：交换机，接收消息，并根据路由键转发消息到绑定的队列如图为官网提供的模型，蓝色框表示Send Message，Client端把消息投递到Exchange上，通过RoutingKey路由关系将消息路由到指定的队列，绿色框代表Receive Message，Client端和队列建立监听，然后去接收消息。红色框代表RabbitMQ Server，黄色框表示RoutingKey，">
@@ -364,6 +364,8 @@ var _hmt = _hmt || [];
 <li><p>交换机，routing和队列的绑定，只要曾经做过，绑定就会一直存在(如果没有设置队列的<code>autoDelete</code>或者<code>exclusive</code>为true)</p>
 </li>
 <li><p>一个交换机只能有一种交换机类型，就是最开始创建时设定的交换机类型。后期如果再次声明但是交换机类型不同，将会报错。</p>
+</li>
+<li><p>当有多个消费端时，当一个消费端拿出一个消息，另一个消费端是拿不到这个消息的。正常情况下可以保证不会被多消费。</p>
 </li>
 </ol>
 <h3 id="Direct-Exchange"><a href="#Direct-Exchange" class="headerlink" title="Direct Exchange"></a>Direct Exchange</h3><p>直连方式，所有发送到 <code>Direct Exchange</code> 的消息被转发到RouteKey中指定的Queue<br>注意：Direct模式可以使用RabbitMQ自带的Exchange：default Exchange，所以不需要将Exchange进行任何绑定(binding)操作，消息传递时，<code>RouteKey必须完全匹配</code>才会被队列接收，否则该消息会被抛弃。</p>
@@ -777,6 +779,10 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">git</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Golang</a>
               </li>
              
@@ -786,10 +792,6 @@ var _hmt = _hmt || [];
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">数据结构</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">git</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -805,14 +807,6 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Linux</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Python</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">消息队列</a>
               </li>
              
@@ -822,6 +816,14 @@ var _hmt = _hmt || [];
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">中间件</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Linux</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Python</a>
               </li>
              
               <li class="article-tag-list-item">
