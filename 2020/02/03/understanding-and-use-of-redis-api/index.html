@@ -36,7 +36,7 @@
 <meta property="og:image" content="https://www.guaosi.com/assets/blogImg/understanding-and-use-of-redis-apiAPI的理解和使用/集合标签.jpg">
 <meta property="og:image" content="https://www.guaosi.com/assets/blogImg/understanding-and-use-of-redis-apiAPI的理解和使用/集合间API.jpg">
 <meta property="og:image" content="https://www.guaosi.com/assets/blogImg/understanding-and-use-of-redis-apiAPI的理解和使用/有序集合结构.jpg">
-<meta property="og:updated_time" content="2020-02-03T10:28:47.250Z">
+<meta property="og:updated_time" content="2020-02-03T10:31:33.459Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Redis初识">
 <meta name="twitter:description" content="通用命令keyskeys * #遍历所有的key 123456789101112127.0.0.1:6379 &amp;gt; set hello worldOK127.0.0.1:6379 &amp;gt; set php goodOK127.0.0.1:6379 &amp;gt; set java bestOK127.0.0.1:6379 &amp;gt; keys *1) &quot;java&quot;2) &quot;php&quot;3) &quot;hello&quot;1">
@@ -347,6 +347,7 @@ var _hmt = _hmt || [];
       
       <h2 id="通用命令"><a href="#通用命令" class="headerlink" title="通用命令"></a>通用命令</h2><h3 id="keys"><a href="#keys" class="headerlink" title="keys"></a>keys</h3><p><code>keys *</code> #遍历所有的key</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379 &gt; <span class="built_in">set</span> hello world</span><br><span class="line">OK</span><br><span class="line">127.0.0.1:6379 &gt; <span class="built_in">set</span> php good</span><br><span class="line">OK</span><br><span class="line">127.0.0.1:6379 &gt; <span class="built_in">set</span> java best</span><br><span class="line">OK</span><br><span class="line">127.0.0.1:6379 &gt; keys *</span><br><span class="line">1) <span class="string">"java"</span></span><br><span class="line">2) <span class="string">"php"</span></span><br><span class="line">3) <span class="string">"hello"</span></span><br><span class="line">127.0.0.1:6379 &gt; dbsize</span><br><span class="line">(<span class="built_in">integer</span>)3</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
 <p><code>keys [pattern]</code> #遍历所有的key，指定模式(通配符)进行筛选</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379 &gt; mset hello world hehe haha php good phe his</span><br><span class="line">OK</span><br><span class="line">127.0.0.1:6379 &gt; keys he*</span><br><span class="line">1)<span class="string">"hehe"</span></span><br><span class="line">2)<span class="string">"hello"</span></span><br><span class="line">127.0.0.1:6379 &gt; keys he[h<span class="_">-l</span>]*</span><br><span class="line">1)<span class="string">"hehe"</span></span><br><span class="line">2)<span class="string">"hello"</span></span><br><span class="line">127.0.0.1:6379 &gt; keys ph?</span><br><span class="line">1)<span class="string">"php"</span></span><br><span class="line">2)<span class="string">"phe"</span></span><br></pre></td></tr></table></figure>
 <p><code>keys</code> 命令一般不在生产环境中使用，因为生产环境数据庞大，而redis又是单线程机制，keys命令是o(n)复杂度，执行会很慢，且容易阻塞其他命令。<br><code>keys *</code>怎么用：热备从节点(在从节点上使用)、scan(使用scan命令)</p>
@@ -1055,19 +1056,7 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Linux</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Python</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">PHP</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Laravel</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1083,7 +1072,19 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">HTTP</a>
+                <a href="javascript:void(0)" class="js-tag color1">Linux</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Python</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Laravel</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">网络</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1091,7 +1092,7 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">网络</a>
+                <a href="javascript:void(0)" class="js-tag color5">HTTP</a>
               </li>
              
               <li class="article-tag-list-item">
