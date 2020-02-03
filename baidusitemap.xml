@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://www.guaosi.com/2020/02/03/first-acquaintance-with-redis/</loc>
+    <lastmod>2020-02-03T10:29:08.551Z</lastmod>
+  </url>  <url>
+    <loc>https://www.guaosi.com/2020/02/03/understanding-and-use-of-redis-api/</loc>
+    <lastmod>2020-02-03T10:28:47.250Z</lastmod>
+  </url>  <url>
     <loc>https://www.guaosi.com/2020/01/29/dive-into-the-advanced-features-of-rabbitmq-with-golang/</loc>
     <lastmod>2020-01-30T14:07:38.735Z</lastmod>
   </url>  <url>
@@ -70,10 +76,10 @@
     <loc>https://www.guaosi.com/2020/01/25/keepalived-principle-and-LVS-case/</loc>
     <lastmod>2020-01-25T14:31:44.441Z</lastmod>
   </url>  <url>
-    <loc>https://www.guaosi.com/2019/02/26/laravel-api-initialization-preparation/</loc>
+    <loc>https://www.guaosi.com/2020/01/22/network-of-vmware-and-docker/</loc>
     <lastmod>2020-01-24T09:44:17.366Z</lastmod>
   </url>  <url>
-    <loc>https://www.guaosi.com/2020/01/22/network-of-vmware-and-docker/</loc>
+    <loc>https://www.guaosi.com/2019/02/26/laravel-api-initialization-preparation/</loc>
     <lastmod>2020-01-24T09:44:17.366Z</lastmod>
   </url>  <url>
     <loc>https://www.guaosi.com/2019/02/22/install-php-fileinfo/</loc>
