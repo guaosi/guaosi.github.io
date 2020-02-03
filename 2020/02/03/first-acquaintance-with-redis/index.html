@@ -17,19 +17,19 @@
 <meta property="og:site_name" content="guaosi的博客">
 <meta property="og:description" content="简介Redis是什么 Redis - REmote DIctionary Server Redis是一个使用ANSI C语言编写的开源数据库 高性能的key-value数据库 内存数据库，支持数据持久化 提供了多种编程语言的客户端 从2010年3月15日起，Redis的开发工作由VMware主持 从2013年5月开始，Redis的开发由Pivotal赞助  官网：https://redis.io/">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="https://www.guaosi.com/assets/blogImg/first-acquaintance-with-redisRedis初识/数据结构.jpg">
-<meta property="og:image" content="https://www.guaosi.com/assets/blogImg/first-acquaintance-with-redisRedis初识/缓存系统.jpg">
-<meta property="og:image" content="https://www.guaosi.com/assets/blogImg/first-acquaintance-with-redisRedis初识/速度快-内存.jpg">
-<meta property="og:image" content="https://www.guaosi.com/assets/blogImg/first-acquaintance-with-redisRedis初识/多种数据结构.jpg">
-<meta property="og:image" content="https://www.guaosi.com/assets/blogImg/first-acquaintance-with-redisRedis初识/主从复制.jpg">
-<meta property="og:image" content="https://www.guaosi.com/assets/blogImg/first-acquaintance-with-redisRedis初识/可执行文件说明.png">
-<meta property="og:image" content="https://www.guaosi.com/assets/blogImg/first-acquaintance-with-redisRedis初识/客户端返回值.png">
-<meta property="og:image" content="https://www.guaosi.com/assets/blogImg/first-acquaintance-with-redisRedis初识/配置总结.png">
-<meta property="og:updated_time" content="2020-02-03T10:29:08.551Z">
+<meta property="og:image" content="https://www.guaosi.com/assets/blogImg/first-acquaintance-with-redis/数据结构.jpg">
+<meta property="og:image" content="https://www.guaosi.com/assets/blogImg/first-acquaintance-with-redis/缓存系统.jpg">
+<meta property="og:image" content="https://www.guaosi.com/assets/blogImg/first-acquaintance-with-redis/速度快-内存.jpg">
+<meta property="og:image" content="https://www.guaosi.com/assets/blogImg/first-acquaintance-with-redis/多种数据结构.jpg">
+<meta property="og:image" content="https://www.guaosi.com/assets/blogImg/first-acquaintance-with-redis/主从复制.jpg">
+<meta property="og:image" content="https://www.guaosi.com/assets/blogImg/first-acquaintance-with-redis/可执行文件说明.png">
+<meta property="og:image" content="https://www.guaosi.com/assets/blogImg/first-acquaintance-with-redis/客户端返回值.png">
+<meta property="og:image" content="https://www.guaosi.com/assets/blogImg/first-acquaintance-with-redis/配置总结.png">
+<meta property="og:updated_time" content="2020-02-03T10:33:44.414Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Redis初识">
 <meta name="twitter:description" content="简介Redis是什么 Redis - REmote DIctionary Server Redis是一个使用ANSI C语言编写的开源数据库 高性能的key-value数据库 内存数据库，支持数据持久化 提供了多种编程语言的客户端 从2010年3月15日起，Redis的开发工作由VMware主持 从2013年5月开始，Redis的开发由Pivotal赞助  官网：https://redis.io/">
-<meta name="twitter:image" content="https://www.guaosi.com/assets/blogImg/first-acquaintance-with-redisRedis初识/数据结构.jpg">
+<meta name="twitter:image" content="https://www.guaosi.com/assets/blogImg/first-acquaintance-with-redis/数据结构.jpg">
   
   <link rel="alternative" href="/atom.xml" title="guaosi的博客" type="application/atom+xml">
   
@@ -369,7 +369,7 @@ var _hmt = _hmt || [];
 <li>高可用、分布式</li>
 </ul>
 <h3 id="数据结构"><a href="#数据结构" class="headerlink" title="数据结构"></a>数据结构</h3><p>如图是Redis内部使用的一个<code>redisObject</code>对象的结构，redis使用<code>redisObject</code>表示所有的key和value。<br> Redis数据类型有：<code>string</code>(字符串)、<code>list</code>(链表)、<code>set</code>(无序集合)、<code>sorted set</code>(有序集合)、<code>hash</code>(散列类型)</p>
-<p><img src="/assets/blogImg/first-acquaintance-with-redisRedis初识/数据结构.jpg" alt="数据结构"></p>
+<p><img src="/assets/blogImg/first-acquaintance-with-redis/数据结构.jpg" alt="数据结构"></p>
 <h3 id="典型使用场景"><a href="#典型使用场景" class="headerlink" title="典型使用场景"></a>典型使用场景</h3><ul>
 <li>缓存系统</li>
 <li>计数器</li>
@@ -381,7 +381,7 @@ var _hmt = _hmt || [];
 <li>分布式集群架构中的Session分离</li>
 </ul>
 <h3 id="缓存系统"><a href="#缓存系统" class="headerlink" title="缓存系统"></a>缓存系统</h3><p>来看一个典型的场景，一个用户访问一个<code>App Server</code>，首先<code>App Server</code>会从<code>cache</code>中去获取，如果<code>cache</code>中有需要的数据，就直接返回给<code>App Server</code>，然后返回给用户。<br> 如果<code>cache</code>中没有会从数据源<code>Storage</code>中去获取真实数据，为了下次方便在<code>cache</code>中获取相同的数据，我们会将<code>Storage</code>中的数据存到<code>cache</code>中，然后最终将<code>Storage</code>中的数据返回给用户。<br>实际当中cache可以是很多种类型，例如本地缓存、memcache等，这里我们就使用Redis来表示。</p>
-<p><img src="/assets/blogImg/first-acquaintance-with-redisRedis初识/缓存系统.jpg" alt="缓存系统"></p>
+<p><img src="/assets/blogImg/first-acquaintance-with-redis/缓存系统.jpg" alt="缓存系统"></p>
 <h3 id="计数器"><a href="#计数器" class="headerlink" title="计数器"></a>计数器</h3><p>如图像微博的转发数和评论数，都是可以使用Redis来完成这样一个功能，redis有提供<code>incr</code>这样的命令可以在单线程下非常高效的进行计数，而且不会有计数错误的问题。所以像很多视频网站都会使用redis来对视频的播放数来进行一个记录，这些计数对产品决策以及上层的决策是非常有帮助的。</p>
 <h3 id="消息队列系统"><a href="#消息队列系统" class="headerlink" title="消息队列系统"></a>消息队列系统</h3><p>消息队列系统在很多的公司已经成为项目中开发的一个标配，成熟的消息队列系统有很多，例如activemq、rabbitmq等。<br>而Redis也提供了像发布订阅、阻塞队列来实现类似的模型。在实现一些对消息队列功能不是很强要求的一些系统时，可以使用Redis来实现。</p>
 <h3 id="排行榜"><a href="#排行榜" class="headerlink" title="排行榜"></a>排行榜</h3><p>Redis也可以实现类似排行榜的功能，Redis提供了一个有序集合对完成排行榜这样的功能是非常有帮助的。</p>
@@ -400,7 +400,7 @@ var _hmt = _hmt || [];
 <h3 id="速度快"><a href="#速度快" class="headerlink" title="速度快"></a>速度快</h3><p>官方给出的数据是10w OPS，也就是每秒可以实现10万次读写，虽然官方给出的数据通常会偏高一些，但是从实际使用来看达到万级别的OPS是基本没有问题的，当然这也和使用的方法以及具体的数据是有关的，这里我们不做具体讨论。<br>Redis之所以这么快有这么几点原因，数据是存在内存中，源代码使用C语言编写，代码短小精悍，使用的是线程模型是单线程。<br>这里使用单线程主要是因为内存读写速度非常快，使用单线程能达到很高的性能，很多实际开发当中，多线程往往会成为我们并发的瓶颈。</p>
 <figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">数据存在哪? =&gt; 内存</span><br><span class="line">什么语言写? =&gt; C语言(<span class="number">50000</span>行)</span><br><span class="line">线程模型? =&gt; 单线程</span><br></pre></td></tr></table></figure>
 <p>其实速度块最主要的原因就是内存。无论代码写的多好，或者使用什么线程模型，如果数据是存在一个比较慢的介质当中，那性能也不会很高。<br>相信学过计算机专业的同学对下面这张图一定不陌生，该图展示了计算机存储的各个介质，从上到下包括寄存器、一级缓存、二级缓存、内存、本地硬盘、远程硬盘，从上到下它的速度是由快至慢，容量由小到大，价格由高到低。</p>
-<p><img src="/assets/blogImg/first-acquaintance-with-redisRedis初识/速度快-内存.jpg" alt="速度快-内存"></p>
+<p><img src="/assets/blogImg/first-acquaintance-with-redis/速度快-内存.jpg" alt="速度快-内存"></p>
 <p>内存与硬盘对比</p>
 <table>
 <thead>
@@ -434,7 +434,7 @@ var _hmt = _hmt || [];
 </table>
 <h4 id="持久化"><a href="#持久化" class="headerlink" title="持久化"></a>持久化</h4><p>我们知道Redis是将数据保存在内存中，而内存的数据不具有持久化的特性，也就是说当机器发生断电时，是无法对内存的数据进行恢复的，为此Redis就提供了持久化的功能。<br> Redis所有数据保存在内存中，对数据的更新将异步的保存到磁盘上。<br> Redis提供了<code>RDB</code>和<code>AOF</code>两种方式对数据进行持久化。</p>
 <h4 id="多种数据结构"><a href="#多种数据结构" class="headerlink" title="多种数据结构"></a>多种数据结构</h4><p>Redis提供了5种主要的数据结构：String、Hash、List、Set、Sorted Set<br> 除此之外，在Redis的后续版本以及迭代当中，也提供了一些其他的(衍生的)数据结构：<br> <code>BitMaps:</code> 位图(本质是字符串)<br> <code>HyperLogLog:</code> 超小内存唯一值计数(本质是字符串)<br> <code>GEO:</code> 地理信息定位(Redis3.2提供，本质是有序集合)</p>
-<p><img src="/assets/blogImg/first-acquaintance-with-redisRedis初识/多种数据结构.jpg" alt="多种数据结构"></p>
+<p><img src="/assets/blogImg/first-acquaintance-with-redis/多种数据结构.jpg" alt="多种数据结构"></p>
 <h4 id="支持多种客户端语言"><a href="#支持多种客户端语言" class="headerlink" title="支持多种客户端语言"></a>支持多种客户端语言</h4><p>由于Redis受到了很多公司的支持，以及Redis提供了一个非常简单的基于TCP的通信协议，所以说非常多的编程语言都主动去支持Redis服务器。包括但不限于以下所有语言，所以这也是Redis非常受欢迎的原因之一</p>
 <ul>
 <li>java</li>
@@ -447,7 +447,7 @@ var _hmt = _hmt || [];
 <h4 id="功能丰富"><a href="#功能丰富" class="headerlink" title="功能丰富"></a>功能丰富</h4><p>Redis除了提供5种主要数据结构以外，还提供了很多其他的功能，像发布订阅可以实现很多消息的功能，同时还支持Lua脚本，这样可以实现一些自定义命令，同时还支持简单的事务功能、最后Redis也支持pipeline来提高客户端的并发效率。<br>总之如果将Redis使用好的话，它会像一把瑞士军刀一样无所不能。</p>
 <h4 id="简单"><a href="#简单" class="headerlink" title="简单"></a>简单</h4><p>Redis的单机核心代码只有23000行，redis3.0提供了更丰富的集群分布式功能(代码大约4-5万行)，如果想真正吃透Redis这个项目，都可以去阅读它的源代码，甚至有些企业可以去修改它的源代码来实现自己业务的定制化。<br>Redis的简单还体现在它不依赖外部库(like libevent)，同时它是一个单线程模型，这意味着无论是服务端还是客户端的开发都会相对容易一些。</p>
 <h4 id="主从复制"><a href="#主从复制" class="headerlink" title="主从复制"></a>主从复制</h4><p>Redis提供了主从复制的功能，也就是说在Redis中有两种角色，主服务器和从服务器，主服务器的数据可以同步到从服务器中，这样可以为高可用以及分布式提供一个很好的基础。</p>
-<p><img src="/assets/blogImg/first-acquaintance-with-redisRedis初识/主从复制.jpg" alt="主从复制"></p>
+<p><img src="/assets/blogImg/first-acquaintance-with-redis/主从复制.jpg" alt="主从复制"></p>
 <h4 id="高可用、分布式"><a href="#高可用、分布式" class="headerlink" title="高可用、分布式"></a>高可用、分布式</h4><p>本身Redis的单点或者说Redis的主从复制模型对于实现一个高可用的数据库来说是比较困难的甚至是几乎不可能的。<br> 因此Redis在2.8版本当中提供了<code>Redis-Sentinel</code>这样的功能来支持高可用。<br> 其次对于一个数据库来说，分布式功能对于当下的企业也是非常重要的，所以Redis从3.0版本开始正式支持分布式，也就是<code>Redis-Cluster</code></p>
 <figure class="highlight armasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">高可用 =&gt; Redis-Sentinel(<span class="built_in">v2</span>.<span class="number">8</span>) 支持高可用</span><br><span class="line">分布式 =&gt; Redis-Cluster(<span class="built_in">v3</span>.<span class="number">0</span>) 支持分布式</span><br></pre></td></tr></table></figure>
 <h2 id="安装与启动"><a href="#安装与启动" class="headerlink" title="安装与启动"></a>安装与启动</h2><h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><h4 id="Linux"><a href="#Linux" class="headerlink" title="Linux"></a>Linux</h4><h5 id="Redis下载"><a href="#Redis下载" class="headerlink" title="Redis下载"></a>Redis下载</h5><p>官方下载地址：<a href="http://download.redis.io/releases/" target="_blank" rel="noopener">http://download.redis.io/releases/</a><br> 或者执行命令：<code>wget http://download.redis.io/releases/redis-3.0.7.tar.gz</code></p>
@@ -457,14 +457,14 @@ var _hmt = _hmt || [];
 <h5 id="安装步骤"><a href="#安装步骤" class="headerlink" title="安装步骤"></a>安装步骤</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 安装依赖</span></span><br><span class="line">yum -y install gcc</span><br><span class="line"><span class="comment"># 解压缩</span></span><br><span class="line">tar -zxvf redis-3.0.7.tar.gz</span><br><span class="line"><span class="comment"># 可以创建一个软链接方便未来升级</span></span><br><span class="line">ln -s redis-3.0.7 redis</span><br><span class="line"><span class="built_in">cd</span> redis</span><br><span class="line"><span class="comment"># 编译(可以忽略make test的提示)</span></span><br><span class="line">make</span><br><span class="line"><span class="comment"># 安装redis</span></span><br><span class="line">make install</span><br></pre></td></tr></table></figure>
 <h4 id="Windows"><a href="#Windows" class="headerlink" title="Windows"></a>Windows</h4><p>事实上redis的作者并未对windows平台进行很好的支持，也就是说Redis官方并未提供windows的版本。<br>Redis的windows版本是由微软的开源团队来维护的，地址：<a href="https://github.com/MicrosoftArchive/redis/releases" target="_blank" rel="noopener">https://github.com/MicrosoftArchive/redis/releases</a><br>从Releases或者Tags寻找对应的版本，下载zip包，然后解压缩。<br>使用命令行进入redis目录，执行<code>./redis-server.exe</code>启动redis</p>
 <h3 id="Redis可执行文件说明"><a href="#Redis可执行文件说明" class="headerlink" title="Redis可执行文件说明"></a>Redis可执行文件说明</h3><p>在Redis解压缩目录的src目录下有一些可执行文件，对它们的说明如图</p>
-<p><img src="/assets/blogImg/first-acquaintance-with-redisRedis初识/可执行文件说明.png" alt="可执行文件说明"></p>
+<p><img src="/assets/blogImg/first-acquaintance-with-redis/可执行文件说明.png" alt="可执行文件说明"></p>
 <h3 id="Redis启动"><a href="#Redis启动" class="headerlink" title="Redis启动"></a>Redis启动</h3><h4 id="Redis三种启动方式"><a href="#Redis三种启动方式" class="headerlink" title="Redis三种启动方式"></a>Redis三种启动方式</h4><p>最简启动(使用默认配置启动)：<code>./redis-server</code><br> 动态参数启动(指定端口启动)：<code>./redis-server --port 6380</code><br> 配置文件启动：<code>./redis-server ../redis/redis.conf</code></p>
 <h4 id="启动方式比较"><a href="#启动方式比较" class="headerlink" title="启动方式比较"></a>启动方式比较</h4><p>生产环境通常选择配置文件启动<br> 单机多实例配置文件可以用端口区分开</p>
 <h4 id="后台启动"><a href="#后台启动" class="headerlink" title="后台启动"></a>后台启动</h4><p>直接执行<code>redis-server</code>命令是在前端启动，前端启动好处是方便即时查看日志，缺点是当前终端无法继续其他操作。<br> 线上一般采用后台启动方式，这样可以让redis日志打印到指定文件中。<br> 后台启动建议修改redis.conf配置文件，将 <code>daemonize no</code> 修改为yes<br> 然后使用配置文件启动: <code>./redis-server ../redis/redis.conf</code></p>
 <h3 id="Redis客户端连接"><a href="#Redis客户端连接" class="headerlink" title="Redis客户端连接"></a>Redis客户端连接</h3><p>执行命令：<code>redis-cli -h ${ip} -p ${port} -a ${password}</code><br>如果没有设置密码，则 <code>-a</code> 参数可以省略；<br>如果端口为6379则 <code>-p</code> 参数可以省略；<br>如果连接本机，则 <code>-h</code> 参数可以省略;</p>
 <h3 id="Redis关闭"><a href="#Redis关闭" class="headerlink" title="Redis关闭"></a>Redis关闭</h3><p>执行命令：<code>redis-cli -h ${ip} -p ${port} -a ${password} shutdown</code><br>其实就是在客户端连接命令后加上shutdown即可。<br>不推荐使用 <code>kill -9 PID</code> 命令进行关闭，该命令不会自动触发持久化操作，容易造成缓存数据丢失。</p>
 <h3 id="Redis客户端返回值"><a href="#Redis客户端返回值" class="headerlink" title="Redis客户端返回值"></a>Redis客户端返回值</h3><p>对Redis客户端返回值进行一个简单的说明，了解客户端的返回值对我们的后续开发以及日常运维也是非常有帮助的。</p>
-<p><img src="/assets/blogImg/first-acquaintance-with-redisRedis初识/客户端返回值.png" alt="客户端返回值"></p>
+<p><img src="/assets/blogImg/first-acquaintance-with-redis/客户端返回值.png" alt="客户端返回值"></p>
 <h2 id="常用配置"><a href="#常用配置" class="headerlink" title="常用配置"></a>常用配置</h2><p>Redis有非常多的配置项，这里只介绍一些最基础的配置，更多的配置会伴随着Redis的更深入的学习进行介绍。比如AOF和RDB的配置、慢查询日志配置、内存管理配置等等。</p>
 <h3 id="daemonize"><a href="#daemonize" class="headerlink" title="daemonize"></a>daemonize</h3><p>是否是守护进程(no|yes)，默认为no，通常设置为yes，保证redis进程能在后台启动并进行正常的日志打印。<br>配置示例：<code>daemonize yes</code></p>
 <h3 id="port"><a href="#port" class="headerlink" title="port"></a>port</h3><p>Redis对外端口号，默认端口是6379，对于单机多实例通常需要进行配置<br>配置示例：<code>port 6382</code></p>
@@ -474,7 +474,7 @@ var _hmt = _hmt || [];
 <h3 id="slaveof"><a href="#slaveof" class="headerlink" title="slaveof"></a>slaveof</h3><p>主从配置项，用于从服务器配置对应主服务的IP和端口号。找到配置项<code>slaveof</code>，取消注释，将后面的 masterip 和 masterport 修改为主服务器的IP和端口号，当前这台服务器即作为从服务器使用。<br>配置示例：<code>slaveof 192.168.0.102 6379</code></p>
 <h3 id="masterauth"><a href="#masterauth" class="headerlink" title="masterauth"></a>masterauth</h3><p>这里提一下如果配置了主从服务器，主服务器配置了密码，那么从服务器就必须配置该项，否则无法进行正常复制。<br>找到表示主服务器的密码配置项<code>#masterauth</code>，取消注释，将<master-password>修改为主服务器的密码即可。<br>配置示例：<code>masterauth 123456</code></master-password></p>
 <h3 id="查看配置"><a href="#查看配置" class="headerlink" title="查看配置"></a>查看配置</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 查看所有配置(key - value各占一行)，redis客户端下执行</span></span><br><span class="line">config get *   </span><br><span class="line"><span class="comment"># 查看配置文件内容(去掉注释和空格)</span></span><br><span class="line">cat redis.conf | grep -v <span class="string">"#"</span> | grep -v <span class="string">"^$"</span></span><br></pre></td></tr></table></figure>
-<h3 id="配置总结"><a href="#配置总结" class="headerlink" title="配置总结"></a>配置总结</h3><p><img src="/assets/blogImg/first-acquaintance-with-redisRedis初识/配置总结.png" alt="配置总结"></p>
+<h3 id="配置总结"><a href="#配置总结" class="headerlink" title="配置总结"></a>配置总结</h3><p><img src="/assets/blogImg/first-acquaintance-with-redis/配置总结.png" alt="配置总结"></p>
 
       
 
@@ -846,6 +846,14 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Linux</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Python</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">PHP</a>
               </li>
              
@@ -859,14 +867,6 @@ var _hmt = _hmt || [];
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">中间件</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Linux</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Python</a>
               </li>
              
               <li class="article-tag-list-item">
