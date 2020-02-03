@@ -7,12 +7,12 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="https://www.guaosi.com">
-  <title>Redis初识 | guaosi的博客</title>
+  <title>Redis API的理解和使用 | guaosi的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="通用命令keyskeys * #遍历所有的key 123456789101112127.0.0.1:6379 &amp;gt; set hello worldOK127.0.0.1:6379 &amp;gt; set php goodOK127.0.0.1:6379 &amp;gt; set java bestOK127.0.0.1:6379 &amp;gt; keys *1) &quot;java&quot;2) &quot;php&quot;3) &quot;hello&quot;1">
 <meta name="keywords" content="Redis">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Redis初识">
+<meta property="og:title" content="Redis API的理解和使用">
 <meta property="og:url" content="https://www.guaosi.com/2020/02/03/understanding-and-use-of-redis-api/index.html">
 <meta property="og:site_name" content="guaosi的博客">
 <meta property="og:description" content="通用命令keyskeys * #遍历所有的key 123456789101112127.0.0.1:6379 &amp;gt; set hello worldOK127.0.0.1:6379 &amp;gt; set php goodOK127.0.0.1:6379 &amp;gt; set java bestOK127.0.0.1:6379 &amp;gt; keys *1) &quot;java&quot;2) &quot;php&quot;3) &quot;hello&quot;1">
@@ -36,9 +36,9 @@
 <meta property="og:image" content="https://www.guaosi.com/assets/blogImg/understanding-and-use-of-redis-api/集合标签.jpg">
 <meta property="og:image" content="https://www.guaosi.com/assets/blogImg/understanding-and-use-of-redis-api/集合间API.jpg">
 <meta property="og:image" content="https://www.guaosi.com/assets/blogImg/understanding-and-use-of-redis-api/有序集合结构.jpg">
-<meta property="og:updated_time" content="2020-02-03T10:34:04.582Z">
+<meta property="og:updated_time" content="2020-02-03T10:37:42.946Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Redis初识">
+<meta name="twitter:title" content="Redis API的理解和使用">
 <meta name="twitter:description" content="通用命令keyskeys * #遍历所有的key 123456789101112127.0.0.1:6379 &amp;gt; set hello worldOK127.0.0.1:6379 &amp;gt; set php goodOK127.0.0.1:6379 &amp;gt; set java bestOK127.0.0.1:6379 &amp;gt; keys *1) &quot;java&quot;2) &quot;php&quot;3) &quot;hello&quot;1">
 <meta name="twitter:image" content="https://www.guaosi.com/assets/blogImg/understanding-and-use-of-redis-api/数据结构和内部编码.jpg">
   
@@ -318,7 +318,7 @@ var _hmt = _hmt || [];
       
   
     <h1 class="article-title" itemprop="name">
-      Redis初识
+      Redis API的理解和使用
     </h1>
   
 
@@ -1020,19 +1020,15 @@ var _hmt = _hmt || [];
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">crack</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">测试</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Web</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">crack</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">git</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1048,23 +1044,15 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">git</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">tcp</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">网络编程</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Linux</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Python</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">PHP</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1080,19 +1068,19 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Linux</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Python</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">PHP</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Laravel</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">网络</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">服务器</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">HTTP</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1104,15 +1092,27 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">服务器</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">高可用</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">OneDrive</a>
+                <a href="javascript:void(0)" class="js-tag color5">HTTP</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">网络</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Docker</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">OneDrive</a>
               </li>
              
               <li class="article-tag-list-item">
