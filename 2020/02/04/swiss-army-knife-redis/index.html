@@ -31,7 +31,7 @@
 <meta property="og:image" content="https://www.guaosi.com/assets/blogImg/swiss-army-knife-redis/bitmap-位图1.jpg">
 <meta property="og:image" content="https://www.guaosi.com/assets/blogImg/swiss-army-knife-redis/bitmap-位图2.jpg">
 <meta property="og:image" content="https://www.guaosi.com/assets/blogImg/swiss-army-knife-redis/bitmap-位图3.jpg">
-<meta property="og:updated_time" content="2020-02-04T07:15:44.506Z">
+<meta property="og:updated_time" content="2020-02-04T07:18:00.220Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="瑞士军刀Redis">
 <meta name="twitter:description" content="慢查询-可以帮助我们找到系统性能瓶颈的命令 pipeline-可以帮助我们提高客户端的效率 发布订阅-可以帮助我们使用redis实现发布订阅功能 Bitmap-为我们在某些功能上提供一个很好的思路，而且可以提供一个很好的节省内存方案 HyperLogLog-更加极端的一种节省内存方案的数据结构，可以用极小的内存来实现独立用户的统计 GEO-Redis3.2版本提供的地理定位的功能">
@@ -346,10 +346,10 @@ var _hmt = _hmt || [];
 <li>发布订阅-可以帮助我们使用redis实现发布订阅功能</li>
 <li>Bitmap-为我们在某些功能上提供一个很好的思路，而且可以提供一个很好的节省内存方案</li>
 <li>HyperLogLog-更加极端的一种节省内存方案的数据结构，可以用极小的内存来实现独立用户的统计</li>
-<li>GEO-Redis3.2版本提供的地理定位的功能<a id="more"></a>
-<h2 id="慢查询"><a href="#慢查询" class="headerlink" title="慢查询"></a>慢查询</h2></li>
+<li>GEO-Redis3.2版本提供的地理定位的功能</li>
 </ul>
-<h3 id="生命周期"><a href="#生命周期" class="headerlink" title="生命周期"></a>生命周期</h3><p>如图所示为客户端请求到Redis的完整生命周期：发送命令、排队、执行命令、返回结果</p>
+<a id="more"></a>
+<h2 id="慢查询"><a href="#慢查询" class="headerlink" title="慢查询"></a>慢查询</h2><h3 id="生命周期"><a href="#生命周期" class="headerlink" title="生命周期"></a>生命周期</h3><p>如图所示为客户端请求到Redis的完整生命周期：发送命令、排队、执行命令、返回结果</p>
 <p><img src="/assets/blogImg/swiss-army-knife-redis/redis-发送指令生命周期.jpg" alt="redis-发送指令生命周期"></p>
 <ol>
 <li>慢查询发生在第三阶段(也就是说其他阶段像排队耗时都不算)</li>
@@ -1017,10 +1017,6 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Laravel</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">消息队列</a>
               </li>
              
@@ -1030,6 +1026,10 @@ var _hmt = _hmt || [];
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">中间件</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Laravel</a>
               </li>
              
               <li class="article-tag-list-item">
