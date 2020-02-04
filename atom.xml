@@ -724,9 +724,9 @@
     </summary>
     
     
-      <category term="Linux" scheme="https://www.guaosi.com/tags/Linux/"/>
-    
       <category term="PHP" scheme="https://www.guaosi.com/tags/PHP/"/>
+    
+      <category term="Linux" scheme="https://www.guaosi.com/tags/Linux/"/>
     
       <category term="Redis" scheme="https://www.guaosi.com/tags/Redis/"/>
     
