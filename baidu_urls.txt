@@ -1,4 +1,4 @@
+https://www.guaosi.com/2020/02/05/replication-principle-and-optimization-redis/
 https://www.guaosi.com/2020/02/04/persistent-trade-offs-and-choices-redis/
 https://www.guaosi.com/2020/02/04/swiss-army-knife-redis/
 https://www.guaosi.com/2020/02/03/understanding-and-use-of-redis-api/
-https://www.guaosi.com/2020/02/03/first-acquaintance-with-redis/

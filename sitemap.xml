@@ -2,9 +2,16 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://www.guaosi.com/2020/02/05/replication-principle-and-optimization-redis/</loc>
+    
+    <lastmod>2020-02-05T10:19:12.837Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://www.guaosi.com/2020/02/04/persistent-trade-offs-and-choices-redis/</loc>
     
-    <lastmod>2020-02-04T13:28:30.118Z</lastmod>
+    <lastmod>2020-02-05T09:14:49.826Z</lastmod>
     
   </url>
   
