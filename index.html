@@ -404,6 +404,114 @@ var _hmt = _hmt || [];
 
 
   
+    <article id="post-cluster-architecture-pattern-rabbit" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
+  <div class="article-inner">
+    
+    <header class="article-header">
+      
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/02/10/cluster-architecture-pattern-rabbit/">RabbitMQ集群架构模式</a>
+    </h1>
+  
+
+      <!-- 显示阅读和评论数 -->
+
+      <br>
+      
+
+
+
+      
+      <a href="/2020/02/10/cluster-architecture-pattern-rabbit/" class="archive-article-date">
+  	<time datetime="2020-02-10T13:11:21.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-02-10</time>
+</a>
+      
+    </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+      <h2 id="主备模式"><a href="#主备模式" class="headerlink" title="主备模式"></a>主备模式</h2><h3 id="主备与主从"><a href="#主备与主从" class="headerlink" title="主备与主从"></a>主备与主从</h3><ul>
+<li>主备和主从的概念是有区别的，主备是主节点可以提供读写的，从节点是不提供任何读写的，只是一个备用的服务。</li>
+<li>主要的目的就是在主节点产生故障或者宕机的时候它能够实现一个自动切换，由原来的主节点切换到我们的备用节点，由备用节点继续提供读写服务，这时候备用节点就是充当主节点的角色了。而原来的节点恢复后又会加入到集群中，变成了备用节点。</li>
+<li>主从是主服节点可以提供读写，但从节点是只读的。主从更多的是实现读写分离和数据备份的效果。</li>
+</ul>
+      
+      <a class="article-more-a" href="/2020/02/10/cluster-architecture-pattern-rabbit/#more">
+        more >></a>
+      
+      
+
+      
+
+      
+        <div class="declare" hidden="hidden"></div>
+      
+
+
+
+      
+    </div>
+
+
+
+
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">消息队列</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">中间件</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">RabbitMQ</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+      <p class="article-more-link">
+        <a class="article-more-a" href="/2020/02/10/cluster-architecture-pattern-rabbit/">
+          展开全文 >></a>
+      </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+  
     <article id="post-replication-principle-and-optimization-redis" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
   <div class="article-inner">
     
@@ -910,7 +1018,7 @@ var _hmt = _hmt || [];
       
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2020/01/29/dive-into-the-advanced-features-of-rabbitmq-with-golang/">深入RabbitMQ高级特性(Golang演示)</a>
+      <a class="article-title" href="/2020/01/29/dive-into-the-advanced-features-of-rabbitmq-with-golang/">Rabbit集群架构模式</a>
     </h1>
   
 
@@ -984,111 +1092,6 @@ var _hmt = _hmt || [];
       
       <p class="article-more-link">
         <a class="article-more-a" href="/2020/01/29/dive-into-the-advanced-features-of-rabbitmq-with-golang/">
-          展开全文 >></a>
-      </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-  
-    <article id="post-detailed-introduction-to-the-rabbitmq-switch-with-golang" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
-  <div class="article-inner">
-    
-    <header class="article-header">
-      
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/01/28/detailed-introduction-to-the-rabbitmq-switch-with-golang/">入门RabbitMQ之交换机详解(Golang演示)</a>
-    </h1>
-  
-
-      <!-- 显示阅读和评论数 -->
-
-      <br>
-      
-
-
-
-      
-      <a href="/2020/01/28/detailed-introduction-to-the-rabbitmq-switch-with-golang/" class="archive-article-date">
-  	<time datetime="2020-01-28T09:32:55.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-01-28</time>
-</a>
-      
-    </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-      <h2 id="交换机详解"><a href="#交换机详解" class="headerlink" title="交换机详解"></a>交换机详解</h2><p>Exchange：交换机，接收消息，并根据路由键转发消息到绑定的队列<br>如图为官网提供的模型，蓝色框表示<code>Send Message</code>，Client端把消息投递到Exchange上，通过RoutingKey路由关系将消息路由到指定的队列，绿色框代表<code>Receive Message</code>，Client端和队列建立监听，然后去接收消息。红色框代表<code>RabbitMQ Server</code>，黄色框表示<code>RoutingKey</code>，即Exchange和Queue需要建立绑定关系。</p>
-<p><img src="/assets/blogImg/detailed-introduction-to-the-rabbitmq-switch/RabbitMQ-Exchange原理图.jpg" alt="RabbitMQ-Exchange原理图"></p>
-      
-      <a class="article-more-a" href="/2020/01/28/detailed-introduction-to-the-rabbitmq-switch-with-golang/#more">
-        more >></a>
-      
-      
-
-      
-
-      
-        <div class="declare" hidden="hidden"></div>
-      
-
-
-
-      
-    </div>
-
-
-
-
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">消息队列</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">中间件</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">RabbitMQ</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-      <p class="article-more-link">
-        <a class="article-more-a" href="/2020/01/28/detailed-introduction-to-the-rabbitmq-switch-with-golang/">
           展开全文 >></a>
       </p>
       
@@ -1252,14 +1255,6 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Linux</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Python</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">PHP</a>
               </li>
              
@@ -1277,6 +1272,14 @@ var _hmt = _hmt || [];
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Laravel</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Linux</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Python</a>
               </li>
              
               <li class="article-tag-list-item">

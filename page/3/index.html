@@ -292,6 +292,119 @@ var _hmt = _hmt || [];
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-simple-principle-of-https" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
+  <div class="article-inner">
+    
+    <header class="article-header">
+      
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/01/22/simple-principle-of-https/">HTTPS原理</a>
+    </h1>
+  
+
+      <!-- 显示阅读和评论数 -->
+
+      <br>
+      
+
+
+
+      
+      <a href="/2020/01/22/simple-principle-of-https/" class="archive-article-date">
+  	<time datetime="2020-01-22T08:49:35.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-01-22</time>
+</a>
+      
+    </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+      <p>HTTPS是在HTTP上建立SSL加密层，并对传输数据进行加密，是HTTP协议的安全版。</p>
+<ul>
+<li>数据安全和数据完整</li>
+<li>对传输层数据进行加密后传输</li>
+</ul>
+<p><img src="/assets/blogImg/simple-principle-of-https/https-ssl位置图示.png" alt="https-ssl位置图示"></p>
+      
+      <a class="article-more-a" href="/2020/01/22/simple-principle-of-https/#more">
+        more >></a>
+      
+      
+
+      
+
+      
+        <div class="declare" hidden="hidden"></div>
+      
+
+
+
+      
+    </div>
+
+
+
+
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Web</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Linux</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">服务器</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">HTTP</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+      <p class="article-more-link">
+        <a class="article-more-a" href="/2020/01/22/simple-principle-of-https/">
+          展开全文 >></a>
+      </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+  
     <article id="post-golang-maze-breadth-first-search" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
   <div class="article-inner">
     
@@ -1018,108 +1131,6 @@ var _hmt = _hmt || [];
 
 
   
-    <article id="post-laravel-limit-paginate" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
-  <div class="article-inner">
-    
-    <header class="article-header">
-      
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/03/13/laravel-limit-paginate/">Laravel的限制条数再分页</a>
-    </h1>
-  
-
-      <!-- 显示阅读和评论数 -->
-
-      <br>
-      
-
-
-
-      
-      <a href="/2019/03/13/laravel-limit-paginate/" class="archive-article-date">
-  	<time datetime="2019-03-13T05:00:27.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-13</time>
-</a>
-      
-    </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-      <h1 id="1-需求"><a href="#1-需求" class="headerlink" title="1. 需求"></a>1. 需求</h1><p>&#160; &#160; &#160; &#160; 有这么一个需求，我想取出一个表(比如<code>user</code>表)中，按照某一排序规则(比如按照时间倒叙)，取出前<code>100</code>条，进行分页，每页<code>10</code>条。应该如何实现？自然而然可能会这样写下:</p>
-<figure class="highlight livescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$users = User::orderBy<span class="function"><span class="params">(<span class="string">'id'</span>,<span class="string">'desc'</span>)</span>-&gt;</span>limit<span class="function"><span class="params">(<span class="number">100</span>)</span>-&gt;</span>paginate(<span class="number">10</span>)</span><br></pre></td></tr></table></figure>
-<p>最后打印结果可以发现，<code>limit</code>并未生效，依旧是将所有结果进行分页。</p>
-      
-      <a class="article-more-a" href="/2019/03/13/laravel-limit-paginate/#more">
-        more >></a>
-      
-      
-
-      
-
-      
-        <div class="declare" hidden="hidden"></div>
-      
-
-
-
-      
-    </div>
-
-
-
-
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">PHP</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Laravel</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-      <p class="article-more-link">
-        <a class="article-more-a" href="/2019/03/13/laravel-limit-paginate/">
-          展开全文 >></a>
-      </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/page/2/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/4/">Next &raquo;</a>
@@ -1254,14 +1265,6 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Linux</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Python</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">PHP</a>
               </li>
              
@@ -1279,6 +1282,14 @@ var _hmt = _hmt || [];
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Laravel</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Linux</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Python</a>
               </li>
              
               <li class="article-tag-list-item">
