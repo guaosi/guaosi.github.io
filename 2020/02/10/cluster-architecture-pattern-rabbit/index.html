@@ -17,16 +17,16 @@
 <meta property="og:site_name" content="guaosi的博客">
 <meta property="og:description" content="主备模式主备与主从 主备和主从的概念是有区别的，主备是主节点可以提供读写的，从节点是不提供任何读写的，只是一个备用的服务。 主要的目的就是在主节点产生故障或者宕机的时候它能够实现一个自动切换，由原来的主节点切换到我们的备用节点，由备用节点继续提供读写服务，这时候备用节点就是充当主节点的角色了。而原来的节点恢复后又会加入到集群中，变成了备用节点。 主从是主服节点可以提供读写，但从节点是只读的。主从更">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="https://www.guaosi.com/assets/blogImg/cluster-architecture-pattern-rabbitRabbitMQ-Framework-Warren.jpg">
-<meta property="og:image" content="https://www.guaosi.com/assets/blogImg/cluster-architecture-pattern-rabbitRabbitMQ-Framework-Shovel.jpg">
-<meta property="og:image" content="https://www.guaosi.com/assets/blogImg/cluster-architecture-pattern-rabbitRabbitMQ-Framework-Mirror.jpg">
-<meta property="og:image" content="https://www.guaosi.com/assets/blogImg/cluster-architecture-pattern-rabbitRabbitMQ-Framework-Federation.jpg">
-<meta property="og:image" content="https://www.guaosi.com/assets/blogImg/cluster-architecture-pattern-rabbitRabbitMQ-Framework-Federation2.jpg">
-<meta property="og:updated_time" content="2020-02-10T13:15:16.704Z">
+<meta property="og:image" content="https://www.guaosi.com/assets/blogImg/cluster-architecture-pattern-rabbit/RabbitMQ-Framework-Warren.jpg">
+<meta property="og:image" content="https://www.guaosi.com/assets/blogImg/cluster-architecture-pattern-rabbit/RabbitMQ-Framework-Shovel.jpg">
+<meta property="og:image" content="https://www.guaosi.com/assets/blogImg/cluster-architecture-pattern-rabbit/RabbitMQ-Framework-Mirror.jpg">
+<meta property="og:image" content="https://www.guaosi.com/assets/blogImg/cluster-architecture-pattern-rabbit/RabbitMQ-Framework-Federation.jpg">
+<meta property="og:image" content="https://www.guaosi.com/assets/blogImg/cluster-architecture-pattern-rabbit/RabbitMQ-Framework-Federation2.jpg">
+<meta property="og:updated_time" content="2020-02-10T13:18:02.065Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="RabbitMQ集群架构模式">
 <meta name="twitter:description" content="主备模式主备与主从 主备和主从的概念是有区别的，主备是主节点可以提供读写的，从节点是不提供任何读写的，只是一个备用的服务。 主要的目的就是在主节点产生故障或者宕机的时候它能够实现一个自动切换，由原来的主节点切换到我们的备用节点，由备用节点继续提供读写服务，这时候备用节点就是充当主节点的角色了。而原来的节点恢复后又会加入到集群中，变成了备用节点。 主从是主服节点可以提供读写，但从节点是只读的。主从更">
-<meta name="twitter:image" content="https://www.guaosi.com/assets/blogImg/cluster-architecture-pattern-rabbitRabbitMQ-Framework-Warren.jpg">
+<meta name="twitter:image" content="https://www.guaosi.com/assets/blogImg/cluster-architecture-pattern-rabbit/RabbitMQ-Framework-Warren.jpg">
   
   <link rel="alternative" href="/atom.xml" title="guaosi的博客" type="application/atom+xml">
   
@@ -343,7 +343,7 @@ var _hmt = _hmt || [];
 <li>主备模式：实现RabbitMQ的高可用集群，一般在并发和数据量不高的情况下，这种模型非常的好用且简单。</li>
 </ul>
 <h3 id="主备集群架构"><a href="#主备集群架构" class="headerlink" title="主备集群架构"></a>主备集群架构</h3><p>如图为主备模式的简单架构模型，主要是利用<code>HaProxy</code>去做的主备切换，当主节点挂掉时，<code>HaProxy</code>会自动进行切换，把备份节点升级为主节点</p>
-<p><img src="/assets/blogImg/cluster-architecture-pattern-rabbitRabbitMQ-Framework-Warren.jpg" alt="RabbitMQ-Framework-Warren"></p>
+<p><img src="/assets/blogImg/cluster-architecture-pattern-rabbit/RabbitMQ-Framework-Warren.jpg" alt="RabbitMQ-Framework-Warren"></p>
 <h4 id="HaProxy配置"><a href="#HaProxy配置" class="headerlink" title="HaProxy配置"></a>HaProxy配置</h4><p>HAProxy 是一款提供高可用性、负载均衡以及基于TCP(第四层)和HTTP(第七层)应用的代理软件， 简单了解一下它的相关配置</p>
 <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">#监听集群</span><br><span class="line"><span class="selector-tag">listen</span> <span class="selector-tag">rabbitmq_cluster</span></span><br><span class="line"><span class="selector-tag">bind</span> 0<span class="selector-class">.0</span><span class="selector-class">.0</span><span class="selector-class">.0</span><span class="selector-pseudo">:5672</span></span><br><span class="line">#配置<span class="selector-tag">TCP</span>模式</span><br><span class="line"><span class="selector-tag">mode</span> <span class="selector-tag">tcp</span></span><br><span class="line">#简单的轮询</span><br><span class="line"><span class="selector-tag">balance</span> <span class="selector-tag">roundrobin</span></span><br><span class="line">#主节点</span><br><span class="line"><span class="selector-tag">server</span> <span class="selector-tag">rmq76</span> 192<span class="selector-class">.168</span><span class="selector-class">.11</span><span class="selector-class">.76</span><span class="selector-pseudo">:5672</span> <span class="selector-tag">check</span> <span class="selector-tag">inter</span> 5000 <span class="selector-tag">rise</span> 2 <span class="selector-tag">fall</span> 3</span><br><span class="line">#备用节点，<span class="selector-tag">rxy77</span>代表主机名，<span class="selector-tag">backup</span>代表备份节点</span><br><span class="line"><span class="selector-tag">server</span> <span class="selector-tag">rmq77</span> 192<span class="selector-class">.168</span><span class="selector-class">.11</span><span class="selector-class">.77</span><span class="selector-pseudo">:5672</span> <span class="selector-tag">backup</span> <span class="selector-tag">check</span> <span class="selector-tag">inter</span> 5000 <span class="selector-tag">rise</span> 2 <span class="selector-tag">fall</span> 3 </span><br><span class="line">备注: <span class="selector-tag">rabbitmq</span>集群节点配置 </span><br><span class="line"># <span class="selector-tag">inter</span>每隔五秒对<span class="selector-tag">mq</span>集群做健康检查，2次正确证明服务器可用，3次失败证明服务器不可用，并且配置主备机制</span><br></pre></td></tr></table></figure>
 <h2 id="远程模式-Shovel"><a href="#远程模式-Shovel" class="headerlink" title="远程模式(Shovel)"></a>远程模式(Shovel)</h2><ul>
@@ -353,7 +353,7 @@ var _hmt = _hmt || [];
 <h3 id="架构模型"><a href="#架构模型" class="headerlink" title="架构模型"></a>架构模型</h3><p>Shovel架构模型：绿色部分就代表了两个不同地域的MQ节点，假设用户在A地方下一个订单，然后订单投递到了MQ，第一个地方的MQ节点为了避免压力过大、负载过高可以设置一个阈值，如果负载过高将订单信息转到另一个地方的MQ，分摊服务压力。同时也可以进行两个或多个中心的数据同步。</p>
 <p>好处：在使用了shovel插件后，模型变成了近端同步确认，远端异步确认的方式，大大提高了订单确认速度，并且还能保证可靠性</p>
 <h3 id="怎么去做的？"><a href="#怎么去做的？" class="headerlink" title="怎么去做的？"></a>怎么去做的？</h3><p>Shovel集群的拓扑图如下所示 ，一个订单进来之后，里面有两个队列，如果正常队列压力过大，会将订单路由到backup队列，这个队列和另一个地域的MQ(某个交换机)产生了Shovel联系，就会把数据复制到远端MQ中心，在远端会有相应的队列进行消费</p>
-<p><img src="/assets/blogImg/cluster-architecture-pattern-rabbitRabbitMQ-Framework-Shovel.jpg" alt="RabbitMQ-Framework-Shovel"></p>
+<p><img src="/assets/blogImg/cluster-architecture-pattern-rabbit/RabbitMQ-Framework-Shovel.jpg" alt="RabbitMQ-Framework-Shovel"></p>
 <h3 id="远程模式的使用"><a href="#远程模式的使用" class="headerlink" title="远程模式的使用"></a>远程模式的使用</h3><ul>
 <li>Shovel集群的配置，首先启动rabbitmq插件，命令如下：<br> <code>rabbitmq-plugins enable amqp_client</code><br> <code>rabbitmq-plugins enable rabbitmq_shovel</code></li>
 <li>创建rabbitmq.config文件：<code>touch /etc/rabbitmq/rabbitmq.config</code></li>
@@ -367,7 +367,7 @@ var _hmt = _hmt || [];
 <li>Mirror镜像队列，目的是为了保证rabbitmq数据的高可靠性解决方案，主要就是实现数据的同步，一般来讲是2-3个节点实现数据同步(对于100%数据可靠性解决方案一般是3节点)</li>
 </ul>
 <h3 id="集群架构"><a href="#集群架构" class="headerlink" title="集群架构"></a>集群架构</h3><p>黄色的就是应用服务器，里面包含了RabbitMQ节点，节点里面有个<code>Mirror queue</code>，这三个镜像队列数据是要同步的。<br>外部发送一条消息，落到一台服务器上，这台服务器将数据进行同步，同步到另外两个节点上。<br>利用<code>HA-proxy</code>做负载均衡，然后<code>KeepAlived</code>做多个HA-proxy的高可用切换</p>
-<p><img src="/assets/blogImg/cluster-architecture-pattern-rabbitRabbitMQ-Framework-Mirror.jpg" alt="RabbitMQ-Framework-Mirror"></p>
+<p><img src="/assets/blogImg/cluster-architecture-pattern-rabbit/RabbitMQ-Framework-Mirror.jpg" alt="RabbitMQ-Framework-Mirror"></p>
 <h2 id="多活模式-Federation"><a href="#多活模式-Federation" class="headerlink" title="多活模式(Federation)"></a>多活模式(Federation)</h2><ul>
 <li>多活模式：这种模式也是实现异地数据复制的主流模式，因为Shovel模式配置比较复杂，所以一般来说实现异地集群都是使用这种双活或者多活模型来实现的。</li>
 <li>这种模型需要依赖rabbitmq的<code>federation</code>插件，可以实现持续的可靠的AMQP数据通信，多活模式在实际配置与应用上非常的简单。</li>
@@ -375,7 +375,7 @@ var _hmt = _hmt || [];
 <li>RabbitMQ部署架构采用双中心模式(多中心) , 那么在两套(或多套)数据中心中各部署一套RabbitMQ集群，各中心的RabbitMQ服务除了需要为业务提供正常的消息服务外，中心之间还需要实现部分队列消息共享。</li>
 </ul>
 <h3 id="多活集群架构"><a href="#多活集群架构" class="headerlink" title="多活集群架构"></a>多活集群架构</h3><p>上层就是应用层，然后经过LBS负载均衡，两套RabbitMQ集群，可能是两套镜像队列，两套集群通过federation插件进行数据的复制和流转。<br>当然federation插件不是建立在集群上的，而是建立到单个节点上，比如左边node3可以和右边任意一台建立这种多活机制，然后，自己这边的集群如果是采用镜像队列那么也会去进行同步，所以这种性能也是非常好的。</p>
-<p><img src="/assets/blogImg/cluster-architecture-pattern-rabbitRabbitMQ-Framework-Federation.jpg" alt="RabbitMQ-Framework-Federation"></p>
+<p><img src="/assets/blogImg/cluster-architecture-pattern-rabbit/RabbitMQ-Framework-Federation.jpg" alt="RabbitMQ-Framework-Federation"></p>
 <h3 id="Federation插件说明"><a href="#Federation插件说明" class="headerlink" title="Federation插件说明"></a>Federation插件说明</h3><ul>
 <li>Federation插件是一个不需要构建Cluster，而在Brokers之间传输消息的高性能插件，Federation 插件可以在Brokers或者Cluster之间传输消息，连接的双方可以使用不同的users和virtual hosts，双方也可以使用版本不同的RabbitMQ和Erlang</li>
 <li>Federation 插件使用AMQP协议通讯，可以接受不连续的传输</li>
@@ -387,7 +387,7 @@ var _hmt = _hmt || [];
 <li>上游过来的数据不是说所有的数据都会流转到下游的，而是说建立连接关系，下游需要有具体的队列进行存储。</li>
 <li>上游也可以自己去监听，同一个数据可以发到两个集群中，都可以用队列去接收存储然后消费。</li>
 </ul>
-<p><img src="/assets/blogImg/cluster-architecture-pattern-rabbitRabbitMQ-Framework-Federation2.jpg" alt="RabbitMQ-Framework-Federation"></p>
+<p><img src="/assets/blogImg/cluster-architecture-pattern-rabbit/RabbitMQ-Framework-Federation2.jpg" alt="RabbitMQ-Framework-Federation"></p>
 <h2 id="镜像模式集群构建过程"><a href="#镜像模式集群构建过程" class="headerlink" title="镜像模式集群构建过程"></a>镜像模式集群构建过程</h2><h3 id="Haproxy"><a href="#Haproxy" class="headerlink" title="Haproxy"></a>Haproxy</h3><h4 id="Haproxy简介"><a href="#Haproxy简介" class="headerlink" title="Haproxy简介"></a>Haproxy简介</h4><p>HAProxy是一款提供高可用性、负载均衡以及基于TCP和HTTP应用的代理软件，HAProxy是完全免费的、借助HAProxy可以快速并且可靠的提供基于TCP和HTTP应用的代理解决方案。</p>
 <p>HAProxy适用于那些负载较大的web站点，这些站点通常又需要会话保持或七层处理。</p>
 <p>HAProxy可以支持数以万计的并发连接,并且HAProxy的运行模式使得它可以很简单安全的整合进架构中，同时可以保护web服务器不被暴露到网络上。</p>
@@ -908,6 +908,14 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Linux</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Python</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">PHP</a>
               </li>
              
@@ -925,14 +933,6 @@ var _hmt = _hmt || [];
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Laravel</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Linux</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Python</a>
               </li>
              
               <li class="article-tag-list-item">
