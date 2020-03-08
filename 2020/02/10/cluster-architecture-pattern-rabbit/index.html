@@ -22,7 +22,7 @@
 <meta property="og:image" content="https://www.guaosi.com/assets/blogImg/cluster-architecture-pattern-rabbit/RabbitMQ-Framework-Mirror.jpg">
 <meta property="og:image" content="https://www.guaosi.com/assets/blogImg/cluster-architecture-pattern-rabbit/RabbitMQ-Framework-Federation.jpg">
 <meta property="og:image" content="https://www.guaosi.com/assets/blogImg/cluster-architecture-pattern-rabbit/RabbitMQ-Framework-Federation2.jpg">
-<meta property="og:updated_time" content="2020-02-10T13:18:02.065Z">
+<meta property="og:updated_time" content="2020-02-10T13:20:26.534Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="RabbitMQ集群架构模式">
 <meta name="twitter:description" content="主备模式主备与主从 主备和主从的概念是有区别的，主备是主节点可以提供读写的，从节点是不提供任何读写的，只是一个备用的服务。 主要的目的就是在主节点产生故障或者宕机的时候它能够实现一个自动切换，由原来的主节点切换到我们的备用节点，由备用节点继续提供读写服务，这时候备用节点就是充当主节点的角色了。而原来的节点恢复后又会加入到集群中，变成了备用节点。 主从是主服节点可以提供读写，但从节点是只读的。主从更">
@@ -183,58 +183,67 @@ var _hmt = _hmt || [];
 
 </head>
 </html>
+
 <body>
   <div id="container" q-class="show:isCtnShow">
     <canvas id="anm-canvas" class="anm-canvas"></canvas>
     <div class="left-col" q-class="show:isShow">
       
-<div class="overlay" style="background: #4d4d4d"></div>
+<div class="overlay" style="background: #4d4d4d">
+</div>
 <div class="intrude-less">
-	<header id="header" class="inner">
-		<a href="/" class="profilepic">
-			<img src="/assets/img/avatar.png" class="js-avatar">
-		</a>
-		<hgroup>
-		  <h1 class="header-author"><a href="/">guaosi</a></h1>
-		</hgroup>
-		
-		<p class="header-subtitle">白茶清欢无别事，我在等风也等你</p>
-		
+  <header id="header" class="inner">
+    <a href="/" class="profilepic">
+      <img src="/assets/img/avatar.png" class="js-avatar">
+    </a>
+    <hgroup>
+      <h1 class="header-author"><a href="/">guaosi</a></h1>
+    </hgroup>
+    
+    <p class="header-subtitle">白茶清欢无别事，我在等风也等你</p>
+    
 
 		<nav class="header-menu">
 			<ul>
 			
-				<li><a href="/">主页</a></li>
-	        
-				<li><a href="/archives">归档</a></li>
-	        
+    <li><a href="/">主页</a></li>
+    
+    <li><a href="/archives">归档</a></li>
+    
 			</ul>
 		</nav>
 		<nav class="header-smart-menu">
     		
-    			
-    			<a q-on="click: openSlider(e, 'innerArchive')" href="javascript:void(0)">所有文章</a>
-    			
-            
-    			
-            
-    			
-    			<a q-on="click: openSlider(e, 'aboutme')" href="javascript:void(0)">关于我</a>
-    			
-            
+    
+    <a q-on="click: openSlider(e, 'innerArchive')" href="javascript:void(0)">所有文章</a>
+    
+    
+    
+    
+    
+    <a q-on="click: openSlider(e, 'aboutme')" href="javascript:void(0)">关于我</a>
+    
+    
 		</nav>
 		<nav class="header-nav">
 			<div class="social">
 				
-					<a class="github" target="_blank" href="https://github.com/guaosi" title="github"><i class="icon-github"></i></a>
-		        
-					<a class="mail" target="_blank" href="mailto:guaosi100@gmail.com" title="mail"><i class="icon-mail"></i></a>
-		        
-					<a class="rss" target="_blank" href="/atom.xml" title="rss"><i class="icon-rss"></i></a>
-		        
+    <a class="github" target="_blank" href="https://github.com/guaosi" title="github"><i class="icon-github"></i></a>
+    
+    <a class="mail" target="_blank" href="mailto:guaosi100@gmail.com" title="mail"><i class="icon-mail"></i></a>
+    
+    <a class="rss" target="_blank" href="/atom.xml" title="rss"><i class="icon-rss"></i></a>
+    
 			</div>
 		</nav>
-	</header>		
+  </header>		
+</div>
+
+      
+<div style="position: absolute;bottom: 3px;left: 50%;transform: translateX(-50%);text-align: center;">
+  <span style="color:#999;font-size:14px;line-height:18px;">赞助商</span>
+  <div>
+    <a href="https://www.upyun.com/?utm_source=lianmeng&utm_medium=referral"><img width="100" src="/assets/img/upyun.png" alt=""></a></div>
 </div>
 
     </div>
@@ -294,7 +303,8 @@ var _hmt = _hmt || [];
       <div id="wrapper" class="body-wrap">
         <div class="menu-l">
           <div class="canvas-wrap">
-            <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
+            <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1"
+              class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
             <article id="post-cluster-architecture-pattern-rabbit" class="article article-type-post " itemscope="" itemprop="blogPost">
@@ -900,6 +910,18 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">消息队列</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">MQ</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">中间件</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">tcp</a>
               </li>
              
@@ -917,18 +939,6 @@ var _hmt = _hmt || [];
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">PHP</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">消息队列</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">MQ</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">中间件</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1098,4 +1108,5 @@ var _hmt = _hmt || [];
 </div>
   </div>
 </body>
+
 </html>
