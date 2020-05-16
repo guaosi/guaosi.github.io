@@ -13,16 +13,16 @@
 <meta name="keywords" content="网络编程,服务器">
 <meta property="og:type" content="article">
 <meta property="og:title" content="记录一次因为MTU问题导致网络丢包无响应">
-<meta property="og:url" content="https://www.guaosi.com/2020/05/16/record-data-loss-problem-caused-by-MTU/index.html">
+<meta property="og:url" content="https://www.guaosi.com/2020/05/16/record-data-loss-problem-caused-by-mtu/index.html">
 <meta property="og:site_name" content="guaosi的博客">
 <meta property="og:description" content="起因首先，先上一下公司测试环境的简单网络结构  简单说一下，测试环境的上游服务是放在阿里云服务器的，通过阿里云的VPN网关，发起HTTP请求到公司内部测试环境的下游服务。然后下游服务处理后，再返回对应的相关数据。 之前一直都没什么网络问题。今天突然发现上游服务请求某一接口一直报服务超时，但是其他接口又是正常的。问题探究之路从这里展开~">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="https://www.guaosi.com/assets/blogImg/record-data-loss-problem-caused-by-MTU/network.png">
-<meta property="og:updated_time" content="2020-05-16T03:55:23.976Z">
+<meta property="og:image" content="https://www.guaosi.com/assets/blogImg/record-data-loss-problem-caused-by-mtu/network.png">
+<meta property="og:updated_time" content="2020-05-16T03:59:50.465Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="记录一次因为MTU问题导致网络丢包无响应">
 <meta name="twitter:description" content="起因首先，先上一下公司测试环境的简单网络结构  简单说一下，测试环境的上游服务是放在阿里云服务器的，通过阿里云的VPN网关，发起HTTP请求到公司内部测试环境的下游服务。然后下游服务处理后，再返回对应的相关数据。 之前一直都没什么网络问题。今天突然发现上游服务请求某一接口一直报服务超时，但是其他接口又是正常的。问题探究之路从这里展开~">
-<meta name="twitter:image" content="https://www.guaosi.com/assets/blogImg/record-data-loss-problem-caused-by-MTU/network.png">
+<meta name="twitter:image" content="https://www.guaosi.com/assets/blogImg/record-data-loss-problem-caused-by-mtu/network.png">
   
   <link rel="alternative" href="/atom.xml" title="guaosi的博客" type="application/atom+xml">
   
@@ -303,7 +303,7 @@ var _hmt = _hmt || [];
               class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-record-data-loss-problem-caused-by-MTU" class="article article-type-post " itemscope="" itemprop="blogPost">
+            <article id="post-record-data-loss-problem-caused-by-mtu" class="article article-type-post " itemscope="" itemprop="blogPost">
   <div class="article-inner">
     
     <header class="article-header">
@@ -329,7 +329,7 @@ var _hmt = _hmt || [];
 
 
       
-      <a href="/2020/05/16/record-data-loss-problem-caused-by-MTU/" class="archive-article-date">
+      <a href="/2020/05/16/record-data-loss-problem-caused-by-mtu/" class="archive-article-date">
   	<time datetime="2020-05-16T02:25:56.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-16</time>
 </a>
       
@@ -338,7 +338,7 @@ var _hmt = _hmt || [];
     <div class="article-entry" itemprop="articleBody">
       
       <h2 id="起因"><a href="#起因" class="headerlink" title="起因"></a>起因</h2><p>首先，先上一下公司测试环境的简单网络结构</p>
-<p><img src="/assets/blogImg/record-data-loss-problem-caused-by-MTU/network.png" alt="network"></p>
+<p><img src="/assets/blogImg/record-data-loss-problem-caused-by-mtu/network.png" alt="network"></p>
 <p>简单说一下，测试环境的上游服务是放在阿里云服务器的，通过阿里云的VPN网关，发起HTTP请求到公司内部测试环境的下游服务。然后下游服务处理后，再返回对应的相关数据。</p>
 <p>之前一直都没什么网络问题。今天突然发现上游服务请求某一接口一直报服务超时，但是其他接口又是正常的。问题探究之路从这里展开~</p>
 <a id="more"></a>
@@ -376,7 +376,7 @@ var _hmt = _hmt || [];
           
           <br>
           <strong>本文链接：</strong>
-          <a rel="license" href="https://www.guaosi.com/2020/05/16/record-data-loss-problem-caused-by-MTU/">https://www.guaosi.com/2020/05/16/record-data-loss-problem-caused-by-MTU/</a>
+          <a rel="license" href="https://www.guaosi.com/2020/05/16/record-data-loss-problem-caused-by-mtu/">https://www.guaosi.com/2020/05/16/record-data-loss-problem-caused-by-mtu/</a>
           <br>
           <strong>版权声明：</strong>
           本博客所有文章除特别声明外，均采用
@@ -496,7 +496,7 @@ var _hmt = _hmt || [];
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACvElEQVR42u3ay24kIQwF0P7/n56RsormQV3bOJ1Ip1aldDdwiATomtcrfn59PJ/fP//l72+eP632cm7zwoOHh4fXGvq5uUnH+UScJzEZwz/6wsPDw1vjVTeDvLPzr84jSdp5sODh4eG9lbex6J+XdTw8PLyfzvtfN/PgIAHg4eHhfTdechSuRrd5a5MWrmUteHh4eHdW7IdF+V3v6/U9PDw8vFZVvbco5yWxXpuF3vHw8PAWeHkhKilQVY/L1bg2L8hFg8bDw8Nr8eYFqmpU0SuMNQ/3eHh4eAu8augwOTpXLwEkm0GyteDh4eHd5eVD7JXzqwWwamntYQrw8PDw1njVyKC6DVRji2q/r/mugoeHh3eptp4v90l80Itxq5OLh4eHt83rLev5MXdS9KpeZWj+J/Hw8PBavPyY25y5VqksX/ofNhU8PDy8BV7hS8WrAL0CW297eJggPDw8vGVetQR1/n7eQnXK8mnFw8PDu8XLO+gBJsf06maDh4eH95W8ask/iQlycG97iK5h4eHh4S3w7pb270axVVg5hsDDw8O7yjvHqUko0Fv6V7YNPDw8vK0T6egS/6SgVQ1n8yIZHh4e3h6v2kQ1CJ5sOZNgFw8PD2+Dlxelqsfo3rWDPCYuBLh4eHh4C7xJcWsSWyS9vCYPHh4e3hqverDuDWJyJat6vH44UuPh4eENeHeT4PkBvXoJLIoz8PDw8K7yesOthq29KCH57cPY8PDw8L6EV91VepcJqi0nIchDjIuHh4d3iTdJRHsdV6ep+n4t8MXDw8M78vIIII9WJxtP3loU7OLh4eGt8XqbQXWrGA20d08ADw8P76286qWB3tWr6ngepgMPDw/v2/AmgUJ0o+HSFS48PDy8PV4vICgfcI9DzGOO/PoCHh4e3gZvUgDLl/hqYJH8ar2+h4eHh/fn8xvLQbtgrv41tAAAAABJRU5ErkJggg==" alt="微信分享二维码">
+      <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACv0lEQVR42u3awW7cMAwE0Pz/T6fXAq3jGVJq9/D2FGQ3tp4DiNwRv77i1/fD6/d3nz7553V+vktyx8MvPDw8vENLf7rZ01I2PydLT/B/uQ4eHh7eNV5yuWRxeZF4unu7npe/xcPDw/sA3qZFbrf1pInHw8PD+3xeS00a9NkDwsPDw/u/vDyoTX7TtuDt0q9kLXh4eHgxLz9F+pyfr5zv4eHh4a1P1fPDsKRg5ItLIolotXh4eHgXePmG2+JPHY/Nwgs8PDy8e7xk689jguTdFryJPPDw8PDu8faRRHLY32Jm5aqYa8DDw8Mb8ZKPbprg9gCsvXLRduPh4eEd4rXhbB4Z5CMCm3Guuo7h4eHhrXntVjuLCfbhRduURyk1Hh4e3prXbtBtq92++zOsKB54eHh4R3nJgNSsCd6XhFlv/FLx8PDw8C7wNhtxPoiQD1ElReKl4uHh4eFd4+2LwSyobYtEMZiFh4eHd5k329w3J037g7GXRhwPDw/vAi9peTfxRBvvbgYUXv6HeHh4eId47VhAGzEkzXR+x7oI4eHh4V3gzUag8oAg//z+3cdHiYeHh3eBl2+4pzrVzUOcHdfh4eHhneK1B1SbI642YkjuHqXUeHh4eNd4eZC6igZi8KwkPH5XwMPDwzvEa8cF6kuXD/FUWXr5H+Lh4eEd4rUben2bONSY5ShFdIuHh4d3lDcLF2YhwuwIrf4agIeHh3eN1w4QnALP4o/kMeHh4eHd4H2Xr1lIMYt9Dwxj4eHh4V3gzTbcdpQqjxuScpLHx3h4eHj3eHkxaJdy6ohr1tbj4eHh3eblYwFt21oHr6OiNZwIw8PDw/snvCTAza8cbe6b9hoPDw/vA3hFOxt8ZjbIVRQYPDw8vGu82ahTu/Q2nshL0YGsBQ8PD6876y++8M826M0IQh71Hsgz8PDw8H7i/QIHqcU6d+DRBgAAAABJRU5ErkJggg==" alt="微信分享二维码">
     </div>
 </div>
 
@@ -555,7 +555,7 @@ var _hmt = _hmt || [];
 
 
 
-<div id="SOHUCS" sid="record-data-loss-problem-caused-by-MTU"></div>
+<div id="SOHUCS" sid="record-data-loss-problem-caused-by-mtu"></div>
 <script type="text/javascript">
   (function () {
     var appid = "cytWxLdY3";
@@ -757,11 +757,11 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">网络</a>
+                <a href="javascript:void(0)" class="js-tag color4">服务器</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">服务器</a>
+                <a href="javascript:void(0)" class="js-tag color3">网络</a>
               </li>
              
               <li class="article-tag-list-item">
