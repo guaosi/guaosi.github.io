@@ -9,19 +9,19 @@
   <link rel="dns-prefetch" href="https://www.guaosi.com">
   <title>记录一次因为MTU问题导致网络丢包无响应 | guaosi的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="起因首先，先上一下公司测试环境的简单网络结构  简单说一下，测试环境的上游服务是放在阿里云服务器的，通过阿里云的VPN网关，发起HTTP请求到公司内部测试环境的下游服务。然后下游服务处理后，再返回对应的相关数据。 之前一直都没什么网络问题。今天突然发现上游服务请求某一接口一直报服务超时，但是其他接口又是正常的。问题探究之路从这里展开~ 猜测首先，先简单猜想一下会有哪些原因造成这种情况的？ 猜想一">
+  <meta name="description" content="起因首先，先上一下公司测试环境的简单网络结构  简单说一下，测试环境的上游服务是放在阿里云服务器的，通过阿里云的VPN网关，发起HTTP请求到公司内部测试环境的下游服务。然后下游服务处理后，再返回对应的相关数据。 之前一直都没什么网络问题。今天突然发现上游服务请求某一接口一直报服务超时，但是其他接口又是正常的。问题探究之路从这里展开~">
 <meta name="keywords" content="网络编程,服务器">
 <meta property="og:type" content="article">
 <meta property="og:title" content="记录一次因为MTU问题导致网络丢包无响应">
 <meta property="og:url" content="https://www.guaosi.com/2020/05/16/record-data-loss-problem-caused-by-MTU/index.html">
 <meta property="og:site_name" content="guaosi的博客">
-<meta property="og:description" content="起因首先，先上一下公司测试环境的简单网络结构  简单说一下，测试环境的上游服务是放在阿里云服务器的，通过阿里云的VPN网关，发起HTTP请求到公司内部测试环境的下游服务。然后下游服务处理后，再返回对应的相关数据。 之前一直都没什么网络问题。今天突然发现上游服务请求某一接口一直报服务超时，但是其他接口又是正常的。问题探究之路从这里展开~ 猜测首先，先简单猜想一下会有哪些原因造成这种情况的？ 猜想一">
+<meta property="og:description" content="起因首先，先上一下公司测试环境的简单网络结构  简单说一下，测试环境的上游服务是放在阿里云服务器的，通过阿里云的VPN网关，发起HTTP请求到公司内部测试环境的下游服务。然后下游服务处理后，再返回对应的相关数据。 之前一直都没什么网络问题。今天突然发现上游服务请求某一接口一直报服务超时，但是其他接口又是正常的。问题探究之路从这里展开~">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://www.guaosi.com/assets/blogImg/record-data-loss-problem-caused-by-MTU/network.png">
-<meta property="og:updated_time" content="2020-05-16T03:50:24.676Z">
+<meta property="og:updated_time" content="2020-05-16T03:55:23.976Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="记录一次因为MTU问题导致网络丢包无响应">
-<meta name="twitter:description" content="起因首先，先上一下公司测试环境的简单网络结构  简单说一下，测试环境的上游服务是放在阿里云服务器的，通过阿里云的VPN网关，发起HTTP请求到公司内部测试环境的下游服务。然后下游服务处理后，再返回对应的相关数据。 之前一直都没什么网络问题。今天突然发现上游服务请求某一接口一直报服务超时，但是其他接口又是正常的。问题探究之路从这里展开~ 猜测首先，先简单猜想一下会有哪些原因造成这种情况的？ 猜想一">
+<meta name="twitter:description" content="起因首先，先上一下公司测试环境的简单网络结构  简单说一下，测试环境的上游服务是放在阿里云服务器的，通过阿里云的VPN网关，发起HTTP请求到公司内部测试环境的下游服务。然后下游服务处理后，再返回对应的相关数据。 之前一直都没什么网络问题。今天突然发现上游服务请求某一接口一直报服务超时，但是其他接口又是正常的。问题探究之路从这里展开~">
 <meta name="twitter:image" content="https://www.guaosi.com/assets/blogImg/record-data-loss-problem-caused-by-MTU/network.png">
   
   <link rel="alternative" href="/atom.xml" title="guaosi的博客" type="application/atom+xml">
@@ -341,6 +341,7 @@ var _hmt = _hmt || [];
 <p><img src="/assets/blogImg/record-data-loss-problem-caused-by-MTU/network.png" alt="network"></p>
 <p>简单说一下，测试环境的上游服务是放在阿里云服务器的，通过阿里云的VPN网关，发起HTTP请求到公司内部测试环境的下游服务。然后下游服务处理后，再返回对应的相关数据。</p>
 <p>之前一直都没什么网络问题。今天突然发现上游服务请求某一接口一直报服务超时，但是其他接口又是正常的。问题探究之路从这里展开~</p>
+<a id="more"></a>
 <h2 id="猜测"><a href="#猜测" class="headerlink" title="猜测"></a>猜测</h2><p>首先，先简单猜想一下会有哪些原因造成这种情况的？</p>
 <h3 id="猜想一-上游服务请求已发出，但是数据包在网络中丢失"><a href="#猜想一-上游服务请求已发出，但是数据包在网络中丢失" class="headerlink" title="猜想一 上游服务请求已发出，但是数据包在网络中丢失"></a>猜想一 上游服务请求已发出，但是数据包在网络中丢失</h3><p>这种猜想比较容易验证。由于上游服务请求少有服务不止一个接口，但是只有其中一个接口一直是报请求超时，其他接口都正常，可以排除网络丢包的问题。</p>
 <h3 id="猜想二-下游服务器未收到请求数据包或已收到但是相关服务未启动"><a href="#猜想二-下游服务器未收到请求数据包或已收到但是相关服务未启动" class="headerlink" title="猜想二 下游服务器未收到请求数据包或已收到但是相关服务未启动"></a>猜想二 下游服务器未收到请求数据包或已收到但是相关服务未启动</h3><p>这种猜想也非常好验证,首先检查一下下游服务的相关进程，相关端口是否正常开启，检查下游服务的日志信息，请求记录。发现下游服务的请求记录中有上游服务请求超时的接口，并且正常响应，程序没有报异常。<br>为了进一步验证，使用<code>tcmpdump</code>进行抓包，再将抓取的数据导入<code>Wireshark</code>进行tcp流追踪，最后确认请求数据正常接收以及响应。</p>
@@ -728,6 +729,14 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Linux</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Python</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">PHP</a>
               </li>
              
@@ -745,14 +754,6 @@ var _hmt = _hmt || [];
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Laravel</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Linux</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Python</a>
               </li>
              
               <li class="article-tag-list-item">
