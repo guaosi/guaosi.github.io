@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://www.guaosi.com/"/>
-  <updated>2020-02-10T13:20:26.534Z</updated>
+  <updated>2020-05-16T03:50:24.676Z</updated>
   <id>https://www.guaosi.com/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>记录一次因为MTU问题导致网络丢包无响应</title>
+    <link href="https://www.guaosi.com/2020/05/16/record-data-loss-problem-caused-by-MTU/"/>
+    <id>https://www.guaosi.com/2020/05/16/record-data-loss-problem-caused-by-MTU/</id>
+    <published>2020-05-16T02:25:56.000Z</published>
+    <updated>2020-05-16T03:50:24.676Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="起因"><a href="#起因" class="headerlink" title="起因"></a>起因</h2><p>首先，先上一下公司测试环境的简单网络结构</p><p><img src="/assets/blogImg/record-data-loss-problem-caused-by-MTU/network.png" alt="network"></p><p>简单说一下，测试环境的上游服务是放在阿里云服务器的，通过阿里云的VPN网关，发起HTTP请求到公司内部测试环境的下游服务。然后下游服务处理后，再返回对应的相关数据。</p><p>之前一直都没什么网络问题。今天突然发现上游服务请求某一接口一直报服务超时，但是其他接口又是正常的。问题探究之路从这里展开~</p><h2 id="猜测"><a href="#猜测" class="headerlink" title="猜测"></a>猜测</h2><p>首先，先简单猜想一下会有哪些原因造成这种情况的？</p><h3 id="猜想一-上游服务请求已发出，但是数据包在网络中丢失"><a href="#猜想一-上游服务请求已发出，但是数据包在网络中丢失" class="headerlink" title="猜想一 上游服务请求已发出，但是数据包在网络中丢失"></a>猜想一 上游服务请求已发出，但是数据包在网络中丢失</h3><p>这种猜想比较容易验证。由于上游服务请求少有服务不止一个接口，但是只有其中一个接口一直是报请求超时，其他接口都正常，可以排除网络丢包的问题。</p><h3 id="猜想二-下游服务器未收到请求数据包或已收到但是相关服务未启动"><a href="#猜想二-下游服务器未收到请求数据包或已收到但是相关服务未启动" class="headerlink" title="猜想二 下游服务器未收到请求数据包或已收到但是相关服务未启动"></a>猜想二 下游服务器未收到请求数据包或已收到但是相关服务未启动</h3><p>这种猜想也非常好验证,首先检查一下下游服务的相关进程，相关端口是否正常开启，检查下游服务的日志信息，请求记录。发现下游服务的请求记录中有上游服务请求超时的接口，并且正常响应，程序没有报异常。<br>为了进一步验证，使用<code>tcmpdump</code>进行抓包，再将抓取的数据导入<code>Wireshark</code>进行tcp流追踪，最后确认请求数据正常接收以及响应。</p><h3 id="猜想三-下游服务已响应，但是数据包在网络中丢失或被阿里云服务器丢弃"><a href="#猜想三-下游服务已响应，但是数据包在网络中丢失或被阿里云服务器丢弃" class="headerlink" title="猜想三 下游服务已响应，但是数据包在网络中丢失或被阿里云服务器丢弃"></a>猜想三 下游服务已响应，但是数据包在网络中丢失或被阿里云服务器丢弃</h3><p>如今只剩下最后一个猜想，数据丢包问题。会不会是被阿里云的VPN网关主动丢弃？因为有一个想不透的点，为什么只有这个接口出现了问题，并且问题是请求超时，其他的接口都可以正常响应？这样一想，数据丢包的可能性非常的话。于是查阅了阿里云VPN网关文档，查看是否有相关限制。然后看到<a href="https://help.aliyun.com/document_detail/119749.html?spm=5176.11065259.1996646101.searchclickresult.135d2134tkgzbL" target="_blank" rel="noopener">MTU注意事项</a>,其中有一段注意事项</p><figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">您必须配置本地VPN网关，将其使用的MTU限制在<span class="number">1400</span>字节之内，建议MTU设置为<span class="number">1400</span>字节。</span><br></pre></td></tr></table></figure><blockquote><p>当然，如果你对MTU很陌生，可以查看<a href="https://yq.aliyun.com/articles/222535" target="_blank" rel="noopener">这篇文章</a>，补充一些关于数据帧方面的知识。</p></blockquote><h2 id="解决问题"><a href="#解决问题" class="headerlink" title="解决问题"></a>解决问题</h2><p>既然阿里云VPN网关有这个限制，不妨先设置看看，是否可以解决问题。于是在下游服务器的出口网卡上设置MTU为1300(安全起见)</p><p>以Centos为例:</p><p>临时设定<br><figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ifconfig eth0 mtu <span class="number">1300</span> up</span><br></pre></td></tr></table></figure></p><p>永久设定<br><figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">vi <span class="regexp">/etc/</span>sysconfig<span class="regexp">/network-scripts/i</span>fcfg-eth0</span><br><span class="line"></span><br><span class="line"><span class="comment">#增加如下内容</span></span><br><span class="line">MTU=<span class="string">"9000"</span></span><br></pre></td></tr></table></figure></p><p>然后重启网卡生效<br><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">service<span class="built_in"> network </span>restart</span><br></pre></td></tr></table></figure></p><p>然后回到上游服务查看相关日志，发现接口已经正常响应，服务正常了。</p><h2 id="原因分析"><a href="#原因分析" class="headerlink" title="原因分析"></a>原因分析</h2><p>原因很明显，就是VPN网关的MTU与下游服务器的网卡MTU不一致。默认的MTU都是1500字节，当数据包超过这个大小时，就会被分包。当然，分包这个工作是由网卡替我们完成的。</p><p>阿里云的VPN网关规定大小为1400字节，返回的数据帧不超过1400字节时，正常转发放行。如果超过，就会被丢弃。就算假设数据帧总大小为1800字节，下游服务器此时MTU还是1500字节，在网络层拆成小于1500(考虑帧也有大小)字节和大于300字节的数据包。此时<strong>1500字节的帧被阿里云的VPN网关丢弃，300字节的数据帧转发到上游服务器，上游服务器到网络层进行数据包的重组，发现该数据包无法重组，就进行丢弃。这也就是为什么有的接口正常，但是有的接口超时的原因了</strong></p><p>之前没有出现这个问题，是由于因为数据量不够，导致数据帧的大小还没达到1400字节，所以一直没出现。</p><blockquote><p>数据报(传输层)&gt;数据包(网络层)&gt;数据帧(数据链路层)</p></blockquote><h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>不要忽略基础知识，网络知识的重要性，有时候依靠这些知识，才能更好地分析问题，解决问题。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;起因&quot;&gt;&lt;a href=&quot;#起因&quot; class=&quot;headerlink&quot; title=&quot;起因&quot;&gt;&lt;/a&gt;起因&lt;/h2&gt;&lt;p&gt;首先，先上一下公司测试环境的简单网络结构&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/assets/blogImg/record-data-loss
+      
+    
+    </summary>
+    
+    
+      <category term="网络编程" scheme="https://www.guaosi.com/tags/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/"/>
+    
+      <category term="服务器" scheme="https://www.guaosi.com/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/"/>
+    
+  </entry>
   
   <entry>
     <title>RabbitMQ集群架构模式</title>
