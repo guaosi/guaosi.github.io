@@ -2,9 +2,30 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://www.guaosi.com/2020/07/05/kubernetes-for-mac-install/</loc>
+    
+    <lastmod>2020-07-05T10:57:38.254Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://www.guaosi.com/2020/01/22/network-of-vmware-and-docker/</loc>
+    
+    <lastmod>2020-07-05T10:57:18.957Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://www.guaosi.com/2020/07/05/kubernetes-cluster-install/</loc>
+    
+    <lastmod>2020-07-05T09:50:41.853Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://www.guaosi.com/2020/05/16/record-data-loss-problem-caused-by-MTU/</loc>
     
-    <lastmod>2020-05-16T04:19:40.912Z</lastmod>
+    <lastmod>2020-05-16T04:23:00.546Z</lastmod>
     
   </url>
   
@@ -213,13 +234,6 @@
   
   <url>
     <loc>https://www.guaosi.com/2019/02/26/laravel-api-initialization-preparation/</loc>
-    
-    <lastmod>2020-01-24T09:44:17.366Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://www.guaosi.com/2020/01/22/network-of-vmware-and-docker/</loc>
     
     <lastmod>2020-01-24T09:44:17.366Z</lastmod>
     
