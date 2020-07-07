@@ -7,23 +7,23 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="https://www.guaosi.com">
-  <title>Iptables简单介绍 | guaosi的博客</title>
+  <title>GO微服务系列-1.1 涉及的组件、框架介绍 | guaosi的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="基本常识防火墙防⽕墙可以⼤体分为主机防⽕墙和⽹络防⽕墙。  主机防⽕墙：针对于单个主机进⾏防护。  ⽹络防⽕墙：往往处于⽹络⼊⼝或边缘，针对于⽹络⼊⼝进⾏防护，服务于防⽕墙背后的本地局域⽹。  ⽹络防⽕墙和主机防⽕墙并不冲突，可以理解为，⽹络防⽕墙主外（集体）， 主机防⽕墙主内（个⼈）。 从物理上讲，防⽕墙可以分为硬件防⽕墙和软件防⽕墙。  硬件防⽕墙：在硬件级别实现部分防⽕墙功能，另⼀部分功能基">
-<meta name="keywords" content="Linux,服务器">
+  <meta name="description" content="流程图首先来看一下整体的流程图 请求微服务流程图">
+<meta name="keywords" content="Golang,微服务,go-micro">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Iptables简单介绍">
-<meta property="og:url" content="https://www.guaosi.com/2020/01/22/the-brief-introduction-to-iptables/index.html">
+<meta property="og:title" content="GO微服务系列-1.1 涉及的组件、框架介绍">
+<meta property="og:url" content="https://www.guaosi.com/2020/07/05/go-micro-service-introduce-components-and-framework/index.html">
 <meta property="og:site_name" content="guaosi的博客">
-<meta property="og:description" content="基本常识防火墙防⽕墙可以⼤体分为主机防⽕墙和⽹络防⽕墙。  主机防⽕墙：针对于单个主机进⾏防护。  ⽹络防⽕墙：往往处于⽹络⼊⼝或边缘，针对于⽹络⼊⼝进⾏防护，服务于防⽕墙背后的本地局域⽹。  ⽹络防⽕墙和主机防⽕墙并不冲突，可以理解为，⽹络防⽕墙主外（集体）， 主机防⽕墙主内（个⼈）。 从物理上讲，防⽕墙可以分为硬件防⽕墙和软件防⽕墙。  硬件防⽕墙：在硬件级别实现部分防⽕墙功能，另⼀部分功能基">
+<meta property="og:description" content="流程图首先来看一下整体的流程图 请求微服务流程图">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="https://www.guaosi.com/assets/blogImg/the-brief-introduction-to-iptables/Linux-用户空间与内核空间.jpg">
-<meta property="og:image" content="https://www.guaosi.com/assets/blogImg/the-brief-introduction-to-iptables/Linux防火墙—包数据流向.jpg">
-<meta property="og:updated_time" content="2020-01-25T14:32:08.143Z">
+<meta property="og:image" content="https://www.guaosi.com/assets/blogImg/data-structures-and-algorithms/微服务整体流程.png">
+<meta property="og:image" content="https://www.guaosi.com/assets/blogImg/data-structures-and-algorithms/ci,cd整体流程.png">
+<meta property="og:updated_time" content="2020-07-07T00:55:45.830Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Iptables简单介绍">
-<meta name="twitter:description" content="基本常识防火墙防⽕墙可以⼤体分为主机防⽕墙和⽹络防⽕墙。  主机防⽕墙：针对于单个主机进⾏防护。  ⽹络防⽕墙：往往处于⽹络⼊⼝或边缘，针对于⽹络⼊⼝进⾏防护，服务于防⽕墙背后的本地局域⽹。  ⽹络防⽕墙和主机防⽕墙并不冲突，可以理解为，⽹络防⽕墙主外（集体）， 主机防⽕墙主内（个⼈）。 从物理上讲，防⽕墙可以分为硬件防⽕墙和软件防⽕墙。  硬件防⽕墙：在硬件级别实现部分防⽕墙功能，另⼀部分功能基">
-<meta name="twitter:image" content="https://www.guaosi.com/assets/blogImg/the-brief-introduction-to-iptables/Linux-用户空间与内核空间.jpg">
+<meta name="twitter:title" content="GO微服务系列-1.1 涉及的组件、框架介绍">
+<meta name="twitter:description" content="流程图首先来看一下整体的流程图 请求微服务流程图">
+<meta name="twitter:image" content="https://www.guaosi.com/assets/blogImg/data-structures-and-algorithms/微服务整体流程.png">
   
   <link rel="alternative" href="/atom.xml" title="guaosi的博客" type="application/atom+xml">
   
@@ -304,14 +304,14 @@ var _hmt = _hmt || [];
               class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-the-brief-introduction-to-iptables" class="article article-type-post " itemscope="" itemprop="blogPost">
+            <article id="post-go-micro-service-introduce-components-and-framework" class="article article-type-post " itemscope="" itemprop="blogPost">
   <div class="article-inner">
     
     <header class="article-header">
       
   
     <h1 class="article-title" itemprop="name">
-      Iptables简单介绍
+      GO微服务系列-1.1 涉及的组件、框架介绍
     </h1>
   
 
@@ -330,64 +330,99 @@ var _hmt = _hmt || [];
 
 
       
-      <a href="/2020/01/22/the-brief-introduction-to-iptables/" class="archive-article-date">
-  	<time datetime="2020-01-22T08:52:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-01-22</time>
+      <a href="/2020/07/05/go-micro-service-introduce-components-and-framework/" class="archive-article-date">
+  	<time datetime="2020-07-05T13:46:18.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-05</time>
 </a>
       
     </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-      <h1 id="基本常识"><a href="#基本常识" class="headerlink" title="基本常识"></a>基本常识</h1><h2 id="防火墙"><a href="#防火墙" class="headerlink" title="防火墙"></a>防火墙</h2><p>防⽕墙可以⼤体分为主机防⽕墙和⽹络防⽕墙。</p>
-<p> 主机防⽕墙：针对于单个主机进⾏防护。 </p>
-<p>⽹络防⽕墙：往往处于⽹络⼊⼝或边缘，针对于⽹络⼊⼝进⾏防护，服务于防⽕墙背后的本地局域⽹。 </p>
-<p>⽹络防⽕墙和主机防⽕墙并不冲突，可以理解为，⽹络防⽕墙主外（集体）， 主机防⽕墙主内（个⼈）。</p>
-<p>从物理上讲，防⽕墙可以分为硬件防⽕墙和软件防⽕墙。 </p>
-<p>硬件防⽕墙：在硬件级别实现部分防⽕墙功能，另⼀部分功能基于软件实现，性能⾼，成本⾼。 </p>
-<p>软件防⽕墙：应⽤软件处理逻辑运⾏于通⽤硬件平台之上的防⽕墙，性能低，成本低。</p>
+      <h1 id="流程图"><a href="#流程图" class="headerlink" title="流程图"></a>流程图</h1><p>首先来看一下整体的流程图</p>
+<h2 id="请求微服务流程图"><a href="#请求微服务流程图" class="headerlink" title="请求微服务流程图"></a>请求微服务流程图</h2><p><img src="/assets/blogImg/data-structures-and-algorithms/微服务整体流程.png" alt="微服务整体流程"></p>
 <a id="more"></a>
-<h2 id="用户空间与内核空间"><a href="#用户空间与内核空间" class="headerlink" title="用户空间与内核空间"></a>用户空间与内核空间</h2><p><img src="/assets/blogImg/the-brief-introduction-to-iptables/Linux-用户空间与内核空间.jpg" alt="用户空间与内核空间"></p>
-<p>一般我们的应用，也就是放置在应用层的，都是用户空间。除了应用层，其他层都是在内核空间</p>
-<h2 id="iptables与netfilter"><a href="#iptables与netfilter" class="headerlink" title="iptables与netfilter"></a>iptables与netfilter</h2><p>iptables其实不是真正的防⽕墙，我们可以把它理解成⼀个客户端代理，⽤户通过iptables这个代理，将⽤户的安全设定执⾏到对应的”安全框架”中，这个”安全框架”才是真正的防⽕墙，这个框架的名字叫netfilter</p>
-<p>netfilter才是防⽕墙真正的安全框架（framework），netfilter位于内核空间。 </p>
-<p>iptables其实是⼀个命令⾏⼯具，位于⽤户空间，我们⽤这个⼯具操作真正的框架。</p>
-<p>包过滤机制是netfilter,管理工具是iptables。netfilter作用在网络层，netfilter是iptables底层实现的原理，iptables只是一个cli调用工具。</p>
-<h2 id="数据包流向"><a href="#数据包流向" class="headerlink" title="数据包流向"></a>数据包流向</h2><p><img src="/assets/blogImg/the-brief-introduction-to-iptables/Linux防火墙—包数据流向.jpg" alt="Linux防火墙—包数据流向"></p>
-<h2 id="四表五链"><a href="#四表五链" class="headerlink" title="四表五链"></a>四表五链</h2><h3 id="五链"><a href="#五链" class="headerlink" title="五链"></a>五链</h3><p>INPUT：处理入站数据包</p>
-<p>OUTPUT：处理出站数据包</p>
-<p>FORWARD：处理转发数据包</p>
-<p>PREROUTING：选择路由前处理数据包</p>
-<p>POSTROUTING：选择路由后处理数据包</p>
-<p>到本机某进程的报⽂：PREROUTING –&gt; INPUT </p>
-<p>由本机转发的报⽂：PREROUTING –&gt; FORWARD –&gt; POSTROUTING </p>
-<p>由本机的某进程发出报⽂（通常为响应报⽂）：OUTPUT –&gt; POSTROUTING</p>
-<h3 id="四表"><a href="#四表" class="headerlink" title="四表"></a>四表</h3><p>我们把具有相同功能的规则的集合叫做”表”，所以说，不同功能的规则，我们可以放置在不同的表中进⾏管理，⽽iptables已经为我们定义了4种表，每种表对应了不同的功能，而我们定义的规则也都逃脱不了这4种功能的范围，所以，学习iptables之前，我们必须先搞明⽩每种表的作⽤。</p>
-<p> iptables为我们提供了如下规则的分类，或者说，iptables为我们提供了如下”表”</p>
-<p>filter表：负责过滤功能，防⽕墙；内核模块：iptables_filter </p>
-<p>nat表：network address translation，⽹络地址转换功能；内核模块：iptable_nat </p>
-<p>mangle表：拆解报⽂，做出修改，并重新封装 的功能；iptable_mangle </p>
-<p>raw表：关闭nat表上启⽤的连接追踪机制；iptable_raw</p>
-<p>也就是说，我们⾃定义的所有规则，都是这四种分类中的规则，或者说，所有规则都存在于这4张”表”中。</p>
-<p>但是我们需要注意的是，某些”链”中注定不会包含”某类规则”</p>
-<h3 id="链-gt-表"><a href="#链-gt-表" class="headerlink" title="链-&gt;表"></a>链-&gt;表</h3><p>PREROUTING    的规则可以存在于：raw表，mangle表，nat表。</p>
-<p>INPUT      的规则可以存在于：mangle表，filter表，（centos7中还有nat表，centos6中没有）。</p>
-<p>FORWARD     的规则可以存在于：mangle表，filter表。</p>
-<p>OUTPUT     的规则可以存在于：raw表mangle表，nat表，filter表。</p>
-<p>POSTROUTING    的规则可以存在于：mangle表，nat表。</p>
-<h3 id="表-gt-链"><a href="#表-gt-链" class="headerlink" title="表-&gt;链"></a>表-&gt;链</h3><p>raw   表中的规则可以被哪些链使⽤：PREROUTING，OUTPUT </p>
-<p>mangle  表中的规则可以被哪些链使⽤：PREROUTING，INPUT，FORWARD，OUTPUT，POSTROUTING </p>
-<p>nat   表中的规则可以被哪些链使⽤：PREROUTING，OUTPUT，POSTROUTING（centos7中还有INPUT，centos6中没有）</p>
-<p> filter  表中的规则可以被哪些链使⽤：INPUT，FORWARD，OUTPUT</p>
-<h2 id="处理动作"><a href="#处理动作" class="headerlink" title="处理动作"></a>处理动作</h2><p>处理动作在iptables中被称为target（这样说并不准确，我们暂且这样称呼），动作也可以分为基本动作和扩展动作。 </p>
-<p>此处列出⼀些常⽤的动作：</p>
-<p>ACCEPT：允许数据包通过。 </p>
-<p>DROP：直接丢弃数据包，不给任何回应信息，这时候客户端会感觉⾃⼰的请求泥⽜⼊海了，过了超时时间才会有反应。</p>
-<p>REJECT：拒绝数据包通过，必要时会给数据发送端⼀个响应的信息，客户端刚请求就会收到拒绝的信息。 </p>
-<p>SNAT：源地址转换，解决内⽹⽤户⽤同⼀个公⽹地址上⽹的问题。 </p>
-<p>MASQUERADE：是SNAT的⼀种特殊形式，适⽤于动态的、临时会变的ip上。 </p>
-<p>DNAT：⽬标地址转换。 </p>
-<p>REDIRECT：在本机做端⼝映射。</p>
-<h2 id="命令演示"><a href="#命令演示" class="headerlink" title="命令演示"></a>命令演示</h2><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 查看本机防火墙配置信息</span></span><br><span class="line">iptables -L -n</span><br><span class="line"></span><br><span class="line"><span class="comment"># 向filter表中增加INPUT链，当192.168.184.20进入时，协议为tcp，端口为22，此时动作是丢弃该数据包</span></span><br><span class="line">iptables -t<span class="built_in"> filter </span>-A INPUT -s 192.168.184.20 -p tcp --dport 22 -j DROP</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看本机开放端口</span></span><br><span class="line">netstat —tnlp</span><br><span class="line"></span><br><span class="line"><span class="comment"># 向filter表中增加INPUT链，当192.168.184.1进入时，协议为tcp，端口为，此时动作是丢弃该数据包</span></span><br><span class="line">iptables -t<span class="built_in"> filter </span>-A INPUT -s 192.168.184.1 -p tcp --dport 80 -j DROP</span><br></pre></td></tr></table></figure>
+<p>在这张图中：</p>
+<ul>
+<li>反向代理使用的是<code>traefik</code>，它的特色是可以动态发现，完美支持<code>docker</code>，<code>kubernetes</code>。</li>
+<li>网关中微服务部分使用的是<code>go-micro</code>框架，由于<code>go-micro</code>的web和路由功能并不能很好地满足现实需求，所以的对外提供HTTP服务的部分使用的是<code>gin</code>框架。</li>
+<li>服务部分使用的是<code>go-micro</code>框架编写微服务</li>
+<li>由于使用的是<code>go-micro</code>框架，该框架默认使用的是<code>grpc</code>通讯，<code>grpc</code>通讯的通讯格式是<code>Protobuf</code></li>
+<li>go-micro默认的服务发现是通过<code>mdns</code>,我们更换为使用<code>etcd</code>做服务注册中心。当使用<code>Kubernetes</code>部署时,<code>Kubernetes</code>将<code>Service</code>的名称当做域名注册到<code>kube-dns</code>中，通过<code>Service</code>的名称就可以访问其提供的服务</li>
+<li>编排工具会先使用<code>docker-compose</code>，最终使用<code>Kubernetes</code></li>
+</ul>
+<h2 id="CI-CD流程图"><a href="#CI-CD流程图" class="headerlink" title="CI/CD流程图"></a>CI/CD流程图</h2><p><img src="/assets/blogImg/data-structures-and-algorithms/ci,cd整体流程.png" alt="ci/cd整体流程"></p>
+<p>在这张图中：</p>
+<ul>
+<li>代码仓库使用的是<code>gitlab</code></li>
+<li>持续集成使用的是<code>jenkins</code></li>
+<li>远程镜像仓库使用的是阿里云的容器镜像服务</li>
+<li><code>jenkins</code>需要安装的插件有:Localization: <code>Chinese(Simplified)</code>、<code>Publish Over SSH</code>、<code>Gitlab</code>、<code>Golang</code></li>
+</ul>
+<h1 id="涉及到的组件、框架及其版本"><a href="#涉及到的组件、框架及其版本" class="headerlink" title="涉及到的组件、框架及其版本"></a>涉及到的组件、框架及其版本</h1><table>
+<thead>
+<tr>
+<th style="text-align:center">技术</th>
+<th style="text-align:center">使用</th>
+<th style="text-align:center">版本</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">语言</td>
+<td style="text-align:center">Golang</td>
+<td style="text-align:center">1.14.1</td>
+</tr>
+<tr>
+<td style="text-align:center">Web框架(网关)</td>
+<td style="text-align:center">Gin</td>
+<td style="text-align:center">v1.6.3</td>
+</tr>
+<tr>
+<td style="text-align:center">通讯格式</td>
+<td style="text-align:center">Protobuf</td>
+<td style="text-align:center">v1.4.1</td>
+</tr>
+<tr>
+<td style="text-align:center">微服务框架</td>
+<td style="text-align:center">Go-micro</td>
+<td style="text-align:center">v2.9.0</td>
+</tr>
+<tr>
+<td style="text-align:center">反向代理</td>
+<td style="text-align:center">Traefik</td>
+<td style="text-align:center">v2.2.1</td>
+</tr>
+<tr>
+<td style="text-align:center">服务注册中心</td>
+<td style="text-align:center">Etcd/Kubernetes</td>
+<td style="text-align:center">v3.3.8/v1.16.5</td>
+</tr>
+<tr>
+<td style="text-align:center">容器</td>
+<td style="text-align:center">Docker</td>
+<td style="text-align:center">v19.03.8</td>
+</tr>
+<tr>
+<td style="text-align:center">编排工具</td>
+<td style="text-align:center">Docker-Compose/Kubernetes</td>
+<td style="text-align:center">v1.25.5/v1.16.5</td>
+</tr>
+<tr>
+<td style="text-align:center">代码仓库</td>
+<td style="text-align:center">Gitlab</td>
+<td style="text-align:center">v13.1.1-ce.0</td>
+</tr>
+<tr>
+<td style="text-align:center">持续集成</td>
+<td style="text-align:center">Jenkins</td>
+<td style="text-align:center">v2.242</td>
+</tr>
+</tbody>
+</table>
+<h1 id="仓库"><a href="#仓库" class="headerlink" title="仓库"></a>仓库</h1><p>对应的相关代码和部署文件，已经传至github，欢迎star。</p>
+<p>微服务与部署：<a href="https://github.com/guaosi/go-micro-build" target="_blank" rel="noopener">https://github.com/guaosi/go-micro-build</a></p>
+<p>持续交付、集成、部署：<a href="https://github.com/guaosi/go-cicd" target="_blank" rel="noopener">https://github.com/guaosi/go-cicd</a></p>
+
       
 
       
@@ -400,7 +435,7 @@ var _hmt = _hmt || [];
           
           <br>
           <strong>本文链接：</strong>
-          <a rel="license" href="https://www.guaosi.com/2020/01/22/the-brief-introduction-to-iptables/">https://www.guaosi.com/2020/01/22/the-brief-introduction-to-iptables/</a>
+          <a rel="license" href="https://www.guaosi.com/2020/07/05/go-micro-service-introduce-components-and-framework/">https://www.guaosi.com/2020/07/05/go-micro-service-introduce-components-and-framework/</a>
           <br>
           <strong>版权声明：</strong>
           本博客所有文章除特别声明外，均采用
@@ -454,17 +489,26 @@ var _hmt = _hmt || [];
 
     <div class="article-info article-info-index">
       
+      <div class="article-pop-out tagcloud">
+        <i class="icon-tuding"></i>
+        <a class="article-tag-list-link color3">置顶</a>
+      </div>
+      
       
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Linux</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Golang</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">服务器</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">微服务</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">go-micro</a>
         		</li>
       		
 		</ul>
@@ -520,7 +564,7 @@ var _hmt = _hmt || [];
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACs0lEQVR42u3aQXLjMAwEwPz/094H7FqeAYmUt6p1StmWxOaBQAD8/MTX66/r+fPn5yTfvnvXz8aFh4eHd7z0Z8bzUp6fkNz7vML8jXh4eHjbvOSYzk/g2dKTX+ZrxsPDw/seXhs2ZoEk2Tg8PDy8/4X37pUn+Lw8gYeHh/c9vLaU0IaBWUi4EFrw8PDwFni3Dujf/Hulv4eHh4d33FVvm2Ftkp2PF7xGFx4eHt4Gb9bcatPu2dBA8klS8MXDw8O7y8uP4Pbb9pmz538o5uLh4eEt8PIjeLasdrNOwsDb3+Ph4eEt8GbJbn5kt4WMvFRR3IuHh4e3wEuS1Lw11RZ/29GuC308PDw8vEuzRnlq2zax2kUn64n6e3h4eHhXeflgU16EbVtoeVlhuKF4eHh4C7w8AJzgZ4l7O5KFh4eHt82btaPajchHB04S9A+TEXh4eHjLvLYg244gzDalrs3i4eHhLfPyosAGaaUxhoeHh7fWc2+Lp0kp9ry40G7Nh5IEHh4e3lVe26A6KUnkQSjf9GhD8fDw8K7yZoOneao9S9wTdlSGxsPDw1vgtU2m2aDVSZMsuaKUGg8PD+9XeLMhqmS5r8erffswMODh4eGVvNnj2hJte8Sfl3rruISHh4fXrbMAz2LOK7jOhwzqNhgeHh7eAa/eg4OUuu7LHQQPPDw8vG1ee5TnC82DRz5ScFTAxcPDw7vEy4/mNvE9CUKz9eDh4eHt8V7lNUuX2z5+O2719ls8PDy8BV77r37OzgPGSeJeN8Dw8PDwLvHOD/rZ8d2209oiBR4eHt427/nzvCiQH/23olYUGPDw8PC+hpePTOVFipN3/eNePDw8vC/jtUn2rEiRjyAsxj08PDy84xLtLJluCxDJ0z7ci4eHh7fAa//hb9lJEjzbuJ9bFx4eHl7K+wMj2s8UHaSwPAAAAABJRU5ErkJggg==" alt="微信分享二维码">
+      <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPYAAAD2CAAAAADAeSUUAAADIElEQVR42u3aQY7iQAwFUO5/aUaaVY9owrcdRsS8rJA6HepVFsb+dbvF1/3v9fPzz+vxzuP7H//6+DlZz7M1nHZhY2NjX4R9P7yqX/Psv/I1JJtY3eJf1oCNjY29jt0rWsfLyoti/r29b8fGxsbGrhaz41LUK0L507CxsbGxc/Z8AJQPmPKCio2Njf2d7MkQvzrur4YK+dDqLbM0bGxs7I9n94Lez/z89nwbGxsb+8PY9+JVHetMQt+cVFZgY2NjL2L3BjTzRfcGRvNNuVXfGzY2Nval2JPCkA+eJjFDHgMnOmxsbOwd7HwRE3Cv/FQPWZabEGxsbOwV7GoZe0erUI2ce68EGxsbeze7eoSxWjzyxmMSTiQv5mk8gI2NjX1Z9nH5qbYovbahGiRUjxNFwQA2Njb2ZdnzpfRigN7gabJNLzowbGxs7IuzkwIwP2SZb2L+tNOmaNjY2NiXZfeG/pPgdoLvlcwXQyVsbGzsi7PnY6O84FXvqW5NPnjCxsbG3sfuHdzpDXSqh3h64OqmYGNjY1+dXW0DehFCXtImrVFho7GxsbFXsOePyxuSCSx/GdG3YGNjYy9i/5824NyylDNGLRA2Njb2pdgTWLU5mdw5eXvY2NjYW9l5A1D9uZ88uVeWeiXzn8/Y2NjY69jJiD8H3FrXJKLIV4WNjY29j523GXkwcPxrP+FNhlbNWRo2Njb2xdnzwpMM+nvIScF70d5gY2Njr2AnA/rqPUkZqz5tHldgY2Nj72bnyEno2wsPqjFwoWJjY2Njr2D3At18lFNlVAvYKCTGxsbGXsE+67jMPB44K3KOSiY2Njb217CTMlZtJ/JWpPcCogKMjY2NvYidl4p5fJswqgeGeiE0NjY29ib2vXidVZx6zUyy9dEGYWNjYy9iT4ZHeYjbK07V4z55mcTGxsbex+41APMYeH48qLpZUUiAjY2NfVl2dYl5menFtOdG0U/jXmxsbOwvY+f4fOnzUtSMqLGxsbGxW9HvuZHtaCCFjY2NvY49H9xXS1TeupwVHmNjY2NvZVeD3t4oqte05EvPSyk2Njb2IvYfd/T3E+VA8NUAAAAASUVORK5CYII=" alt="微信分享二维码">
     </div>
 </div>
 
@@ -534,18 +578,9 @@ var _hmt = _hmt || [];
 
 <nav id="article-nav">
   
-    <a href="/2020/01/22/lvs-introduction-to-the-principle-of-NAT-and-DR-model/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          lvs负载均衡-NAT与DR模型原理介绍
-        
-      </div>
-    </a>
   
-  
-    <a href="/2020/01/22/network-of-vmware-and-docker/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Vmware和Docker的网络模式讲解</div>
+    <a href="/2020/07/05/go-microservice-series-from-development-to-deployment-introduction-contents/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">手摸手教你从开发到部署(CI/CD)GO微服务系列-介绍与目录</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -572,7 +607,7 @@ var _hmt = _hmt || [];
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#基本常识"><span class="toc-number">1.</span> <span class="toc-text">基本常识</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#防火墙"><span class="toc-number">1.1.</span> <span class="toc-text">防火墙</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#用户空间与内核空间"><span class="toc-number">1.2.</span> <span class="toc-text">用户空间与内核空间</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#iptables与netfilter"><span class="toc-number">1.3.</span> <span class="toc-text">iptables与netfilter</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#数据包流向"><span class="toc-number">1.4.</span> <span class="toc-text">数据包流向</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#四表五链"><span class="toc-number">1.5.</span> <span class="toc-text">四表五链</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#五链"><span class="toc-number">1.5.1.</span> <span class="toc-text">五链</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#四表"><span class="toc-number">1.5.2.</span> <span class="toc-text">四表</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#链-gt-表"><span class="toc-number">1.5.3.</span> <span class="toc-text">链-&gt;表</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#表-gt-链"><span class="toc-number">1.5.4.</span> <span class="toc-text">表-&gt;链</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#处理动作"><span class="toc-number">1.6.</span> <span class="toc-text">处理动作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#命令演示"><span class="toc-number">1.7.</span> <span class="toc-text">命令演示</span></a></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#流程图"><span class="toc-number">1.</span> <span class="toc-text">流程图</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#请求微服务流程图"><span class="toc-number">1.1.</span> <span class="toc-text">请求微服务流程图</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CI-CD流程图"><span class="toc-number">1.2.</span> <span class="toc-text">CI/CD流程图</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#涉及到的组件、框架及其版本"><span class="toc-number">2.</span> <span class="toc-text">涉及到的组件、框架及其版本</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#仓库"><span class="toc-number">3.</span> <span class="toc-text">仓库</span></a></li></ol>
                     </div>
                 </span>
             </div>
@@ -588,7 +623,7 @@ var _hmt = _hmt || [];
 
 
 
-<div id="SOHUCS" sid="the-brief-introduction-to-iptables"></div>
+<div id="SOHUCS" sid="go-micro-service-introduce-components-and-framework"></div>
 <script type="text/javascript">
   (function () {
     var appid = "cytWxLdY3";
