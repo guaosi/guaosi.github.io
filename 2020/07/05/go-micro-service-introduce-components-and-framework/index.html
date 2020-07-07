@@ -17,13 +17,13 @@
 <meta property="og:site_name" content="guaosi的博客">
 <meta property="og:description" content="流程图首先来看一下整体的流程图 请求微服务流程图">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="https://www.guaosi.com/assets/blogImg/data-structures-and-algorithms/微服务整体流程.png">
-<meta property="og:image" content="https://www.guaosi.com/assets/blogImg/data-structures-and-algorithms/ci,cd整体流程.png">
-<meta property="og:updated_time" content="2020-07-07T00:55:45.830Z">
+<meta property="og:image" content="https://www.guaosi.com/assets/blogImg/go-micro-service-introduce-components-and-framework/微服务整体流程.png">
+<meta property="og:image" content="https://www.guaosi.com/assets/blogImg/go-micro-service-introduce-components-and-framework/ci,cd整体流程.png">
+<meta property="og:updated_time" content="2020-07-07T00:58:00.666Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="GO微服务系列-1.1 涉及的组件、框架介绍">
 <meta name="twitter:description" content="流程图首先来看一下整体的流程图 请求微服务流程图">
-<meta name="twitter:image" content="https://www.guaosi.com/assets/blogImg/data-structures-and-algorithms/微服务整体流程.png">
+<meta name="twitter:image" content="https://www.guaosi.com/assets/blogImg/go-micro-service-introduce-components-and-framework/微服务整体流程.png">
   
   <link rel="alternative" href="/atom.xml" title="guaosi的博客" type="application/atom+xml">
   
@@ -339,7 +339,7 @@ var _hmt = _hmt || [];
     <div class="article-entry" itemprop="articleBody">
       
       <h1 id="流程图"><a href="#流程图" class="headerlink" title="流程图"></a>流程图</h1><p>首先来看一下整体的流程图</p>
-<h2 id="请求微服务流程图"><a href="#请求微服务流程图" class="headerlink" title="请求微服务流程图"></a>请求微服务流程图</h2><p><img src="/assets/blogImg/data-structures-and-algorithms/微服务整体流程.png" alt="微服务整体流程"></p>
+<h2 id="请求微服务流程图"><a href="#请求微服务流程图" class="headerlink" title="请求微服务流程图"></a>请求微服务流程图</h2><p><img src="/assets/blogImg/go-micro-service-introduce-components-and-framework/微服务整体流程.png" alt="微服务整体流程"></p>
 <a id="more"></a>
 <p>在这张图中：</p>
 <ul>
@@ -350,7 +350,7 @@ var _hmt = _hmt || [];
 <li>go-micro默认的服务发现是通过<code>mdns</code>,我们更换为使用<code>etcd</code>做服务注册中心。当使用<code>Kubernetes</code>部署时,<code>Kubernetes</code>将<code>Service</code>的名称当做域名注册到<code>kube-dns</code>中，通过<code>Service</code>的名称就可以访问其提供的服务</li>
 <li>编排工具会先使用<code>docker-compose</code>，最终使用<code>Kubernetes</code></li>
 </ul>
-<h2 id="CI-CD流程图"><a href="#CI-CD流程图" class="headerlink" title="CI/CD流程图"></a>CI/CD流程图</h2><p><img src="/assets/blogImg/data-structures-and-algorithms/ci,cd整体流程.png" alt="ci/cd整体流程"></p>
+<h2 id="CI-CD流程图"><a href="#CI-CD流程图" class="headerlink" title="CI/CD流程图"></a>CI/CD流程图</h2><p><img src="/assets/blogImg/go-micro-service-introduce-components-and-framework/ci,cd整体流程.png" alt="ci/cd整体流程"></p>
 <p>在这张图中：</p>
 <ul>
 <li>代码仓库使用的是<code>gitlab</code></li>
@@ -489,11 +489,6 @@ var _hmt = _hmt || [];
 
     <div class="article-info article-info-index">
       
-      <div class="article-pop-out tagcloud">
-        <i class="icon-tuding"></i>
-        <a class="article-tag-list-link color3">置顶</a>
-      </div>
-      
       
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
@@ -578,9 +573,18 @@ var _hmt = _hmt || [];
 
 <nav id="article-nav">
   
+    <a href="/2020/07/05/go-microservice-series-from-development-to-deployment-introduction-contents/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          手摸手教你从开发到部署(CI/CD)GO微服务系列-介绍与目录
+        
+      </div>
+    </a>
   
-    <a href="/2020/07/05/go-microservice-series-from-development-to-deployment-introduction-contents/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">手摸手教你从开发到部署(CI/CD)GO微服务系列-介绍与目录</div>
+  
+    <a href="/2020/07/05/kubernetes-for-mac-install/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Kubernetes 基于 Mac OS 安装教程</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -789,6 +793,14 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">算法</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">数据结构</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Docker</a>
               </li>
              
@@ -801,11 +813,15 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">算法</a>
+                <a href="javascript:void(0)" class="js-tag color4">tcp</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">数据结构</a>
+                <a href="javascript:void(0)" class="js-tag color5">网络编程</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">PHP</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -814,14 +830,6 @@ var _hmt = _hmt || [];
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Python</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">tcp</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">网络编程</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -837,7 +845,7 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">PHP</a>
+                <a href="javascript:void(0)" class="js-tag color3">运维</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -850,10 +858,6 @@ var _hmt = _hmt || [];
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">服务器</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">运维</a>
               </li>
              
               <li class="article-tag-list-item">

@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://www.guaosi.com/"/>
-  <updated>2020-07-07T00:55:45.830Z</updated>
+  <updated>2020-07-06T12:57:20.184Z</updated>
   <id>https://www.guaosi.com/</id>
   
   <author>
@@ -15,31 +15,6 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
-  
-  <entry>
-    <title>GO微服务系列-1.1 涉及的组件、框架介绍</title>
-    <link href="https://www.guaosi.com/2020/07/05/go-micro-service-introduce-components-and-framework/"/>
-    <id>https://www.guaosi.com/2020/07/05/go-micro-service-introduce-components-and-framework/</id>
-    <published>2020-07-05T13:46:18.000Z</published>
-    <updated>2020-07-07T00:55:45.830Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="流程图"><a href="#流程图" class="headerlink" title="流程图"></a>流程图</h1><p>首先来看一下整体的流程图</p><h2 id="请求微服务流程图"><a href="#请求微服务流程图" class="headerlink" title="请求微服务流程图"></a>请求微服务流程图</h2><p><img src="/assets/blogImg/data-structures-and-algorithms/微服务整体流程.png" alt="微服务整体流程"></p><a id="more"></a><p>在这张图中：</p><ul><li>反向代理使用的是<code>traefik</code>，它的特色是可以动态发现，完美支持<code>docker</code>，<code>kubernetes</code>。</li><li>网关中微服务部分使用的是<code>go-micro</code>框架，由于<code>go-micro</code>的web和路由功能并不能很好地满足现实需求，所以的对外提供HTTP服务的部分使用的是<code>gin</code>框架。</li><li>服务部分使用的是<code>go-micro</code>框架编写微服务</li><li>由于使用的是<code>go-micro</code>框架，该框架默认使用的是<code>grpc</code>通讯，<code>grpc</code>通讯的通讯格式是<code>Protobuf</code></li><li>go-micro默认的服务发现是通过<code>mdns</code>,我们更换为使用<code>etcd</code>做服务注册中心。当使用<code>Kubernetes</code>部署时,<code>Kubernetes</code>将<code>Service</code>的名称当做域名注册到<code>kube-dns</code>中，通过<code>Service</code>的名称就可以访问其提供的服务</li><li>编排工具会先使用<code>docker-compose</code>，最终使用<code>Kubernetes</code></li></ul><h2 id="CI-CD流程图"><a href="#CI-CD流程图" class="headerlink" title="CI/CD流程图"></a>CI/CD流程图</h2><p><img src="/assets/blogImg/data-structures-and-algorithms/ci,cd整体流程.png" alt="ci/cd整体流程"></p><p>在这张图中：</p><ul><li>代码仓库使用的是<code>gitlab</code></li><li>持续集成使用的是<code>jenkins</code></li><li>远程镜像仓库使用的是阿里云的容器镜像服务</li><li><code>jenkins</code>需要安装的插件有:Localization: <code>Chinese(Simplified)</code>、<code>Publish Over SSH</code>、<code>Gitlab</code>、<code>Golang</code></li></ul><h1 id="涉及到的组件、框架及其版本"><a href="#涉及到的组件、框架及其版本" class="headerlink" title="涉及到的组件、框架及其版本"></a>涉及到的组件、框架及其版本</h1><table><thead><tr><th style="text-align:center">技术</th><th style="text-align:center">使用</th><th style="text-align:center">版本</th></tr></thead><tbody><tr><td style="text-align:center">语言</td><td style="text-align:center">Golang</td><td style="text-align:center">1.14.1</td></tr><tr><td style="text-align:center">Web框架(网关)</td><td style="text-align:center">Gin</td><td style="text-align:center">v1.6.3</td></tr><tr><td style="text-align:center">通讯格式</td><td style="text-align:center">Protobuf</td><td style="text-align:center">v1.4.1</td></tr><tr><td style="text-align:center">微服务框架</td><td style="text-align:center">Go-micro</td><td style="text-align:center">v2.9.0</td></tr><tr><td style="text-align:center">反向代理</td><td style="text-align:center">Traefik</td><td style="text-align:center">v2.2.1</td></tr><tr><td style="text-align:center">服务注册中心</td><td style="text-align:center">Etcd/Kubernetes</td><td style="text-align:center">v3.3.8/v1.16.5</td></tr><tr><td style="text-align:center">容器</td><td style="text-align:center">Docker</td><td style="text-align:center">v19.03.8</td></tr><tr><td style="text-align:center">编排工具</td><td style="text-align:center">Docker-Compose/Kubernetes</td><td style="text-align:center">v1.25.5/v1.16.5</td></tr><tr><td style="text-align:center">代码仓库</td><td style="text-align:center">Gitlab</td><td style="text-align:center">v13.1.1-ce.0</td></tr><tr><td style="text-align:center">持续集成</td><td style="text-align:center">Jenkins</td><td style="text-align:center">v2.242</td></tr></tbody></table><h1 id="仓库"><a href="#仓库" class="headerlink" title="仓库"></a>仓库</h1><p>对应的相关代码和部署文件，已经传至github，欢迎star。</p><p>微服务与部署：<a href="https://github.com/guaosi/go-micro-build" target="_blank" rel="noopener">https://github.com/guaosi/go-micro-build</a></p><p>持续交付、集成、部署：<a href="https://github.com/guaosi/go-cicd" target="_blank" rel="noopener">https://github.com/guaosi/go-cicd</a></p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;流程图&quot;&gt;&lt;a href=&quot;#流程图&quot; class=&quot;headerlink&quot; title=&quot;流程图&quot;&gt;&lt;/a&gt;流程图&lt;/h1&gt;&lt;p&gt;首先来看一下整体的流程图&lt;/p&gt;
-&lt;h2 id=&quot;请求微服务流程图&quot;&gt;&lt;a href=&quot;#请求微服务流程图&quot; class=&quot;headerlink&quot; title=&quot;请求微服务流程图&quot;&gt;&lt;/a&gt;请求微服务流程图&lt;/h2&gt;&lt;p&gt;&lt;img src=&quot;/assets/blogImg/data-structures-and-algorithms/微服务整体流程.png&quot; alt=&quot;微服务整体流程&quot;&gt;&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="Golang" scheme="https://www.guaosi.com/tags/Golang/"/>
-    
-      <category term="微服务" scheme="https://www.guaosi.com/tags/%E5%BE%AE%E6%9C%8D%E5%8A%A1/"/>
-    
-      <category term="go-micro" scheme="https://www.guaosi.com/tags/go-micro/"/>
-    
-  </entry>
   
   <entry>
     <title>手摸手教你从开发到部署(CI/CD)GO微服务系列-介绍与目录</title>
@@ -74,6 +49,31 @@
       <category term="Kubernetes" scheme="https://www.guaosi.com/tags/Kubernetes/"/>
     
       <category term="CI/CD" scheme="https://www.guaosi.com/tags/CI-CD/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>GO微服务系列-1.1 涉及的组件、框架介绍</title>
+    <link href="https://www.guaosi.com/2020/07/05/go-micro-service-introduce-components-and-framework/"/>
+    <id>https://www.guaosi.com/2020/07/05/go-micro-service-introduce-components-and-framework/</id>
+    <published>2020-07-05T13:46:18.000Z</published>
+    <updated>2020-07-07T00:58:00.666Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="流程图"><a href="#流程图" class="headerlink" title="流程图"></a>流程图</h1><p>首先来看一下整体的流程图</p><h2 id="请求微服务流程图"><a href="#请求微服务流程图" class="headerlink" title="请求微服务流程图"></a>请求微服务流程图</h2><p><img src="/assets/blogImg/go-micro-service-introduce-components-and-framework/微服务整体流程.png" alt="微服务整体流程"></p><a id="more"></a><p>在这张图中：</p><ul><li>反向代理使用的是<code>traefik</code>，它的特色是可以动态发现，完美支持<code>docker</code>，<code>kubernetes</code>。</li><li>网关中微服务部分使用的是<code>go-micro</code>框架，由于<code>go-micro</code>的web和路由功能并不能很好地满足现实需求，所以的对外提供HTTP服务的部分使用的是<code>gin</code>框架。</li><li>服务部分使用的是<code>go-micro</code>框架编写微服务</li><li>由于使用的是<code>go-micro</code>框架，该框架默认使用的是<code>grpc</code>通讯，<code>grpc</code>通讯的通讯格式是<code>Protobuf</code></li><li>go-micro默认的服务发现是通过<code>mdns</code>,我们更换为使用<code>etcd</code>做服务注册中心。当使用<code>Kubernetes</code>部署时,<code>Kubernetes</code>将<code>Service</code>的名称当做域名注册到<code>kube-dns</code>中，通过<code>Service</code>的名称就可以访问其提供的服务</li><li>编排工具会先使用<code>docker-compose</code>，最终使用<code>Kubernetes</code></li></ul><h2 id="CI-CD流程图"><a href="#CI-CD流程图" class="headerlink" title="CI/CD流程图"></a>CI/CD流程图</h2><p><img src="/assets/blogImg/go-micro-service-introduce-components-and-framework/ci,cd整体流程.png" alt="ci/cd整体流程"></p><p>在这张图中：</p><ul><li>代码仓库使用的是<code>gitlab</code></li><li>持续集成使用的是<code>jenkins</code></li><li>远程镜像仓库使用的是阿里云的容器镜像服务</li><li><code>jenkins</code>需要安装的插件有:Localization: <code>Chinese(Simplified)</code>、<code>Publish Over SSH</code>、<code>Gitlab</code>、<code>Golang</code></li></ul><h1 id="涉及到的组件、框架及其版本"><a href="#涉及到的组件、框架及其版本" class="headerlink" title="涉及到的组件、框架及其版本"></a>涉及到的组件、框架及其版本</h1><table><thead><tr><th style="text-align:center">技术</th><th style="text-align:center">使用</th><th style="text-align:center">版本</th></tr></thead><tbody><tr><td style="text-align:center">语言</td><td style="text-align:center">Golang</td><td style="text-align:center">1.14.1</td></tr><tr><td style="text-align:center">Web框架(网关)</td><td style="text-align:center">Gin</td><td style="text-align:center">v1.6.3</td></tr><tr><td style="text-align:center">通讯格式</td><td style="text-align:center">Protobuf</td><td style="text-align:center">v1.4.1</td></tr><tr><td style="text-align:center">微服务框架</td><td style="text-align:center">Go-micro</td><td style="text-align:center">v2.9.0</td></tr><tr><td style="text-align:center">反向代理</td><td style="text-align:center">Traefik</td><td style="text-align:center">v2.2.1</td></tr><tr><td style="text-align:center">服务注册中心</td><td style="text-align:center">Etcd/Kubernetes</td><td style="text-align:center">v3.3.8/v1.16.5</td></tr><tr><td style="text-align:center">容器</td><td style="text-align:center">Docker</td><td style="text-align:center">v19.03.8</td></tr><tr><td style="text-align:center">编排工具</td><td style="text-align:center">Docker-Compose/Kubernetes</td><td style="text-align:center">v1.25.5/v1.16.5</td></tr><tr><td style="text-align:center">代码仓库</td><td style="text-align:center">Gitlab</td><td style="text-align:center">v13.1.1-ce.0</td></tr><tr><td style="text-align:center">持续集成</td><td style="text-align:center">Jenkins</td><td style="text-align:center">v2.242</td></tr></tbody></table><h1 id="仓库"><a href="#仓库" class="headerlink" title="仓库"></a>仓库</h1><p>对应的相关代码和部署文件，已经传至github，欢迎star。</p><p>微服务与部署：<a href="https://github.com/guaosi/go-micro-build" target="_blank" rel="noopener">https://github.com/guaosi/go-micro-build</a></p><p>持续交付、集成、部署：<a href="https://github.com/guaosi/go-cicd" target="_blank" rel="noopener">https://github.com/guaosi/go-cicd</a></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;流程图&quot;&gt;&lt;a href=&quot;#流程图&quot; class=&quot;headerlink&quot; title=&quot;流程图&quot;&gt;&lt;/a&gt;流程图&lt;/h1&gt;&lt;p&gt;首先来看一下整体的流程图&lt;/p&gt;
+&lt;h2 id=&quot;请求微服务流程图&quot;&gt;&lt;a href=&quot;#请求微服务流程图&quot; class=&quot;headerlink&quot; title=&quot;请求微服务流程图&quot;&gt;&lt;/a&gt;请求微服务流程图&lt;/h2&gt;&lt;p&gt;&lt;img src=&quot;/assets/blogImg/go-micro-service-introduce-components-and-framework/微服务整体流程.png&quot; alt=&quot;微服务整体流程&quot;&gt;&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="Golang" scheme="https://www.guaosi.com/tags/Golang/"/>
+    
+      <category term="微服务" scheme="https://www.guaosi.com/tags/%E5%BE%AE%E6%9C%8D%E5%8A%A1/"/>
+    
+      <category term="go-micro" scheme="https://www.guaosi.com/tags/go-micro/"/>
     
   </entry>
   
@@ -940,9 +940,9 @@
     </summary>
     
     
-      <category term="Linux" scheme="https://www.guaosi.com/tags/Linux/"/>
-    
       <category term="PHP" scheme="https://www.guaosi.com/tags/PHP/"/>
+    
+      <category term="Linux" scheme="https://www.guaosi.com/tags/Linux/"/>
     
       <category term="Redis" scheme="https://www.guaosi.com/tags/Redis/"/>
     
