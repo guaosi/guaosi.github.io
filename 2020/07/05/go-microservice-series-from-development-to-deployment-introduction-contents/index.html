@@ -17,7 +17,7 @@
 <meta property="og:site_name" content="guaosi的博客">
 <meta property="og:description" content="介绍我觉得微服务是什么？什么是微服务这种问题都老生常谈了，随便百度的回答都是各式各样的，我也没什么好介绍的了。开门见山，我就直接说我想做成什么样的。  既然是微服务，那肯定首先要有服务，这个系列重点在微服务的构建，而不是业务逻辑的编写，所以业务逻辑尽可能做到最简单。其次有一个服务即可。 微服务中最重要的是网关，它是所有请求的入口，所以我会用gin框架结合go-micro作为微服务的网关，后期加入日">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-07-07T01:02:08.131Z">
+<meta property="og:updated_time" content="2020-07-08T04:55:33.617Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="手摸手教你从开发到部署(CI&#x2F;CD)GO微服务系列-介绍与目录">
 <meta name="twitter:description" content="介绍我觉得微服务是什么？什么是微服务这种问题都老生常谈了，随便百度的回答都是各式各样的，我也没什么好介绍的了。开门见山，我就直接说我想做成什么样的。  既然是微服务，那肯定首先要有服务，这个系列重点在微服务的构建，而不是业务逻辑的编写，所以业务逻辑尽可能做到最简单。其次有一个服务即可。 微服务中最重要的是网关，它是所有请求的入口，所以我会用gin框架结合go-micro作为微服务的网关，后期加入日">
@@ -357,7 +357,7 @@ var _hmt = _hmt || [];
 <p>持续交付、集成、部署：<a href="https://github.com/guaosi/go-cicd" target="_blank" rel="noopener">https://github.com/guaosi/go-cicd</a></p>
 <h1 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h1><p>由于涉及的点很多，一篇文章是肯定写不完的，所以分了几个模块，几个章节进行介绍。(hexo的有序列表有子节点会有问题，所以就只能这样凑合看吧，排班不是很舒服)</p>
 <p>1.环境构建</p>
-<p>1.1 涉及的组件、框架介绍<br>1.2 环境的准备与安装</p>
+<p>1.1 <a href="https://www.guaosi.com/2020/07/05/go-micro-service-introduce-components-and-framework/">涉及的组件、框架介绍</a><br>1.2 <a href="https://www.guaosi.com/2020/07/08/go-micro-service-environment-preparation-and-installation/">环境的准备与安装</a></p>
 <p>2.微服务的编写</p>
 <p>2.1 proto文件的编写与生成<br>2.2 简单介绍了解go-micro<br>2.3 服务编写<br>2.4 网关编写</p>
 <p>3.基于容器的构建运行</p>
@@ -534,7 +534,7 @@ var _hmt = _hmt || [];
 
 <nav id="article-nav">
   
-    <a href="/2020/07/05/go-micro-service-introduce-components-and-framework/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2020/07/07/go-micro-service-introduce-components-and-framework/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
@@ -738,10 +738,6 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">git</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Golang</a>
               </li>
              
@@ -751,6 +747,10 @@ var _hmt = _hmt || [];
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">go-micro</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">git</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -782,7 +782,11 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">PHP</a>
+                <a href="javascript:void(0)" class="js-tag color1">Linux</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Python</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -798,19 +802,15 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Linux</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">运维</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Python</a>
+                <a href="javascript:void(0)" class="js-tag color4">PHP</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Laravel</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">运维</a>
               </li>
              
               <li class="article-tag-list-item">

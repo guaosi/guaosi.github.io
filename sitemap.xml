@@ -2,16 +2,23 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://www.guaosi.com/2020/07/05/go-microservice-series-from-development-to-deployment-introduction-contents/</loc>
+    <loc>https://www.guaosi.com/2020/07/08/go-micro-service-environment-preparation-and-installation/</loc>
     
-    <lastmod>2020-07-07T01:02:08.131Z</lastmod>
+    <lastmod>2020-07-08T04:57:34.040Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://www.guaosi.com/2020/07/05/go-micro-service-introduce-components-and-framework/</loc>
+    <loc>https://www.guaosi.com/2020/07/05/go-microservice-series-from-development-to-deployment-introduction-contents/</loc>
     
-    <lastmod>2020-07-07T00:58:00.666Z</lastmod>
+    <lastmod>2020-07-08T04:55:33.617Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://www.guaosi.com/2020/07/07/go-micro-service-introduce-components-and-framework/</loc>
+    
+    <lastmod>2020-07-08T04:48:42.325Z</lastmod>
     
   </url>
   

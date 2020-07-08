@@ -7,23 +7,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="https://www.guaosi.com">
-  <title>GO微服务系列-1.1 涉及的组件、框架介绍 | guaosi的博客</title>
+  <title>GO微服务系列-1.2 环境的准备与安装 | guaosi的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="流程图首先来看一下整体的流程图 请求微服务流程图">
+  <meta name="description" content="说明组件我想的是尽量都是使用容器，这样方便运行环境的统一。所以像Gitlab、Jenkins、Traefik等等，这些组件我会在后面等用到了直接使用容器构建。 安装除了以上那些,像Go运行环境,Micro、ProtoBuf、Kubernetes还是需要我们手动进行安装的。 Go这个没啥好说的，可以去GO语言中文网进行下载安装,我使用的是1.14.1版本  记得配置好系统变量噢~">
 <meta name="keywords" content="Golang,微服务,go-micro">
 <meta property="og:type" content="article">
-<meta property="og:title" content="GO微服务系列-1.1 涉及的组件、框架介绍">
-<meta property="og:url" content="https://www.guaosi.com/2020/07/05/go-micro-service-introduce-components-and-framework/index.html">
+<meta property="og:title" content="GO微服务系列-1.2 环境的准备与安装">
+<meta property="og:url" content="https://www.guaosi.com/2020/07/08/go-micro-service-environment-preparation-and-installation/index.html">
 <meta property="og:site_name" content="guaosi的博客">
-<meta property="og:description" content="流程图首先来看一下整体的流程图 请求微服务流程图">
+<meta property="og:description" content="说明组件我想的是尽量都是使用容器，这样方便运行环境的统一。所以像Gitlab、Jenkins、Traefik等等，这些组件我会在后面等用到了直接使用容器构建。 安装除了以上那些,像Go运行环境,Micro、ProtoBuf、Kubernetes还是需要我们手动进行安装的。 Go这个没啥好说的，可以去GO语言中文网进行下载安装,我使用的是1.14.1版本  记得配置好系统变量噢~">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="https://www.guaosi.com/assets/blogImg/go-micro-service-introduce-components-and-framework/微服务整体流程.png">
-<meta property="og:image" content="https://www.guaosi.com/assets/blogImg/go-micro-service-introduce-components-and-framework/ci,cd整体流程.png">
-<meta property="og:updated_time" content="2020-07-07T00:58:00.666Z">
+<meta property="og:updated_time" content="2020-07-08T04:57:34.040Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="GO微服务系列-1.1 涉及的组件、框架介绍">
-<meta name="twitter:description" content="流程图首先来看一下整体的流程图 请求微服务流程图">
-<meta name="twitter:image" content="https://www.guaosi.com/assets/blogImg/go-micro-service-introduce-components-and-framework/微服务整体流程.png">
+<meta name="twitter:title" content="GO微服务系列-1.2 环境的准备与安装">
+<meta name="twitter:description" content="说明组件我想的是尽量都是使用容器，这样方便运行环境的统一。所以像Gitlab、Jenkins、Traefik等等，这些组件我会在后面等用到了直接使用容器构建。 安装除了以上那些,像Go运行环境,Micro、ProtoBuf、Kubernetes还是需要我们手动进行安装的。 Go这个没啥好说的，可以去GO语言中文网进行下载安装,我使用的是1.14.1版本  记得配置好系统变量噢~">
   
   <link rel="alternative" href="/atom.xml" title="guaosi的博客" type="application/atom+xml">
   
@@ -304,14 +301,14 @@ var _hmt = _hmt || [];
               class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-go-micro-service-introduce-components-and-framework" class="article article-type-post " itemscope="" itemprop="blogPost">
+            <article id="post-go-micro-service-environment-preparation-and-installation" class="article article-type-post " itemscope="" itemprop="blogPost">
   <div class="article-inner">
     
     <header class="article-header">
       
   
     <h1 class="article-title" itemprop="name">
-      GO微服务系列-1.1 涉及的组件、框架介绍
+      GO微服务系列-1.2 环境的准备与安装
     </h1>
   
 
@@ -330,98 +327,80 @@ var _hmt = _hmt || [];
 
 
       
-      <a href="/2020/07/05/go-micro-service-introduce-components-and-framework/" class="archive-article-date">
-  	<time datetime="2020-07-05T13:46:18.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-05</time>
+      <a href="/2020/07/08/go-micro-service-environment-preparation-and-installation/" class="archive-article-date">
+  	<time datetime="2020-07-08T03:58:50.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-08</time>
 </a>
       
     </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-      <h1 id="流程图"><a href="#流程图" class="headerlink" title="流程图"></a>流程图</h1><p>首先来看一下整体的流程图</p>
-<h2 id="请求微服务流程图"><a href="#请求微服务流程图" class="headerlink" title="请求微服务流程图"></a>请求微服务流程图</h2><p><img src="/assets/blogImg/go-micro-service-introduce-components-and-framework/微服务整体流程.png" alt="微服务整体流程"></p>
+      <h1 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h1><p>组件我想的是尽量都是使用容器，这样方便运行环境的统一。所以像<code>Gitlab</code>、<code>Jenkins</code>、<code>Traefik</code>等等，这些组件我会在后面等用到了直接使用容器构建。</p>
+<h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><p>除了以上那些,像<code>Go</code>运行环境,<code>Micro</code>、<code>ProtoBuf</code>、<code>Kubernetes</code>还是需要我们手动进行安装的。</p>
+<h2 id="Go"><a href="#Go" class="headerlink" title="Go"></a>Go</h2><p>这个没啥好说的，可以去<code>GO语言中文网</code>进行<a href="https://studygolang.com/dl" target="_blank" rel="noopener">下载</a>安装,我使用的是<code>1.14.1</code>版本</p>
+<blockquote>
+<p>记得配置好系统变量噢~</p>
+</blockquote>
 <a id="more"></a>
-<p>在这张图中：</p>
-<ul>
-<li>反向代理使用的是<code>traefik</code>，它的特色是可以动态发现，完美支持<code>docker</code>，<code>kubernetes</code>。</li>
-<li>网关中微服务部分使用的是<code>go-micro</code>框架，由于<code>go-micro</code>的web和路由功能并不能很好地满足现实需求，所以的对外提供HTTP服务的部分使用的是<code>gin</code>框架。</li>
-<li>服务部分使用的是<code>go-micro</code>框架编写微服务</li>
-<li>由于使用的是<code>go-micro</code>框架，该框架默认使用的是<code>grpc</code>通讯，<code>grpc</code>通讯的通讯格式是<code>Protobuf</code></li>
-<li>go-micro默认的服务发现是通过<code>mdns</code>,我们更换为使用<code>etcd</code>做服务注册中心。当使用<code>Kubernetes</code>部署时,<code>Kubernetes</code>将<code>Service</code>的名称当做域名注册到<code>kube-dns</code>中，通过<code>Service</code>的名称就可以访问其提供的服务</li>
-<li>编排工具会先使用<code>docker-compose</code>，最终使用<code>Kubernetes</code></li>
-</ul>
-<h2 id="CI-CD流程图"><a href="#CI-CD流程图" class="headerlink" title="CI/CD流程图"></a>CI/CD流程图</h2><p><img src="/assets/blogImg/go-micro-service-introduce-components-and-framework/ci,cd整体流程.png" alt="ci/cd整体流程"></p>
-<p>在这张图中：</p>
-<ul>
-<li>代码仓库使用的是<code>gitlab</code></li>
-<li>持续集成使用的是<code>jenkins</code></li>
-<li>远程镜像仓库使用的是阿里云的容器镜像服务</li>
-<li><code>jenkins</code>需要安装的插件有:Localization: <code>Chinese(Simplified)</code>、<code>Publish Over SSH</code>、<code>Gitlab</code>、<code>Golang</code></li>
-</ul>
-<h1 id="涉及到的组件、框架及其版本"><a href="#涉及到的组件、框架及其版本" class="headerlink" title="涉及到的组件、框架及其版本"></a>涉及到的组件、框架及其版本</h1><table>
+<h2 id="Micro"><a href="#Micro" class="headerlink" title="Micro"></a>Micro</h2><p><code>Micro</code>是使用<code>go-micro</code>框架编写的运行时工具集，它最主要的作用是辅助微服务开发。比如想自己马上构建一个<code>web</code>环境或者<code>api</code>环境进行调试，或者查看服务的健康状态，注册信息之类的。</p>
+<p>感兴趣的可以安装(这个系列用到的不是很经常)：</p>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">go</span> <span class="built_in">get</span> github.<span class="keyword">com</span>/micro/micro/v2</span><br></pre></td></tr></table></figure>
+<p>可以去了解一下它的<a href="http://microhq.cn/docs/micro/cli-cn" target="_blank" rel="noopener">cli</a>文档</p>
+<h2 id="Protobuf"><a href="#Protobuf" class="headerlink" title="Protobuf"></a>Protobuf</h2><p><code>go-micro</code>的<code>transport</code>跟<code>server</code>默认通讯协议是<code>grpc</code>,<code>grpc</code>使用的通讯格式是<code>Protobuf</code>,所以我们需要安装<code>Protobuf</code>环境，以便我们编写生成对应的<code>Protobuf</code>文件。</p>
+<p>如果跟我一样是<code>Mac</code>环境并且安装了<code>brew</code>,那么可以直接使用下面指令进行安装<br><figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">brew </span><span class="keyword">install </span>protobuf</span><br></pre></td></tr></table></figure></p>
+<p>其他环境的小伙伴，可以先去下载<a href="https://github.com/protocolbuffers/protobuf/releases" target="_blank" rel="noopener">protobuf</a>中最新的发布包，解压放到<code>bin</code>目录下即可。</p>
+<p>举个例子：<br>如果是Ubuntu，可以按照如下步骤操作：<br><figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 下载安装包</span></span><br><span class="line">$ wget https:<span class="regexp">//gi</span>thub.com<span class="regexp">/protocolbuffers/</span>protobuf<span class="regexp">/releases/</span>download<span class="regexp">/v3.12.1/</span>protoc-<span class="number">3.12</span>.<span class="number">1</span>-linux-x86_64.zip</span><br><span class="line"><span class="comment"># 解压到 /usr/local 目录下</span></span><br><span class="line">$ sudo <span class="number">7</span>z x protoc-<span class="number">3.12</span>.<span class="number">1</span>-linux-x86_64.zip -o<span class="regexp">/usr/</span>local</span><br></pre></td></tr></table></figure></p>
+<p>如果不想安装在 <code>/usr/local</code> 目录下，可以解压到其他的其他，并把解压路径下的 <code>bin</code> 目录 加入到环境变量即可。</p>
+<p>如果能正常显示版本，则表示安装成功。<br><figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ protoc --version</span><br><span class="line">libprotoc <span class="number">3.12</span><span class="number">.1</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="Kubernetes"><a href="#Kubernetes" class="headerlink" title="Kubernetes"></a>Kubernetes</h2><p>我之前的文章<a href="https://www.guaosi.com/2020/07/05/kubernetes-cluster-install/">Kubernetes 18.04集群安装教程(基于Centos7)</a>已经完整的写过如何安装<code>Kubetnetes</code>了</p>
+<blockquote>
+<p>注意，我是使用Windows下的VMware构建Kubernetes集群环境以及Gitlab和Jenkins环境</p>
+</blockquote>
+<h1 id="运行环境"><a href="#运行环境" class="headerlink" title="运行环境"></a>运行环境</h1><p>我的本机运行环境是<code>Mac</code>,<code>Kubetnetes</code>跟Gitlab和Jenkins环境都是安装在<code>Windows</code>的<code>Vmware</code>虚拟机里，虚拟机使用的是桥接模式。<code>Mac</code>和虚拟机在同一个网段下，可以正常通讯。还不是很清楚<code>Vmware</code>跟<code>Docker</code>网络模式区别的，可以看一看<a href="https://www.guaosi.com/2020/01/22/network-of-vmware-and-docker/">Vmware和Docker的网络模式讲解</a></p>
+<table>
 <thead>
 <tr>
-<th style="text-align:center">技术</th>
-<th style="text-align:center">使用</th>
-<th style="text-align:center">版本</th>
+<th style="text-align:center">节点</th>
+<th style="text-align:center">cpu</th>
+<th style="text-align:center">内存</th>
+<th style="text-align:center">磁盘</th>
+<th style="text-align:center">IP</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align:center">语言</td>
-<td style="text-align:center">Golang</td>
-<td style="text-align:center">1.14.1</td>
+<td style="text-align:center">Mac</td>
+<td style="text-align:center">6核12线</td>
+<td style="text-align:center">16G</td>
+<td style="text-align:center">50G</td>
+<td style="text-align:center">192.168.1.10</td>
 </tr>
 <tr>
-<td style="text-align:center">Web框架(网关)</td>
-<td style="text-align:center">Gin</td>
-<td style="text-align:center">v1.6.3</td>
+<td style="text-align:center">K8s</td>
+<td style="text-align:center">2核2线</td>
+<td style="text-align:center">4G</td>
+<td style="text-align:center">30G</td>
+<td style="text-align:center">192.168.1.200</td>
 </tr>
 <tr>
-<td style="text-align:center">通讯格式</td>
-<td style="text-align:center">Protobuf</td>
-<td style="text-align:center">v1.4.1</td>
-</tr>
-<tr>
-<td style="text-align:center">微服务框架</td>
-<td style="text-align:center">Go-micro</td>
-<td style="text-align:center">v2.9.0</td>
-</tr>
-<tr>
-<td style="text-align:center">反向代理</td>
-<td style="text-align:center">Traefik</td>
-<td style="text-align:center">v2.2.1</td>
-</tr>
-<tr>
-<td style="text-align:center">服务注册中心</td>
-<td style="text-align:center">Etcd/Kubernetes</td>
-<td style="text-align:center">v3.3.8/v1.16.5</td>
-</tr>
-<tr>
-<td style="text-align:center">容器</td>
-<td style="text-align:center">Docker</td>
-<td style="text-align:center">v19.03.8</td>
-</tr>
-<tr>
-<td style="text-align:center">编排工具</td>
-<td style="text-align:center">Docker-Compose/Kubernetes</td>
-<td style="text-align:center">v1.25.5/v1.16.5</td>
-</tr>
-<tr>
-<td style="text-align:center">代码仓库</td>
-<td style="text-align:center">Gitlab</td>
-<td style="text-align:center">v13.1.1-ce.0</td>
-</tr>
-<tr>
-<td style="text-align:center">持续集成</td>
 <td style="text-align:center">Jenkins</td>
-<td style="text-align:center">v2.242</td>
+<td style="text-align:center">2核2线</td>
+<td style="text-align:center">8G</td>
+<td style="text-align:center">30G</td>
+<td style="text-align:center">192.168.1.220</td>
+</tr>
+<tr>
+<td style="text-align:center">Gitlab</td>
+<td style="text-align:center">2核2线</td>
+<td style="text-align:center">8G</td>
+<td style="text-align:center">30G</td>
+<td style="text-align:center">192.168.1.220</td>
 </tr>
 </tbody>
 </table>
-<h1 id="仓库"><a href="#仓库" class="headerlink" title="仓库"></a>仓库</h1><p>对应的相关代码和部署文件，已经传至github，欢迎star。</p>
-<p>微服务与部署：<a href="https://github.com/guaosi/go-micro-build" target="_blank" rel="noopener">https://github.com/guaosi/go-micro-build</a></p>
-<p>持续交付、集成、部署：<a href="https://github.com/guaosi/go-cicd" target="_blank" rel="noopener">https://github.com/guaosi/go-cicd</a></p>
+<blockquote>
+<p>Jenkins跟Gitlab我放在同一个虚拟机里噢~</p>
+</blockquote>
 
       
 
@@ -435,7 +414,7 @@ var _hmt = _hmt || [];
           
           <br>
           <strong>本文链接：</strong>
-          <a rel="license" href="https://www.guaosi.com/2020/07/05/go-micro-service-introduce-components-and-framework/">https://www.guaosi.com/2020/07/05/go-micro-service-introduce-components-and-framework/</a>
+          <a rel="license" href="https://www.guaosi.com/2020/07/08/go-micro-service-environment-preparation-and-installation/">https://www.guaosi.com/2020/07/08/go-micro-service-environment-preparation-and-installation/</a>
           <br>
           <strong>版权声明：</strong>
           本博客所有文章除特别声明外，均采用
@@ -559,7 +538,7 @@ var _hmt = _hmt || [];
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPYAAAD2CAAAAADAeSUUAAADIElEQVR42u3aQY7iQAwFUO5/aUaaVY9owrcdRsS8rJA6HepVFsb+dbvF1/3v9fPzz+vxzuP7H//6+DlZz7M1nHZhY2NjX4R9P7yqX/Psv/I1JJtY3eJf1oCNjY29jt0rWsfLyoti/r29b8fGxsbGrhaz41LUK0L507CxsbGxc/Z8AJQPmPKCio2Njf2d7MkQvzrur4YK+dDqLbM0bGxs7I9n94Lez/z89nwbGxsb+8PY9+JVHetMQt+cVFZgY2NjL2L3BjTzRfcGRvNNuVXfGzY2Nval2JPCkA+eJjFDHgMnOmxsbOwd7HwRE3Cv/FQPWZabEGxsbOwV7GoZe0erUI2ce68EGxsbeze7eoSxWjzyxmMSTiQv5mk8gI2NjX1Z9nH5qbYovbahGiRUjxNFwQA2Njb2ZdnzpfRigN7gabJNLzowbGxs7IuzkwIwP2SZb2L+tNOmaNjY2NiXZfeG/pPgdoLvlcwXQyVsbGzsi7PnY6O84FXvqW5NPnjCxsbG3sfuHdzpDXSqh3h64OqmYGNjY1+dXW0DehFCXtImrVFho7GxsbFXsOePyxuSCSx/GdG3YGNjYy9i/5824NyylDNGLRA2Njb2pdgTWLU5mdw5eXvY2NjYW9l5A1D9uZ88uVeWeiXzn8/Y2NjY69jJiD8H3FrXJKLIV4WNjY29j523GXkwcPxrP+FNhlbNWRo2Njb2xdnzwpMM+nvIScF70d5gY2Njr2AnA/rqPUkZqz5tHldgY2Nj72bnyEno2wsPqjFwoWJjY2Njr2D3At18lFNlVAvYKCTGxsbGXsE+67jMPB44K3KOSiY2Njb217CTMlZtJ/JWpPcCogKMjY2NvYidl4p5fJswqgeGeiE0NjY29ib2vXidVZx6zUyy9dEGYWNjYy9iT4ZHeYjbK07V4z55mcTGxsbex+41APMYeH48qLpZUUiAjY2NfVl2dYl5menFtOdG0U/jXmxsbOwvY+f4fOnzUtSMqLGxsbGxW9HvuZHtaCCFjY2NvY49H9xXS1TeupwVHmNjY2NvZVeD3t4oqte05EvPSyk2Njb2IvYfd/T3E+VA8NUAAAAASUVORK5CYII=" alt="微信分享二维码">
+      <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPYAAAD2CAAAAADAeSUUAAADOElEQVR42u3ay24iQRAEQP//T7PSnnaFgMxqbHmKmJOFYYZoH9L1+PqKr9vf6/6Vf6/8t/fvefSpR599dIc3X9jY2NgXYd+eXvfshPH8IPIjfn40z9//4viwsbGx17Fnj8+/en5kyX1O3oONjY39yezzr34SgUm5go2NjY19EmB5vOWtpXfFKjY2NvYnsJNgSNpGsyJh9tsf6qVhY2Nj/3p2O+j9zT9/43wbGxsb+1eyb+U1awC10dIWGLUCGxsbexF71r4/GR7M2v2zUuRFvGFjY2OvZicR9TycTsbGbeuqLZ+wsbGxN7Hzr558uXbhJmE8P6z8s/+9go2Njb2Iff6A5J15AXPy27bIwcbGxt7EPp8Pz/CzZlZStNTRhY2Njb2U3QZSuyfTFir58CAKYGxsbOyl7HaNpn3k7D5JYyuPPWxsbOxN7GRRJgmeJLRmQ9lkgFEvhmJjY2MvYs/Kjzwb28fnjaH8D1MsYmJjY2NfkP0dbfckFNujbF95UbRgY2NjL2K3rZ/85zYaz8cMdW5jY2Njr2Dn7aR8JHx+t/NSJ8ptbGxs7EXsfHUmHwC3A9pZM2sWtNjY2Nj72PlC5KxoOSkzZk2oF0/HxsbGXsrOAyb5VHKHttF/HqgPKzBsbGzsy7LPb52XBO2nZqOIfJUHGxsbewe7jZnZocwa+m2pkzwXGxsbeze7vV3SkJot37RD33rMgI2Njb2anYwKkiCZrd2cL3dGr2NjY2MvYicBkDR92lFxstDTjo3rPwk2Njb2IvZJCLVLPO9dvpm1pbCxsbE3sdvbtYVBG4Tt2lC+KlRsKmFjY2Nfij175EkZcNIkmh16VIFhY2NjX5adN4NmUZF89dlxtC2kqBTBxsbGviz7vBn03vfMFoCKCMTGxsZex86vYtpwPFrIn1uvh2JjY2MvYs/C4HzgmgdYvhLUtrSwsbGxN7GT0EqKlnbdp43DNqiwsbGxP42dB0k+jp0t6HxfewsbGxsbO/93P4+0NvaSI4sOAhsbG/uD2W1RMVsMSg4lL5zqqQU2Njb2BdnJjdq2/mx8ezJgKEYX2NjY2IvY7aA3b+ufrPXkB5cXQtjY2Njr2H8AAMvyJtKazLIAAAAASUVORK5CYII=" alt="微信分享二维码">
     </div>
 </div>
 
@@ -574,8 +553,8 @@ var _hmt = _hmt || [];
 <nav id="article-nav">
   
   
-    <a href="/2020/07/05/go-microservice-series-from-development-to-deployment-introduction-contents/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">手摸手教你从开发到部署(CI/CD)GO微服务系列-介绍与目录</div>
+    <a href="/2020/07/07/go-micro-service-introduce-components-and-framework/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">GO微服务系列-1.1 涉及的组件、框架介绍</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -602,7 +581,7 @@ var _hmt = _hmt || [];
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#流程图"><span class="toc-number">1.</span> <span class="toc-text">流程图</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#请求微服务流程图"><span class="toc-number">1.1.</span> <span class="toc-text">请求微服务流程图</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CI-CD流程图"><span class="toc-number">1.2.</span> <span class="toc-text">CI/CD流程图</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#涉及到的组件、框架及其版本"><span class="toc-number">2.</span> <span class="toc-text">涉及到的组件、框架及其版本</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#仓库"><span class="toc-number">3.</span> <span class="toc-text">仓库</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#说明"><span class="toc-number">1.</span> <span class="toc-text">说明</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#安装"><span class="toc-number">2.</span> <span class="toc-text">安装</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Go"><span class="toc-number">2.1.</span> <span class="toc-text">Go</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Micro"><span class="toc-number">2.2.</span> <span class="toc-text">Micro</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Protobuf"><span class="toc-number">2.3.</span> <span class="toc-text">Protobuf</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Kubernetes"><span class="toc-number">2.4.</span> <span class="toc-text">Kubernetes</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#运行环境"><span class="toc-number">3.</span> <span class="toc-text">运行环境</span></a></li></ol>
                     </div>
                 </span>
             </div>
@@ -618,7 +597,7 @@ var _hmt = _hmt || [];
 
 
 
-<div id="SOHUCS" sid="go-micro-service-introduce-components-and-framework"></div>
+<div id="SOHUCS" sid="go-micro-service-environment-preparation-and-installation"></div>
 <script type="text/javascript">
   (function () {
     var appid = "cytWxLdY3";
@@ -768,10 +747,6 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">git</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Golang</a>
               </li>
              
@@ -781,6 +756,10 @@ var _hmt = _hmt || [];
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">go-micro</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">git</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -812,7 +791,11 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">PHP</a>
+                <a href="javascript:void(0)" class="js-tag color1">Linux</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Python</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -828,19 +811,15 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Linux</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">运维</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Python</a>
+                <a href="javascript:void(0)" class="js-tag color4">PHP</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Laravel</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">运维</a>
               </li>
              
               <li class="article-tag-list-item">

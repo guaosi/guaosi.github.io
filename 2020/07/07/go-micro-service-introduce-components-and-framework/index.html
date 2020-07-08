@@ -7,19 +7,23 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="https://www.guaosi.com">
-  <title>Tag: crack | guaosi的博客</title>
+  <title>GO微服务系列-1.1 涉及的组件、框架介绍 | guaosi的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="guaosi,guaosi的博客,后端,PHP,Linux,golang,python,开发者,程序猿,程序媛,极客,编程,代码,开源,IT网站,docker">
-<meta name="keywords" content="guaosi,guaosi的博客,后端,PHP,Linux,golang,python,开发者,程序猿,程序媛,极客,编程,代码,开源,IT网站,docker">
-<meta property="og:type" content="website">
-<meta property="og:title" content="guaosi的博客">
-<meta property="og:url" content="https://www.guaosi.com/tags/crack/index.html">
+  <meta name="description" content="流程图首先来看一下整体的流程图 请求微服务流程图">
+<meta name="keywords" content="Golang,微服务,go-micro">
+<meta property="og:type" content="article">
+<meta property="og:title" content="GO微服务系列-1.1 涉及的组件、框架介绍">
+<meta property="og:url" content="https://www.guaosi.com/2020/07/07/go-micro-service-introduce-components-and-framework/index.html">
 <meta property="og:site_name" content="guaosi的博客">
-<meta property="og:description" content="guaosi,guaosi的博客,后端,PHP,Linux,golang,python,开发者,程序猿,程序媛,极客,编程,代码,开源,IT网站,docker">
+<meta property="og:description" content="流程图首先来看一下整体的流程图 请求微服务流程图">
 <meta property="og:locale" content="default">
+<meta property="og:image" content="https://www.guaosi.com/assets/blogImg/go-micro-service-introduce-components-and-framework/微服务整体流程.png">
+<meta property="og:image" content="https://www.guaosi.com/assets/blogImg/go-micro-service-introduce-components-and-framework/ci,cd整体流程.png">
+<meta property="og:updated_time" content="2020-07-08T04:48:42.325Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="guaosi的博客">
-<meta name="twitter:description" content="guaosi,guaosi的博客,后端,PHP,Linux,golang,python,开发者,程序猿,程序媛,极客,编程,代码,开源,IT网站,docker">
+<meta name="twitter:title" content="GO微服务系列-1.1 涉及的组件、框架介绍">
+<meta name="twitter:description" content="流程图首先来看一下整体的流程图 请求微服务流程图">
+<meta name="twitter:image" content="https://www.guaosi.com/assets/blogImg/go-micro-service-introduce-components-and-framework/微服务整体流程.png">
   
   <link rel="alternative" href="/atom.xml" title="guaosi的博客" type="application/atom+xml">
   
@@ -300,60 +304,374 @@ var _hmt = _hmt || [];
               class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-go-micro-service-introduce-components-and-framework" class="article article-type-post " itemscope="" itemprop="blogPost">
+  <div class="article-inner">
     
-    
+    <header class="article-header">
       
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/03/09/crack-china-mobile-optical-modem-h2-3/" class="archive-article-date">
-  	<time datetime="2019-03-09T10:20:33.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-09</time>
-</a>
-        </div>
-    	 
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/03/09/crack-china-mobile-optical-modem-h2-3/">手摸手教你破解移动光猫吉比特--H2-3</a>
+    <h1 class="article-title" itemprop="name">
+      GO微服务系列-1.1 涉及的组件、框架介绍
     </h1>
   
 
-        <div class="article-info info-on-right">
+      <!-- 显示阅读和评论数 -->
+
+      <br>
+      
+      <a class="cloud-tie-join-count" href="javascript:void(0);" style="color:gray;font-size:14px;">
+        <span class="icon-sort"></span>
+        <span id="busuanzi_container_page_pv" style="color:#ef7522;font-size:14px;">
+          阅读数: <span id="busuanzi_value_page_pv"></span>次 &nbsp;&nbsp;
+        </span>
+      </a>
+      
+
+
+
+      
+      <a href="/2020/07/07/go-micro-service-introduce-components-and-framework/" class="archive-article-date">
+  	<time datetime="2020-07-06T23:20:19.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-07</time>
+</a>
+      
+    </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+      <h1 id="流程图"><a href="#流程图" class="headerlink" title="流程图"></a>流程图</h1><p>首先来看一下整体的流程图</p>
+<h2 id="请求微服务流程图"><a href="#请求微服务流程图" class="headerlink" title="请求微服务流程图"></a>请求微服务流程图</h2><p><img src="/assets/blogImg/go-micro-service-introduce-components-and-framework/微服务整体流程.png" alt="微服务整体流程"></p>
+<a id="more"></a>
+<p>在这张图中：</p>
+<ul>
+<li>反向代理使用的是<code>traefik</code>，它的特色是可以动态发现，完美支持<code>docker</code>，<code>kubernetes</code>。</li>
+<li>网关中微服务部分使用的是<code>go-micro</code>框架，由于<code>go-micro</code>的web和路由功能并不能很好地满足现实需求，所以的对外提供HTTP服务的部分使用的是<code>gin</code>框架。</li>
+<li>服务部分使用的是<code>go-micro</code>框架编写微服务</li>
+<li>由于使用的是<code>go-micro</code>框架，该框架默认使用的是<code>grpc</code>通讯，<code>grpc</code>通讯的通讯格式是<code>Protobuf</code></li>
+<li>go-micro默认的服务发现是通过<code>mdns</code>,我们更换为使用<code>etcd</code>做服务注册中心。当使用<code>Kubernetes</code>部署时,<code>Kubernetes</code>将<code>Service</code>的名称当做域名注册到<code>kube-dns</code>中，通过<code>Service</code>的名称就可以访问其提供的服务</li>
+<li>编排工具会先使用<code>docker-compose</code>，最终使用<code>Kubernetes</code></li>
+</ul>
+<h2 id="CI-CD流程图"><a href="#CI-CD流程图" class="headerlink" title="CI/CD流程图"></a>CI/CD流程图</h2><p><img src="/assets/blogImg/go-micro-service-introduce-components-and-framework/ci,cd整体流程.png" alt="ci/cd整体流程"></p>
+<p>在这张图中：</p>
+<ul>
+<li>代码仓库使用的是<code>gitlab</code></li>
+<li>持续集成使用的是<code>jenkins</code></li>
+<li>远程镜像仓库使用的是阿里云的容器镜像服务</li>
+<li><code>jenkins</code>需要安装的插件有:Localization: <code>Chinese(Simplified)</code>、<code>Publish Over SSH</code>、<code>Gitlab</code>、<code>Golang</code></li>
+</ul>
+<h1 id="涉及到的组件、框架及其版本"><a href="#涉及到的组件、框架及其版本" class="headerlink" title="涉及到的组件、框架及其版本"></a>涉及到的组件、框架及其版本</h1><table>
+<thead>
+<tr>
+<th style="text-align:center">技术</th>
+<th style="text-align:center">使用</th>
+<th style="text-align:center">版本</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">语言</td>
+<td style="text-align:center">Golang</td>
+<td style="text-align:center">1.14.1</td>
+</tr>
+<tr>
+<td style="text-align:center">Web框架(网关)</td>
+<td style="text-align:center">Gin</td>
+<td style="text-align:center">v1.6.3</td>
+</tr>
+<tr>
+<td style="text-align:center">通讯格式</td>
+<td style="text-align:center">Protobuf</td>
+<td style="text-align:center">v1.4.1</td>
+</tr>
+<tr>
+<td style="text-align:center">微服务框架</td>
+<td style="text-align:center">Go-micro</td>
+<td style="text-align:center">v2.9.0</td>
+</tr>
+<tr>
+<td style="text-align:center">反向代理</td>
+<td style="text-align:center">Traefik</td>
+<td style="text-align:center">v2.2.1</td>
+</tr>
+<tr>
+<td style="text-align:center">服务注册中心</td>
+<td style="text-align:center">Etcd/Kubernetes</td>
+<td style="text-align:center">v3.3.8/v1.16.5</td>
+</tr>
+<tr>
+<td style="text-align:center">容器</td>
+<td style="text-align:center">Docker</td>
+<td style="text-align:center">v19.03.8</td>
+</tr>
+<tr>
+<td style="text-align:center">编排工具</td>
+<td style="text-align:center">Docker-Compose/Kubernetes</td>
+<td style="text-align:center">v1.25.5/v1.16.5</td>
+</tr>
+<tr>
+<td style="text-align:center">代码仓库</td>
+<td style="text-align:center">Gitlab</td>
+<td style="text-align:center">v13.1.1-ce.0</td>
+</tr>
+<tr>
+<td style="text-align:center">持续集成</td>
+<td style="text-align:center">Jenkins</td>
+<td style="text-align:center">v2.242</td>
+</tr>
+</tbody>
+</table>
+<h1 id="仓库"><a href="#仓库" class="headerlink" title="仓库"></a>仓库</h1><p>对应的相关代码和部署文件，已经传至github，欢迎star。</p>
+<p>微服务与部署：<a href="https://github.com/guaosi/go-micro-build" target="_blank" rel="noopener">https://github.com/guaosi/go-micro-build</a></p>
+<p>持续交付、集成、部署：<a href="https://github.com/guaosi/go-cicd" target="_blank" rel="noopener">https://github.com/guaosi/go-cicd</a></p>
+
+      
+
+      
+
+      
+        <div class="declare">
+          <strong>本文作者：</strong>
           
+            guaosi
+          
+          <br>
+          <strong>本文链接：</strong>
+          <a rel="license" href="https://www.guaosi.com/2020/07/07/go-micro-service-introduce-components-and-framework/">https://www.guaosi.com/2020/07/07/go-micro-service-introduce-components-and-framework/</a>
+          <br>
+          <strong>版权声明：</strong>
+          本博客所有文章除特别声明外，均采用
+          <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/3.0/">CC BY-NC-SA 3.0 许可协议</a>
+          
+            <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/3.0/"><img alt="知识共享许可协议" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/3.0/80x15.png"></a>
+          
+          进行许可。转载请注明出处！
+        </div>
+      
+
+
+
+      
+      <div class="page-reward">
+        <a href="javascript:;" class="page-reward-btn tooltip-top">
+          <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>
+                    谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/assets/img/alipay.png">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/assets/img/wechat.png">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+        </a>
+      </div>
+      
+    </div>
+
+
+
+
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">crack</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Golang</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">微服务</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">go-micro</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+      
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPYAAAD2CAAAAADAeSUUAAADM0lEQVR42u3awW4iQQwE0Pz/T7PSniIlgSobJKZ5c4q0wPj1Hiy7+usrfm7/n+9/f39+fvL+53/+68+/k3r+quFpDzY2NvZF2Le7T/uav76V15AcYnvEv9SAjY2NfRx71rTul5U3xfy9s7djY2NjY7fNLG+B7eiS/Bo2NjY2ds5OmlYCSBZM+SFiY2NjfyZ7tsSfrfvbUCFfWr1kl4aNjY399uxZ0Puef78838bGxsZ+M/atfPZrnTz0zUm1AhsbG/sg9gyQDxXtKLJZQrWXgbCxsbHPY28aQ77cT9ZGs3bVXgzCxsbGPoOdF5GA2yLaT+bHGg0h2NjY2Eew2zbWNqRnNaf2SlDRJrGxsbGPYOevaa/RtIPHJpzIa8DGxsY+ib1Zr2+W+G08vLlOVAQD2NjY2Bdk56XkYfB+REkih/aYHkxg2NjY2Bdnt2ujWdtICsoHmDx4Lv6fsbGxsS/IzsPavOh2pGlj3bZlPlgqYWNjYx/BzoeQPACYrfU3rS5fPGFjY2OfxN4PGM9tcvmaadMssbGxsT+H3Q4Jm71N3iY3AQM2Njb2eex9BJvHuhtYG0I/eAs2Njb2QexnjQGbEtu2lDNWIxA2Njb2pdiblU17rScfY2bfXcUD2NjY2Bdk561odtmxPY56YJi9FxsbG/s4drLib4Ph50a5s3EIGxsb+xPY+ZhxP6DNA+M8SJi1q+EuDRsbG/vi7M2FyLz0GXLT8B6MN9jY2NhHsJMFfXJdsm1j+0Ns68HGxsY+mz376dkRtCuhNgYuOjY2Njb2EexXxK55zDBsP/F3h9MMNjY29qXY7ddm8epq41UGAFHLxMbGxj6avVno5+Frcnxt40xGkV9uKmFjY2NfnD0bG2ZHkzDy0ttfe8K0hI2Njf2W7Fv5PKs5zYaZ5OijA8LGxsY+iD1b8Rfrm0Vzaq/75G0SGxsb+zz2bABILuhsFk9Jne1hRdkINjY29mXZbYn5oDKLaVeXcoI6sbGxsT+TPZtv8hXVrBXlLQ0bGxsb+xWtbhPZrhZS2NjY2Mex94v72cXKpMRnhcfY2NjYp7LboHd2QSdpV+0lobbt1b+DjY2N/e7sf0nSzkqDAdDSAAAAAElFTkSuQmCC" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
-  
-  
-    </div></section>
-  
 
-    
+
+<nav id="article-nav">
+  
+    <a href="/2020/07/08/go-micro-service-environment-preparation-and-installation/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          GO微服务系列-1.2 环境的准备与安装
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2020/07/05/go-microservice-series-from-development-to-deployment-introduction-contents/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">手摸手教你从开发到部署(CI/CD)GO微服务系列-介绍与目录</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#流程图"><span class="toc-number">1.</span> <span class="toc-text">流程图</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#请求微服务流程图"><span class="toc-number">1.1.</span> <span class="toc-text">请求微服务流程图</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CI-CD流程图"><span class="toc-number">1.2.</span> <span class="toc-text">CI/CD流程图</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#涉及到的组件、框架及其版本"><span class="toc-number">2.</span> <span class="toc-text">涉及到的组件、框架及其版本</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#仓库"><span class="toc-number">3.</span> <span class="toc-text">仓库</span></a></li></ol>
+                    </div>
+                </span>
+            </div>
+        </div>
+        
+    </div>
+</aside>
+
+
+
+
+
+
+
+
+<div id="SOHUCS" sid="go-micro-service-introduce-components-and-framework"></div>
+<script type="text/javascript">
+  (function () {
+    var appid = "cytWxLdY3";
+    var conf = "prod_f314382998643222116abeab50bbbc4f";
+    var width = window.innerWidth || document.documentElement.clientWidth;
+    if (width < 960) {
+      window.document.write(
+        '<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="//changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' +
+        appid + '&conf=' + conf + '"><\/script>');
+    } else {
+      var loadJs = function (d, a) {
+        var c = document.getElementsByTagName("head")[0] || document.head || document.documentElement;
+        var b = document.createElement("script");
+        b.setAttribute("type", "text/javascript");
+        b.setAttribute("charset", "UTF-8");
+        b.setAttribute("src", d);
+        if (typeof a === "function") {
+          if (window.attachEvent) {
+            b.onreadystatechange = function () {
+              var e = b.readyState;
+              if (e === "loaded" || e === "complete") {
+                b.onreadystatechange = null;
+                a()
+              }
+            }
+          } else {
+            b.onload = a
+          }
+        }
+        c.appendChild(b)
+      };
+      loadJs("//changyan.sohu.com/upload/changyan.js", function () {
+        window.changyan.api.config({
+          appid: appid,
+          conf: conf
+        })
+      });
+    }
+  })();
+
+</script>
+
+
+
 
 
           </div>
@@ -384,9 +702,9 @@ var _hmt = _hmt || [];
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: true,
 		toc_hide_index: true,
