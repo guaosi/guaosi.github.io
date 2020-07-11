@@ -17,7 +17,7 @@
 <meta property="og:site_name" content="guaosi的博客">
 <meta property="og:description" content="容器执行这一章中，我们来测试一下上一章制作的镜像是否可以正常使用。">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-07-11T15:05:22.366Z">
+<meta property="og:updated_time" content="2020-07-11T15:09:23.668Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="GO微服务系列-3.2 直接Docker容器构建执行">
 <meta name="twitter:description" content="容器执行这一章中，我们来测试一下上一章制作的镜像是否可以正常使用。">
@@ -349,6 +349,8 @@ var _hmt = _hmt || [];
 </blockquote>
 <h2 id="apigw"><a href="#apigw" class="headerlink" title="apigw"></a>apigw</h2><p>我们继续启动<code>apigw</code>服务<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -e PARAMS=<span class="string">"-p 8091 --registry etcd --registry_address 172.17.0.2:2379"</span> -<span class="selector-tag">p</span> <span class="number">8091</span>:<span class="number">8091</span> --name=<span class="string">"apigw"</span> -d registry<span class="selector-class">.cn-shenzhen</span><span class="selector-class">.aliyuncs</span><span class="selector-class">.com</span>/go_micro/apigw:v1.<span class="number">0</span></span><br></pre></td></tr></table></figure></p>
 <h2 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h2><p>我们最后发送请求进行测试<br><figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt; curl -X POST -d <span class="string">"username=guaosi&amp;password=guaosi"</span> http:<span class="regexp">//</span><span class="number">127.0</span>.<span class="number">0.1</span>:<span class="number">8091</span><span class="regexp">/account/</span>register</span><br><span class="line"></span><br><span class="line">&#123;<span class="string">"code"</span>:<span class="number">0</span>,<span class="string">"message"</span>:<span class="string">""</span>&#125;</span><br></pre></td></tr></table></figure></p>
+<h1 id="代码仓库"><a href="#代码仓库" class="headerlink" title="代码仓库"></a>代码仓库</h1><p>最终的代码和部署文件，已经传至github，欢迎star。</p>
+<p><a href="https://github.com/guaosi/go-micro-build" target="_blank" rel="noopener">https://github.com/guaosi/go-micro-build</a></p>
 
       
 
@@ -538,7 +540,7 @@ var _hmt = _hmt || [];
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#容器执行"><span class="toc-number">1.</span> <span class="toc-text">容器执行</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#获取etcd在docker中的地址"><span class="toc-number">1.1.</span> <span class="toc-text">获取etcd在docker中的地址</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#account"><span class="toc-number">1.2.</span> <span class="toc-text">account</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#apigw"><span class="toc-number">1.3.</span> <span class="toc-text">apigw</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#测试"><span class="toc-number">1.4.</span> <span class="toc-text">测试</span></a></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#容器执行"><span class="toc-number">1.</span> <span class="toc-text">容器执行</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#获取etcd在docker中的地址"><span class="toc-number">1.1.</span> <span class="toc-text">获取etcd在docker中的地址</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#account"><span class="toc-number">1.2.</span> <span class="toc-text">account</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#apigw"><span class="toc-number">1.3.</span> <span class="toc-text">apigw</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#测试"><span class="toc-number">1.4.</span> <span class="toc-text">测试</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#代码仓库"><span class="toc-number">2.</span> <span class="toc-text">代码仓库</span></a></li></ol>
                     </div>
                 </span>
             </div>
@@ -704,10 +706,6 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">git</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Golang</a>
               </li>
              
@@ -717,6 +715,10 @@ var _hmt = _hmt || [];
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">go-micro</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">git</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -740,14 +742,6 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Linux</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Python</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">tcp</a>
               </li>
              
@@ -757,6 +751,14 @@ var _hmt = _hmt || [];
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">PHP</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Linux</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Python</a>
               </li>
              
               <li class="article-tag-list-item">

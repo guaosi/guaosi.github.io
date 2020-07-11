@@ -19,7 +19,7 @@
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://www.guaosi.com/assets/blogImg/go-micro-service-docker-compose-build-execution/traefik-init.png">
 <meta property="og:image" content="https://www.guaosi.com/assets/blogImg/go-micro-service-docker-compose-build-execution/traefik-register.png">
-<meta property="og:updated_time" content="2020-07-11T15:05:35.952Z">
+<meta property="og:updated_time" content="2020-07-11T15:09:33.160Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="GO微服务系列-3.3 Docker Compose下的构建执行">
 <meta name="twitter:description" content="整理环境这一章中，我们已经创建了etcd、account、apigw这三个镜像对应的容器。在Docker Compose中，我们想重新创建新的容器，不被之前的容器所干扰，并且把它们放在一个专属的网络中去，所以我们需要删除之前创建的容器。">
@@ -373,6 +373,8 @@ var _hmt = _hmt || [];
 <blockquote>
 <p>我们可以通过查看相同服务不同容器的日志，以及停止容器来验证服务的高可用与负载均衡调度。</p>
 </blockquote>
+<h1 id="代码仓库"><a href="#代码仓库" class="headerlink" title="代码仓库"></a>代码仓库</h1><p>最终的代码和部署文件，已经传至github，欢迎star。</p>
+<p><a href="https://github.com/guaosi/go-micro-build" target="_blank" rel="noopener">https://github.com/guaosi/go-micro-build</a></p>
 
       
 
@@ -553,7 +555,7 @@ var _hmt = _hmt || [];
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#整理环境"><span class="toc-number">1.</span> <span class="toc-text">整理环境</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#traefik"><span class="toc-number">2.</span> <span class="toc-text">traefik</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#简单介绍"><span class="toc-number">2.1.</span> <span class="toc-text">简单介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#toml"><span class="toc-number">2.2.</span> <span class="toc-text">toml</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Docker-Compose"><span class="toc-number">2.3.</span> <span class="toc-text">Docker Compose</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#etcd"><span class="toc-number">3.</span> <span class="toc-text">etcd</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Docker-Compose-1"><span class="toc-number">3.1.</span> <span class="toc-text">Docker Compose</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#account"><span class="toc-number">4.</span> <span class="toc-text">account</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Docker-Compose-2"><span class="toc-number">4.1.</span> <span class="toc-text">Docker Compose</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#apigw"><span class="toc-number">5.</span> <span class="toc-text">apigw</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Docker-Compose-3"><span class="toc-number">5.1.</span> <span class="toc-text">Docker Compose</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#验证"><span class="toc-number">6.</span> <span class="toc-text">验证</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Dashboard"><span class="toc-number">6.1.</span> <span class="toc-text">Dashboard</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#域名"><span class="toc-number">6.2.</span> <span class="toc-text">域名</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#验证-1"><span class="toc-number">6.3.</span> <span class="toc-text">验证</span></a></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#整理环境"><span class="toc-number">1.</span> <span class="toc-text">整理环境</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#traefik"><span class="toc-number">2.</span> <span class="toc-text">traefik</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#简单介绍"><span class="toc-number">2.1.</span> <span class="toc-text">简单介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#toml"><span class="toc-number">2.2.</span> <span class="toc-text">toml</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Docker-Compose"><span class="toc-number">2.3.</span> <span class="toc-text">Docker Compose</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#etcd"><span class="toc-number">3.</span> <span class="toc-text">etcd</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Docker-Compose-1"><span class="toc-number">3.1.</span> <span class="toc-text">Docker Compose</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#account"><span class="toc-number">4.</span> <span class="toc-text">account</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Docker-Compose-2"><span class="toc-number">4.1.</span> <span class="toc-text">Docker Compose</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#apigw"><span class="toc-number">5.</span> <span class="toc-text">apigw</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Docker-Compose-3"><span class="toc-number">5.1.</span> <span class="toc-text">Docker Compose</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#验证"><span class="toc-number">6.</span> <span class="toc-text">验证</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Dashboard"><span class="toc-number">6.1.</span> <span class="toc-text">Dashboard</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#域名"><span class="toc-number">6.2.</span> <span class="toc-text">域名</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#验证-1"><span class="toc-number">6.3.</span> <span class="toc-text">验证</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#代码仓库"><span class="toc-number">7.</span> <span class="toc-text">代码仓库</span></a></li></ol>
                     </div>
                 </span>
             </div>
@@ -719,10 +721,6 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">git</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Golang</a>
               </li>
              
@@ -732,6 +730,10 @@ var _hmt = _hmt || [];
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">go-micro</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">git</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -755,14 +757,6 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Linux</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Python</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">tcp</a>
               </li>
              
@@ -772,6 +766,14 @@ var _hmt = _hmt || [];
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">PHP</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Linux</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Python</a>
               </li>
              
               <li class="article-tag-list-item">
