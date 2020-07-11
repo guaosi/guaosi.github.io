@@ -302,6 +302,247 @@ var _hmt = _hmt || [];
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-kubernetes-for-mac-install" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
+  <div class="article-inner">
+    
+    <header class="article-header">
+      
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/07/05/kubernetes-for-mac-install/">Kubernetes 基于 Mac OS 安装教程</a>
+    </h1>
+  
+
+      <!-- 显示阅读和评论数 -->
+
+      <br>
+      
+
+
+
+      
+      <a href="/2020/07/05/kubernetes-for-mac-install/" class="archive-article-date">
+  	<time datetime="2020-07-05T10:37:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-05</time>
+</a>
+      
+    </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+      <h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p>Kubernetes在前一篇 <a href="https://www.guaosi.com/2020/07/05/kubernetes-cluster-install/">Kubernetes 18.04集群安装教程(基于Centos7)</a> 已经介绍过了，这里不做过多的描述，重点讲述 Mac OS 下如何使用Kubernetes。</p>
+<p>其实非常简单，因为我们使用的是 <a href="https://download.docker.com/mac/stable/Docker.dmg" target="_blank" rel="noopener">Docker For Mac</a> 。下载下来安装即可。</p>
+<h1 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h1><p>以版本为 2.3.0.3 为例</p>
+<p>打开 <code>Docker For Mac</code> ,点击 <code>Preferences</code> 偏好设置进入控制面板。</p>
+      
+      <a class="article-more-a" href="/2020/07/05/kubernetes-for-mac-install/#more">
+        more >></a>
+      
+      
+
+      
+
+      
+        <div class="declare" hidden="hidden"></div>
+      
+
+
+
+      
+    </div>
+
+
+
+
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Docker</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Kubernetes</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Linux</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">运维</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+      <p class="article-more-link">
+        <a class="article-more-a" href="/2020/07/05/kubernetes-for-mac-install/">
+          展开全文 >></a>
+      </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+  
+    <article id="post-kubernetes-cluster-install" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
+  <div class="article-inner">
+    
+    <header class="article-header">
+      
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/07/05/kubernetes-cluster-install/">Kubernetes 18.04集群安装教程(基于Centos7)</a>
+    </h1>
+  
+
+      <!-- 显示阅读和评论数 -->
+
+      <br>
+      
+
+
+
+      
+      <a href="/2020/07/05/kubernetes-cluster-install/" class="archive-article-date">
+  	<time datetime="2020-07-05T07:37:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-05</time>
+</a>
+      
+    </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+      <h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p>kubernetes，简称K8s，是用8代替8个字符“ubernete”而成的缩写。是一个开源的，用于管理云平台中多个主机上的容器化的应用，Kubernetes的目标是让部署容器化的应用简单并且高效（powerful）,Kubernetes提供了应用部署，规划，更新，维护的一种机制。</p>
+<h1 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h1><p>在开始之前，先简单介绍一下环境以及配置。这里使用的是vmware创建的虚拟机。</p>
+<table>
+<thead>
+<tr>
+<th>节点</th>
+<th>操作系统</th>
+<th>cpu</th>
+<th>内存</th>
+<th>磁盘</th>
+<th>IP</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>k8s-master</td>
+<td>centos7</td>
+<td>2核2线</td>
+<td>4G</td>
+<td>50G</td>
+<td>192.168.1.200</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>kubernetes的服务器必须是2核4G以上配置才可以安装的</p>
+</blockquote>
+      
+      <a class="article-more-a" href="/2020/07/05/kubernetes-cluster-install/#more">
+        more >></a>
+      
+      
+
+      
+
+      
+        <div class="declare" hidden="hidden"></div>
+      
+
+
+
+      
+    </div>
+
+
+
+
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Kubernetes</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Linux</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">运维</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+      <p class="article-more-link">
+        <a class="article-more-a" href="/2020/07/05/kubernetes-cluster-install/">
+          展开全文 >></a>
+      </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+  
     <article id="post-record-data-loss-problem-caused-by-MTU" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
   <div class="article-inner">
     
@@ -907,221 +1148,6 @@ var _hmt = _hmt || [];
 
 
   
-    <article id="post-first-acquaintance-with-redis" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
-  <div class="article-inner">
-    
-    <header class="article-header">
-      
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/02/03/first-acquaintance-with-redis/">Redis初识</a>
-    </h1>
-  
-
-      <!-- 显示阅读和评论数 -->
-
-      <br>
-      
-
-
-
-      
-      <a href="/2020/02/03/first-acquaintance-with-redis/" class="archive-article-date">
-  	<time datetime="2020-02-03T10:20:47.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-02-03</time>
-</a>
-      
-    </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-      <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><h3 id="Redis是什么"><a href="#Redis是什么" class="headerlink" title="Redis是什么"></a>Redis是什么</h3><ul>
-<li>Redis - <code>REmote DIctionary Server</code></li>
-<li>Redis是一个使用<code>ANSI C</code>语言编写的开源数据库</li>
-<li>高性能的<code>key-value</code>数据库</li>
-<li>内存数据库，支持数据持久化</li>
-<li>提供了多种编程语言的客户端</li>
-<li>从2010年3月15日起，Redis的开发工作由<code>VMware</code>主持</li>
-<li>从2013年5月开始，Redis的开发由<code>Pivotal</code>赞助</li>
-</ul>
-<p>官网：<a href="https://redis.io/" target="_blank" rel="noopener">https://redis.io/</a><br>中文官网：<a href="http://www.redis.cn/" target="_blank" rel="noopener">http://www.redis.cn/</a></p>
-      
-      <a class="article-more-a" href="/2020/02/03/first-acquaintance-with-redis/#more">
-        more >></a>
-      
-      
-
-      
-
-      
-        <div class="declare" hidden="hidden"></div>
-      
-
-
-
-      
-    </div>
-
-
-
-
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Redis</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-      <p class="article-more-link">
-        <a class="article-more-a" href="/2020/02/03/first-acquaintance-with-redis/">
-          展开全文 >></a>
-      </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-  
-    <article id="post-dive-into-the-advanced-features-of-rabbitmq-with-golang" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
-  <div class="article-inner">
-    
-    <header class="article-header">
-      
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/01/29/dive-into-the-advanced-features-of-rabbitmq-with-golang/">Rabbit集群架构模式</a>
-    </h1>
-  
-
-      <!-- 显示阅读和评论数 -->
-
-      <br>
-      
-
-
-
-      
-      <a href="/2020/01/29/dive-into-the-advanced-features-of-rabbitmq-with-golang/" class="archive-article-date">
-  	<time datetime="2020-01-29T09:50:45.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-01-29</time>
-</a>
-      
-    </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-      <h2 id="保障消息-100-投递成功方案"><a href="#保障消息-100-投递成功方案" class="headerlink" title="保障消息 100% 投递成功方案"></a>保障消息 100% 投递成功方案</h2><h3 id="什么是生产端的可靠性投递？"><a href="#什么是生产端的可靠性投递？" class="headerlink" title="什么是生产端的可靠性投递？"></a>什么是生产端的可靠性投递？</h3><ul>
-<li>保障消息的成功发出</li>
-<li>保障MQ节点的成功接收</li>
-<li>发送端收到MQ节点(Broker) 确认应答</li>
-<li>完善的消息补偿机制</li>
-</ul>
-<p>如果想保障消息百分百投递成功，只做到前三步不一定能够保障。有些时候或者说有些极端情况，比如生产端在投递消息时可能就失败了，或者说生产端投递了消息，MQ也收到了，MQ在返回确认应答时，由于网络闪断导致生产端没有收到应答，此时这条消息就不知道投递成功了还是失败了，所以针对这些情况我们需要做一些补偿机制。</p>
-      
-      <a class="article-more-a" href="/2020/01/29/dive-into-the-advanced-features-of-rabbitmq-with-golang/#more">
-        more >></a>
-      
-      
-
-      
-
-      
-        <div class="declare" hidden="hidden"></div>
-      
-
-
-
-      
-    </div>
-
-
-
-
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">消息队列</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">中间件</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">RabbitMQ</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-      <p class="article-more-link">
-        <a class="article-more-a" href="/2020/01/29/dive-into-the-advanced-features-of-rabbitmq-with-golang/">
-          展开全文 >></a>
-      </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/3/">Next &raquo;</a>
@@ -1228,11 +1254,11 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">crack</a>
+                <a href="javascript:void(0)" class="js-tag color4">git</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">git</a>
+                <a href="javascript:void(0)" class="js-tag color1">crack</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1248,14 +1274,6 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">算法</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">数据结构</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Docker</a>
               </li>
              
@@ -1268,6 +1286,14 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">算法</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">数据结构</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">tcp</a>
               </li>
              
@@ -1276,15 +1302,15 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">PHP</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Linux</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Python</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">PHP</a>
               </li>
              
               <li class="article-tag-list-item">

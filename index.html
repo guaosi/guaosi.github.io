@@ -541,6 +541,225 @@ var _hmt = _hmt || [];
 
 
   
+    <article id="post-go-micro-service-write-gateway" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
+  <div class="article-inner">
+    
+    <header class="article-header">
+      
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/07/11/go-micro-service-write-gateway/">GO微服务系列-2.4 网关编写</a>
+    </h1>
+  
+
+      <!-- 显示阅读和评论数 -->
+
+      <br>
+      
+
+
+
+      
+      <a href="/2020/07/11/go-micro-service-write-gateway/" class="archive-article-date">
+  	<time datetime="2020-07-11T10:59:05.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-11</time>
+</a>
+      
+    </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+      <h1 id="作用"><a href="#作用" class="headerlink" title="作用"></a>作用</h1><p>上一章中，我们已经编写好了<code>account</code>服务。这一章我们来完成<code>apigateway</code>，也就是网关的编写。</p>
+<p>我们将会使用<code>gin</code>框架，来对外提供<code>HTTP</code>服务与<code>路由</code>。一个<code>url</code>请求进入后，<code>gin</code>框架的路由解析后找到对应的<code>handler</code>方法，然后该<code>handler</code>中会调用对应的<code>服务</code>，获得最终的结果，返回给用户。</p>
+<blockquote>
+<p>对外HTTP，对内RPC</p>
+</blockquote>
+<h1 id="目录结构"><a href="#目录结构" class="headerlink" title="目录结构"></a>目录结构</h1><p>我们来看一下<code>apigateway</code>的最终目录结构</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">├─apigateway</span><br><span class="line">  ├─deploy                   （部署相关）</span><br><span class="line">  ├─handler</span><br><span class="line">    └─account.go</span><br><span class="line">  ├─proto                    （proto文件）</span><br><span class="line">    ├─account</span><br><span class="line">      ├─account<span class="selector-class">.pb</span><span class="selector-class">.go</span>           </span><br><span class="line">      └─account<span class="selector-class">.pb</span><span class="selector-class">.micro</span><span class="selector-class">.go</span>     </span><br><span class="line">  ├─router                    （路由）</span><br><span class="line">    └─router.go</span><br><span class="line">  ├─serviceclient             （client）</span><br><span class="line">    └─init<span class="selector-class">.go</span>   </span><br><span class="line">  ├─apigw<span class="selector-class">.go</span>                  （入口文件）</span><br><span class="line">  ├─go.mod</span><br><span class="line">  └─go.sum</span><br></pre></td></tr></table></figure>
+      
+      <a class="article-more-a" href="/2020/07/11/go-micro-service-write-gateway/#more">
+        more >></a>
+      
+      
+
+      
+
+      
+        <div class="declare" hidden="hidden"></div>
+      
+
+
+
+      
+    </div>
+
+
+
+
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Golang</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">微服务</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">go-micro</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+      <p class="article-more-link">
+        <a class="article-more-a" href="/2020/07/11/go-micro-service-write-gateway/">
+          展开全文 >></a>
+      </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+  
+    <article id="post-go-micro-service-write-service" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
+  <div class="article-inner">
+    
+    <header class="article-header">
+      
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/07/11/go-micro-service-write-service/">GO微服务系列-2.3 服务编写</a>
+    </h1>
+  
+
+      <!-- 显示阅读和评论数 -->
+
+      <br>
+      
+
+
+
+      
+      <a href="/2020/07/11/go-micro-service-write-service/" class="archive-article-date">
+  	<time datetime="2020-07-11T10:28:22.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-11</time>
+</a>
+      
+    </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+      <h1 id="作用"><a href="#作用" class="headerlink" title="作用"></a>作用</h1><p>在 <a href="https://www.guaosi.com/2020/07/07/go-micro-service-introduce-components-and-framework/">1.1 涉及的组件、框架介绍</a> 中已经大致介绍了一下我们微服务的整个请求流程。我们这章就开始编写一个最简单的服务——<code>account</code>，作为<code>服务A</code></p>
+<blockquote>
+<p>注意：这个系列的重心在整个微服务的创建以及部署上，所以会尽可能地简化业务逻辑代码。</p>
+</blockquote>
+<h1 id="目录结构"><a href="#目录结构" class="headerlink" title="目录结构"></a>目录结构</h1><p>我们来看一下<code>account</code>的最终目录结构</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">├─account</span><br><span class="line">  ├─deploy                   （部署相关）</span><br><span class="line">  ├─handler</span><br><span class="line">    └─account.go</span><br><span class="line">  ├─proto                    （proto文件）</span><br><span class="line">    ├─account<span class="selector-class">.pb</span><span class="selector-class">.go</span>           </span><br><span class="line">    └─account<span class="selector-class">.pb</span><span class="selector-class">.micro</span><span class="selector-class">.go</span>     </span><br><span class="line">  ├─accountservice<span class="selector-class">.go</span>        （入口文件）</span><br><span class="line">  ├─go.mod</span><br><span class="line">  └─go.sum</span><br></pre></td></tr></table></figure>
+      
+      <a class="article-more-a" href="/2020/07/11/go-micro-service-write-service/#more">
+        more >></a>
+      
+      
+
+      
+
+      
+        <div class="declare" hidden="hidden"></div>
+      
+
+
+
+      
+    </div>
+
+
+
+
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Golang</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">微服务</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">go-micro</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+      <p class="article-more-link">
+        <a class="article-more-a" href="/2020/07/11/go-micro-service-write-service/">
+          展开全文 >></a>
+      </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+  
     <article id="post-go-micro-service-brief-introduction-go-micro" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
   <div class="article-inner">
     
@@ -968,247 +1187,6 @@ var _hmt = _hmt || [];
 
 
   
-    <article id="post-kubernetes-for-mac-install" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
-  <div class="article-inner">
-    
-    <header class="article-header">
-      
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/07/05/kubernetes-for-mac-install/">Kubernetes 基于 Mac OS 安装教程</a>
-    </h1>
-  
-
-      <!-- 显示阅读和评论数 -->
-
-      <br>
-      
-
-
-
-      
-      <a href="/2020/07/05/kubernetes-for-mac-install/" class="archive-article-date">
-  	<time datetime="2020-07-05T10:37:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-05</time>
-</a>
-      
-    </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-      <h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p>Kubernetes在前一篇 <a href="https://www.guaosi.com/2020/07/05/kubernetes-cluster-install/">Kubernetes 18.04集群安装教程(基于Centos7)</a> 已经介绍过了，这里不做过多的描述，重点讲述 Mac OS 下如何使用Kubernetes。</p>
-<p>其实非常简单，因为我们使用的是 <a href="https://download.docker.com/mac/stable/Docker.dmg" target="_blank" rel="noopener">Docker For Mac</a> 。下载下来安装即可。</p>
-<h1 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h1><p>以版本为 2.3.0.3 为例</p>
-<p>打开 <code>Docker For Mac</code> ,点击 <code>Preferences</code> 偏好设置进入控制面板。</p>
-      
-      <a class="article-more-a" href="/2020/07/05/kubernetes-for-mac-install/#more">
-        more >></a>
-      
-      
-
-      
-
-      
-        <div class="declare" hidden="hidden"></div>
-      
-
-
-
-      
-    </div>
-
-
-
-
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Docker</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Kubernetes</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Linux</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">运维</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-      <p class="article-more-link">
-        <a class="article-more-a" href="/2020/07/05/kubernetes-for-mac-install/">
-          展开全文 >></a>
-      </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-  
-    <article id="post-kubernetes-cluster-install" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
-  <div class="article-inner">
-    
-    <header class="article-header">
-      
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/07/05/kubernetes-cluster-install/">Kubernetes 18.04集群安装教程(基于Centos7)</a>
-    </h1>
-  
-
-      <!-- 显示阅读和评论数 -->
-
-      <br>
-      
-
-
-
-      
-      <a href="/2020/07/05/kubernetes-cluster-install/" class="archive-article-date">
-  	<time datetime="2020-07-05T07:37:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-05</time>
-</a>
-      
-    </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-      <h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p>kubernetes，简称K8s，是用8代替8个字符“ubernete”而成的缩写。是一个开源的，用于管理云平台中多个主机上的容器化的应用，Kubernetes的目标是让部署容器化的应用简单并且高效（powerful）,Kubernetes提供了应用部署，规划，更新，维护的一种机制。</p>
-<h1 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h1><p>在开始之前，先简单介绍一下环境以及配置。这里使用的是vmware创建的虚拟机。</p>
-<table>
-<thead>
-<tr>
-<th>节点</th>
-<th>操作系统</th>
-<th>cpu</th>
-<th>内存</th>
-<th>磁盘</th>
-<th>IP</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>k8s-master</td>
-<td>centos7</td>
-<td>2核2线</td>
-<td>4G</td>
-<td>50G</td>
-<td>192.168.1.200</td>
-</tr>
-</tbody>
-</table>
-<blockquote>
-<p>kubernetes的服务器必须是2核4G以上配置才可以安装的</p>
-</blockquote>
-      
-      <a class="article-more-a" href="/2020/07/05/kubernetes-cluster-install/#more">
-        more >></a>
-      
-      
-
-      
-
-      
-        <div class="declare" hidden="hidden"></div>
-      
-
-
-
-      
-    </div>
-
-
-
-
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Kubernetes</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Linux</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">运维</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-      <p class="article-more-link">
-        <a class="article-more-a" href="/2020/07/05/kubernetes-cluster-install/">
-          展开全文 >></a>
-      </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
@@ -1315,11 +1293,11 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">crack</a>
+                <a href="javascript:void(0)" class="js-tag color4">git</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">git</a>
+                <a href="javascript:void(0)" class="js-tag color1">crack</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1335,14 +1313,6 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">算法</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">数据结构</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Docker</a>
               </li>
              
@@ -1355,6 +1325,14 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">算法</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">数据结构</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">tcp</a>
               </li>
              
@@ -1363,15 +1341,15 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">PHP</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Linux</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Python</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">PHP</a>
               </li>
              
               <li class="article-tag-list-item">

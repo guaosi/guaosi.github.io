@@ -7,19 +7,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="https://www.guaosi.com">
-  <title>Tag: Docker | guaosi的博客</title>
+  <title>GO微服务系列-2.4 网关编写 | guaosi的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="guaosi,guaosi的博客,后端,PHP,Linux,golang,python,开发者,程序猿,程序媛,极客,编程,代码,开源,IT网站,docker">
-<meta name="keywords" content="guaosi,guaosi的博客,后端,PHP,Linux,golang,python,开发者,程序猿,程序媛,极客,编程,代码,开源,IT网站,docker">
-<meta property="og:type" content="website">
-<meta property="og:title" content="guaosi的博客">
-<meta property="og:url" content="https://www.guaosi.com/tags/Docker/index.html">
+  <meta name="description" content="作用上一章中，我们已经编写好了account服务。这一章我们来完成apigateway，也就是网关的编写。 我们将会使用gin框架，来对外提供HTTP服务与路由。一个url请求进入后，gin框架的路由解析后找到对应的handler方法，然后该handler中会调用对应的服务，获得最终的结果，返回给用户。  对外HTTP，对内RPC  目录结构我们来看一下apigateway的最终目录结构 1234">
+<meta name="keywords" content="Golang,微服务,go-micro">
+<meta property="og:type" content="article">
+<meta property="og:title" content="GO微服务系列-2.4 网关编写">
+<meta property="og:url" content="https://www.guaosi.com/2020/07/11/go-micro-service-write-gateway/index.html">
 <meta property="og:site_name" content="guaosi的博客">
-<meta property="og:description" content="guaosi,guaosi的博客,后端,PHP,Linux,golang,python,开发者,程序猿,程序媛,极客,编程,代码,开源,IT网站,docker">
+<meta property="og:description" content="作用上一章中，我们已经编写好了account服务。这一章我们来完成apigateway，也就是网关的编写。 我们将会使用gin框架，来对外提供HTTP服务与路由。一个url请求进入后，gin框架的路由解析后找到对应的handler方法，然后该handler中会调用对应的服务，获得最终的结果，返回给用户。  对外HTTP，对内RPC  目录结构我们来看一下apigateway的最终目录结构 1234">
 <meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2020-07-11T11:21:54.845Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="guaosi的博客">
-<meta name="twitter:description" content="guaosi,guaosi的博客,后端,PHP,Linux,golang,python,开发者,程序猿,程序媛,极客,编程,代码,开源,IT网站,docker">
+<meta name="twitter:title" content="GO微服务系列-2.4 网关编写">
+<meta name="twitter:description" content="作用上一章中，我们已经编写好了account服务。这一章我们来完成apigateway，也就是网关的编写。 我们将会使用gin框架，来对外提供HTTP服务与路由。一个url请求进入后，gin框架的路由解析后找到对应的handler方法，然后该handler中会调用对应的服务，获得最终的结果，返回给用户。  对外HTTP，对内RPC  目录结构我们来看一下apigateway的最终目录结构 1234">
   
   <link rel="alternative" href="/atom.xml" title="guaosi的博客" type="application/atom+xml">
   
@@ -300,36 +301,127 @@ var _hmt = _hmt || [];
               class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-go-micro-service-write-gateway" class="article article-type-post " itemscope="" itemprop="blogPost">
+  <div class="article-inner">
     
-    
+    <header class="article-header">
       
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2020" class="archive-year">2020</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/07/05/go-microservice-series-from-development-to-deployment-introduction-contents/" class="archive-article-date">
-  	<time datetime="2020-07-05T13:46:18.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-05</time>
-</a>
-        </div>
-    	 
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/07/05/go-microservice-series-from-development-to-deployment-introduction-contents/">手摸手教你从开发到部署(CI/CD)GO微服务系列-介绍与目录</a>
+    <h1 class="article-title" itemprop="name">
+      GO微服务系列-2.4 网关编写
     </h1>
   
 
-        <div class="article-info info-on-right">
+      <!-- 显示阅读和评论数 -->
+
+      <br>
+      
+      <a class="cloud-tie-join-count" href="javascript:void(0);" style="color:gray;font-size:14px;">
+        <span class="icon-sort"></span>
+        <span id="busuanzi_container_page_pv" style="color:#ef7522;font-size:14px;">
+          阅读数: <span id="busuanzi_value_page_pv"></span>次 &nbsp;&nbsp;
+        </span>
+      </a>
+      
+
+
+
+      
+      <a href="/2020/07/11/go-micro-service-write-gateway/" class="archive-article-date">
+  	<time datetime="2020-07-11T10:59:05.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-11</time>
+</a>
+      
+    </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+      <h1 id="作用"><a href="#作用" class="headerlink" title="作用"></a>作用</h1><p>上一章中，我们已经编写好了<code>account</code>服务。这一章我们来完成<code>apigateway</code>，也就是网关的编写。</p>
+<p>我们将会使用<code>gin</code>框架，来对外提供<code>HTTP</code>服务与<code>路由</code>。一个<code>url</code>请求进入后，<code>gin</code>框架的路由解析后找到对应的<code>handler</code>方法，然后该<code>handler</code>中会调用对应的<code>服务</code>，获得最终的结果，返回给用户。</p>
+<blockquote>
+<p>对外HTTP，对内RPC</p>
+</blockquote>
+<h1 id="目录结构"><a href="#目录结构" class="headerlink" title="目录结构"></a>目录结构</h1><p>我们来看一下<code>apigateway</code>的最终目录结构</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">├─apigateway</span><br><span class="line">  ├─deploy                   （部署相关）</span><br><span class="line">  ├─handler</span><br><span class="line">    └─account.go</span><br><span class="line">  ├─proto                    （proto文件）</span><br><span class="line">    ├─account</span><br><span class="line">      ├─account<span class="selector-class">.pb</span><span class="selector-class">.go</span>           </span><br><span class="line">      └─account<span class="selector-class">.pb</span><span class="selector-class">.micro</span><span class="selector-class">.go</span>     </span><br><span class="line">  ├─router                    （路由）</span><br><span class="line">    └─router.go</span><br><span class="line">  ├─serviceclient             （client）</span><br><span class="line">    └─init<span class="selector-class">.go</span>   </span><br><span class="line">  ├─apigw<span class="selector-class">.go</span>                  （入口文件）</span><br><span class="line">  ├─go.mod</span><br><span class="line">  └─go.sum</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<p>文件夹大家根据结构自行创建~</p>
+<h1 id="编写"><a href="#编写" class="headerlink" title="编写"></a>编写</h1><p>好，那我们现在开始编写相关文件。</p>
+<p>最终的代码和部署文件，已经传至github，欢迎star。</p>
+<p><a href="https://github.com/guaosi/go-micro-build" target="_blank" rel="noopener">https://github.com/guaosi/go-micro-build</a></p>
+<h2 id="proto"><a href="#proto" class="headerlink" title="proto"></a>proto</h2><p><code>account</code>的<code>proto</code>相关文件已经在之前的 <a href="https://www.guaosi.com/2020/07/10/go-micro-service-writing-and-generating-proto-files/">GO微服务系列-2.1 proto文件的编写与生成</a> 已经编写并且成功好了，我们复制到<code>proto</code>文件夹中即可。</p>
+<h2 id="Client"><a href="#Client" class="headerlink" title="Client"></a>Client</h2><p><code>serviceclient/init.go</code><br><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> serviceclient</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">"apigw/handler"</span></span><br><span class="line">	proto <span class="string">"apigw/proto/account"</span></span><br><span class="line">	<span class="string">"github.com/micro/cli/v2"</span></span><br><span class="line">	<span class="string">"github.com/micro/go-micro/v2"</span></span><br><span class="line">	<span class="comment">// 这里使用 kubernetes 是为了之后可以通过命令行指定注册中心用 kubernetes</span></span><br><span class="line">	_ <span class="string">"github.com/micro/go-plugins/registry/kubernetes/v2"</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> Port <span class="keyword">string</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">RegisterService</span><span class="params">()</span></span> &#123;</span><br><span class="line">	<span class="comment">// 连接服务注册中心</span></span><br><span class="line">	service := micro.NewService(</span><br><span class="line">		micro.Flags(</span><br><span class="line">			&amp;cli.StringFlag&#123;</span><br><span class="line">				Name:  <span class="string">"p"</span>,</span><br><span class="line">				Usage: <span class="string">"port"</span>,</span><br><span class="line">			&#125;,</span><br><span class="line">		),</span><br><span class="line">	)</span><br><span class="line">	<span class="comment">// 解析命令行参数</span></span><br><span class="line">	<span class="comment">// 我们希望可以使用 -p 参数来手动指定我们HTTP服务对外提供服务时的端口</span></span><br><span class="line">	service.Init(</span><br><span class="line">		micro.Action(<span class="function"><span class="keyword">func</span><span class="params">(c *cli.Context)</span> <span class="title">error</span></span> &#123;</span><br><span class="line">			Port = c.String(<span class="string">"p"</span>)</span><br><span class="line">			<span class="keyword">if</span> <span class="built_in">len</span>(Port) == <span class="number">0</span> &#123;</span><br><span class="line">				Port = <span class="string">"8091"</span></span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">return</span> <span class="literal">nil</span></span><br><span class="line">		&#125;,</span><br><span class="line">		),</span><br><span class="line">	)</span><br><span class="line">	<span class="comment">// 复用服务注册的客户端</span></span><br><span class="line">	cli := service.Client()</span><br><span class="line">	<span class="comment">// 获取在服务注册中心上 micro.service.account 的客户端</span></span><br><span class="line">	handler.AccountServiceClient = proto.NewAccountService(<span class="string">"micro.service.account"</span>, cli)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="handler"><a href="#handler" class="headerlink" title="handler"></a>handler</h2><p><code>handler/account.go</code><br><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">package handler</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	proto <span class="string">"apigw/proto/account"</span></span><br><span class="line">	<span class="string">"context"</span></span><br><span class="line">	<span class="string">"github.com/gin-gonic/gin"</span></span><br><span class="line">	<span class="string">"log"</span></span><br><span class="line">	<span class="string">"net/http"</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> (</span><br><span class="line">	<span class="type">AccountServiceClient</span> proto.<span class="type">AccountService</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">RegisterHandler</span><span class="params">(<span class="built_in">c</span> *gin.Context)</span></span> &#123;</span><br><span class="line">	username := <span class="built_in">c</span>.<span class="type">PostForm</span>(<span class="string">"username"</span>)</span><br><span class="line">	password := <span class="built_in">c</span>.<span class="type">PostForm</span>(<span class="string">"password"</span>)</span><br><span class="line">	<span class="comment">// 通过AccountService服务的client，调用 AccountRegister 方法</span></span><br><span class="line">	res, err := <span class="type">AccountServiceClient</span>.<span class="type">AccountRegister</span>(context.<span class="type">TODO</span>(), &amp;proto.<span class="type">ReqAccountRegister</span>&#123;</span><br><span class="line">		<span class="type">Username</span>: username,</span><br><span class="line">		<span class="type">Password</span>: password,</span><br><span class="line">	&#125;)</span><br><span class="line">	<span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">		log.<span class="type">Print</span>(err.<span class="type">Error</span>())</span><br><span class="line">		<span class="built_in">c</span>.<span class="type">JSON</span>(http.<span class="type">StatusInternalServerError</span>, gin.<span class="type">H</span>&#123;</span><br><span class="line">			<span class="string">"code"</span>:    -<span class="number">2</span>,</span><br><span class="line">			<span class="string">"message"</span>: <span class="string">"server error"</span>,</span><br><span class="line">		&#125;)</span><br><span class="line">		<span class="keyword">return</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">c</span>.<span class="type">JSON</span>(http.<span class="type">StatusOK</span>, gin.<span class="type">H</span>&#123;</span><br><span class="line">		<span class="string">"code"</span>:    res.<span class="type">Code</span>,</span><br><span class="line">		<span class="string">"message"</span>: res.<span class="type">Message</span>,</span><br><span class="line">	&#125;)</span><br><span class="line">	<span class="keyword">return</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="编写路由"><a href="#编写路由" class="headerlink" title="编写路由"></a>编写路由</h2><p><code>router/router.go</code><br><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">package router</span><br><span class="line"></span><br><span class="line">import (</span><br><span class="line">	<span class="string">"apigw/handler"</span></span><br><span class="line">	<span class="string">"github.com/gin-gonic/gin"</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">func NewRouter() *gin.Engine &#123;</span><br><span class="line"><span class="built_in">	route </span>:= gin.Default()</span><br><span class="line">	route.POST(<span class="string">"/account/register"</span>, handler.RegisterHandler)</span><br><span class="line">	return route</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="开启HTTP服务"><a href="#开启HTTP服务" class="headerlink" title="开启HTTP服务"></a>开启HTTP服务</h2><p><code>apigw.go</code><br><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">"apigw/router"</span></span><br><span class="line">	<span class="string">"apigw/serviceclient"</span></span><br><span class="line">	<span class="string">"log"</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">init</span><span class="params">()</span></span> &#123;</span><br><span class="line">	serviceclient.RegisterService()</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	r := router.NewRouter()</span><br><span class="line">	<span class="keyword">if</span> err := r.Run(<span class="string">"0.0.0.0:"</span> + serviceclient.Port); err != <span class="literal">nil</span> &#123;</span><br><span class="line">		log.Print(err.Error())</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>编写完毕后，我们运行直接指定以<code>8091</code>作为端口启动<code>http</code>服务，并且服务发现和注册切换为<code>etcd</code><br><figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">go <span class="built_in">run</span> . -p <span class="number">8091</span> <span class="comment">--registry etcd</span></span><br></pre></td></tr></table></figure></p>
+<p>开启成功后，我们发送curl请求，进行验证<br><figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt; curl -X POST -d <span class="string">"username=guaosi&amp;password=guaosi"</span> http:<span class="regexp">//</span><span class="number">127.0</span>.<span class="number">0.1</span>:<span class="number">8091</span><span class="regexp">/account/</span>register</span><br><span class="line"></span><br><span class="line">&#123;<span class="string">"code"</span>:<span class="number">0</span>,<span class="string">"message"</span>:<span class="string">""</span>&#125;</span><br></pre></td></tr></table></figure></p>
+
+      
+
+      
+
+      
+        <div class="declare">
+          <strong>本文作者：</strong>
           
+            guaosi
+          
+          <br>
+          <strong>本文链接：</strong>
+          <a rel="license" href="https://www.guaosi.com/2020/07/11/go-micro-service-write-gateway/">https://www.guaosi.com/2020/07/11/go-micro-service-write-gateway/</a>
+          <br>
+          <strong>版权声明：</strong>
+          本博客所有文章除特别声明外，均采用
+          <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/3.0/">CC BY-NC-SA 3.0 许可协议</a>
+          
+            <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/3.0/"><img alt="知识共享许可协议" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/3.0/80x15.png"></a>
+          
+          进行许可。转载请注明出处！
+        </div>
+      
+
+
+
+      
+      <div class="page-reward">
+        <a href="javascript:;" class="page-reward-btn tooltip-top">
+          <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>
+                    谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/assets/img/alipay.png">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/assets/img/wechat.png">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+        </a>
+      </div>
+      
+    </div>
+
+
+
+
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -345,183 +437,164 @@ var _hmt = _hmt || [];
         		<li class="article-tag-list-item">
         			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">go-micro</a>
         		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Docker</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Kubernetes</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">CI/CD</a>
-        		</li>
       		
 		</ul>
 	</div>
 
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/07/05/kubernetes-for-mac-install/" class="archive-article-date">
-  	<time datetime="2020-07-05T10:37:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-05</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/07/05/kubernetes-for-mac-install/">Kubernetes 基于 Mac OS 安装教程</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Docker</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Kubernetes</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Linux</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">运维</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/01/22/network-of-vmware-and-docker/" class="archive-article-date">
-  	<time datetime="2020-01-22T08:51:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-01-22</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/01/22/network-of-vmware-and-docker/">Vmware和Docker的网络模式讲解</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Docker</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Linux</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">网络</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">服务器</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
       
-        </div></section>
+
+      
+
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/11/30/docker-basic/" class="archive-article-date">
-  	<time datetime="2018-11-30T03:39:18.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-30</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/11/30/docker-basic/">Docker常用基础</a>
-    </h1>
-  
+      </div>
+    </span>
+  </div>
+</div>
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Docker</a>
-        		</li>
-      		
-		</ul>
-	</div>
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACp0lEQVR42u3aMXLDMAwEQP//006dcaTcEaRHxbrKxIrEVUEgB75e8ed98fm85vP6q2vuf/95h6u/3fDBw8PD27T0fLlX397j53dIXjoeHh7eOV67oHZDv39K+6y8wODh4eE9gTdpkettvWyv8fDw8J7My5eYFI95QcLDw8P7Pi8JI9rWedIubysteHh4eAd4+RTpOT8fme/h4eHhjafqyTAsH4ztasGLe+Lh4eEd4OUb7toSR/FrHF78cyUeHh7eVl4bMeTxa/Jq8m/zSOLXNXh4eHjHeO0BqfygQBvy5qXinvfa+0g8PDy8+EhT20avlZYcnEcVeHh4eKd5xUWDh7UHCyZgPDw8vNO8tQKQRwOT0LYNIy5Tajw8PLytvDYwbRea3GGtLNXlAQ8PD2/My9vZJERIWuE8yJhHxnh4eHineW07m2/r7eGAtaL1x5V4eHh4B3i7Ytn2dex9boHEw8PDG/PyEf7a+CrfytciiaIM4OHh4W3lrQ2rkmW14cJ85HY52cPDw8PbxFuLFfKlJNt63mSvlTQ8PDy8E7w2fk2a6Xa0Nv/2n6waDw8PbxOvPUr1jj/tsGrt0EB06AoPDw9vK28tZt0Vy7YlZ+0gFx4eHt4JXn6L9hDVPLCYtOx4eHh43+ElbXR+mKAtA+2uHt0TDw8P7zAvDwLalzIpIaPSgoeHh/d1XjLuSq7fdSihLjB4eHh4x3jt5pvHspOWeh5b4OHh4e3lvctPGxO0Y/7Nh7Hw8PDwDvDaDXdOWlv02s94eHh453iTyHUCzl/i5EXg4eHhnePl8W4b1LYvbp6v4OHh4T2NNxmVrR3wmhxxwMPDw3sOLx+e7W3QRycj8PDw8Lby8rY45yWPz5vsvGXHw8PDO81r/+HfFTSs4UdzPDw8PLwp7we7+pxxIYyILwAAAABJRU5ErkJggg==" alt="微信分享二维码">
+    </div>
+</div>
 
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
-  
-  
-    </div></section>
-  
 
-    
+
+<nav id="article-nav">
+  
+  
+    <a href="/2020/07/11/go-micro-service-write-service/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">GO微服务系列-2.3 服务编写</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#作用"><span class="toc-number">1.</span> <span class="toc-text">作用</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#目录结构"><span class="toc-number">2.</span> <span class="toc-text">目录结构</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#编写"><span class="toc-number">3.</span> <span class="toc-text">编写</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#proto"><span class="toc-number">3.1.</span> <span class="toc-text">proto</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Client"><span class="toc-number">3.2.</span> <span class="toc-text">Client</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#handler"><span class="toc-number">3.3.</span> <span class="toc-text">handler</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#编写路由"><span class="toc-number">3.4.</span> <span class="toc-text">编写路由</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#开启HTTP服务"><span class="toc-number">3.5.</span> <span class="toc-text">开启HTTP服务</span></a></li></ol></li></ol>
+                    </div>
+                </span>
+            </div>
+        </div>
+        
+    </div>
+</aside>
+
+
+
+
+
+
+
+
+<div id="SOHUCS" sid="go-micro-service-write-gateway"></div>
+<script type="text/javascript">
+  (function () {
+    var appid = "cytWxLdY3";
+    var conf = "prod_f314382998643222116abeab50bbbc4f";
+    var width = window.innerWidth || document.documentElement.clientWidth;
+    if (width < 960) {
+      window.document.write(
+        '<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="//changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' +
+        appid + '&conf=' + conf + '"><\/script>');
+    } else {
+      var loadJs = function (d, a) {
+        var c = document.getElementsByTagName("head")[0] || document.head || document.documentElement;
+        var b = document.createElement("script");
+        b.setAttribute("type", "text/javascript");
+        b.setAttribute("charset", "UTF-8");
+        b.setAttribute("src", d);
+        if (typeof a === "function") {
+          if (window.attachEvent) {
+            b.onreadystatechange = function () {
+              var e = b.readyState;
+              if (e === "loaded" || e === "complete") {
+                b.onreadystatechange = null;
+                a()
+              }
+            }
+          } else {
+            b.onload = a
+          }
+        }
+        c.appendChild(b)
+      };
+      loadJs("//changyan.sohu.com/upload/changyan.js", function () {
+        window.changyan.api.config({
+          appid: appid,
+          conf: conf
+        })
+      });
+    }
+  })();
+
+</script>
+
+
+
 
 
           </div>
@@ -552,9 +625,9 @@ var _hmt = _hmt || [];
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: true,
 		toc_hide_index: true,

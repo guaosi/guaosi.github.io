@@ -7,19 +7,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="https://www.guaosi.com">
-  <title>Tag: Docker | guaosi的博客</title>
+  <title>GO微服务系列-2.3 服务编写 | guaosi的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="guaosi,guaosi的博客,后端,PHP,Linux,golang,python,开发者,程序猿,程序媛,极客,编程,代码,开源,IT网站,docker">
-<meta name="keywords" content="guaosi,guaosi的博客,后端,PHP,Linux,golang,python,开发者,程序猿,程序媛,极客,编程,代码,开源,IT网站,docker">
-<meta property="og:type" content="website">
-<meta property="og:title" content="guaosi的博客">
-<meta property="og:url" content="https://www.guaosi.com/tags/Docker/index.html">
+  <meta name="description" content="作用在 1.1 涉及的组件、框架介绍 中已经大致介绍了一下我们微服务的整个请求流程。我们这章就开始编写一个最简单的服务——account，作为服务A  注意：这个系列的重心在整个微服务的创建以及部署上，所以会尽可能地简化业务逻辑代码。  目录结构我们来看一下account的最终目录结构 12345678910├─account  ├─deploy                   （部署相关）">
+<meta name="keywords" content="Golang,微服务,go-micro">
+<meta property="og:type" content="article">
+<meta property="og:title" content="GO微服务系列-2.3 服务编写">
+<meta property="og:url" content="https://www.guaosi.com/2020/07/11/go-micro-service-write-service/index.html">
 <meta property="og:site_name" content="guaosi的博客">
-<meta property="og:description" content="guaosi,guaosi的博客,后端,PHP,Linux,golang,python,开发者,程序猿,程序媛,极客,编程,代码,开源,IT网站,docker">
+<meta property="og:description" content="作用在 1.1 涉及的组件、框架介绍 中已经大致介绍了一下我们微服务的整个请求流程。我们这章就开始编写一个最简单的服务——account，作为服务A  注意：这个系列的重心在整个微服务的创建以及部署上，所以会尽可能地简化业务逻辑代码。  目录结构我们来看一下account的最终目录结构 12345678910├─account  ├─deploy                   （部署相关）">
 <meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2020-07-11T11:22:03.434Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="guaosi的博客">
-<meta name="twitter:description" content="guaosi,guaosi的博客,后端,PHP,Linux,golang,python,开发者,程序猿,程序媛,极客,编程,代码,开源,IT网站,docker">
+<meta name="twitter:title" content="GO微服务系列-2.3 服务编写">
+<meta name="twitter:description" content="作用在 1.1 涉及的组件、框架介绍 中已经大致介绍了一下我们微服务的整个请求流程。我们这章就开始编写一个最简单的服务——account，作为服务A  注意：这个系列的重心在整个微服务的创建以及部署上，所以会尽可能地简化业务逻辑代码。  目录结构我们来看一下account的最终目录结构 12345678910├─account  ├─deploy                   （部署相关）">
   
   <link rel="alternative" href="/atom.xml" title="guaosi的博客" type="application/atom+xml">
   
@@ -300,36 +301,131 @@ var _hmt = _hmt || [];
               class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-go-micro-service-write-service" class="article article-type-post " itemscope="" itemprop="blogPost">
+  <div class="article-inner">
     
-    
+    <header class="article-header">
       
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2020" class="archive-year">2020</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/07/05/go-microservice-series-from-development-to-deployment-introduction-contents/" class="archive-article-date">
-  	<time datetime="2020-07-05T13:46:18.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-05</time>
-</a>
-        </div>
-    	 
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/07/05/go-microservice-series-from-development-to-deployment-introduction-contents/">手摸手教你从开发到部署(CI/CD)GO微服务系列-介绍与目录</a>
+    <h1 class="article-title" itemprop="name">
+      GO微服务系列-2.3 服务编写
     </h1>
   
 
-        <div class="article-info info-on-right">
+      <!-- 显示阅读和评论数 -->
+
+      <br>
+      
+      <a class="cloud-tie-join-count" href="javascript:void(0);" style="color:gray;font-size:14px;">
+        <span class="icon-sort"></span>
+        <span id="busuanzi_container_page_pv" style="color:#ef7522;font-size:14px;">
+          阅读数: <span id="busuanzi_value_page_pv"></span>次 &nbsp;&nbsp;
+        </span>
+      </a>
+      
+
+
+
+      
+      <a href="/2020/07/11/go-micro-service-write-service/" class="archive-article-date">
+  	<time datetime="2020-07-11T10:28:22.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-11</time>
+</a>
+      
+    </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+      <h1 id="作用"><a href="#作用" class="headerlink" title="作用"></a>作用</h1><p>在 <a href="https://www.guaosi.com/2020/07/07/go-micro-service-introduce-components-and-framework/">1.1 涉及的组件、框架介绍</a> 中已经大致介绍了一下我们微服务的整个请求流程。我们这章就开始编写一个最简单的服务——<code>account</code>，作为<code>服务A</code></p>
+<blockquote>
+<p>注意：这个系列的重心在整个微服务的创建以及部署上，所以会尽可能地简化业务逻辑代码。</p>
+</blockquote>
+<h1 id="目录结构"><a href="#目录结构" class="headerlink" title="目录结构"></a>目录结构</h1><p>我们来看一下<code>account</code>的最终目录结构</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">├─account</span><br><span class="line">  ├─deploy                   （部署相关）</span><br><span class="line">  ├─handler</span><br><span class="line">    └─account.go</span><br><span class="line">  ├─proto                    （proto文件）</span><br><span class="line">    ├─account<span class="selector-class">.pb</span><span class="selector-class">.go</span>           </span><br><span class="line">    └─account<span class="selector-class">.pb</span><span class="selector-class">.micro</span><span class="selector-class">.go</span>     </span><br><span class="line">  ├─accountservice<span class="selector-class">.go</span>        （入口文件）</span><br><span class="line">  ├─go.mod</span><br><span class="line">  └─go.sum</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<p>文件夹大家根据结构自行创建~</p>
+<h1 id="编写"><a href="#编写" class="headerlink" title="编写"></a>编写</h1><p>好，那我们现在开始编写相关文件。</p>
+<p>最终的代码和部署文件，已经传至github，欢迎star。</p>
+<p><a href="https://github.com/guaosi/go-micro-build" target="_blank" rel="noopener">https://github.com/guaosi/go-micro-build</a></p>
+<h2 id="proto"><a href="#proto" class="headerlink" title="proto"></a>proto</h2><p><code>account</code>的<code>proto</code>相关文件已经在之前的 <a href="https://www.guaosi.com/2020/07/10/go-micro-service-writing-and-generating-proto-files/">GO微服务系列-2.1 proto文件的编写与生成</a> 已经编写并且成功好了，我们复制到<code>proto</code>文件夹中即可。</p>
+<h2 id="实现服务接口"><a href="#实现服务接口" class="headerlink" title="实现服务接口"></a>实现服务接口</h2><p><code>handler/account.go</code><br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">package handler</span><br><span class="line"></span><br><span class="line">import (</span><br><span class="line">	<span class="string">"account/proto"</span></span><br><span class="line">	<span class="string">"context"</span></span><br><span class="line">	<span class="string">"fmt"</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">type AccountService struct &#123;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func (<span class="selector-tag">a</span> *AccountService) AccountRegister(c context<span class="selector-class">.Context</span>, req *proto<span class="selector-class">.ReqAccountRegister</span>, res *proto.ResAccountRegister) error &#123;</span><br><span class="line">	fmt.Println(<span class="string">"hit here"</span>)</span><br><span class="line">	<span class="keyword">if</span> req<span class="selector-class">.Username</span> == <span class="string">"guaosi"</span> &amp;&amp; req<span class="selector-class">.Password</span> == <span class="string">"guaosi"</span> &#123;</span><br><span class="line">		res<span class="selector-class">.Code</span> = <span class="number">0</span></span><br><span class="line">		res<span class="selector-class">.Message</span> = <span class="string">""</span></span><br><span class="line">		return nil</span><br><span class="line">	&#125;</span><br><span class="line">	res<span class="selector-class">.Code</span> = -<span class="number">1</span></span><br><span class="line">	res<span class="selector-class">.Message</span> = <span class="string">"账号或者密码不正确"</span></span><br><span class="line">	return nil</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>我们做一个小小的限制，只有当请求时<code>Username</code>和<code>Password</code>都为<code>guaosi</code>时才返回正确，否则返回<code>账号或者密码不正确</code>的提示。当被请求时，我们都会在标准输出中打印<code>hit here</code>，以便我们高可用时可以进行验证。</p>
+<h2 id="开启服务"><a href="#开启服务" class="headerlink" title="开启服务"></a>开启服务</h2><p><code>accountservice.go</code><br><figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">package main</span><br><span class="line"></span><br><span class="line">import (</span><br><span class="line">	<span class="string">"account/handler"</span></span><br><span class="line">	<span class="string">"account/proto"</span></span><br><span class="line">	<span class="string">"github.com/micro/go-micro/v2"</span></span><br><span class="line">	<span class="comment">// 这里使用 kubernetes 是为了之后可以通过命令行指定注册中心用 kubernetes</span></span><br><span class="line">	_ <span class="string">"github.com/micro/go-plugins/registry/kubernetes/v2"</span></span><br><span class="line">	<span class="string">"log"</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">func main() &#123;</span><br><span class="line">	service := micro.NewService(</span><br><span class="line">		micro.Name(<span class="string">"micro.service.account"</span>),</span><br><span class="line">	)</span><br><span class="line">	<span class="comment">// 初始化相关操作</span></span><br><span class="line">	service.Init()</span><br><span class="line">	<span class="comment">// 注册实现了服务的handler</span></span><br><span class="line">	<span class="keyword">if</span> <span class="keyword">err</span> := proto.RegisterAccountServiceHandler(service.Server(), new(handler.AccountService)); <span class="keyword">err</span> != nil &#123;</span><br><span class="line">		<span class="keyword">log</span>.<span class="keyword">Print</span>(<span class="keyword">err</span>.<span class="keyword">Error</span>())</span><br><span class="line">		<span class="built_in">return</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">// 运行server</span></span><br><span class="line">	<span class="keyword">if</span> <span class="keyword">err</span> := service.<span class="keyword">Run</span>(); <span class="keyword">err</span> != nil &#123;</span><br><span class="line">		<span class="keyword">log</span>.<span class="keyword">Print</span>(<span class="keyword">err</span>.<span class="keyword">Error</span>())</span><br><span class="line">		<span class="built_in">return</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>编写完毕后，我们运行<br><figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">go <span class="keyword">run</span><span class="bash"> .</span></span><br></pre></td></tr></table></figure></p>
+<p>如果提示以下相关内容，则表明此时我们使用mdns来服务发现，服务开启成功~<br><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">2020-07-11 18:35:27  <span class="attribute">file</span>=v2@v2.9.0/service.go:200 <span class="attribute">level</span>=info Starting [service] micro.service.account</span><br><span class="line">2020-07-11 18:35:27  <span class="attribute">file</span>=grpc/grpc.go:864 <span class="attribute">level</span>=info<span class="built_in"> Server </span>[grpc] Listening on [::]:57088</span><br><span class="line">2020-07-11 18:35:27  <span class="attribute">file</span>=grpc/grpc.go:697 <span class="attribute">level</span>=info Registry [mdns] Registering node: micro.service.account-d3fbac56-26ab-4916-ae2d-0a56ee396300</span><br></pre></td></tr></table></figure></p>
+<p>然后我们接着将服务发现，服务注册切换为使用<code>etcd</code>。</p>
+<h1 id="安装etcd"><a href="#安装etcd" class="headerlink" title="安装etcd"></a>安装etcd</h1><p>我们直接使用<code>docker</code>来安装<code>etcd</code><br><figure class="highlight livescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment"># etcd单一节点</span></span><br><span class="line"></span><br><span class="line">docker run -d <span class="string">\</span></span><br><span class="line">  -p <span class="number">2379</span>:<span class="number">2379</span> <span class="string">\</span></span><br><span class="line">  -p <span class="number">2380</span>:<span class="number">2380</span> <span class="string">\</span></span><br><span class="line">  --name etcd01 <span class="string">\</span></span><br><span class="line">  quay.io/coreos/etcd:v3.<span class="number">3.8</span> <span class="string">\</span></span><br><span class="line">  /usr/local/bin/etcd <span class="string">\</span></span><br><span class="line">  --name s1 <span class="string">\</span></span><br><span class="line">  --listen-client-urls http:<span class="regexp">//0.0.0.0:2379 \</span></span><br><span class="line"><span class="regexp">  --advertise-client-urls http://</span><span class="number">0.0</span>.<span class="number">0.0</span>:<span class="number">2379</span></span><br></pre></td></tr></table></figure></p>
+<p>如果想在<code>etcd</code>容器中使用<code>cli</code><br><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 进入容器</span></span><br><span class="line">docker exec -it etcd1 sh</span><br><span class="line"></span><br><span class="line"><span class="comment"># 设置docker中环境变量</span></span><br><span class="line"><span class="builtin-name">export</span> <span class="attribute">ETCDCTL_API</span>=3</span><br><span class="line"></span><br><span class="line"><span class="comment"># 切换至etcdctl目录</span></span><br><span class="line">cd /bin</span><br></pre></td></tr></table></figure></p>
+<p>然后我们可以顺便看一下在<code>etcd</code>中注册的服务的信息<br><figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">etcdctl <span class="keyword">get</span> /micro/registry/ <span class="comment">--prefix</span></span><br></pre></td></tr></table></figure></p>
+<h1 id="切换服务注册为etcd"><a href="#切换服务注册为etcd" class="headerlink" title="切换服务注册为etcd"></a>切换服务注册为etcd</h1><p>请先确保你的etcd跟你的服务在一个网络下，因为<code>go-micro</code>默认查找组件的地址为<code>127.0.0.1</code><br><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">go <span class="builtin-name">run</span> . <span class="attribute">--registry</span>=etcd</span><br></pre></td></tr></table></figure></p>
+<p>如果不在同一个网络下，或者端口不是<code>2379</code>，那个可以使用<code>--registry_address</code>来手动指定(比如在<code>192.168.1.1</code>下，并且端口为<code>23790</code>)<br><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">go <span class="builtin-name">run</span> . <span class="attribute">--registry</span>=etcd <span class="attribute">--registry_address</span>=192.168.1.1:23790</span><br></pre></td></tr></table></figure></p>
+
+      
+
+      
+
+      
+        <div class="declare">
+          <strong>本文作者：</strong>
           
+            guaosi
+          
+          <br>
+          <strong>本文链接：</strong>
+          <a rel="license" href="https://www.guaosi.com/2020/07/11/go-micro-service-write-service/">https://www.guaosi.com/2020/07/11/go-micro-service-write-service/</a>
+          <br>
+          <strong>版权声明：</strong>
+          本博客所有文章除特别声明外，均采用
+          <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/3.0/">CC BY-NC-SA 3.0 许可协议</a>
+          
+            <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/3.0/"><img alt="知识共享许可协议" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/3.0/80x15.png"></a>
+          
+          进行许可。转载请注明出处！
+        </div>
+      
+
+
+
+      
+      <div class="page-reward">
+        <a href="javascript:;" class="page-reward-btn tooltip-top">
+          <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>
+                    谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/assets/img/alipay.png">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/assets/img/wechat.png">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+        </a>
+      </div>
+      
+    </div>
+
+
+
+
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -345,183 +441,173 @@ var _hmt = _hmt || [];
         		<li class="article-tag-list-item">
         			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">go-micro</a>
         		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Docker</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Kubernetes</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">CI/CD</a>
-        		</li>
       		
 		</ul>
 	</div>
 
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/07/05/kubernetes-for-mac-install/" class="archive-article-date">
-  	<time datetime="2020-07-05T10:37:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-05</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/07/05/kubernetes-for-mac-install/">Kubernetes 基于 Mac OS 安装教程</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Docker</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Kubernetes</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Linux</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">运维</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/01/22/network-of-vmware-and-docker/" class="archive-article-date">
-  	<time datetime="2020-01-22T08:51:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-01-22</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/01/22/network-of-vmware-and-docker/">Vmware和Docker的网络模式讲解</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Docker</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Linux</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">网络</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">服务器</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
       
-        </div></section>
+
+      
+
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/11/30/docker-basic/" class="archive-article-date">
-  	<time datetime="2018-11-30T03:39:18.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-30</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/11/30/docker-basic/">Docker常用基础</a>
-    </h1>
-  
+      </div>
+    </span>
+  </div>
+</div>
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Docker</a>
-        		</li>
-      		
-		</ul>
-	</div>
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACvUlEQVR42u3aQW7bUAwE0Nz/0inQVYoizgwppinwtApcw/pPC5Ed8u0tvt5/Xx///vhJ+82/v5P8wmd3fODCw8PDGx39s+v1gfbfTK6E/ekjwMPDwzvjJa/41y/rHPD6XvkZot/Bw8PD+6e85LjJa/1139uWHDw8PLyfzEtuvAk48geEh4eH9xN4SRCQx6n57Wcx7knWgoeHhxfz9i/x7//7fL6Hh4eHN5qqt6UiDybyErK58PDw8C54yRLVsxtNeYCbL3J9cXI8PDy8R3mbwX8bIsyWqGaN9R91Dw8PD++A97oVboOAB5rgUTRcNNN4eHh4C17y2m0Dhc2rfxZ5DBNoPDw8vDXv2VAgb9afbcGjzQg8PDy8BS8PWF8333VMsNh0KIZteHh4eGe85Oh5qWijhH1kXDfTeHh4eAtePshv2+u8MMw+SYJdPDw8vGtecsQ2hG1b4c3G1LATx8PDw1vwNgHEbGWqPVx+r6ju4eHh4Y147XJVu57VDv7zohIVGDw8PLwzXg5oY9b8ystG8TkeHh7eAS+JGNqoYj8wm5WrL1av8PDw8A54+zKwjxvy3y8WC/Dw8PDOePli0371Kg+IN4sIeHh4eBe89j//7b8mD2uWG0R3wcPDwzvgtY3vcB8hCBryB91GzHh4eHh3vCSYmIUFmwb9gRKFh4eHd8BrR1N5NNA2622BKVp2PDw8vEd57XipXSZIGvG8Wa+Hanh4eHjHvM2ga3/0NvbFw8PD+37ee3ltAoK2mU4KyRcPGg8PD++Aty8e+XBrFnYkCwR1k42Hh4e35uWv6XZgNlvhyhcFogAFDw8P74x3PdBKCsOsIcbDw8P7X3j5oGs2EsuLQbFuhYeHh/ftvNk61OwhJo8yadPx8PDw7nibBan8WJvCM8yk8fDw8A547QBsFi7s1xEO2Xh4eHjpqX4Bgssr8BKEDGYAAAAASUVORK5CYII=" alt="微信分享二维码">
+    </div>
+</div>
 
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
-  
-  
-    </div></section>
-  
 
-    
+
+<nav id="article-nav">
+  
+    <a href="/2020/07/11/go-micro-service-write-gateway/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          GO微服务系列-2.4 网关编写
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2020/07/10/go-micro-service-brief-introduction-go-micro/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">GO微服务系列-2.2 简单介绍了解go-micro</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#作用"><span class="toc-number">1.</span> <span class="toc-text">作用</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#目录结构"><span class="toc-number">2.</span> <span class="toc-text">目录结构</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#编写"><span class="toc-number">3.</span> <span class="toc-text">编写</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#proto"><span class="toc-number">3.1.</span> <span class="toc-text">proto</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#实现服务接口"><span class="toc-number">3.2.</span> <span class="toc-text">实现服务接口</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#开启服务"><span class="toc-number">3.3.</span> <span class="toc-text">开启服务</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#安装etcd"><span class="toc-number">4.</span> <span class="toc-text">安装etcd</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#切换服务注册为etcd"><span class="toc-number">5.</span> <span class="toc-text">切换服务注册为etcd</span></a></li></ol>
+                    </div>
+                </span>
+            </div>
+        </div>
+        
+    </div>
+</aside>
+
+
+
+
+
+
+
+
+<div id="SOHUCS" sid="go-micro-service-write-service"></div>
+<script type="text/javascript">
+  (function () {
+    var appid = "cytWxLdY3";
+    var conf = "prod_f314382998643222116abeab50bbbc4f";
+    var width = window.innerWidth || document.documentElement.clientWidth;
+    if (width < 960) {
+      window.document.write(
+        '<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="//changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' +
+        appid + '&conf=' + conf + '"><\/script>');
+    } else {
+      var loadJs = function (d, a) {
+        var c = document.getElementsByTagName("head")[0] || document.head || document.documentElement;
+        var b = document.createElement("script");
+        b.setAttribute("type", "text/javascript");
+        b.setAttribute("charset", "UTF-8");
+        b.setAttribute("src", d);
+        if (typeof a === "function") {
+          if (window.attachEvent) {
+            b.onreadystatechange = function () {
+              var e = b.readyState;
+              if (e === "loaded" || e === "complete") {
+                b.onreadystatechange = null;
+                a()
+              }
+            }
+          } else {
+            b.onload = a
+          }
+        }
+        c.appendChild(b)
+      };
+      loadJs("//changyan.sohu.com/upload/changyan.js", function () {
+        window.changyan.api.config({
+          appid: appid,
+          conf: conf
+        })
+      });
+    }
+  })();
+
+</script>
+
+
+
 
 
           </div>
@@ -552,9 +638,9 @@ var _hmt = _hmt || [];
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: true,
 		toc_hide_index: true,

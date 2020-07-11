@@ -17,7 +17,7 @@
 <meta property="og:site_name" content="guaosi的博客">
 <meta property="og:description" content="介绍我觉得微服务是什么？什么是微服务这种问题都老生常谈了，随便百度的回答都是各式各样的，我也没什么好介绍的了。开门见山，我就直接说我想做成什么样的。  既然是微服务，那肯定首先要有服务，这个系列重点在微服务的构建，而不是业务逻辑的编写，所以业务逻辑尽可能做到最简单。其次有一个服务即可。 微服务中最重要的是网关，它是所有请求的入口，所以我会用gin框架结合go-micro作为微服务的网关，后期加入日">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-07-11T07:30:33.906Z">
+<meta property="og:updated_time" content="2020-07-11T11:22:55.557Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="手摸手教你从开发到部署(CI&#x2F;CD)GO微服务系列-介绍与目录">
 <meta name="twitter:description" content="介绍我觉得微服务是什么？什么是微服务这种问题都老生常谈了，随便百度的回答都是各式各样的，我也没什么好介绍的了。开门见山，我就直接说我想做成什么样的。  既然是微服务，那肯定首先要有服务，这个系列重点在微服务的构建，而不是业务逻辑的编写，所以业务逻辑尽可能做到最简单。其次有一个服务即可。 微服务中最重要的是网关，它是所有请求的入口，所以我会用gin框架结合go-micro作为微服务的网关，后期加入日">
@@ -359,7 +359,7 @@ var _hmt = _hmt || [];
 <p>1.环境构建</p>
 <p><a href="https://www.guaosi.com/2020/07/07/go-micro-service-introduce-components-and-framework/">1.1 涉及的组件、框架介绍</a><br><a href="https://www.guaosi.com/2020/07/08/go-micro-service-environment-preparation-and-installation/">1.2 环境的准备与安装</a></p>
 <p>2.微服务的编写</p>
-<p><a href="https://www.guaosi.com/2020/07/10/go-micro-service-writing-and-generating-proto-files/">2.1 proto文件的编写与生成</a><br><a href="https://www.guaosi.com/2020/07/10/go-micro-service-brief-introduction-go-micro/">2.2 简单介绍了解go-micro</a><br>2.3 服务编写<br>2.4 网关编写</p>
+<p><a href="https://www.guaosi.com/2020/07/10/go-micro-service-writing-and-generating-proto-files/">2.1 proto文件的编写与生成</a><br><a href="https://www.guaosi.com/2020/07/10/go-micro-service-brief-introduction-go-micro/">2.2 简单介绍了解go-micro</a><br><a href="https://www.guaosi.com/2020/07/11/go-micro-service-write-service/">2.3 服务编写</a><br><a href="https://www.guaosi.com/2020/07/11/go-micro-service-write-gateway/">2.4 网关编写</a></p>
 <p>3.基于容器的构建运行</p>
 <p>3.1 Dockerfile编写与镜像制作<br>3.2 直接docker容器构建执行<br>3.3 docker-compose下的构建执行<br>3.4 kubernetes下的构建执行</p>
 <p>4.持续交付、集成、部署(CI/CD)</p>
@@ -734,11 +734,11 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">crack</a>
+                <a href="javascript:void(0)" class="js-tag color4">git</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">git</a>
+                <a href="javascript:void(0)" class="js-tag color1">crack</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -754,14 +754,6 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">算法</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">数据结构</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Docker</a>
               </li>
              
@@ -774,6 +766,14 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">算法</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">数据结构</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">tcp</a>
               </li>
              
@@ -782,15 +782,15 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">PHP</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Linux</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Python</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">PHP</a>
               </li>
              
               <li class="article-tag-list-item">
