@@ -17,7 +17,7 @@
 <meta property="og:site_name" content="guaosi的博客">
 <meta property="og:description" content="作用在 1.1 涉及的组件、框架介绍 中已经大致介绍了一下我们微服务的整个请求流程。我们这章就开始编写一个最简单的服务——account，作为服务A  注意：这个系列的重心在整个微服务的创建以及部署上，所以会尽可能地简化业务逻辑代码。  目录结构我们来看一下account的最终目录结构 12345678910├─account  ├─deploy                   （部署相关）">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-07-11T11:22:03.434Z">
+<meta property="og:updated_time" content="2020-07-11T13:37:49.700Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="GO微服务系列-2.3 服务编写">
 <meta name="twitter:description" content="作用在 1.1 涉及的组件、框架介绍 中已经大致介绍了一下我们微服务的整个请求流程。我们这章就开始编写一个最简单的服务——account，作为服务A  注意：这个系列的重心在整个微服务的创建以及部署上，所以会尽可能地简化业务逻辑代码。  目录结构我们来看一下account的最终目录结构 12345678910├─account  ├─deploy                   （部署相关）">
@@ -353,7 +353,7 @@ var _hmt = _hmt || [];
 <p>编写完毕后，我们运行<br><figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">go <span class="keyword">run</span><span class="bash"> .</span></span><br></pre></td></tr></table></figure></p>
 <p>如果提示以下相关内容，则表明此时我们使用mdns来服务发现，服务开启成功~<br><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">2020-07-11 18:35:27  <span class="attribute">file</span>=v2@v2.9.0/service.go:200 <span class="attribute">level</span>=info Starting [service] micro.service.account</span><br><span class="line">2020-07-11 18:35:27  <span class="attribute">file</span>=grpc/grpc.go:864 <span class="attribute">level</span>=info<span class="built_in"> Server </span>[grpc] Listening on [::]:57088</span><br><span class="line">2020-07-11 18:35:27  <span class="attribute">file</span>=grpc/grpc.go:697 <span class="attribute">level</span>=info Registry [mdns] Registering node: micro.service.account-d3fbac56-26ab-4916-ae2d-0a56ee396300</span><br></pre></td></tr></table></figure></p>
 <p>然后我们接着将服务发现，服务注册切换为使用<code>etcd</code>。</p>
-<h1 id="安装etcd"><a href="#安装etcd" class="headerlink" title="安装etcd"></a>安装etcd</h1><p>我们直接使用<code>docker</code>来安装<code>etcd</code><br><figure class="highlight livescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment"># etcd单一节点</span></span><br><span class="line"></span><br><span class="line">docker run -d <span class="string">\</span></span><br><span class="line">  -p <span class="number">2379</span>:<span class="number">2379</span> <span class="string">\</span></span><br><span class="line">  -p <span class="number">2380</span>:<span class="number">2380</span> <span class="string">\</span></span><br><span class="line">  --name etcd01 <span class="string">\</span></span><br><span class="line">  quay.io/coreos/etcd:v3.<span class="number">3.8</span> <span class="string">\</span></span><br><span class="line">  /usr/local/bin/etcd <span class="string">\</span></span><br><span class="line">  --name s1 <span class="string">\</span></span><br><span class="line">  --listen-client-urls http:<span class="regexp">//0.0.0.0:2379 \</span></span><br><span class="line"><span class="regexp">  --advertise-client-urls http://</span><span class="number">0.0</span>.<span class="number">0.0</span>:<span class="number">2379</span></span><br></pre></td></tr></table></figure></p>
+<h1 id="安装etcd"><a href="#安装etcd" class="headerlink" title="安装etcd"></a>安装etcd</h1><p>我们直接使用<code>docker</code>来安装<code>etcd</code><br><figure class="highlight livescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment"># etcd单一节点</span></span><br><span class="line"></span><br><span class="line">docker run -d <span class="string">\</span></span><br><span class="line">  -p <span class="number">2379</span>:<span class="number">2379</span> <span class="string">\</span></span><br><span class="line">  -p <span class="number">2380</span>:<span class="number">2380</span> <span class="string">\</span></span><br><span class="line">  --name etcd1 <span class="string">\</span></span><br><span class="line">  quay.io/coreos/etcd:v3.<span class="number">3.8</span> <span class="string">\</span></span><br><span class="line">  /usr/local/bin/etcd <span class="string">\</span></span><br><span class="line">  --name s1 <span class="string">\</span></span><br><span class="line">  --listen-client-urls http:<span class="regexp">//0.0.0.0:2379 \</span></span><br><span class="line"><span class="regexp">  --advertise-client-urls http://</span><span class="number">0.0</span>.<span class="number">0.0</span>:<span class="number">2379</span></span><br></pre></td></tr></table></figure></p>
 <p>如果想在<code>etcd</code>容器中使用<code>cli</code><br><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 进入容器</span></span><br><span class="line">docker exec -it etcd1 sh</span><br><span class="line"></span><br><span class="line"><span class="comment"># 设置docker中环境变量</span></span><br><span class="line"><span class="builtin-name">export</span> <span class="attribute">ETCDCTL_API</span>=3</span><br><span class="line"></span><br><span class="line"><span class="comment"># 切换至etcdctl目录</span></span><br><span class="line">cd /bin</span><br></pre></td></tr></table></figure></p>
 <p>然后我们可以顺便看一下在<code>etcd</code>中注册的服务的信息<br><figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">etcdctl <span class="keyword">get</span> /micro/registry/ <span class="comment">--prefix</span></span><br></pre></td></tr></table></figure></p>
 <h1 id="切换服务注册为etcd"><a href="#切换服务注册为etcd" class="headerlink" title="切换服务注册为etcd"></a>切换服务注册为etcd</h1><p>请先确保你的etcd跟你的服务在一个网络下，因为<code>go-micro</code>默认查找组件的地址为<code>127.0.0.1</code><br><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">go <span class="builtin-name">run</span> . <span class="attribute">--registry</span>=etcd</span><br></pre></td></tr></table></figure></p>
@@ -709,11 +709,11 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">git</a>
+                <a href="javascript:void(0)" class="js-tag color1">crack</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">crack</a>
+                <a href="javascript:void(0)" class="js-tag color4">git</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -749,19 +749,19 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">tcp</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">网络编程</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Linux</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Python</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">tcp</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">网络编程</a>
               </li>
              
               <li class="article-tag-list-item">

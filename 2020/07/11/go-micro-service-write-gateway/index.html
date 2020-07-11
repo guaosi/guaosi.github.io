@@ -17,7 +17,7 @@
 <meta property="og:site_name" content="guaosi的博客">
 <meta property="og:description" content="作用上一章中，我们已经编写好了account服务。这一章我们来完成apigateway，也就是网关的编写。 我们将会使用gin框架，来对外提供HTTP服务与路由。一个url请求进入后，gin框架的路由解析后找到对应的handler方法，然后该handler中会调用对应的服务，获得最终的结果，返回给用户。  对外HTTP，对内RPC  目录结构我们来看一下apigateway的最终目录结构 1234">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-07-11T11:21:54.845Z">
+<meta property="og:updated_time" content="2020-07-11T13:02:50.756Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="GO微服务系列-2.4 网关编写">
 <meta name="twitter:description" content="作用上一章中，我们已经编写好了account服务。这一章我们来完成apigateway，也就是网关的编写。 我们将会使用gin框架，来对外提供HTTP服务与路由。一个url请求进入后，gin框架的路由解析后找到对应的handler方法，然后该handler中会调用对应的服务，获得最终的结果，返回给用户。  对外HTTP，对内RPC  目录结构我们来看一下apigateway的最终目录结构 1234">
@@ -353,6 +353,9 @@ var _hmt = _hmt || [];
 <h2 id="编写路由"><a href="#编写路由" class="headerlink" title="编写路由"></a>编写路由</h2><p><code>router/router.go</code><br><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">package router</span><br><span class="line"></span><br><span class="line">import (</span><br><span class="line">	<span class="string">"apigw/handler"</span></span><br><span class="line">	<span class="string">"github.com/gin-gonic/gin"</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">func NewRouter() *gin.Engine &#123;</span><br><span class="line"><span class="built_in">	route </span>:= gin.Default()</span><br><span class="line">	route.POST(<span class="string">"/account/register"</span>, handler.RegisterHandler)</span><br><span class="line">	return route</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <h2 id="开启HTTP服务"><a href="#开启HTTP服务" class="headerlink" title="开启HTTP服务"></a>开启HTTP服务</h2><p><code>apigw.go</code><br><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">"apigw/router"</span></span><br><span class="line">	<span class="string">"apigw/serviceclient"</span></span><br><span class="line">	<span class="string">"log"</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">init</span><span class="params">()</span></span> &#123;</span><br><span class="line">	serviceclient.RegisterService()</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	r := router.NewRouter()</span><br><span class="line">	<span class="keyword">if</span> err := r.Run(<span class="string">"0.0.0.0:"</span> + serviceclient.Port); err != <span class="literal">nil</span> &#123;</span><br><span class="line">		log.Print(err.Error())</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>编写完毕后，我们运行直接指定以<code>8091</code>作为端口启动<code>http</code>服务，并且服务发现和注册切换为<code>etcd</code><br><figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">go <span class="built_in">run</span> . -p <span class="number">8091</span> <span class="comment">--registry etcd</span></span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>记得要启动我们上一章编写的account服务哦~</p>
+</blockquote>
 <p>开启成功后，我们发送curl请求，进行验证<br><figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt; curl -X POST -d <span class="string">"username=guaosi&amp;password=guaosi"</span> http:<span class="regexp">//</span><span class="number">127.0</span>.<span class="number">0.1</span>:<span class="number">8091</span><span class="regexp">/account/</span>register</span><br><span class="line"></span><br><span class="line">&#123;<span class="string">"code"</span>:<span class="number">0</span>,<span class="string">"message"</span>:<span class="string">""</span>&#125;</span><br></pre></td></tr></table></figure></p>
 
       
@@ -504,6 +507,15 @@ var _hmt = _hmt || [];
 
 
 <nav id="article-nav">
+  
+    <a href="/2020/07/11/go-micro-service-write-dockerfile-and-make-image/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          GO微服务系列-3.1 Dockerfile编写与镜像制作
+        
+      </div>
+    </a>
   
   
     <a href="/2020/07/11/go-micro-service-write-service/" id="article-nav-older" class="article-nav-link-wrap">
@@ -696,11 +708,11 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">git</a>
+                <a href="javascript:void(0)" class="js-tag color1">crack</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">crack</a>
+                <a href="javascript:void(0)" class="js-tag color4">git</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -736,19 +748,19 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">tcp</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">网络编程</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Linux</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Python</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">tcp</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">网络编程</a>
               </li>
              
               <li class="article-tag-list-item">
