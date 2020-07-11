@@ -7,25 +7,23 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="https://www.guaosi.com">
-  <title>主流消息中间件介绍 | guaosi的博客</title>
+  <title>GO微服务系列-2.2 简单介绍了解go-micro | guaosi的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="ActiveMQActiveMQ是Apache出品，最流行的，能力强劲的开源消息总线，并且它是一个完全支持JMS规范的消息中间件。其丰富的API、多种集群构建模式使得他成为业界老牌消息中间件，在中小型企业中应用广泛! 当然现在可能用的相对比较少了，因为ActiveMQ性能和其他的主流MQ相比是比较一般的，早期在传统行业为王的时代它是比较流行的，现如今对于一些高并发、大数据的应用场景随处可见，在MQ">
-<meta name="keywords" content="消息队列,MQ,中间件">
+  <meta name="description" content="go-micro核心组件介绍前面已经说过Micro和go-micro的区别了。micro是使用go-micro框架编写的运行时工具集，它最主要的作用是辅助微服务开发。比如想自己马上构建一个web环境或者api环境进行调试，或者查看服务的健康状态，注册信息之类的。 而我们开发微服务时，使用的框架是go-micro。它可以很好地帮助我们创建服务、服务注册与发现、负载均衡、扩展网关功能等等。 我们来简单">
+<meta name="keywords" content="Golang,微服务,go-micro">
 <meta property="og:type" content="article">
-<meta property="og:title" content="主流消息中间件介绍">
-<meta property="og:url" content="https://www.guaosi.com/2020/01/28/introduction-to-mainstream-messaging-middleware/index.html">
+<meta property="og:title" content="GO微服务系列-2.2 简单介绍了解go-micro">
+<meta property="og:url" content="https://www.guaosi.com/2020/07/10/go-micro-service-brief-introduction-go-micro/index.html">
 <meta property="og:site_name" content="guaosi的博客">
-<meta property="og:description" content="ActiveMQActiveMQ是Apache出品，最流行的，能力强劲的开源消息总线，并且它是一个完全支持JMS规范的消息中间件。其丰富的API、多种集群构建模式使得他成为业界老牌消息中间件，在中小型企业中应用广泛! 当然现在可能用的相对比较少了，因为ActiveMQ性能和其他的主流MQ相比是比较一般的，早期在传统行业为王的时代它是比较流行的，现如今对于一些高并发、大数据的应用场景随处可见，在MQ">
+<meta property="og:description" content="go-micro核心组件介绍前面已经说过Micro和go-micro的区别了。micro是使用go-micro框架编写的运行时工具集，它最主要的作用是辅助微服务开发。比如想自己马上构建一个web环境或者api环境进行调试，或者查看服务的健康状态，注册信息之类的。 而我们开发微服务时，使用的框架是go-micro。它可以很好地帮助我们创建服务、服务注册与发现、负载均衡、扩展网关功能等等。 我们来简单">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="https://www.guaosi.com/assets/blogImg/introduction-to-mainstream-messaging-middleware/ActiveMQ-集群架构.jpg">
-<meta property="og:image" content="https://www.guaosi.com/assets/blogImg/introduction-to-mainstream-messaging-middleware/Kafka-集群架构.jpg">
-<meta property="og:image" content="https://www.guaosi.com/assets/blogImg/introduction-to-mainstream-messaging-middleware/RocketMQ-集群架构.jpg">
-<meta property="og:image" content="https://www.guaosi.com/assets/blogImg/introduction-to-mainstream-messaging-middleware/RabbitMQ-集群架构.jpg">
-<meta property="og:updated_time" content="2020-01-29T03:03:44.488Z">
+<meta property="og:image" content="https://www.guaosi.com/assets/blogImg/go-micro-service-brief-introduction-go-micro/go-micro核心组件.png">
+<meta property="og:image" content="https://www.guaosi.com/assets/blogImg/go-micro-service-brief-introduction-go-micro/go-micro基础组件调用关系.png">
+<meta property="og:updated_time" content="2020-07-11T07:20:38.683Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="主流消息中间件介绍">
-<meta name="twitter:description" content="ActiveMQActiveMQ是Apache出品，最流行的，能力强劲的开源消息总线，并且它是一个完全支持JMS规范的消息中间件。其丰富的API、多种集群构建模式使得他成为业界老牌消息中间件，在中小型企业中应用广泛! 当然现在可能用的相对比较少了，因为ActiveMQ性能和其他的主流MQ相比是比较一般的，早期在传统行业为王的时代它是比较流行的，现如今对于一些高并发、大数据的应用场景随处可见，在MQ">
-<meta name="twitter:image" content="https://www.guaosi.com/assets/blogImg/introduction-to-mainstream-messaging-middleware/ActiveMQ-集群架构.jpg">
+<meta name="twitter:title" content="GO微服务系列-2.2 简单介绍了解go-micro">
+<meta name="twitter:description" content="go-micro核心组件介绍前面已经说过Micro和go-micro的区别了。micro是使用go-micro框架编写的运行时工具集，它最主要的作用是辅助微服务开发。比如想自己马上构建一个web环境或者api环境进行调试，或者查看服务的健康状态，注册信息之类的。 而我们开发微服务时，使用的框架是go-micro。它可以很好地帮助我们创建服务、服务注册与发现、负载均衡、扩展网关功能等等。 我们来简单">
+<meta name="twitter:image" content="https://www.guaosi.com/assets/blogImg/go-micro-service-brief-introduction-go-micro/go-micro核心组件.png">
   
   <link rel="alternative" href="/atom.xml" title="guaosi的博客" type="application/atom+xml">
   
@@ -306,14 +304,14 @@ var _hmt = _hmt || [];
               class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-introduction-to-mainstream-messaging-middleware" class="article article-type-post " itemscope="" itemprop="blogPost">
+            <article id="post-go-micro-service-brief-introduction-go-micro" class="article article-type-post " itemscope="" itemprop="blogPost">
   <div class="article-inner">
     
     <header class="article-header">
       
   
     <h1 class="article-title" itemprop="name">
-      主流消息中间件介绍
+      GO微服务系列-2.2 简单介绍了解go-micro
     </h1>
   
 
@@ -332,40 +330,53 @@ var _hmt = _hmt || [];
 
 
       
-      <a href="/2020/01/28/introduction-to-mainstream-messaging-middleware/" class="archive-article-date">
-  	<time datetime="2020-01-28T09:26:27.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-01-28</time>
+      <a href="/2020/07/10/go-micro-service-brief-introduction-go-micro/" class="archive-article-date">
+  	<time datetime="2020-07-10T03:50:22.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-10</time>
 </a>
       
     </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-      <h2 id="ActiveMQ"><a href="#ActiveMQ" class="headerlink" title="ActiveMQ"></a>ActiveMQ</h2><p>ActiveMQ是Apache出品，最流行的，能力强劲的开源消息总线，并且它是一个完全支持JMS规范的消息中间件。其丰富的API、多种集群构建模式使得他成为业界老牌消息中间件，在中小型企业中应用广泛!</p>
-<p>当然现在可能用的相对比较少了，因为ActiveMQ性能和其他的主流MQ相比是比较一般的，早期在传统行业为王的时代它是比较流行的，现如今对于一些高并发、大数据的应用场景随处可见，在MQ的选择上如果再使用ActiveMQ往往就比较力不从心了。</p>
+      <h1 id="go-micro核心组件介绍"><a href="#go-micro核心组件介绍" class="headerlink" title="go-micro核心组件介绍"></a>go-micro核心组件介绍</h1><p>前面已经说过<code>Micro</code>和<code>go-micro的区别了</code>。<code>micro</code>是使用<code>go-micro</code>框架编写的运行时工具集，它最主要的作用是辅助微服务开发。比如想自己马上构建一个<code>web</code>环境或者<code>api</code>环境进行调试，或者查看服务的健康状态，注册信息之类的。</p>
+<p>而我们开发微服务时，使用的框架是<code>go-micro</code>。它可以很好地帮助我们创建服务、服务注册与发现、负载均衡、扩展网关功能等等。</p>
+<p>我们来简单了解一下<code>go-micro</code>框架中的核心组件</p>
+<p><img src="/assets/blogImg/go-micro-service-brief-introduction-go-micro/go-micro核心组件.png" alt="go-micro核心组件"></p>
 <a id="more"></a>
-<h3 id="使用说明"><a href="#使用说明" class="headerlink" title="使用说明"></a>使用说明</h3><p>MQ衡量指标：服务性能、数据存储、集群架构<br> ActiveMQ它的性能不是特别的好，面对超大规模的并发时，就有可能出现各种各样的小问题，比如阻塞、消息堆积过多、产生一些延迟等等。</p>
-<p>从数据存储来看ActiveMQ采用 <code>KahaDB</code> 这种存储方式作为默认的持久化方案。当然也可以选择使用高性能的Google的 <code>LevelDB</code> 这种基于内存的，或者说想要保证消息百分百可靠的话也可以选择一些关系型数据库如 <code>MySQL</code></p>
-<p>ActiveMQ流行了这么多年，其API包括相关的组件以及集成都是非常的完善的。所以说如果不是特别大的并发场景下，ActiveMQ也是比较不错的选择。其集群架构模式也非常不错。</p>
-<h3 id="集群架构模式"><a href="#集群架构模式" class="headerlink" title="集群架构模式"></a>集群架构模式</h3><p>ActiveMQ最简单的分为两种集群架构模式，一种是 <code>Master-Slave</code> 模式，即主备模式(左图)。它利用 <code>zookeeper</code> 进行两个节点之间的协调，也有可能是更多的节点，其中有一个是主节点，它是对外提供服务的，另外的节点启动但是不对外提供服务。当主节点挂掉时，利用 <code>zookeeper</code> 进行高可用的切换，把 <code>slave</code> 节点切换成主节点，继续对外提供服务。</p>
-<p>还有一种集群模式是 <code>NetWork</code> 模式(右图)，它其实本质上就是两组主备模式的集成，然后中间用网关进行连接配置，就可以实现分布式的集群了。</p>
-<p><img src="/assets/blogImg/introduction-to-mainstream-messaging-middleware/ActiveMQ-集群架构.jpg" alt="ActiveMQ集群架构"></p>
-<h2 id="Kafka"><a href="#Kafka" class="headerlink" title="Kafka"></a>Kafka</h2><p>Kafka是LinkedIn开源的分布式发布订阅消息系统，目前归属于Apache顶级项目。Kafka主要特点是基于Pull的模式来处理消息消费，追求高吞吐量，一开始的目的就是用于日志收集和传输。0.8版本开始支持复制,不支持事务，对消息的重复、丢失、错误没有严格要求，适合产生大量数据的互联网服务的数据收集业务。</p>
-<h3 id="使用说明-1"><a href="#使用说明-1" class="headerlink" title="使用说明"></a>使用说明</h3><p>kafka最初设计时就是面向大数据方向的，主要用于日志收集，所以在使用kafka时，要注意业务是否允许出现消息重复、丢失、错误等问题，如果允许那使用kafka是性能最高的。它能够在廉价的服务器上也能支持单机每秒100k条数据以上的吞吐量。</p>
-<p>kafka的高性能读写主要是借力于操作系统底层的提供的 <code>PageCache</code> 功能。而且kafka完全没有进行内存和磁盘的数据同步的烦恼，它仅仅使用内存的存储。只要你有足够的内存就能承载很大的数据。</p>
-<h3 id="集群架构模式-1"><a href="#集群架构模式-1" class="headerlink" title="集群架构模式"></a>集群架构模式</h3><p>kafka的集群模式也依赖于 <code>zookeeper</code> ，让zookeeper进行节点的协调和管理。每个kafka节点之间可以进行 <code>replicate</code> (副本的复制)，对于某个节点的数据会依次同步到集群的其他节点上，这样只要部署方案合理，即使某个节点挂掉，其他节点的数据也依然存在。</p>
-<p><img src="/assets/blogImg/introduction-to-mainstream-messaging-middleware/Kafka-集群架构.jpg" alt="Kafka集群架构"></p>
-<h2 id="RocketMQ"><a href="#RocketMQ" class="headerlink" title="RocketMQ"></a>RocketMQ</h2><p>RocketMQ是阿里开源的消息中间件，目前也已经孵化为Apache顶级项目，它是纯Java开发，具有高吞吐量、高可用性、适合大规模分布式系统应用的特点。RocketMQ思路起源于Kafka，它对消息的可靠传输及事务性做了优化，目前在阿里集团被广泛应用于交易、充值、流计算、消息推送、日志流式处理、binglog分发等场景。</p>
-<h3 id="使用说明-2"><a href="#使用说明-2" class="headerlink" title="使用说明"></a>使用说明</h3><p>RocketMQ在早期2.X版本也是使用zookeeper做协调，在后续3.X版本中放弃了使用zookeeper，而是自行实现了一套 <code>Name Server</code> 去做集群之间的管理和协调工作。</p>
-<p>RocketMQ的特点在于它能够保障消息的顺序性，提供了丰富的消息拉取和处理模式，支持订阅者进行水平扩展，实时消息订阅的机制，以及它能承载上亿级别的消息堆积能力。</p>
-<p>它的集群架构也有很多种，比如 <code>Master-Slave</code> 模式，双Master模式、双主双从(2M2S)模式，多主多从模式。它的集群架构可选的方案是非常多的。而且RacketMQ刷盘策略也很多，比如说同步刷写、异步复制。它的存储方式借鉴了很多优秀的开源技术，比如zerocopy、linux的ext4文件系统等。</p>
-<h3 id="集群模型"><a href="#集群模型" class="headerlink" title="集群模型"></a>集群模型</h3><p>左边和右边分别是生产者集群和消费者集群， <code>Name Server</code> 就是自行实现的用于替代zookeeper的程序。中间就是两主两从服务集群，可以实现主从的自动切换，数据之间也可以采用 <code>replicate</code> 机制。</p>
-<p>当然这些优秀的机制在Apache RocketMQ项目里面其实是不提供的，比如还有解决分布式事务使用MQ进行解耦，为什么没有呢？因为阿里的RocketMQ商业版是收费的，需要购买相关的产品才可以使用到这些功能。所以这也是使用RocketMQ的一个痛点。</p>
-<p><img src="/assets/blogImg/introduction-to-mainstream-messaging-middleware/RocketMQ-集群架构.jpg" alt="RocketMQ集群架构"></p>
-<h2 id="RabbitMQ"><a href="#RabbitMQ" class="headerlink" title="RabbitMQ"></a>RabbitMQ</h2><p>RabbitMQ是使用Erlang语言开发的开源消息队列系统，基于AMQP协议来实现。AMQP的主要特征是面向消息、队列、路由(包括点对点和发布/订阅)、可靠性、安全。AMQP协议更多用在企业系统内，对数据一致性、稳定性和可靠性要求很高的场景，对性能和吞吐量的要求还在其次。</p>
-<h3 id="使用说明-3"><a href="#使用说明-3" class="headerlink" title="使用说明"></a>使用说明</h3><p>RabbitMQ它的性能虽然不及kafka，但是要比ActiveMQ高出很多，而且可以做一些性能优化。并其可靠性和安全性非常好，数据可以保证百分百不丢失。RabbitMQ集群可以构建很多组，实现异地双活架构。每一个节点存储方式可以采用内存(ram)或者磁盘(disk)，所以是非常灵活的。</p>
-<h3 id="集群模式"><a href="#集群模式" class="headerlink" title="集群模式"></a>集群模式</h3><p>图中显示的是三个RabbitMQ节点作为一组集群，当然也可以有很多组。节点之间呢采用 <code>Mirror Queue</code> (镜像队列)的方式，基于这种方式可以保证数据百分百不丢失。前端可以进行一个负载均衡，例如 <code>HA-proxy</code> 进行TCP级别的负载，配合 <code>keepAlived</code> 做一个高可用的配置。前端增加一个虚拟的VIP，通过访问VIP让请求路由到一个负载均衡组件，然后再往下路由到一个RabbitMQ节点。</p>
-<p>这就是整个RabbitMQ的集群架构，它能够实现非常完善、非常高可用、并且性能也非常好，而且稳定性超强。它有各种各样的集群恢复的手段，比如节点挂点了、甚至是磁盘损坏了它也能去进行修复。这是RabbitMQ非常好的一个点。</p>
-<p><img src="/assets/blogImg/introduction-to-mainstream-messaging-middleware/RabbitMQ-集群架构.jpg" alt="RabbitMQ集群架构"></p>
+<p>我们来简单看一下右边的代码：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">func</span> <span class="selector-tag">main</span>() &#123;</span><br><span class="line">	<span class="attribute">service </span>:= micro.<span class="built_in">NewService</span>( // 表示创建一个go-micro的服务</span><br><span class="line">		micro.Name(<span class="string">"micro.service.account"</span>), // 服务注册到注册中心时的名字,为空表示不注册</span><br><span class="line">	)</span><br><span class="line">	service.<span class="built_in">Run</span>() // 运行 server</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>代码最后是<code>service.Run()</code>实际上是开启<code>server</code>服务，供其他服务的<code>client</code>进行调用。</p>
+<p>我们现在来说一下左边核心组件各自的功能：</p>
+<ul>
+<li>Client：发送RPC请求与广播消息</li>
+<li>Server：接收RPC请求与消费消息</li>
+<li>Broker：异步通信组件</li>
+<li>Codec：数据编码组件</li>
+<li>Registry：服务注册组件</li>
+<li>Selector：客户端均衡器</li>
+<li>Transport：同步通信组件</li>
+</ul>
+<p>其中，<code>Broker</code>和<code>Transport</code>都是通讯组件，区别就是一个是<code>异步</code>，另一个是<code>同步</code>。所以我们在业务中使用<code>Transport</code>组件会比较频繁，因为业务需要关心调用结果。</p>
+<p><code>Codec</code>是数据编码组件，它可以自动将请求及其参数，转换为需要的格式。例如，当我们需要调用其他服务时，<code>Transport</code>默认的是使用<code>grpc2</code>,<code>grpc2</code>使用的通讯格式是<code>Protobuf</code>，所以<code>Codec</code>会帮我们将数据转为<code>Protobuf</code>格式进行发送。</p>
+<p><code>Registry</code>是服务注册组件，它既可以帮我们把我们的服务注册到服务中心，又可以在服务中心中获取已经注册的服务列表，供我们进行调用。</p>
+<p><code>Selector</code>客户端均衡器配合服务注册组件。当从服务中心中获取已经注册的服务列表时，由于相同的一个服务可能是高可用的架构，所以需要一个均衡调度器，根据不同的均衡权重算法，来帮我们选择一个合适的节点进行调用。</p>
+<p>下面我们来通过<code>核心组件调用关系</code>来加深一下理解</p>
+<h1 id="go-micro核心组件调用关系"><a href="#go-micro核心组件调用关系" class="headerlink" title="go-micro核心组件调用关系"></a>go-micro核心组件调用关系</h1><p><img src="/assets/blogImg/go-micro-service-brief-introduction-go-micro/go-micro基础组件调用关系.png" alt="go-micro基础组件调用关系"></p>
+<h2 id="Server"><a href="#Server" class="headerlink" title="Server"></a>Server</h2><p>当执行<code>service.Run()</code>时，<code>Registry</code>服务注册组件会将我们之前设置的<code>micro.Name</code>，当前服务所在的<code>IP</code>与<code>端口</code>信息注册到服务中心，供其他服务的<code>Client</code>进行调用。</p>
+<h2 id="Client"><a href="#Client" class="headerlink" title="Client"></a>Client</h2><p><code>Client</code>是当我们需要其他服务时使用的。它会先通过<code>Registry</code>服务注册组件，从注册中心获取到服务以及其对应的地址列表，然后<code>Selector</code>客户端均衡器会根据算法选择一个合适的地址。确定之后，再通过<code>Broker</code>或者是<code>Transport</code>通讯组件，在<code>Codec</code>数据编码组件的编码过后，进行发送。</p>
+<p>服务端收到的请求，经过<code>Codec</code>数据编码组件的解码后，计算得出结果。如果是<code>Transport</code>，则再通过通讯组件、数据编码组件的编码后进行发送。调用方获得获得结果。</p>
+<h1 id="go-micro核心组件的默认使用"><a href="#go-micro核心组件的默认使用" class="headerlink" title="go-micro核心组件的默认使用"></a>go-micro核心组件的默认使用</h1><p>由于<code>go-micro</code>的扩展性支持<code>Registry</code>、<code>Transport</code>、<code>Broker</code>、<code>Server</code>都可以是使用不同协议或不同工具的。所以我们有必要来了解一下默认都是使用哪一些协议或工具。</p>
+<p>我提前使用下一章编写好的的<code>account</code>服务注册通过<code>etcd</code>的注册方式到服务中心后，通过<code>micro</code>工具查看注册信息</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">&gt; micro <span class="attribute">--registry</span>=etcd <span class="builtin-name">get</span><span class="built_in"> service </span>micro.service.account</span><br><span class="line"></span><br><span class="line">service  micro.service.account</span><br><span class="line"></span><br><span class="line">version latest</span><br><span class="line"></span><br><span class="line">ID<span class="built_in">	Address	</span>Metadata</span><br><span class="line">micro.service.account-37cf2bd5-87bd-4912-b324-4dac0af013b5	192.168.1.40:49648	<span class="attribute">protocol</span>=grpc,registry=etcd,server=grpc,transport=grpc,broker=http</span><br><span class="line"></span><br><span class="line">Endpoint: AccountService.AccountRegister</span><br><span class="line"></span><br><span class="line">Request: &#123;</span><br><span class="line">	message_state MessageState &#123;</span><br><span class="line">		no_unkeyed_literals NoUnkeyedLiterals</span><br><span class="line">		do_not_compare DoNotCompare</span><br><span class="line">		do_not_copy DoNotCopy</span><br><span class="line">		message_info MessageInfo</span><br><span class="line">	&#125;</span><br><span class="line">	int32 int32</span><br><span class="line">	unknown_fields []uint8</span><br><span class="line">	username string</span><br><span class="line">	password string</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Response: &#123;</span><br><span class="line">	message_state MessageState &#123;</span><br><span class="line">		no_unkeyed_literals NoUnkeyedLiterals</span><br><span class="line">		do_not_compare DoNotCompare</span><br><span class="line">		do_not_copy DoNotCopy</span><br><span class="line">		message_info MessageInfo</span><br><span class="line">	&#125;</span><br><span class="line">	int32 int32</span><br><span class="line">	unknown_fields []uint8</span><br><span class="line">	code int32</span><br><span class="line">	message string</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>通过<code>protocol=grpc,registry=etcd,server=grpc,transport=grpc,broker=http</code><br>我们可以看出：</p>
+<ul>
+<li>通讯协议默认是<code>grpc</code></li>
+<li><code>server</code>默认是<code>grpc</code></li>
+<li><code>transport</code>默认是<code>grpc</code></li>
+<li><code>broker</code>默认是<code>http</code></li>
+<li><code>registry</code>实际上默认是<code>mdns</code>，我通过参数指定的方式让它使用的是<code>etcd</code>(因为后面使用的基本都是etcd)。</li>
+</ul>
+<p>这篇文章也只是大致简单的介绍了一下<code>go-micro</code>框架。如果对<code>micro</code>有兴趣的小伙伴去<a href="http://microhq.cn/index-cn" target="_blank" rel="noopener">Micro中国</a>以及<a href="https://github.com/micro-in-cn/tutorials" target="_blank" rel="noopener">micro中文资源</a>进行更加深入、系统的学习和使用。</p>
 
       
 
@@ -379,7 +390,7 @@ var _hmt = _hmt || [];
           
           <br>
           <strong>本文链接：</strong>
-          <a rel="license" href="https://www.guaosi.com/2020/01/28/introduction-to-mainstream-messaging-middleware/">https://www.guaosi.com/2020/01/28/introduction-to-mainstream-messaging-middleware/</a>
+          <a rel="license" href="https://www.guaosi.com/2020/07/10/go-micro-service-brief-introduction-go-micro/">https://www.guaosi.com/2020/07/10/go-micro-service-brief-introduction-go-micro/</a>
           <br>
           <strong>版权声明：</strong>
           本博客所有文章除特别声明外，均采用
@@ -439,15 +450,15 @@ var _hmt = _hmt || [];
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">消息队列</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Golang</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">MQ</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">微服务</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">中间件</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">go-micro</a>
         		</li>
       		
 		</ul>
@@ -503,7 +514,7 @@ var _hmt = _hmt || [];
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACsElEQVR42u3awW4cIRAEUP//TztSTpGSHVd1g9eRHqfVyMvwsARs0R8fcfv83f5+8ufzzxft1beee0jGcKzh4eHhjYaev/gZ8IzP3/vcQzEePDw8vGu854U4X8qTjSF5VztZL5/j4eHhvZX3vKw/T8rzcNtjPR4eHt7/xcu7zhf0vDc8PDy8n8ObBQH5ETzfWvIpPpy14OHh4XW56/A4+67PF+/38PDw8Ba36vmynl/wzwoOhqPFw8PDu8DLA9nZYTePbmfgqH88PDy8b+HlRQObfmYTmoC/2Bjw8PDw1rz95VMb/s6GOJsyPDw8vLO8diHeZ8azqGJWsoCHh4f3Pbwkut1PR764b8oO8PDw8G7wNhHt7EosD2TbuHb4iwEPDw+v5O0LBdpLr/xdswnCw8PDu83Lz585bBUfrA/6eHh4eLd5s+ihLQ5oY99Z4RceHh7e9/Dy42+7eeRTk79xVXSFh4eHd5TXMtolu52yNtr4Ao+Hh4d3jddeR+XxwX7RbxMUPDw8vHu89gpqFtG2W8Xmuutl1oKHh4d3iJcMIj/IJoNIvruJbvHw8PBu8z6D1i7Hs2/lhQVFoIyHh4d3gZcPN5mCWblAXkQ1nA48PDy8o7xNocCsmGCPKUaCh4eHd4F3Nj7YbCftJVlbdoCHh4d3ipd0l28S7Vm+3YrarQUPDw/vXbxZGJFHvbMtJPo34OHh4V3gbY6t7VaRHMfz67RV+oKHh4e34O0vupLlu41lkwmKLt7w8PDwLvA2+0l+2N3UNeSfN9sJHh4eXsvbF1Tlfz/rOd9g/vEcDw8P7xpvf7nV9jDbSOqsBQ8PD++tvHZRPhVkbI71eHh4eD+Hd3uhTyKM6DkeHh7eNV4bRmyur9qDeB5Y1AUEeHh4eCNe+yP/bCnV2Qh42PDw8PBS3i+Eag0BrAnO5QAAAABJRU5ErkJggg==" alt="微信分享二维码">
+      <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACo0lEQVR42u3a0WrDMAwF0P7/T3evg+FwJVlbB8dPo8niHBdsVdLrFY/3j/H98+f/er7zdE91rtHAw8PDG7/66dHJ1WSWZOGShXh+Kzw8PLxtXm9bn+zD+QGQHxJ4eHh4n8l73oirR0sOw8PDw/u/vDwgrn5eXWI8PDy8v+XNt+wkNdBLB/9SrgUPDw8v5uUphs/5e6W+h4eHhzdOuSZb/KSQlpfK3q2Bh4eHt8GrhrNJkF0NgvPmrd574uHh4W3wJmWw6hPyFEN+NVosPDw8vEu8POStTpM8uRqyV8tveHh4eBu8/Kd+ryUrD6bzIlZeVMPDw8Pb5lWbq+bNAdWn5WA8PDy8Pd57MPIEbjUtm891ub6Hh4eHF/MmDVh5kSy/Ok8HF/IZeHh4eIPIc1LWqjZg9ZD558fOCDw8PLwxr7cevbTvpPUqCayP3xseHh7eVV5vyuqdeYCeL3TyBeDh4eFt8O4Gvr3UbXX2cmUPDw8P7yov36x7CdZ58axXAMPDw8Pb482bnPKDYdIiUH2HY+sAHh4e3gIvT0/kDQQ9WPXqMRmBh4eHt8DrBc05uLcok6OiENHj4eHhtXiTIyEpUE1aCpJFPD4fDw8Pb4HXK/BXN+teyuNWqhcPDw9vm9cr7c/TuEmY3jyE8PDw8NZ4eVG/eme1ket1d+Dh4eGt8fLEbsLutW1N7jweb3h4eHhrvKgYX5wsB989EvDw8PD2eO/imATo1aTwhWYsPDw8vAXeXsJinrR9BlcPMDw8PLy7vPLP+3HDwbwkVmgmwMPDw1vj5QFu8uheA2vv1Gr2lOHh4eH9Ea93eFze+p9nxMPDw/tI3q30axJelxPNeHh4eGu8JBlRbS/YbreKZsHDw8Nb4FV/8CeHwQZ+nrbAw8PDG/O+AHDkVLk5szaHAAAAAElFTkSuQmCC" alt="微信分享二维码">
     </div>
 </div>
 
@@ -517,18 +528,9 @@ var _hmt = _hmt || [];
 
 <nav id="article-nav">
   
-    <a href="/2020/01/28/core-concepts-of-rabbitmq-with-golang/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          入门RabbitMQ之核心概念(Golang演示)
-        
-      </div>
-    </a>
   
-  
-    <a href="/2020/01/25/keepalived-principle-and-LVS-case/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">KeepAlived原理与LVS案例</div>
+    <a href="/2020/07/10/go-micro-service-writing-and-generating-proto-files/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">GO微服务系列-2.1 proto文件的编写与生成</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -555,7 +557,7 @@ var _hmt = _hmt || [];
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#ActiveMQ"><span class="toc-number">1.</span> <span class="toc-text">ActiveMQ</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#使用说明"><span class="toc-number">1.1.</span> <span class="toc-text">使用说明</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#集群架构模式"><span class="toc-number">1.2.</span> <span class="toc-text">集群架构模式</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Kafka"><span class="toc-number">2.</span> <span class="toc-text">Kafka</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#使用说明-1"><span class="toc-number">2.1.</span> <span class="toc-text">使用说明</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#集群架构模式-1"><span class="toc-number">2.2.</span> <span class="toc-text">集群架构模式</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#RocketMQ"><span class="toc-number">3.</span> <span class="toc-text">RocketMQ</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#使用说明-2"><span class="toc-number">3.1.</span> <span class="toc-text">使用说明</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#集群模型"><span class="toc-number">3.2.</span> <span class="toc-text">集群模型</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#RabbitMQ"><span class="toc-number">4.</span> <span class="toc-text">RabbitMQ</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#使用说明-3"><span class="toc-number">4.1.</span> <span class="toc-text">使用说明</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#集群模式"><span class="toc-number">4.2.</span> <span class="toc-text">集群模式</span></a></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#go-micro核心组件介绍"><span class="toc-number">1.</span> <span class="toc-text">go-micro核心组件介绍</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#go-micro核心组件调用关系"><span class="toc-number">2.</span> <span class="toc-text">go-micro核心组件调用关系</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Server"><span class="toc-number">2.1.</span> <span class="toc-text">Server</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Client"><span class="toc-number">2.2.</span> <span class="toc-text">Client</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#go-micro核心组件的默认使用"><span class="toc-number">3.</span> <span class="toc-text">go-micro核心组件的默认使用</span></a></li></ol>
                     </div>
                 </span>
             </div>
@@ -571,7 +573,7 @@ var _hmt = _hmt || [];
 
 
 
-<div id="SOHUCS" sid="introduction-to-mainstream-messaging-middleware"></div>
+<div id="SOHUCS" sid="go-micro-service-brief-introduction-go-micro"></div>
 <script type="text/javascript">
   (function () {
     var appid = "cytWxLdY3";
