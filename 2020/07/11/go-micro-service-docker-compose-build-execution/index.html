@@ -9,20 +9,20 @@
   <link rel="dns-prefetch" href="https://www.guaosi.com">
   <title>GO微服务系列-3.3 Docker Compose下的构建执行 | guaosi的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="整理环境这一章中，我们已经创建了etcd、account、apigw这三个镜像对应的容器。在Docker Compose中，我们想重新创建新的容器，不被之前的容器所干扰，并且把它们放在一个专属的网络中去，所以我们需要删除之前创建的容器。">
+  <meta name="description" content="整理环境上一章中，我们已经创建了etcd、account、apigw这三个镜像对应的容器。在Docker Compose中，我们想重新创建新的容器，不被之前的容器所干扰，并且把它们放在一个专属的网络中去，所以我们需要删除之前创建的容器。 1docker rm -f etcd1 account apigw">
 <meta name="keywords" content="Golang,微服务,go-micro">
 <meta property="og:type" content="article">
 <meta property="og:title" content="GO微服务系列-3.3 Docker Compose下的构建执行">
 <meta property="og:url" content="https://www.guaosi.com/2020/07/11/go-micro-service-docker-compose-build-execution/index.html">
 <meta property="og:site_name" content="guaosi的博客">
-<meta property="og:description" content="整理环境这一章中，我们已经创建了etcd、account、apigw这三个镜像对应的容器。在Docker Compose中，我们想重新创建新的容器，不被之前的容器所干扰，并且把它们放在一个专属的网络中去，所以我们需要删除之前创建的容器。">
+<meta property="og:description" content="整理环境上一章中，我们已经创建了etcd、account、apigw这三个镜像对应的容器。在Docker Compose中，我们想重新创建新的容器，不被之前的容器所干扰，并且把它们放在一个专属的网络中去，所以我们需要删除之前创建的容器。 1docker rm -f etcd1 account apigw">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://www.guaosi.com/assets/blogImg/go-micro-service-docker-compose-build-execution/traefik-init.png">
 <meta property="og:image" content="https://www.guaosi.com/assets/blogImg/go-micro-service-docker-compose-build-execution/traefik-register.png">
-<meta property="og:updated_time" content="2020-07-11T15:14:23.864Z">
+<meta property="og:updated_time" content="2020-07-12T08:30:13.591Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="GO微服务系列-3.3 Docker Compose下的构建执行">
-<meta name="twitter:description" content="整理环境这一章中，我们已经创建了etcd、account、apigw这三个镜像对应的容器。在Docker Compose中，我们想重新创建新的容器，不被之前的容器所干扰，并且把它们放在一个专属的网络中去，所以我们需要删除之前创建的容器。">
+<meta name="twitter:description" content="整理环境上一章中，我们已经创建了etcd、account、apigw这三个镜像对应的容器。在Docker Compose中，我们想重新创建新的容器，不被之前的容器所干扰，并且把它们放在一个专属的网络中去，所以我们需要删除之前创建的容器。 1docker rm -f etcd1 account apigw">
 <meta name="twitter:image" content="https://www.guaosi.com/assets/blogImg/go-micro-service-docker-compose-build-execution/traefik-init.png">
   
   <link rel="alternative" href="/atom.xml" title="guaosi的博客" type="application/atom+xml">
@@ -338,9 +338,9 @@ var _hmt = _hmt || [];
     
     <div class="article-entry" itemprop="articleBody">
       
-      <h1 id="整理环境"><a href="#整理环境" class="headerlink" title="整理环境"></a>整理环境</h1><p>这一章中，我们已经创建了<code>etcd</code>、<code>account</code>、<code>apigw</code>这三个镜像对应的容器。在<code>Docker Compose</code>中，我们想重新创建新的容器，不被之前的容器所干扰，并且把它们放在一个专属的网络中去，所以我们需要删除之前创建的容器。</p>
-<a id="more"></a>
+      <h1 id="整理环境"><a href="#整理环境" class="headerlink" title="整理环境"></a>整理环境</h1><p>上一章中，我们已经创建了<code>etcd</code>、<code>account</code>、<code>apigw</code>这三个镜像对应的容器。在<code>Docker Compose</code>中，我们想重新创建新的容器，不被之前的容器所干扰，并且把它们放在一个专属的网络中去，所以我们需要删除之前创建的容器。</p>
 <figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">docker</span> rm -f etcd1 account apigw</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
 <p>然后我们创建一个名为<code>gomicro</code>的<code>bridge</code>类型专属的网络，将<code>Docker Compose</code>创建的容器的网络都放在<code>gomicro</code>这个网络下。<br><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker<span class="built_in"> network </span>create gomicro --driver bridge</span><br></pre></td></tr></table></figure></p>
 <h1 id="traefik"><a href="#traefik" class="headerlink" title="traefik"></a>traefik</h1><p>上一章和之前，我们都是通过<code>IP:Port</code>的形式来进行服务的访问。当时实际环境中，我们是需要通过域名来进行访问的，所以，我们还需要一款反向代理、负载均衡软件来帮助我们，这里我们使用的是——<code>Traefik</code></p>
 <h2 id="简单介绍"><a href="#简单介绍" class="headerlink" title="简单介绍"></a>简单介绍</h2><p><code>Traefik</code> 是一个为了让部署微服务更加便捷而诞生的现代HTTP反向代理、负载均衡工具。 它支持多种后台 (<code>Docker</code>, <code>Swarm</code>, <code>Kubernetes</code>, <code>Marathon</code>, <code>Mesos</code>, <code>Consul</code>, <code>Etcd</code>, <code>Zookeeper</code>, <code>BoltDB</code>, <code>Rest API</code>, <code>file</code>…) 来自动化、动态的应用它的配置文件设置。</p>
@@ -525,6 +525,15 @@ var _hmt = _hmt || [];
 
 
 <nav id="article-nav">
+  
+    <a href="/2020/07/12/go-micro-service-kubernetes-build-execution/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          GO微服务系列-3.4 Kubernetes下的构建执行
+        
+      </div>
+    </a>
   
   
     <a href="/2020/07/11/go-micro-service-direct-docker-container-build-execution/" id="article-nav-older" class="article-nav-link-wrap">
@@ -757,7 +766,27 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">tcp</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">网络编程</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">PHP</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Linux</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Python</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Laravel</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -773,27 +802,7 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">tcp</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">网络编程</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Linux</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">运维</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Python</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Laravel</a>
               </li>
              
               <li class="article-tag-list-item">

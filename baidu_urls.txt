@@ -1,4 +1,4 @@
+https://www.guaosi.com/2020/07/12/go-micro-service-jenkins-build-and-setting/
+https://www.guaosi.com/2020/07/12/go-micro-service-gitlab-build-and-setting/
+https://www.guaosi.com/2020/07/12/go-micro-service-kubernetes-build-execution/
 https://www.guaosi.com/2020/07/11/go-micro-service-docker-compose-build-execution/
-https://www.guaosi.com/2020/07/11/go-micro-service-direct-docker-container-build-execution/
-https://www.guaosi.com/2020/07/11/go-micro-service-write-dockerfile-and-make-image/
-https://www.guaosi.com/2020/07/11/go-micro-service-write-gateway/
