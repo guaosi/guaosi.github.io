@@ -20,7 +20,11 @@
 <meta property="og:image" content="https://www.guaosi.com/assets/blogImg/go-micro-service-introduce-components-and-framework/ci,cd整体流程.png">
 <meta property="og:image" content="https://www.guaosi.com/assets/blogImg/go-micro-service-jenkins-build-and-setting/jenkins-init.png">
 <meta property="og:image" content="https://www.guaosi.com/assets/blogImg/go-micro-service-jenkins-build-and-setting/jenkins-go-setting.png">
-<meta property="og:updated_time" content="2020-07-12T10:40:10.190Z">
+<meta property="og:image" content="https://www.guaosi.com/assets/blogImg/go-micro-service-jenkins-build-and-setting/jenkins-gitlab-access-token.png">
+<meta property="og:image" content="https://www.guaosi.com/assets/blogImg/go-micro-service-jenkins-build-and-setting/jenkins-gitlab-add-token.png">
+<meta property="og:image" content="https://www.guaosi.com/assets/blogImg/go-micro-service-jenkins-build-and-setting/jenkins-gitlab-add.png">
+<meta property="og:image" content="https://www.guaosi.com/assets/blogImg/go-micro-service-jenkins-build-and-setting/jenkins-publish-over-ssh.png">
+<meta property="og:updated_time" content="2020-07-15T12:05:57.852Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="GO微服务系列-4.2 Jenkins的搭建、插件的安装与配置">
 <meta name="twitter:description" content="本系列CI/CD 流程图我们先来回顾一下本系列的CI/CD 流程图  所以我们现在就差最后一个Jenkins工具，就可以做我们想要的持续集成，交付，部署的功能了。">
@@ -343,7 +347,10 @@ var _hmt = _hmt || [];
 <p><img src="/assets/blogImg/go-micro-service-introduce-components-and-framework/ci,cd整体流程.png" alt="ci/cd整体流程"></p>
 <p>所以我们现在就差最后一个<code>Jenkins</code>工具，就可以做我们想要的持续集成，交付，部署的功能了。</p>
 <a id="more"></a>
-<h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><h2 id="创建文件夹"><a href="#创建文件夹" class="headerlink" title="创建文件夹"></a>创建文件夹</h2><figure class="highlight haskell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title">mkdir</span> -p /usr/local/<span class="class"><span class="keyword">data</span>/jenkins/<span class="keyword">data</span></span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>本文参考<a href="https://juejin.im/post/5eb7d4b4f265da7bf32d43d3" target="_blank" rel="noopener">该文</a>后，验证成功后总结得出。</p>
+</blockquote>
+<h1 id="安装配置Jenkins"><a href="#安装配置Jenkins" class="headerlink" title="安装配置Jenkins"></a>安装配置Jenkins</h1><h2 id="创建文件夹"><a href="#创建文件夹" class="headerlink" title="创建文件夹"></a>创建文件夹</h2><figure class="highlight haskell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title">mkdir</span> -p /usr/local/<span class="class"><span class="keyword">data</span>/jenkins/<span class="keyword">data</span></span></span><br></pre></td></tr></table></figure>
 <h2 id="Docker-Compose"><a href="#Docker-Compose" class="headerlink" title="Docker Compose"></a>Docker Compose</h2><p>我们继续使用<code>Docker</code>进行安装</p>
 <p><code>jenkins/docker-compose.yml</code><br><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">version:</span> <span class="string">'3.7'</span></span><br><span class="line"><span class="attr">services:</span></span><br><span class="line"><span class="attr">  jenkins:</span></span><br><span class="line"><span class="attr">    user:</span> <span class="string">root</span></span><br><span class="line"><span class="attr">    container_name:</span> <span class="string">jenkins</span></span><br><span class="line"><span class="attr">    image:</span> <span class="string">'jenkins/jenkins:2.242'</span></span><br><span class="line"><span class="attr">    restart:</span> <span class="string">always</span></span><br><span class="line"><span class="attr">    networks:</span></span><br><span class="line"><span class="bullet">      -</span> <span class="string">cicd</span></span><br><span class="line"><span class="attr">    environment:</span></span><br><span class="line"><span class="bullet">      -</span> <span class="string">TZ=Asia/Shanghai</span></span><br><span class="line"><span class="attr">    ports:</span></span><br><span class="line"><span class="bullet">      -</span> <span class="string">'8080:8080'</span></span><br><span class="line"><span class="bullet">      -</span> <span class="string">'50000:50000'</span></span><br><span class="line"><span class="attr">    volumes:</span></span><br><span class="line"><span class="bullet">      -</span> <span class="string">/usr/local/data/jenkins/data:/var/jenkins_home</span></span><br><span class="line"><span class="bullet">      -</span> <span class="string">/var/run/docker.sock:/var/run/docker.sock</span></span><br><span class="line"><span class="bullet">      -</span> <span class="string">/bin/docker:/bin/docker</span>  <span class="comment"># linux使用</span></span><br><span class="line"><span class="attr">networks:</span></span><br><span class="line"><span class="attr">  cicd:</span></span><br><span class="line"><span class="attr">    external:</span></span><br><span class="line"><span class="attr">      name:</span> <span class="string">cicd</span></span><br></pre></td></tr></table></figure></p>
 <blockquote>
@@ -373,8 +380,12 @@ var _hmt = _hmt || [];
 <p>配置如下：</p>
 <p><img src="/assets/blogImg/go-micro-service-jenkins-build-and-setting/jenkins-go-setting.png" alt="jenkins-go-setting"></p>
 <h3 id="系统配置"><a href="#系统配置" class="headerlink" title="系统配置"></a>系统配置</h3><p>我们进入<code>系统管理</code>-<code>系统配置</code> 进行大体的配置</p>
-<h4 id="Gitlab"><a href="#Gitlab" class="headerlink" title="Gitlab"></a>Gitlab</h4><p>未完待续。。。</p>
-<h4 id="Publish-over-SSH"><a href="#Publish-over-SSH" class="headerlink" title="Publish over SSH"></a>Publish over SSH</h4>
+<h4 id="Gitlab"><a href="#Gitlab" class="headerlink" title="Gitlab"></a>Gitlab</h4><h5 id="access-token"><a href="#access-token" class="headerlink" title="access_token"></a>access_token</h5><p>我们使用上一章中在自建<code>Gitlab</code>中创建了仓库并且上传了代码的账户进行登录，然后根据下图获取<code>access_token</code><br><img src="/assets/blogImg/go-micro-service-jenkins-build-and-setting/jenkins-gitlab-access-token.png" alt="jenkins-gitlab-access-token"></p>
+<h5 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h5><p>然后我们回到<code>jenkins</code>的<code>系统配置</code>。<br>到<code>Gitlab</code>栏，勾选上<code>Enable authentication for &#39;/project&#39; end-point</code>，然后点击<code>Credentials</code>旁边的<code>添加</code>-<code>Jenkins</code>。然后按下图步骤添加<br><img src="/assets/blogImg/go-micro-service-jenkins-build-and-setting/jenkins-gitlab-add-token.png" alt="jenkins-gitlab-add-token"></p>
+<p>然后配置好,测试一下连通性。<br><img src="/assets/blogImg/go-micro-service-jenkins-build-and-setting/jenkins-gitlab-add.png" alt="jenkins-gitlab-add"></p>
+<h4 id="Publish-over-SSH"><a href="#Publish-over-SSH" class="headerlink" title="Publish over SSH"></a>Publish over SSH</h4><p>找到<code>Publish over SSH</code>配置，如下图所示(方便演示我是直接账户密码登录的，可以自行密钥登陆或者免密认证登录)：</p>
+<p><img src="/assets/blogImg/go-micro-service-jenkins-build-and-setting/jenkins-publish-over-ssh.png" alt="jenkins-publish-over-ssh"></p>
+
       
 
       
@@ -525,6 +536,15 @@ var _hmt = _hmt || [];
 
 <nav id="article-nav">
   
+    <a href="/2020/07/15/go-micro-service-jenkins-deploy-kubernetes/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          GO微服务系列-4.3 Jenkins构建部署Kubernetes
+        
+      </div>
+    </a>
+  
   
     <a href="/2020/07/12/go-micro-service-gitlab-build-and-setting/" id="article-nav-older" class="article-nav-link-wrap">
       <div class="article-nav-title">GO微服务系列-4.1 Gitlab的搭建与设置</div>
@@ -554,7 +574,7 @@ var _hmt = _hmt || [];
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#本系列CI-CD-流程图"><span class="toc-number">1.</span> <span class="toc-text">本系列CI/CD 流程图</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#安装"><span class="toc-number">2.</span> <span class="toc-text">安装</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#创建文件夹"><span class="toc-number">2.1.</span> <span class="toc-text">创建文件夹</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Docker-Compose"><span class="toc-number">2.2.</span> <span class="toc-text">Docker Compose</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#启动"><span class="toc-number">2.3.</span> <span class="toc-text">启动</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#安装插件"><span class="toc-number">2.4.</span> <span class="toc-text">安装插件</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#查询gitlab的IP"><span class="toc-number">2.4.1.</span> <span class="toc-text">查询gitlab的IP</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#容器内安装必备软件"><span class="toc-number">2.4.2.</span> <span class="toc-text">容器内安装必备软件</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#更新"><span class="toc-number">2.4.2.1.</span> <span class="toc-text">更新</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#安装gcc跟vim"><span class="toc-number">2.4.2.2.</span> <span class="toc-text">安装gcc跟vim</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#hosts"><span class="toc-number">2.4.2.3.</span> <span class="toc-text">hosts</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#安装golang"><span class="toc-number">2.4.2.4.</span> <span class="toc-text">安装golang</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#给Jenkins换源"><span class="toc-number">2.4.2.5.</span> <span class="toc-text">给Jenkins换源</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#重启容器"><span class="toc-number">2.4.3.</span> <span class="toc-text">重启容器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#初始化"><span class="toc-number">2.4.4.</span> <span class="toc-text">初始化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#插件安装"><span class="toc-number">2.4.5.</span> <span class="toc-text">插件安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#额外插件安装"><span class="toc-number">2.4.6.</span> <span class="toc-text">额外插件安装</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#配置插件"><span class="toc-number">2.5.</span> <span class="toc-text">配置插件</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#全局工具配置"><span class="toc-number">2.5.1.</span> <span class="toc-text">全局工具配置</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#GO"><span class="toc-number">2.5.1.1.</span> <span class="toc-text">GO</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#系统配置"><span class="toc-number">2.5.2.</span> <span class="toc-text">系统配置</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Gitlab"><span class="toc-number">2.5.2.1.</span> <span class="toc-text">Gitlab</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Publish-over-SSH"><span class="toc-number">2.5.2.2.</span> <span class="toc-text">Publish over SSH</span></a></li></ol></li></ol></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#本系列CI-CD-流程图"><span class="toc-number">1.</span> <span class="toc-text">本系列CI/CD 流程图</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#安装配置Jenkins"><span class="toc-number">2.</span> <span class="toc-text">安装配置Jenkins</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#创建文件夹"><span class="toc-number">2.1.</span> <span class="toc-text">创建文件夹</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Docker-Compose"><span class="toc-number">2.2.</span> <span class="toc-text">Docker Compose</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#启动"><span class="toc-number">2.3.</span> <span class="toc-text">启动</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#安装插件"><span class="toc-number">2.4.</span> <span class="toc-text">安装插件</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#查询gitlab的IP"><span class="toc-number">2.4.1.</span> <span class="toc-text">查询gitlab的IP</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#容器内安装必备软件"><span class="toc-number">2.4.2.</span> <span class="toc-text">容器内安装必备软件</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#更新"><span class="toc-number">2.4.2.1.</span> <span class="toc-text">更新</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#安装gcc跟vim"><span class="toc-number">2.4.2.2.</span> <span class="toc-text">安装gcc跟vim</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#hosts"><span class="toc-number">2.4.2.3.</span> <span class="toc-text">hosts</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#安装golang"><span class="toc-number">2.4.2.4.</span> <span class="toc-text">安装golang</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#给Jenkins换源"><span class="toc-number">2.4.2.5.</span> <span class="toc-text">给Jenkins换源</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#重启容器"><span class="toc-number">2.4.3.</span> <span class="toc-text">重启容器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#初始化"><span class="toc-number">2.4.4.</span> <span class="toc-text">初始化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#插件安装"><span class="toc-number">2.4.5.</span> <span class="toc-text">插件安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#额外插件安装"><span class="toc-number">2.4.6.</span> <span class="toc-text">额外插件安装</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#配置插件"><span class="toc-number">2.5.</span> <span class="toc-text">配置插件</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#全局工具配置"><span class="toc-number">2.5.1.</span> <span class="toc-text">全局工具配置</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#GO"><span class="toc-number">2.5.1.1.</span> <span class="toc-text">GO</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#系统配置"><span class="toc-number">2.5.2.</span> <span class="toc-text">系统配置</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Gitlab"><span class="toc-number">2.5.2.1.</span> <span class="toc-text">Gitlab</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#access-token"><span class="toc-number">2.5.2.1.1.</span> <span class="toc-text">access_token</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#配置"><span class="toc-number">2.5.2.1.2.</span> <span class="toc-text">配置</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Publish-over-SSH"><span class="toc-number">2.5.2.2.</span> <span class="toc-text">Publish over SSH</span></a></li></ol></li></ol></li></ol></li></ol>
                     </div>
                 </span>
             </div>
@@ -776,10 +796,6 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Laravel</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">消息队列</a>
               </li>
              
@@ -793,6 +809,10 @@ var _hmt = _hmt || [];
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">运维</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Laravel</a>
               </li>
              
               <li class="article-tag-list-item">
