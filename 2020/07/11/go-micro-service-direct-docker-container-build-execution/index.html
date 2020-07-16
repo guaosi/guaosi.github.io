@@ -17,7 +17,7 @@
 <meta property="og:site_name" content="guaosi的博客">
 <meta property="og:description" content="容器执行这一章中，我们来测试一下上一章制作的镜像是否可以正常使用。">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-07-11T15:10:30.251Z">
+<meta property="og:updated_time" content="2020-07-16T14:14:09.348Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="GO微服务系列-3.2 直接Docker容器构建执行">
 <meta name="twitter:description" content="容器执行这一章中，我们来测试一下上一章制作的镜像是否可以正常使用。">
@@ -337,7 +337,7 @@ var _hmt = _hmt || [];
       
       <h1 id="容器执行"><a href="#容器执行" class="headerlink" title="容器执行"></a>容器执行</h1><p>这一章中，我们来测试一下上一章制作的镜像是否可以正常使用。</p>
 <a id="more"></a>
-<h2 id="获取etcd在docker中的地址"><a href="#获取etcd在docker中的地址" class="headerlink" title="获取etcd在docker中的地址"></a>获取etcd在docker中的地址</h2><p>还记得吗？在<a href="">2.3 服务编写</a>时我们说过，<code>go-micro</code>默认查找的地址是<code>127.0.0.1</code>，但是<code>etcd</code>、<code>account</code>、<code>apigw</code>都是在不同容器中运行的，所以需要我们启动时手动指定<code>etcd</code>容器所在的地址。</p>
+<h2 id="获取etcd在docker中的地址"><a href="#获取etcd在docker中的地址" class="headerlink" title="获取etcd在docker中的地址"></a>获取etcd在docker中的地址</h2><p>还记得吗？在<a href="https://www.guaosi.com/2020/07/11/go-micro-service-write-service/">2.3 服务编写</a>时我们说过，<code>go-micro</code>默认查找的地址是<code>127.0.0.1</code>，但是<code>etcd</code>、<code>account</code>、<code>apigw</code>都是在不同容器中运行的，所以需要我们启动时手动指定<code>etcd</code>容器所在的地址。</p>
 <p>我们执行<br><figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt; docker inspect etcd1 --format <span class="string">"&#123;&#123;.NetworkSettings.IPAddress&#125;&#125;"</span></span><br><span class="line"></span><br><span class="line"><span class="number">172.17</span><span class="number">.0</span><span class="number">.2</span></span><br></pre></td></tr></table></figure></p>
 <p>这样我们就能拿到etcd在docker容器中的地址。</p>
 <blockquote>
@@ -722,6 +722,14 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">算法</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">数据结构</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Docker</a>
               </li>
              
@@ -731,22 +739,6 @@ var _hmt = _hmt || [];
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">CI/CD</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">算法</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">数据结构</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">tcp</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">网络编程</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -771,6 +763,14 @@ var _hmt = _hmt || [];
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">中间件</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">tcp</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">网络编程</a>
               </li>
              
               <li class="article-tag-list-item">

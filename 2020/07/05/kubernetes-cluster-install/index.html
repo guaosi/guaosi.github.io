@@ -17,7 +17,7 @@
 <meta property="og:site_name" content="guaosi的博客">
 <meta property="og:description" content="简介kubernetes，简称K8s，是用8代替8个字符“ubernete”而成的缩写。是一个开源的，用于管理云平台中多个主机上的容器化的应用，Kubernetes的目标是让部署容器化的应用简单并且高效（powerful）,Kubernetes提供了应用部署，规划，更新，维护的一种机制。 环境在开始之前，先简单介绍一下环境以及配置。这里使用的是vmware创建的虚拟机。    节点 操作系统 cp">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-07-05T09:50:41.853Z">
+<meta property="og:updated_time" content="2020-07-16T13:39:34.009Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Kubernetes 18.04集群安装教程(基于Centos7)">
 <meta name="twitter:description" content="简介kubernetes，简称K8s，是用8代替8个字符“ubernete”而成的缩写。是一个开源的，用于管理云平台中多个主机上的容器化的应用，Kubernetes的目标是让部署容器化的应用简单并且高效（powerful）,Kubernetes提供了应用部署，规划，更新，维护的一种机制。 环境在开始之前，先简单介绍一下环境以及配置。这里使用的是vmware创建的虚拟机。    节点 操作系统 cp">
@@ -413,7 +413,7 @@ var _hmt = _hmt || [];
 <h3 id="关闭系统不需要服务"><a href="#关闭系统不需要服务" class="headerlink" title="关闭系统不需要服务"></a>关闭系统不需要服务</h3><figure class="highlight gauss"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl <span class="keyword">stop</span> postfix &amp;&amp; systemctl <span class="keyword">disable</span> postfix</span><br></pre></td></tr></table></figure>
 <h3 id="设置-rsyslogd-和-systemd-journald"><a href="#设置-rsyslogd-和-systemd-journald" class="headerlink" title="设置 rsyslogd 和 systemd journald"></a>设置 rsyslogd 和 systemd journald</h3><figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">mkdir /var/log/journal </span><br><span class="line"><span class="comment"># 持久化保存日志的目录</span></span><br><span class="line"></span><br><span class="line">mkdir /etc/systemd/journald.conf.d</span><br><span class="line"></span><br><span class="line">cat &gt; /etc/systemd/journald.conf.d/99-prophet.conf &lt;&lt;EOF</span><br><span class="line">[Journal]</span><br><span class="line"><span class="comment"># 持久化保存到磁盘</span></span><br><span class="line">Storage=persistent</span><br><span class="line"><span class="comment"># 压缩历史日志</span></span><br><span class="line">Compress=yes</span><br><span class="line">SyncIntervalSec=5m</span><br><span class="line">RateLimitInterval=30s</span><br><span class="line">RateLimitBurst=1000</span><br><span class="line"><span class="comment"># 最大占用空间 10G</span></span><br><span class="line">SystemMaxUse=10G</span><br><span class="line"><span class="comment"># 单日志文件最大 200M</span></span><br><span class="line">SystemMaxFileSize=200M</span><br><span class="line"><span class="comment"># 日志保存时间 2 周</span></span><br><span class="line">MaxRetentionSec=2week</span><br><span class="line"><span class="comment"># 不将日志转发到 syslog</span></span><br><span class="line">ForwardToSyslog=no</span><br><span class="line">EOF</span><br><span class="line"></span><br><span class="line">systemctl restart systemd-journald</span><br></pre></td></tr></table></figure>
 <h3 id="升级系统内核为-4-44"><a href="#升级系统内核为-4-44" class="headerlink" title="升级系统内核为 4.44"></a>升级系统内核为 4.44</h3><p>CentOS 7.x 系统自带的 3.10.x 内核存在一些 Bugs，导致运行的 Docker、Kubernetes 不稳定，例如<code>rpm -Uvh http://www.elrepo.org/elrepo-release-7.0-3.el7.elrepo.noarch.rpm</code></p>
-<figure class="highlight vala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">rpm -Uvh http:<span class="comment">//www.elrepo.org/elrepo-release-7.0-3.el7.elrepo.noarch.rpm</span></span><br><span class="line"><span class="meta"># 安装完成后检查 /boot/grub2/grub.cfg 中对应内核 menuentry 中是否包含 initrd16 配置，如果没有，再安装</span></span><br><span class="line">一次！</span><br><span class="line"></span><br><span class="line">yum --enablerepo=elrepo-kernel install -y kernel-lt</span><br><span class="line"><span class="meta"># 设置开机从新内核启动</span></span><br><span class="line"></span><br><span class="line">grub2-<span class="keyword">set</span>-<span class="keyword">default</span> <span class="string">'CentOS Linux (4.4.202-1.el7.elrepo.x86_64) 7 (Core)'</span></span><br><span class="line"><span class="meta"># 设置新内核</span></span><br><span class="line"></span><br><span class="line">reboot</span><br><span class="line"><span class="meta"># 重启</span></span><br><span class="line"></span><br><span class="line">uname -r</span><br><span class="line"><span class="meta"># 检查是否安装新内核成功</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight vala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">rpm -Uvh http:<span class="comment">//www.elrepo.org/elrepo-release-7.0-3.el7.elrepo.noarch.rpm</span></span><br><span class="line"><span class="meta"># 安装完成后检查 /boot/grub2/grub.cfg 中对应内核 menuentry 中是否包含 initrd16 配置，如果没有，再安装</span></span><br><span class="line">一次！</span><br><span class="line"></span><br><span class="line">yum --enablerepo=elrepo-kernel install -y kernel-lt</span><br><span class="line"></span><br><span class="line"><span class="meta"># 设置开机从新内核启动</span></span><br><span class="line">grub2-<span class="keyword">set</span>-<span class="keyword">default</span> <span class="string">'CentOS Linux (4.4.202-1.el7.elrepo.x86_64) 7 (Core)'</span></span><br><span class="line"></span><br><span class="line"><span class="meta"># 重启</span></span><br><span class="line">reboot</span><br><span class="line"></span><br><span class="line"><span class="meta"># 检查是否安装新内核成功</span></span><br><span class="line">uname -r</span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>注意，内核会随着时间升级的，我写这篇文章的时候，内核版本是 4.4.202 ，这并不意味着你做的时候还是这个内核版本，如果变动了，请自行修改上面的命令即可。</p>
 </blockquote>
@@ -830,6 +830,14 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">算法</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">数据结构</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Docker</a>
               </li>
              
@@ -839,22 +847,6 @@ var _hmt = _hmt || [];
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">CI/CD</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">算法</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">数据结构</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">tcp</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">网络编程</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -879,6 +871,14 @@ var _hmt = _hmt || [];
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">中间件</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">tcp</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">网络编程</a>
               </li>
              
               <li class="article-tag-list-item">

@@ -9,18 +9,18 @@
   <link rel="dns-prefetch" href="https://www.guaosi.com">
   <title>手摸手教你从开发到部署(CI/CD)GO微服务系列-介绍与目录 | guaosi的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="介绍我觉得微服务是什么？什么是微服务这种问题都老生常谈了，随便百度的回答都是各式各样的，我也没什么好介绍的了。开门见山，我就直接说我想做成什么样的。  既然是微服务，那肯定首先要有服务，这个系列重点在微服务的构建，而不是业务逻辑的编写，所以业务逻辑尽可能做到最简单。其次有一个服务即可。 微服务中最重要的是网关，它是所有请求的入口，所以我会用gin框架结合go-micro作为微服务的网关，后期加入日">
+  <meta name="description" content="介绍我觉得微服务是什么？什么是微服务这种问题都老生常谈了，随便百度的回答都是各式各样的，我也没什么好介绍的了。开门见山，我就直接说我想做成什么样的。  既然是微服务，那肯定首先要有服务，这个系列重点在微服务的构建，而不是业务逻辑的编写，所以业务逻辑尽可能做到最简单。其次有一个服务即可。 微服务中最重要的是网关，它是所有请求的入口，所以我会用gin框架结合go-micro作为微服务的网关，后期加入链">
 <meta name="keywords" content="Golang,微服务,go-micro,Docker,Kubernetes,CI&#x2F;CD">
 <meta property="og:type" content="article">
 <meta property="og:title" content="手摸手教你从开发到部署(CI&#x2F;CD)GO微服务系列-介绍与目录">
 <meta property="og:url" content="https://www.guaosi.com/2020/07/05/go-microservice-series-from-development-to-deployment-introduction-contents/index.html">
 <meta property="og:site_name" content="guaosi的博客">
-<meta property="og:description" content="介绍我觉得微服务是什么？什么是微服务这种问题都老生常谈了，随便百度的回答都是各式各样的，我也没什么好介绍的了。开门见山，我就直接说我想做成什么样的。  既然是微服务，那肯定首先要有服务，这个系列重点在微服务的构建，而不是业务逻辑的编写，所以业务逻辑尽可能做到最简单。其次有一个服务即可。 微服务中最重要的是网关，它是所有请求的入口，所以我会用gin框架结合go-micro作为微服务的网关，后期加入日">
+<meta property="og:description" content="介绍我觉得微服务是什么？什么是微服务这种问题都老生常谈了，随便百度的回答都是各式各样的，我也没什么好介绍的了。开门见山，我就直接说我想做成什么样的。  既然是微服务，那肯定首先要有服务，这个系列重点在微服务的构建，而不是业务逻辑的编写，所以业务逻辑尽可能做到最简单。其次有一个服务即可。 微服务中最重要的是网关，它是所有请求的入口，所以我会用gin框架结合go-micro作为微服务的网关，后期加入链">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-07-16T13:11:41.435Z">
+<meta property="og:updated_time" content="2020-07-16T13:54:37.815Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="手摸手教你从开发到部署(CI&#x2F;CD)GO微服务系列-介绍与目录">
-<meta name="twitter:description" content="介绍我觉得微服务是什么？什么是微服务这种问题都老生常谈了，随便百度的回答都是各式各样的，我也没什么好介绍的了。开门见山，我就直接说我想做成什么样的。  既然是微服务，那肯定首先要有服务，这个系列重点在微服务的构建，而不是业务逻辑的编写，所以业务逻辑尽可能做到最简单。其次有一个服务即可。 微服务中最重要的是网关，它是所有请求的入口，所以我会用gin框架结合go-micro作为微服务的网关，后期加入日">
+<meta name="twitter:description" content="介绍我觉得微服务是什么？什么是微服务这种问题都老生常谈了，随便百度的回答都是各式各样的，我也没什么好介绍的了。开门见山，我就直接说我想做成什么样的。  既然是微服务，那肯定首先要有服务，这个系列重点在微服务的构建，而不是业务逻辑的编写，所以业务逻辑尽可能做到最简单。其次有一个服务即可。 微服务中最重要的是网关，它是所有请求的入口，所以我会用gin框架结合go-micro作为微服务的网关，后期加入链">
   
   <link rel="alternative" href="/atom.xml" title="guaosi的博客" type="application/atom+xml">
   
@@ -338,7 +338,7 @@ var _hmt = _hmt || [];
       <h1 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h1><p>我觉得微服务是什么？什么是微服务这种问题都老生常谈了，随便百度的回答都是各式各样的，我也没什么好介绍的了。开门见山，我就直接说我想做成什么样的。</p>
 <ul>
 <li>既然是微服务，那肯定首先要有服务，这个系列重点在微服务的构建，而不是业务逻辑的编写，所以业务逻辑尽可能做到最简单。其次有一个服务即可。</li>
-<li>微服务中最重要的是网关，它是所有请求的入口，所以我会用<code>gin</code>框架结合<code>go-micro</code>作为微服务的网关，后期加入<code>日志</code>、<code>链路追踪</code>、<code>限流</code>、<code>熔断与降级</code>、<code>监控</code>等扩展功能。</li>
+<li>微服务中最重要的是网关，它是所有请求的入口，所以我会用<code>gin</code>框架结合<code>go-micro</code>作为微服务的网关，后期加入<code>链路追踪</code>、<code>熔断与降级</code>、<code>监控</code>等扩展功能。</li>
 <li>微服务就意味着需要快速迭代更新，所以持续交付、集成、部署(CI/CD)是必不可少的</li>
 <li>容器编排部署，肯定是使用Kubernetes，这也没啥好说的</li>
 </ul>
@@ -754,6 +754,14 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">算法</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">数据结构</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Docker</a>
               </li>
              
@@ -763,22 +771,6 @@ var _hmt = _hmt || [];
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">CI/CD</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">算法</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">数据结构</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">tcp</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">网络编程</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -803,6 +795,14 @@ var _hmt = _hmt || [];
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">中间件</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">tcp</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">网络编程</a>
               </li>
              
               <li class="article-tag-list-item">

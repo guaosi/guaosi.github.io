@@ -2,9 +2,30 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://www.guaosi.com/2020/07/11/go-micro-service-direct-docker-container-build-execution/</loc>
+    
+    <lastmod>2020-07-16T14:14:09.348Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://www.guaosi.com/2020/07/07/go-micro-service-introduce-components-and-framework/</loc>
+    
+    <lastmod>2020-07-16T13:58:10.367Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://www.guaosi.com/2020/07/05/go-microservice-series-from-development-to-deployment-introduction-contents/</loc>
     
-    <lastmod>2020-07-16T13:11:41.435Z</lastmod>
+    <lastmod>2020-07-16T13:54:37.815Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://www.guaosi.com/2020/07/05/kubernetes-cluster-install/</loc>
+    
+    <lastmod>2020-07-16T13:39:34.009Z</lastmod>
     
   </url>
   
@@ -40,13 +61,6 @@
     <loc>https://www.guaosi.com/2020/07/11/go-micro-service-docker-compose-build-execution/</loc>
     
     <lastmod>2020-07-12T08:30:13.591Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://www.guaosi.com/2020/07/11/go-micro-service-direct-docker-container-build-execution/</loc>
-    
-    <lastmod>2020-07-11T15:10:30.251Z</lastmod>
     
   </url>
   
@@ -93,13 +107,6 @@
   </url>
   
   <url>
-    <loc>https://www.guaosi.com/2020/07/07/go-micro-service-introduce-components-and-framework/</loc>
-    
-    <lastmod>2020-07-11T05:57:46.055Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://www.guaosi.com/2020/07/05/kubernetes-for-mac-install/</loc>
     
     <lastmod>2020-07-05T10:57:38.254Z</lastmod>
@@ -110,13 +117,6 @@
     <loc>https://www.guaosi.com/2020/01/22/network-of-vmware-and-docker/</loc>
     
     <lastmod>2020-07-05T10:57:18.957Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://www.guaosi.com/2020/07/05/kubernetes-cluster-install/</loc>
-    
-    <lastmod>2020-07-05T09:50:41.853Z</lastmod>
     
   </url>
   
