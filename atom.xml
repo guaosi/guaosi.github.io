@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://www.guaosi.com/"/>
-  <updated>2021-12-05T15:39:39.997Z</updated>
+  <updated>2021-12-29T14:42:41.511Z</updated>
   <id>https://www.guaosi.com/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>简单说说几种常用的网络访问方法</title>
+    <link href="https://www.guaosi.com/2021/12/29/briefly-talk-about-several-common-network-access-methods/"/>
+    <id>https://www.guaosi.com/2021/12/29/briefly-talk-about-several-common-network-access-methods/</id>
+    <published>2021-12-29T14:37:24.000Z</published>
+    <updated>2021-12-29T14:42:41.511Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p>这篇文章会简单说说常见的网络通信访问。</p><p>首先，我们需要了解一些概念，什么是二层，什么是跨网段以及什么是内网，对应云厂商的相关概念又是怎么样的。（不会讲的太详细，只会讲个粗略，否则一篇根本写不完）</p><a id="more"></a><h2 id="二层"><a href="#二层" class="headerlink" title="二层"></a>二层</h2><p>根据OSI七层模型可以知道，二层是数据链路层，现实中的物理设备就是二层交换机。处于同一个二层的意思就是说2台设备，通过两根网线连接在同一台交换机下，同一台交换机下的设备是处于同一个网段或者同一个局域网中（比如192.168.1.0网段），他们之间互相访问，数据包只需要经过交换机，对应上交换机的arp对应表，即可找到对方互相通信。</p><p><img src="/assets/blogImg/briefly-talk-about-several-common-network-access-methods/5laebJ2pDi7J43YAZ3-Cww9EMq5nBQSjerbe-l1oEtc.jpg" alt="image"></p><p>你可能会想，家里的同一台路由器下的设备也是处于同一个局域网，同一个网段，他们之间也能互相通信，并没有用到什么交换机啊。这其实是家用路由器已经整合了交换机的功能。</p><p>那是不是交换机设备就没什么作用了呢？纯二层交换机在校园网还有企业用的比较多，例如一个普通的家用路由器只有4lan口，但是我有10个设备都想用网线进行连接，那怎么办？</p><ol><li>再买一个路由器，旧路由器的lan口跟新路由器的wan口相连，这样新旧2个路由器就各自处于不同网段，各种管理。这其实就涉及到了跨网段，不同的局域网中，如果是家里使用很不方便。举个例子，在这种连接模式下，你的手机在旧路由器上分配到ip，你的电视在新路由器上分配到ip，你的手机是不能投屏给电视的，因为手机在同一个局域网中找不到电视设备。所以如果是有新旧路由器下的连接设备都想在同一个局域网中，新旧路由器就需要换一种接法。</li></ol><p><img src="/assets/blogImg/briefly-talk-about-several-common-network-access-methods/IZst1scrpHwWNoznMqpQ3WbBMiYLEMxUOtNb1iTrkRM.jpg" alt="image"></p><ol start="2"><li>旧路由器的lan口连接新路由器的lan口，同时新路由器关闭自动dhcp服务，由旧路由器提供dhcp服务。这样设置后新路由器就等于一个二层设备，多提供了几个口，连接在新路由器上的设备会由旧路由器分配ip，这样新旧路由器下的设备就在同一个局域网中。手机也可以正常投屏到电视。</li></ol><p><img src="/assets/blogImg/briefly-talk-about-several-common-network-access-methods/StqaQge5FEf9nHxUV00Mnj4l3xpZHXyJX5QCfwV8kNU.jpg" alt="image"></p><ol start="3"><li>直接购买一个交换机，上面方案2就是把新路由器当成一个交换机使用，不过一般交换机是可以提供很多口，根据具体需要。</li></ol><p><img src="/assets/blogImg/briefly-talk-about-several-common-network-access-methods/GroOiTGSBSkQnd0yE1PTwiWOhQRaxCXdbi2anHsPgCc.jpg" alt="image"></p><h2 id="跨网段"><a href="#跨网段" class="headerlink" title="跨网段"></a>跨网段</h2><p>当不在同一个二层或者说不在同一个局域网内时，也就是说不在一个网段内，此时通信就需要借助硬件路由器。比如上面的旧路由器（192.168.1.0网段）接了新路由器的wan口（192.168.2.0网段），此时各自路由器下的设备想互相访问到对方，就属于跨网段通信，由路由器帮我们实现通信（RIP,OSPF之类的相关协议），如果想访问外网，也就是公网，也同样是需要路由器帮我们进行通信（BGP之类的相关协议）。</p><p>举个例子，一台设备想要访问百度，此时他需要发送http数据包（假设三次握手已经成功），首先在本设备随机开启一个端口，用来接收数据或者发送数据，直到四次挥手结束才关闭该端口，数据包根据本机路由表，发现外网地址不能直达，数据包就传送给网关，也就是路由器。路由器发现是目的ip是公网，先在路由器上记录数据包的源ip跟端口（nat表），再在路由器上随机开启一个端口，用来接收或者发送数据。再将数据包发送给运营商，由运营商负责数据包在公网上的传输，最后将结果返回给路由器对应的端口。路由器再将数据包返回给原来记录的设备。</p><p><img src="/assets/blogImg/briefly-talk-about-several-common-network-access-methods/sU1R_mWOe5AiG-Xg0q0CUjUZ_GZs7C9TN7AVdfhZiBk.jpg" alt="image"></p><h2 id="公有云"><a href="#公有云" class="headerlink" title="公有云"></a>公有云</h2><p>上面说的都是对应个人家里的网络情况，如果是目前公有云厂商，那又是如何对应的呢？</p><ul><li>公有云厂商在创建实例（也就是服务器）的时候，都会预先创建好vpc，然后创建好路由器以及交换机（也就是子网），然后实例被划分到这个子网下。</li><li>vpc就是一个虚拟网络，可以认为就是家里的整个大网络。</li><li>路由器就是家里的路由器，只不过我们家里的路由器只会有一个网段，省略了交换机。云厂商的一个交换机相当于一个子网（例如192.168.1.0网段），如果再在这个vpc下创建一个子网（例如172.16.1.0网段），他们下各自设备想要互相通信，就需要靠路由器进行转发。</li><li>然后实例属于某个子网下，可以通过查看ip命令就可以发现实例此时的内网ip。</li></ul><p><img src="/assets/blogImg/briefly-talk-about-several-common-network-access-methods/-XM5ZaQkYoQP5XQ3K6zS3NUc2zUt88MJHmius5FZR6A.jpg" alt="image"></p><h2 id="情况讲解"><a href="#情况讲解" class="headerlink" title="情况讲解"></a>情况讲解</h2><p>现在我们手头上有A这样一台设备（认为是服务器或者电脑都行），然后有B这样一台服务器，上面的8080端口的web服务。我们想通过举例B服务器在不同的网络环境中，A电脑能进行访问，来给出不同的通讯方案以及其中一些限制因素。</p><h3 id="在同一个二层"><a href="#在同一个二层" class="headerlink" title="在同一个二层"></a>在同一个二层</h3><p>A跟B在同一个二层，也就是同一个局域网，这种最简单了，ip加端口直接就能访问到。</p><h3 id="在一个大网络内跨网段"><a href="#在一个大网络内跨网段" class="headerlink" title="在一个大网络内跨网段"></a>在一个大网络内跨网段</h3><p>例如新旧路由器，旧路由器的lan接新路由器的wan口。实际上这种情况，借助路由器也是可以直接，一样能通过ip加端口访问，只要路由可达即可。</p><h3 id="A在内网环境B在公网环境"><a href="#A在内网环境B在公网环境" class="headerlink" title="A在内网环境B在公网环境"></a>A在内网环境B在公网环境</h3><p>B在公网环境也就是说B有公网IP可以直接被访问到，A从内网出来到公网进行访问，由路由器转发，运营商转发处理即可，对于A来说一样可以直接使用IP加端口进行访问。</p><h3 id="B在内网环境并且A跟B不在同一个网络内"><a href="#B在内网环境并且A跟B不在同一个网络内" class="headerlink" title="B在内网环境并且A跟B不在同一个网络内"></a>B在内网环境并且A跟B不在同一个网络内</h3><p>这种情况最为复杂也是最麻烦的。比如A在公司，B在家里，此时两边网络不互通，无法直接进行访问，要如何处理？</p><p>比较简单的办法就是B所在环境开一个VPN，能让A直接接入B所在网络，这样就可以直接通过B的内网ip加端口直接进行访问。如果不能创建vpn，那又要如何进行处理？</p><p>最常用的就是2个办法，一个是ddns，另一个就是内网穿透。</p><h4 id="ddns"><a href="#ddns" class="headerlink" title="ddns"></a>ddns</h4><p>讲解ddns时，先回顾一下， A在内网环境B在公网环境 这种情况中。用公网ip加端口就可以直接访问到云厂商的实例，那我们家里是否也能这样办到？答案是能的。但是有个前提条件，就是你要家里真有专属公网IP。如何知道自己是否真有专属的公网IP?一般如果是接正规宽带提供商（电信联通移动），并且是拨号上网，就会有个人的公网ip。这还不够，如果是光猫拨号，需要保证对光猫有足够的控制权，如果是路由器拨号，需要保证对路由器有足够的控制权，因为需要上去开端口映射或者dmz。</p><p>这样，当路由器设置好端口映射规则后，通过访问路由器的公网ip加端口，访问就会被路由器对应规则转发到对应的内网机器上以及对应的端口。这样就可以实现外部环境访问到内网的服务。</p><p>我们再了解一下域名。当我们访问一个域名，实际上会通过DNS(域名解析系统)获取到这个域名实际对应的公网IP，然后再访问该公网IP。</p><p>既然通过域名可以查到公网IP，那我们可以给路由器的公网IP绑定一个域名，这样我们在外部环境直接访问域名，就可以访问到我们的路由器了。但是有一点，因为是拨号上网，宽带运营商是不会给我们固定的IP，也就是每一次重新拨号IP都会发生变化，可是域名对应的IP地址还是旧的，那要怎么处理呢？这时候就需要使用DDNS（动态域名解析系统），路由器上需要有一个专门的程序，每分钟查询自己的公网IP是多少，然后通过域名提供商开放的API接口，来更新域名对应的最新公网IP，这样达到能全自动更新，而我们依旧只需要知道域名即可。（域名可以使用阿里云的，ddns相关api在网上也有对应案例）</p><p><img src="/assets/blogImg/briefly-talk-about-several-common-network-access-methods/WUW7CVQMD-98XZebJ7mqJ-k2GuMYML5CJXDc2d_g1mM.jpg" alt="image"></p><h5 id="影响因素"><a href="#影响因素" class="headerlink" title="影响因素:"></a>影响因素:</h5><p>这种方式相当于直接访问到内网的机器里进行交互。所以此时的传输速度，也就是上行带宽取决于家庭带宽的上行带宽限制。</p><h4 id="内网穿透"><a href="#内网穿透" class="headerlink" title="内网穿透"></a>内网穿透</h4><p>当对路由器没有控制权或者运营商不给公网IP时，也就是ddns这种方案行不通时，那就只能使用内网穿透了。内网穿透的原理是将当前机器跟提供内网穿透服务的服务端建立长连接，注册上需要转发到本机的端口。注册成功后内网穿透服务提供商会提供一个域名以及端口，供任何地方可以直接访问。当访问内网穿透服务提供商会提供的域名以及端口后，请求被内网穿透服务提供商中转后，被转发到原先机器和端口上。</p><p><img src="/assets/blogImg/briefly-talk-about-several-common-network-access-methods/zj62IO4uvEbtRUCtthmSnNPm9q1Z8QGXry0aWZZelCk.jpg" alt="image"></p><h5 id="影响因素-1"><a href="#影响因素-1" class="headerlink" title="影响因素"></a>影响因素</h5><p>这种方式需要一层内网穿透服务提供商的中转，所以此时的传输速度不仅仅取决于家庭带宽的上行带宽限制，更是取决于内网穿透服务提供商提供了多大的带宽(免费的一般就给1M的带宽)。</p><h5 id="使用钉钉内网穿透"><a href="#使用钉钉内网穿透" class="headerlink" title="使用钉钉内网穿透"></a>使用钉钉内网穿透</h5><p>临时使用的话，可以使用钉钉的内网穿透服务，免费而且带宽大，就是不太稳定，个人不商用应该是足够使用的。</p><p>钉钉内网穿透说明文档:  <a href="https://open.dingtalk.com/document/resourcedownload/http-intranet-penetration" target="_blank" rel="noopener">https://open.dingtalk.com/document/resourcedownload/http-intranet-penetration</a></p><p>钉钉内网穿透项目：<a href="https://github.com/open-dingtalk/pierced" target="_blank" rel="noopener">https://github.com/open-dingtalk/pierced</a></p><blockquote><p>注意：这个项目很久不维护了，而且有一个bug，就是使用时间越长，内存占用越大，所以最好能写个脚本定时进行重启。</p></blockquote><p>为了方便使用，我也用docker做了个封装</p><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker <span class="builtin-name">run</span> -d -e <span class="attribute">SUB_DOMAIN</span>=子域名名称 -e <span class="attribute">PORT</span>=转发到本机的端口 --name pierced guaosi/pierced</span><br></pre></td></tr></table></figure><p>例如</p><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker <span class="builtin-name">run</span> -d -e <span class="attribute">SUB_DOMAIN</span>=guaosi-test -e <span class="attribute">PORT</span>=8080 --name pierced guaosi/pierced</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;简介&quot;&gt;&lt;a href=&quot;#简介&quot; class=&quot;headerlink&quot; title=&quot;简介&quot;&gt;&lt;/a&gt;简介&lt;/h1&gt;&lt;p&gt;这篇文章会简单说说常见的网络通信访问。&lt;/p&gt;
+&lt;p&gt;首先，我们需要了解一些概念，什么是二层，什么是跨网段以及什么是内网，对应云厂商的相关概念又是怎么样的。（不会讲的太详细，只会讲个粗略，否则一篇根本写不完）&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="网络" scheme="https://www.guaosi.com/tags/%E7%BD%91%E7%BB%9C/"/>
+    
+      <category term="服务器" scheme="https://www.guaosi.com/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/"/>
+    
+      <category term="运维" scheme="https://www.guaosi.com/tags/%E8%BF%90%E7%BB%B4/"/>
+    
+  </entry>
   
   <entry>
     <title>Kubernetes 1.22集群安装教程(基于Ubuntu)</title>
@@ -32,11 +57,11 @@
     </summary>
     
     
+      <category term="运维" scheme="https://www.guaosi.com/tags/%E8%BF%90%E7%BB%B4/"/>
+    
       <category term="Linux" scheme="https://www.guaosi.com/tags/Linux/"/>
     
       <category term="Kubernetes" scheme="https://www.guaosi.com/tags/Kubernetes/"/>
-    
-      <category term="运维" scheme="https://www.guaosi.com/tags/%E8%BF%90%E7%BB%B4/"/>
     
   </entry>
   
@@ -455,13 +480,13 @@
     </summary>
     
     
+      <category term="运维" scheme="https://www.guaosi.com/tags/%E8%BF%90%E7%BB%B4/"/>
+    
       <category term="Linux" scheme="https://www.guaosi.com/tags/Linux/"/>
     
       <category term="Docker" scheme="https://www.guaosi.com/tags/Docker/"/>
     
       <category term="Kubernetes" scheme="https://www.guaosi.com/tags/Kubernetes/"/>
-    
-      <category term="运维" scheme="https://www.guaosi.com/tags/%E8%BF%90%E7%BB%B4/"/>
     
   </entry>
   
@@ -507,11 +532,11 @@
     </summary>
     
     
+      <category term="运维" scheme="https://www.guaosi.com/tags/%E8%BF%90%E7%BB%B4/"/>
+    
       <category term="Linux" scheme="https://www.guaosi.com/tags/Linux/"/>
     
       <category term="Kubernetes" scheme="https://www.guaosi.com/tags/Kubernetes/"/>
-    
-      <category term="运维" scheme="https://www.guaosi.com/tags/%E8%BF%90%E7%BB%B4/"/>
     
   </entry>
   
@@ -815,9 +840,9 @@
     </summary>
     
     
-      <category term="Linux" scheme="https://www.guaosi.com/tags/Linux/"/>
-    
       <category term="服务器" scheme="https://www.guaosi.com/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/"/>
+    
+      <category term="Linux" scheme="https://www.guaosi.com/tags/Linux/"/>
     
       <category term="高可用" scheme="https://www.guaosi.com/tags/%E9%AB%98%E5%8F%AF%E7%94%A8/"/>
     
@@ -839,9 +864,9 @@
     </summary>
     
     
-      <category term="Linux" scheme="https://www.guaosi.com/tags/Linux/"/>
-    
       <category term="服务器" scheme="https://www.guaosi.com/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/"/>
+    
+      <category term="Linux" scheme="https://www.guaosi.com/tags/Linux/"/>
     
       <category term="高可用" scheme="https://www.guaosi.com/tags/%E9%AB%98%E5%8F%AF%E7%94%A8/"/>
     
@@ -869,9 +894,9 @@
     </summary>
     
     
-      <category term="Linux" scheme="https://www.guaosi.com/tags/Linux/"/>
-    
       <category term="服务器" scheme="https://www.guaosi.com/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/"/>
+    
+      <category term="Linux" scheme="https://www.guaosi.com/tags/Linux/"/>
     
   </entry>
   
@@ -891,13 +916,13 @@
     </summary>
     
     
-      <category term="Linux" scheme="https://www.guaosi.com/tags/Linux/"/>
-    
-      <category term="Docker" scheme="https://www.guaosi.com/tags/Docker/"/>
+      <category term="网络" scheme="https://www.guaosi.com/tags/%E7%BD%91%E7%BB%9C/"/>
     
       <category term="服务器" scheme="https://www.guaosi.com/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/"/>
     
-      <category term="网络" scheme="https://www.guaosi.com/tags/%E7%BD%91%E7%BB%9C/"/>
+      <category term="Linux" scheme="https://www.guaosi.com/tags/Linux/"/>
+    
+      <category term="Docker" scheme="https://www.guaosi.com/tags/Docker/"/>
     
   </entry>
   
@@ -951,11 +976,11 @@
     </summary>
     
     
-      <category term="Linux" scheme="https://www.guaosi.com/tags/Linux/"/>
-    
       <category term="Web" scheme="https://www.guaosi.com/tags/Web/"/>
     
       <category term="服务器" scheme="https://www.guaosi.com/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/"/>
+    
+      <category term="Linux" scheme="https://www.guaosi.com/tags/Linux/"/>
     
       <category term="HTTP" scheme="https://www.guaosi.com/tags/HTTP/"/>
     
@@ -1299,9 +1324,9 @@
     </summary>
     
     
-      <category term="Redis" scheme="https://www.guaosi.com/tags/Redis/"/>
-    
       <category term="PHP" scheme="https://www.guaosi.com/tags/PHP/"/>
+    
+      <category term="Redis" scheme="https://www.guaosi.com/tags/Redis/"/>
     
       <category term="Linux" scheme="https://www.guaosi.com/tags/Linux/"/>
     
@@ -1351,9 +1376,9 @@
     </summary>
     
     
-      <category term="lnmp" scheme="https://www.guaosi.com/tags/lnmp/"/>
-    
       <category term="服务器" scheme="https://www.guaosi.com/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/"/>
+    
+      <category term="lnmp" scheme="https://www.guaosi.com/tags/lnmp/"/>
     
       <category term="OneDrive" scheme="https://www.guaosi.com/tags/OneDrive/"/>
     
@@ -1419,11 +1444,11 @@
     </summary>
     
     
+      <category term="服务器" scheme="https://www.guaosi.com/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/"/>
+    
       <category term="PHP" scheme="https://www.guaosi.com/tags/PHP/"/>
     
       <category term="lnmp" scheme="https://www.guaosi.com/tags/lnmp/"/>
-    
-      <category term="服务器" scheme="https://www.guaosi.com/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/"/>
     
   </entry>
   

@@ -1,4 +1,4 @@
+https://www.guaosi.com/2021/12/29/briefly-talk-about-several-common-network-access-methods/
 https://www.guaosi.com/2021/12/05/kubernetes-cluster-install-base-on-ubuntu/
 https://www.guaosi.com/2021/12/05/install-ubuntu-20-server-and-configuration/
 https://www.guaosi.com/2020/07/15/go-micro-service-jenkins-deploy-kubernetes/
-https://www.guaosi.com/2020/07/12/go-micro-service-jenkins-build-and-setting/
