@@ -656,6 +656,113 @@ var _hmt = _hmt || [];
 
 
   
+    <article id="post-mount-alicloud-disks-locally-through-webdav-protocol" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
+  <div class="article-inner">
+    
+    <header class="article-header">
+      
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/12/06/mount-alicloud-disks-locally-through-webdav-protocol/">通过webdav协议挂载阿里云盘到本地</a>
+    </h1>
+  
+
+      <!-- 显示阅读和评论数 -->
+
+      <br>
+      
+
+
+
+      
+      <a href="/2021/12/06/mount-alicloud-disks-locally-through-webdav-protocol/" class="archive-article-date">
+  	<time datetime="2021-12-06T10:26:22.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-12-06</time>
+</a>
+      
+    </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+      <h1 id="什么是webdav协议"><a href="#什么是webdav协议" class="headerlink" title="什么是webdav协议"></a>什么是webdav协议</h1><p>WebDAV 基于 HTTP 协议的通信协议，在GET、POST、HEAD等几个HTTP标准方法以外添加了一些新的方法，使应用程序可对Web Server直接读写，并支持写文件锁定(Locking)及解锁(Unlock)，还可以支持文件的版本控制。因为基于HTTP，在广域网上共享文件有天然的优势，移动端文件管理APP也大多支持WebDAV协议。使用HTTPS还能保安全性。Apache和Nginx支持WebDAV，可作为WebDAV文件共享服务器软件。也可以使用专门的WebDAV软件部署。</p>
+<p>可以认为通过webdav，我们可以直接将云盘挂载到本地，不需要使用服务商提供的专门软件就能进行管理使用。目前国内支持的最好的就是坚果云了，自身就支持webdav，但是坚果云免费的限制流量。阿里云盘明面上不支持，但是通过搭建 <a href="https://github.com/zxbu/webdav-aliyundriver" target="_blank" rel="noopener">webdav-aliyundriver</a> 项目，来代理转发请求，实现阿里云盘支持webdav协议。</p>
+<h1 id="流程梳理"><a href="#流程梳理" class="headerlink" title="流程梳理"></a>流程梳理</h1><p>本篇将会讲解如下</p>
+<ul>
+<li>搭建<code>webdav-aliyundriver</code></li>
+<li>windows通过<code>Raidrive</code>挂载阿里云盘</li>
+<li>Linux通过<code>Rclone</code> 挂载阿里云盘</li>
+</ul>
+      
+      <a class="article-more-a" href="/2021/12/06/mount-alicloud-disks-locally-through-webdav-protocol/#more">
+        more >></a>
+      
+      
+
+      
+
+      
+        <div class="declare" hidden="hidden"></div>
+      
+
+
+
+      
+    </div>
+
+
+
+
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">服务器</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">运维</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+      <p class="article-more-link">
+        <a class="article-more-a" href="/2021/12/06/mount-alicloud-disks-locally-through-webdav-protocol/">
+          展开全文 >></a>
+      </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+  
     <article id="post-kubernetes-cluster-install-base-on-ubuntu" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
   <div class="article-inner">
     
@@ -712,11 +819,11 @@ var _hmt = _hmt || [];
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">运维</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Linux</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Linux</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">运维</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
@@ -1066,111 +1173,6 @@ var _hmt = _hmt || [];
 
 
   
-    <article id="post-go-micro-service-gitlab-build-and-setting" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
-  <div class="article-inner">
-    
-    <header class="article-header">
-      
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/07/12/go-micro-service-gitlab-build-and-setting/">GO微服务系列-4.1 Gitlab的搭建与设置</a>
-    </h1>
-  
-
-      <!-- 显示阅读和评论数 -->
-
-      <br>
-      
-
-
-
-      
-      <a href="/2020/07/12/go-micro-service-gitlab-build-and-setting/" class="archive-article-date">
-  	<time datetime="2020-07-12T09:42:58.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-12</time>
-</a>
-      
-    </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-      <h1 id="环境准备"><a href="#环境准备" class="headerlink" title="环境准备"></a>环境准备</h1><p>我们打算把<code>gitlab</code>跟<code>jenkins</code>都通过<code>docker</code>的方式，安装在同一个虚拟机里。虚拟机IP：<code>192.168.1.220</code>。</p>
-<h2 id="创建专属网络"><a href="#创建专属网络" class="headerlink" title="创建专属网络"></a>创建专属网络</h2><p>我们跟之前一样，创建一个专属网络<br><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker<span class="built_in"> network </span>create cicd --driver bridge</span><br></pre></td></tr></table></figure></p>
-      
-      <a class="article-more-a" href="/2020/07/12/go-micro-service-gitlab-build-and-setting/#more">
-        more >></a>
-      
-      
-
-      
-
-      
-        <div class="declare" hidden="hidden"></div>
-      
-
-
-
-      
-    </div>
-
-
-
-
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Golang</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">微服务</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">go-micro</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-      <p class="article-more-link">
-        <a class="article-more-a" href="/2020/07/12/go-micro-service-gitlab-build-and-setting/">
-          展开全文 >></a>
-      </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
@@ -1270,23 +1272,23 @@ var _hmt = _hmt || [];
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Redis</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">PHP</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Linux</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">测试</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Web</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">消息队列</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">RabbitMQ</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">中间件</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1302,15 +1304,15 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">PHP</a>
+                <a href="javascript:void(0)" class="js-tag color5">消息队列</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Redis</a>
+                <a href="javascript:void(0)" class="js-tag color4">RabbitMQ</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Linux</a>
+                <a href="javascript:void(0)" class="js-tag color4">中间件</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1342,14 +1344,6 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">算法</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">数据结构</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Kubernetes</a>
               </li>
              
@@ -1358,7 +1352,23 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Laravel</a>
+                <a href="javascript:void(0)" class="js-tag color3">算法</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">数据结构</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">tcp</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">网络编程</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Python</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1370,15 +1380,7 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Python</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">tcp</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">网络编程</a>
+                <a href="javascript:void(0)" class="js-tag color3">Laravel</a>
               </li>
              
               <li class="article-tag-list-item">
