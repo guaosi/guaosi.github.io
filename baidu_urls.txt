@@ -1,4 +1,4 @@
+https://www.guaosi.com/2021/12/31/for-privatized-deployment-of-wiz-as-well-as-online-and-backup/
 https://www.guaosi.com/2021/12/29/briefly-talk-about-several-common-network-access-methods/
 https://www.guaosi.com/2021/12/06/mount-alicloud-disks-locally-through-webdav-protocol/
 https://www.guaosi.com/2021/12/05/kubernetes-cluster-install-base-on-ubuntu/
-https://www.guaosi.com/2021/12/05/install-ubuntu-20-server-and-configuration/

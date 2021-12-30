@@ -25,7 +25,7 @@
 <meta property="og:image" content="https://www.guaosi.com/assets/blogImg/briefly-talk-about-several-common-network-access-methods/-XM5ZaQkYoQP5XQ3K6zS3NUc2zUt88MJHmius5FZR6A.jpg">
 <meta property="og:image" content="https://www.guaosi.com/assets/blogImg/briefly-talk-about-several-common-network-access-methods/WUW7CVQMD-98XZebJ7mqJ-k2GuMYML5CJXDc2d_g1mM.jpg">
 <meta property="og:image" content="https://www.guaosi.com/assets/blogImg/briefly-talk-about-several-common-network-access-methods/zj62IO4uvEbtRUCtthmSnNPm9q1Z8QGXry0aWZZelCk.jpg">
-<meta property="og:updated_time" content="2021-12-29T14:42:41.511Z">
+<meta property="og:updated_time" content="2021-12-30T16:31:21.452Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="简单说说几种常用的网络访问方法">
 <meta name="twitter:description" content="简介这篇文章会简单说说常见的网络通信访问。 首先，我们需要了解一些概念，什么是二层，什么是跨网段以及什么是内网，对应云厂商的相关概念又是怎么样的。（不会讲的太详细，只会讲个粗略，否则一篇根本写不完）">
@@ -213,7 +213,7 @@ var _hmt = _hmt || [];
     
     <li><a href="/archives">归档</a></li>
     
-    <li><a href="http://cloud.guaosi.com">网盘</a></li>
+    <li><a href="https://cloud.guaosi.com">网盘</a></li>
     
 			</ul>
 		</nav>
@@ -304,7 +304,7 @@ var _hmt = _hmt || [];
 		        
 					<li style="width: 33.333333333333336%"><a href="/archives">归档</a></li>
 		        
-					<li style="width: 33.333333333333336%"><a href="http://cloud.guaosi.com">网盘</a></li>
+					<li style="width: 33.333333333333336%"><a href="https://cloud.guaosi.com">网盘</a></li>
 		        
 				</ul>
 			</nav>
@@ -407,9 +407,12 @@ var _hmt = _hmt || [];
 <p>注意：这个项目很久不维护了，而且有一个bug，就是使用时间越长，内存占用越大，所以最好能写个脚本定时进行重启。</p>
 </blockquote>
 <p>为了方便使用，我也用docker做了个封装</p>
-<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker <span class="builtin-name">run</span> -d -e <span class="attribute">SUB_DOMAIN</span>=子域名名称 -e <span class="attribute">PORT</span>=转发到本机的端口 --name pierced guaosi/pierced</span><br></pre></td></tr></table></figure>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker <span class="builtin-name">run</span> -d <span class="attribute">--net</span>=host -e <span class="attribute">SUB_DOMAIN</span>=子域名名称 -e <span class="attribute">PORT</span>=转发到本机的端口 --name pierced guaosi/pierced</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>注意，一定要使用host模式，否则只会在容器内转发请求，到不了宿主机上</p>
+</blockquote>
 <p>例如</p>
-<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker <span class="builtin-name">run</span> -d -e <span class="attribute">SUB_DOMAIN</span>=guaosi-test -e <span class="attribute">PORT</span>=8080 --name pierced guaosi/pierced</span><br></pre></td></tr></table></figure>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker <span class="builtin-name">run</span> -d <span class="attribute">--net</span>=host -e <span class="attribute">SUB_DOMAIN</span>=guaosi-test -e <span class="attribute">PORT</span>=8080 --name pierced guaosi/pierced</span><br></pre></td></tr></table></figure>
       
 
       
@@ -559,6 +562,15 @@ var _hmt = _hmt || [];
 
 
 <nav id="article-nav">
+  
+    <a href="/2021/12/31/for-privatized-deployment-of-wiz-as-well-as-online-and-backup/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          为知笔记私有化部署以及上线和备份
+        
+      </div>
+    </a>
   
   
     <a href="/2021/12/06/mount-alicloud-disks-locally-through-webdav-protocol/" id="article-nav-older" class="article-nav-link-wrap">
@@ -744,18 +756,6 @@ var _hmt = _hmt || [];
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Redis</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">PHP</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Linux</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">测试</a>
               </li>
              
@@ -773,6 +773,18 @@ var _hmt = _hmt || [];
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">运维</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Redis</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">PHP</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Linux</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -796,7 +808,7 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">lnmp</a>
+                <a href="javascript:void(0)" class="js-tag color4">git</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -812,7 +824,7 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">git</a>
+                <a href="javascript:void(0)" class="js-tag color5">lnmp</a>
               </li>
              
               <li class="article-tag-list-item">
