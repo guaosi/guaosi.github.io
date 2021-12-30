@@ -125,9 +125,9 @@
     </summary>
     
     
-      <category term="运维" scheme="https://www.guaosi.com/tags/%E8%BF%90%E7%BB%B4/"/>
-    
       <category term="Linux" scheme="https://www.guaosi.com/tags/Linux/"/>
+    
+      <category term="运维" scheme="https://www.guaosi.com/tags/%E8%BF%90%E7%BB%B4/"/>
     
       <category term="Kubernetes" scheme="https://www.guaosi.com/tags/Kubernetes/"/>
     
@@ -548,9 +548,9 @@
     </summary>
     
     
-      <category term="运维" scheme="https://www.guaosi.com/tags/%E8%BF%90%E7%BB%B4/"/>
-    
       <category term="Linux" scheme="https://www.guaosi.com/tags/Linux/"/>
+    
+      <category term="运维" scheme="https://www.guaosi.com/tags/%E8%BF%90%E7%BB%B4/"/>
     
       <category term="Docker" scheme="https://www.guaosi.com/tags/Docker/"/>
     
@@ -600,9 +600,9 @@
     </summary>
     
     
-      <category term="运维" scheme="https://www.guaosi.com/tags/%E8%BF%90%E7%BB%B4/"/>
-    
       <category term="Linux" scheme="https://www.guaosi.com/tags/Linux/"/>
+    
+      <category term="运维" scheme="https://www.guaosi.com/tags/%E8%BF%90%E7%BB%B4/"/>
     
       <category term="Kubernetes" scheme="https://www.guaosi.com/tags/Kubernetes/"/>
     
@@ -908,9 +908,9 @@
     </summary>
     
     
-      <category term="服务器" scheme="https://www.guaosi.com/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/"/>
-    
       <category term="Linux" scheme="https://www.guaosi.com/tags/Linux/"/>
+    
+      <category term="服务器" scheme="https://www.guaosi.com/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/"/>
     
       <category term="高可用" scheme="https://www.guaosi.com/tags/%E9%AB%98%E5%8F%AF%E7%94%A8/"/>
     
@@ -932,9 +932,9 @@
     </summary>
     
     
-      <category term="服务器" scheme="https://www.guaosi.com/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/"/>
-    
       <category term="Linux" scheme="https://www.guaosi.com/tags/Linux/"/>
+    
+      <category term="服务器" scheme="https://www.guaosi.com/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/"/>
     
       <category term="高可用" scheme="https://www.guaosi.com/tags/%E9%AB%98%E5%8F%AF%E7%94%A8/"/>
     
@@ -962,9 +962,9 @@
     </summary>
     
     
-      <category term="服务器" scheme="https://www.guaosi.com/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/"/>
-    
       <category term="Linux" scheme="https://www.guaosi.com/tags/Linux/"/>
+    
+      <category term="服务器" scheme="https://www.guaosi.com/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/"/>
     
   </entry>
   
@@ -984,11 +984,11 @@
     </summary>
     
     
+      <category term="Linux" scheme="https://www.guaosi.com/tags/Linux/"/>
+    
       <category term="网络" scheme="https://www.guaosi.com/tags/%E7%BD%91%E7%BB%9C/"/>
     
       <category term="服务器" scheme="https://www.guaosi.com/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/"/>
-    
-      <category term="Linux" scheme="https://www.guaosi.com/tags/Linux/"/>
     
       <category term="Docker" scheme="https://www.guaosi.com/tags/Docker/"/>
     
@@ -1044,11 +1044,11 @@
     </summary>
     
     
+      <category term="Linux" scheme="https://www.guaosi.com/tags/Linux/"/>
+    
       <category term="Web" scheme="https://www.guaosi.com/tags/Web/"/>
     
       <category term="服务器" scheme="https://www.guaosi.com/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/"/>
-    
-      <category term="Linux" scheme="https://www.guaosi.com/tags/Linux/"/>
     
       <category term="HTTP" scheme="https://www.guaosi.com/tags/HTTP/"/>
     
@@ -1512,9 +1512,9 @@
     </summary>
     
     
-      <category term="服务器" scheme="https://www.guaosi.com/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/"/>
-    
       <category term="PHP" scheme="https://www.guaosi.com/tags/PHP/"/>
+    
+      <category term="服务器" scheme="https://www.guaosi.com/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/"/>
     
       <category term="lnmp" scheme="https://www.guaosi.com/tags/lnmp/"/>
     
