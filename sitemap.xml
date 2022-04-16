@@ -9,16 +9,9 @@
   </url>
   
   <url>
-    <loc>https://www.guaosi.com/2022/04/16/distributed-transaction-and-distributed-theoretical-foundationdistributed-transaction-and-distributed-theoretical-foundation%20copy/</loc>
+    <loc>https://www.guaosi.com/2022/04/16/distributed-transaction-and-distributed-theoretical-foundationdistributed-transaction-and-distributed-theoretical-foundation/</loc>
     
     <lastmod>2022-04-16T07:08:07.993Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://www.guaosi.com/2022/04/12/mapping-for-elasticsearch7/</loc>
-    
-    <lastmod>2022-04-16T07:03:26.525Z</lastmod>
     
   </url>
   
@@ -31,6 +24,13 @@
   
   <url>
     <loc>https://www.guaosi.com/2022/04/12/installation-and-basic-concepts-for-elasticsearch7/</loc>
+    
+    <lastmod>2022-04-16T07:03:26.525Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://www.guaosi.com/2022/04/12/mapping-for-elasticsearch7/</loc>
     
     <lastmod>2022-04-16T07:03:26.525Z</lastmod>
     
@@ -79,14 +79,14 @@
   </url>
   
   <url>
-    <loc>https://www.guaosi.com/photos/videos.html</loc>
+    <loc>https://www.guaosi.com/photos/ins.json</loc>
     
     <lastmod>2021-12-05T08:13:24.494Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://www.guaosi.com/photos/ins.json</loc>
+    <loc>https://www.guaosi.com/photos/videos.html</loc>
     
     <lastmod>2021-12-05T08:13:24.494Z</lastmod>
     
@@ -100,14 +100,14 @@
   </url>
   
   <url>
-    <loc>https://www.guaosi.com/2020/02/03/understanding-and-use-of-redis-api/</loc>
+    <loc>https://www.guaosi.com/2020/01/22/the-brief-introduction-to-iptables/</loc>
     
     <lastmod>2021-12-05T08:13:24.113Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://www.guaosi.com/2020/01/22/the-brief-introduction-to-iptables/</loc>
+    <loc>https://www.guaosi.com/2020/02/03/understanding-and-use-of-redis-api/</loc>
     
     <lastmod>2021-12-05T08:13:24.113Z</lastmod>
     
@@ -121,13 +121,6 @@
   </url>
   
   <url>
-    <loc>https://www.guaosi.com/2020/02/04/swiss-army-knife-redis/</loc>
-    
-    <lastmod>2021-12-05T08:13:24.112Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://www.guaosi.com/2020/01/22/simple-principle-of-https/</loc>
     
     <lastmod>2021-12-05T08:13:24.112Z</lastmod>
@@ -135,14 +128,21 @@
   </url>
   
   <url>
-    <loc>https://www.guaosi.com/2020/05/16/record-data-loss-problem-caused-by-MTU/</loc>
+    <loc>https://www.guaosi.com/2020/02/04/swiss-army-knife-redis/</loc>
+    
+    <lastmod>2021-12-05T08:13:24.112Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://www.guaosi.com/2020/02/04/persistent-trade-offs-and-choices-redis/</loc>
     
     <lastmod>2021-12-05T08:13:24.111Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://www.guaosi.com/2020/02/04/persistent-trade-offs-and-choices-redis/</loc>
+    <loc>https://www.guaosi.com/2020/05/16/record-data-loss-problem-caused-by-MTU/</loc>
     
     <lastmod>2021-12-05T08:13:24.111Z</lastmod>
     
@@ -156,13 +156,6 @@
   </url>
   
   <url>
-    <loc>https://www.guaosi.com/2020/01/22/network-of-vmware-and-docker/</loc>
-    
-    <lastmod>2021-12-05T08:13:24.110Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://www.guaosi.com/2019/02/22/onedrive-olyindex-oneindex-aria-ariang/</loc>
     
     <lastmod>2021-12-05T08:13:24.110Z</lastmod>
@@ -170,14 +163,21 @@
   </url>
   
   <url>
-    <loc>https://www.guaosi.com/2019/03/19/laravel-with-limit-and-group-show-zero/</loc>
+    <loc>https://www.guaosi.com/2020/01/22/network-of-vmware-and-docker/</loc>
+    
+    <lastmod>2021-12-05T08:13:24.110Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://www.guaosi.com/2019/03/13/laravel-limit-paginate/</loc>
     
     <lastmod>2021-12-05T08:13:24.109Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://www.guaosi.com/2019/03/13/laravel-limit-paginate/</loc>
+    <loc>https://www.guaosi.com/2019/03/19/laravel-with-limit-and-group-show-zero/</loc>
     
     <lastmod>2021-12-05T08:13:24.109Z</lastmod>
     
@@ -191,13 +191,6 @@
   </url>
   
   <url>
-    <loc>https://www.guaosi.com/2019/02/26/laravel-api-initialization-preparation/</loc>
-    
-    <lastmod>2021-12-05T08:13:24.108Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://www.guaosi.com/2020/07/05/kubernetes-for-mac-install/</loc>
     
     <lastmod>2021-12-05T08:13:24.108Z</lastmod>
@@ -205,9 +198,9 @@
   </url>
   
   <url>
-    <loc>https://www.guaosi.com/2020/07/05/kubernetes-cluster-install/</loc>
+    <loc>https://www.guaosi.com/2019/02/26/laravel-api-initialization-preparation/</loc>
     
-    <lastmod>2021-12-05T08:13:24.107Z</lastmod>
+    <lastmod>2021-12-05T08:13:24.108Z</lastmod>
     
   </url>
   
@@ -220,6 +213,13 @@
   
   <url>
     <loc>https://www.guaosi.com/2020/01/25/keepalived-principle-and-LVS-case/</loc>
+    
+    <lastmod>2021-12-05T08:13:24.107Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://www.guaosi.com/2020/07/05/kubernetes-cluster-install/</loc>
     
     <lastmod>2021-12-05T08:13:24.107Z</lastmod>
     
@@ -247,21 +247,7 @@
   </url>
   
   <url>
-    <loc>https://www.guaosi.com/2019/03/15/golang-stack/</loc>
-    
-    <lastmod>2021-12-05T08:13:24.103Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://www.guaosi.com/2019/03/15/golang-sort/</loc>
-    
-    <lastmod>2021-12-05T08:13:24.103Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://www.guaosi.com/2019/03/11/golang-tcp-socket/</loc>
     
     <lastmod>2021-12-05T08:13:24.103Z</lastmod>
     
@@ -275,9 +261,16 @@
   </url>
   
   <url>
-    <loc>https://www.guaosi.com/2019/03/22/golang-maze-breadth-first-search/</loc>
+    <loc>https://www.guaosi.com/2019/03/15/golang-stack/</loc>
     
-    <lastmod>2021-12-05T08:13:24.102Z</lastmod>
+    <lastmod>2021-12-05T08:13:24.103Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://www.guaosi.com/2019/03/11/golang-tcp-socket/</loc>
+    
+    <lastmod>2021-12-05T08:13:24.103Z</lastmod>
     
   </url>
   
@@ -289,16 +282,16 @@
   </url>
   
   <url>
-    <loc>https://www.guaosi.com/2019/03/12/golang-queue/</loc>
+    <loc>https://www.guaosi.com/2019/03/22/golang-maze-breadth-first-search/</loc>
     
     <lastmod>2021-12-05T08:13:24.102Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://www.guaosi.com/2020/07/05/go-microservice-series-from-development-to-deployment-introduction-contents/</loc>
+    <loc>https://www.guaosi.com/2019/03/12/golang-queue/</loc>
     
-    <lastmod>2021-12-05T08:13:24.101Z</lastmod>
+    <lastmod>2021-12-05T08:13:24.102Z</lastmod>
     
   </url>
   
@@ -317,16 +310,16 @@
   </url>
   
   <url>
-    <loc>https://www.guaosi.com/2019/03/17/golang-hash-table/</loc>
+    <loc>https://www.guaosi.com/2020/07/05/go-microservice-series-from-development-to-deployment-introduction-contents/</loc>
     
     <lastmod>2021-12-05T08:13:24.101Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://www.guaosi.com/2020/07/12/go-micro-service-kubernetes-build-execution/</loc>
+    <loc>https://www.guaosi.com/2019/03/17/golang-hash-table/</loc>
     
-    <lastmod>2021-12-05T08:13:24.100Z</lastmod>
+    <lastmod>2021-12-05T08:13:24.101Z</lastmod>
     
   </url>
   
@@ -338,16 +331,16 @@
   </url>
   
   <url>
-    <loc>https://www.guaosi.com/2020/07/11/go-micro-service-write-gateway/</loc>
+    <loc>https://www.guaosi.com/2020/07/12/go-micro-service-kubernetes-build-execution/</loc>
     
     <lastmod>2021-12-05T08:13:24.100Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://www.guaosi.com/2020/07/15/go-micro-service-jenkins-deploy-kubernetes/</loc>
+    <loc>https://www.guaosi.com/2020/07/11/go-micro-service-write-gateway/</loc>
     
-    <lastmod>2021-12-05T08:13:24.099Z</lastmod>
+    <lastmod>2021-12-05T08:13:24.100Z</lastmod>
     
   </url>
   
@@ -366,7 +359,14 @@
   </url>
   
   <url>
-    <loc>https://www.guaosi.com/2020/07/12/go-micro-service-gitlab-build-and-setting/</loc>
+    <loc>https://www.guaosi.com/2020/07/15/go-micro-service-jenkins-deploy-kubernetes/</loc>
+    
+    <lastmod>2021-12-05T08:13:24.099Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://www.guaosi.com/2020/07/11/go-micro-service-direct-docker-container-build-execution/</loc>
     
     <lastmod>2021-12-05T08:13:24.098Z</lastmod>
     
@@ -380,13 +380,6 @@
   </url>
   
   <url>
-    <loc>https://www.guaosi.com/2020/07/11/go-micro-service-direct-docker-container-build-execution/</loc>
-    
-    <lastmod>2021-12-05T08:13:24.098Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://www.guaosi.com/2020/07/08/go-micro-service-environment-preparation-and-installation/</loc>
     
     <lastmod>2021-12-05T08:13:24.098Z</lastmod>
@@ -394,9 +387,9 @@
   </url>
   
   <url>
-    <loc>https://www.guaosi.com/2020/07/10/go-micro-service-brief-introduction-go-micro/</loc>
+    <loc>https://www.guaosi.com/2020/07/12/go-micro-service-gitlab-build-and-setting/</loc>
     
-    <lastmod>2021-12-05T08:13:24.097Z</lastmod>
+    <lastmod>2021-12-05T08:13:24.098Z</lastmod>
     
   </url>
   
@@ -415,7 +408,14 @@
   </url>
   
   <url>
-    <loc>https://www.guaosi.com/2020/01/29/dive-into-the-advanced-features-of-rabbitmq-with-golang/</loc>
+    <loc>https://www.guaosi.com/2020/07/10/go-micro-service-brief-introduction-go-micro/</loc>
+    
+    <lastmod>2021-12-05T08:13:24.097Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://www.guaosi.com/2018/11/30/docker-basic/</loc>
     
     <lastmod>2021-12-05T08:13:24.096Z</lastmod>
     
@@ -429,9 +429,16 @@
   </url>
   
   <url>
-    <loc>https://www.guaosi.com/2018/11/30/docker-basic/</loc>
+    <loc>https://www.guaosi.com/2020/01/29/dive-into-the-advanced-features-of-rabbitmq-with-golang/</loc>
     
     <lastmod>2021-12-05T08:13:24.096Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://www.guaosi.com/2019/03/09/crack-china-mobile-optical-modem-h2-3/</loc>
+    
+    <lastmod>2021-12-05T08:13:24.095Z</lastmod>
     
   </url>
   
@@ -443,9 +450,9 @@
   </url>
   
   <url>
-    <loc>https://www.guaosi.com/2019/03/09/crack-china-mobile-optical-modem-h2-3/</loc>
+    <loc>https://www.guaosi.com/2018/12/14/complex-two-dimensional-arrays/</loc>
     
-    <lastmod>2021-12-05T08:13:24.095Z</lastmod>
+    <lastmod>2021-12-05T08:13:24.094Z</lastmod>
     
   </url>
   
@@ -464,21 +471,14 @@
   </url>
   
   <url>
-    <loc>https://www.guaosi.com/2018/12/14/complex-two-dimensional-arrays/</loc>
-    
-    <lastmod>2021-12-05T08:13:24.094Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://www.guaosi.com/2020/01/22/brief-introduction-of-pressure-test/</loc>
+    <loc>https://www.guaosi.com/2019/02/25/automatically-cancel-the-order/</loc>
     
     <lastmod>2021-12-05T08:13:24.093Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://www.guaosi.com/2019/02/25/automatically-cancel-the-order/</loc>
+    <loc>https://www.guaosi.com/2020/01/22/brief-introduction-of-pressure-test/</loc>
     
     <lastmod>2021-12-05T08:13:24.093Z</lastmod>
     

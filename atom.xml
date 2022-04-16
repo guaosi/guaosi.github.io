@@ -44,8 +44,8 @@
   
   <entry>
     <title>分布式事务、分布式理论基础</title>
-    <link href="https://www.guaosi.com/2022/04/16/distributed-transaction-and-distributed-theoretical-foundationdistributed-transaction-and-distributed-theoretical-foundation%20copy/"/>
-    <id>https://www.guaosi.com/2022/04/16/distributed-transaction-and-distributed-theoretical-foundationdistributed-transaction-and-distributed-theoretical-foundation copy/</id>
+    <link href="https://www.guaosi.com/2022/04/16/distributed-transaction-and-distributed-theoretical-foundationdistributed-transaction-and-distributed-theoretical-foundation/"/>
+    <id>https://www.guaosi.com/2022/04/16/distributed-transaction-and-distributed-theoretical-foundationdistributed-transaction-and-distributed-theoretical-foundation/</id>
     <published>2022-04-16T07:07:31.000Z</published>
     <updated>2022-04-16T07:08:07.993Z</updated>
     
@@ -1191,9 +1191,9 @@
     
       <category term="Linux" scheme="https://www.guaosi.com/tags/Linux/"/>
     
-      <category term="服务器" scheme="https://www.guaosi.com/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/"/>
-    
       <category term="Web" scheme="https://www.guaosi.com/tags/Web/"/>
+    
+      <category term="服务器" scheme="https://www.guaosi.com/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/"/>
     
       <category term="HTTP" scheme="https://www.guaosi.com/tags/HTTP/"/>
     
