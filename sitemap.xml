@@ -2,6 +2,48 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://www.guaosi.com/2022/04/16/common-distributed-transaction-solutions/</loc>
+    
+    <lastmod>2022-04-16T07:14:52.658Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://www.guaosi.com/2022/04/16/distributed-transaction-and-distributed-theoretical-foundationdistributed-transaction-and-distributed-theoretical-foundation%20copy/</loc>
+    
+    <lastmod>2022-04-16T07:08:07.993Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://www.guaosi.com/2022/04/12/mapping-for-elasticsearch7/</loc>
+    
+    <lastmod>2022-04-16T07:03:26.525Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://www.guaosi.com/2022/04/12/basic-operation-for-elasticsearch7/</loc>
+    
+    <lastmod>2022-04-16T07:03:26.525Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://www.guaosi.com/2022/04/12/installation-and-basic-concepts-for-elasticsearch7/</loc>
+    
+    <lastmod>2022-04-16T07:03:26.525Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://www.guaosi.com/2022/04/12/analyzer-for-elasticsearch7/</loc>
+    
+    <lastmod>2022-04-16T07:03:26.524Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://www.guaosi.com/2021/12/31/for-privatized-deployment-of-wiz-as-well-as-online-and-backup/</loc>
     
     <lastmod>2021-12-30T16:37:31.280Z</lastmod>
