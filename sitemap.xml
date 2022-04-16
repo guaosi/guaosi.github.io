@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://www.guaosi.com/2022/04/16/introduction-and-installation-for-rocketmq/</loc>
+    
+    <lastmod>2022-04-16T16:09:01.435Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://www.guaosi.com/2022/04/17/simple-operation-rocketmq-by-golang/</loc>
+    
+    <lastmod>2022-04-16T16:07:31.307Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://www.guaosi.com/2022/04/16/common-distributed-transaction-solutions/</loc>
     
     <lastmod>2022-04-16T07:14:52.658Z</lastmod>
@@ -121,14 +135,14 @@
   </url>
   
   <url>
-    <loc>https://www.guaosi.com/2020/01/22/simple-principle-of-https/</loc>
+    <loc>https://www.guaosi.com/2020/02/04/swiss-army-knife-redis/</loc>
     
     <lastmod>2021-12-05T08:13:24.112Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://www.guaosi.com/2020/02/04/swiss-army-knife-redis/</loc>
+    <loc>https://www.guaosi.com/2020/01/22/simple-principle-of-https/</loc>
     
     <lastmod>2021-12-05T08:13:24.112Z</lastmod>
     
@@ -156,14 +170,14 @@
   </url>
   
   <url>
-    <loc>https://www.guaosi.com/2019/02/22/onedrive-olyindex-oneindex-aria-ariang/</loc>
+    <loc>https://www.guaosi.com/2020/01/22/network-of-vmware-and-docker/</loc>
     
     <lastmod>2021-12-05T08:13:24.110Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://www.guaosi.com/2020/01/22/network-of-vmware-and-docker/</loc>
+    <loc>https://www.guaosi.com/2019/02/22/onedrive-olyindex-oneindex-aria-ariang/</loc>
     
     <lastmod>2021-12-05T08:13:24.110Z</lastmod>
     
@@ -205,14 +219,14 @@
   </url>
   
   <url>
-    <loc>https://www.guaosi.com/2020/01/28/introduction-to-mainstream-messaging-middleware/</loc>
+    <loc>https://www.guaosi.com/2020/01/25/keepalived-principle-and-LVS-case/</loc>
     
     <lastmod>2021-12-05T08:13:24.107Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://www.guaosi.com/2020/01/25/keepalived-principle-and-LVS-case/</loc>
+    <loc>https://www.guaosi.com/2020/01/28/introduction-to-mainstream-messaging-middleware/</loc>
     
     <lastmod>2021-12-05T08:13:24.107Z</lastmod>
     
@@ -324,14 +338,14 @@
   </url>
   
   <url>
-    <loc>https://www.guaosi.com/2020/07/11/go-micro-service-write-dockerfile-and-make-image/</loc>
+    <loc>https://www.guaosi.com/2020/07/12/go-micro-service-kubernetes-build-execution/</loc>
     
     <lastmod>2021-12-05T08:13:24.100Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://www.guaosi.com/2020/07/12/go-micro-service-kubernetes-build-execution/</loc>
+    <loc>https://www.guaosi.com/2020/07/11/go-micro-service-write-dockerfile-and-make-image/</loc>
     
     <lastmod>2021-12-05T08:13:24.100Z</lastmod>
     
@@ -345,14 +359,14 @@
   </url>
   
   <url>
-    <loc>https://www.guaosi.com/2020/07/12/go-micro-service-jenkins-build-and-setting/</loc>
+    <loc>https://www.guaosi.com/2020/07/07/go-micro-service-introduce-components-and-framework/</loc>
     
     <lastmod>2021-12-05T08:13:24.099Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://www.guaosi.com/2020/07/07/go-micro-service-introduce-components-and-framework/</loc>
+    <loc>https://www.guaosi.com/2020/07/12/go-micro-service-jenkins-build-and-setting/</loc>
     
     <lastmod>2021-12-05T08:13:24.099Z</lastmod>
     
@@ -366,13 +380,6 @@
   </url>
   
   <url>
-    <loc>https://www.guaosi.com/2020/07/11/go-micro-service-direct-docker-container-build-execution/</loc>
-    
-    <lastmod>2021-12-05T08:13:24.098Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://www.guaosi.com/2020/07/11/go-micro-service-docker-compose-build-execution/</loc>
     
     <lastmod>2021-12-05T08:13:24.098Z</lastmod>
@@ -381,6 +388,13 @@
   
   <url>
     <loc>https://www.guaosi.com/2020/07/08/go-micro-service-environment-preparation-and-installation/</loc>
+    
+    <lastmod>2021-12-05T08:13:24.098Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://www.guaosi.com/2020/07/11/go-micro-service-direct-docker-container-build-execution/</loc>
     
     <lastmod>2021-12-05T08:13:24.098Z</lastmod>
     
@@ -415,6 +429,13 @@
   </url>
   
   <url>
+    <loc>https://www.guaosi.com/2020/01/29/dive-into-the-advanced-features-of-rabbitmq-with-golang/</loc>
+    
+    <lastmod>2021-12-05T08:13:24.096Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://www.guaosi.com/2018/11/30/docker-basic/</loc>
     
     <lastmod>2021-12-05T08:13:24.096Z</lastmod>
@@ -423,13 +444,6 @@
   
   <url>
     <loc>https://www.guaosi.com/2018/12/18/environment-by-lnmp/</loc>
-    
-    <lastmod>2021-12-05T08:13:24.096Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://www.guaosi.com/2020/01/29/dive-into-the-advanced-features-of-rabbitmq-with-golang/</loc>
     
     <lastmod>2021-12-05T08:13:24.096Z</lastmod>
     
@@ -471,14 +485,14 @@
   </url>
   
   <url>
-    <loc>https://www.guaosi.com/2019/02/25/automatically-cancel-the-order/</loc>
+    <loc>https://www.guaosi.com/2020/01/22/brief-introduction-of-pressure-test/</loc>
     
     <lastmod>2021-12-05T08:13:24.093Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://www.guaosi.com/2020/01/22/brief-introduction-of-pressure-test/</loc>
+    <loc>https://www.guaosi.com/2019/02/25/automatically-cancel-the-order/</loc>
     
     <lastmod>2021-12-05T08:13:24.093Z</lastmod>
     

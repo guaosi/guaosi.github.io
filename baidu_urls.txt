@@ -1,4 +1,4 @@
+https://www.guaosi.com/2022/04/17/simple-operation-rocketmq-by-golang/
+https://www.guaosi.com/2022/04/16/introduction-and-installation-for-rocketmq/
 https://www.guaosi.com/2022/04/16/common-distributed-transaction-solutions/
 https://www.guaosi.com/2022/04/16/distributed-transaction-and-distributed-theoretical-foundationdistributed-transaction-and-distributed-theoretical-foundation/
-https://www.guaosi.com/2022/04/12/analyzer-for-elasticsearch7/
-https://www.guaosi.com/2022/04/12/mapping-for-elasticsearch7/
