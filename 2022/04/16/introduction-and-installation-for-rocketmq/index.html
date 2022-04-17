@@ -21,7 +21,7 @@
 <meta property="og:image" content="https://www.guaosi.com/assets/blogImg/introduction-and-installation-for-rocketmq/5jhH0CslT43qdAptDM1xrAYKbGqwDIPX3GPdSwearbc.png">
 <meta property="og:image" content="https://www.guaosi.com/assets/blogImg/introduction-and-installation-for-rocketmq/qSlwkP6_Y8eIfpdPVaelo_nAICx-aPVk45ReMH6xokQ.png">
 <meta property="og:image" content="https://www.guaosi.com/assets/blogImg/introduction-and-installation-for-rocketmq/QsADhvQCXcc4eXekDSEq5kdYlExYw6OYTMFCOYEZs94.png">
-<meta property="og:updated_time" content="2022-04-16T16:09:01.435Z">
+<meta property="og:updated_time" content="2022-04-17T06:42:09.369Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="RocketMQ介绍与安装">
 <meta name="twitter:description" content="消息队列是一种先进先出的数据结构。在介绍分布式事务的时候我们介绍过MQ(消息队列),只是简单的提了一下，这篇文章会从MQ的基本概念、RocketMQ的概念，使用RocketMQ等几个方面介绍RocketMQ。">
@@ -463,6 +463,12 @@ var _hmt = _hmt || [];
 <li><code>docker-compose up -d</code> 启动</li>
 <li>启动成功后，访问 <a href="http://xn--zfru1gfr6bz63i:8080/" target="_blank" rel="noopener">http://服务器地址:8080</a> 查看能否显示rocketmq的web界面</li>
 </ol>
+<h3 id="消息回查时间间隔的相关配置"><a href="#消息回查时间间隔的相关配置" class="headerlink" title="消息回查时间间隔的相关配置"></a>消息回查时间间隔的相关配置</h3><p>关于消息回查，有三个常见的属性设置，他们都在Broker加载的配置文件中配置，如下</p>
+<ul>
+<li><code>transactionTimeout=20</code>，指定TM在20秒内应该最终确认状态给TC，否者引发消息回查，默认为60秒</li>
+<li><code>transactionCheckMax=5</code>，指定最多回查5次，操过后将丢弃消息并记录错误日志，默认15次</li>
+<li><code>transactionCheckInterval=10</code>，指定设置的多次消息回查时间间隔为10秒，默认60秒</li>
+</ul>
 
       
 
@@ -648,7 +654,7 @@ var _hmt = _hmt || [];
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#MQ使用场景"><span class="toc-number">1.</span> <span class="toc-text">MQ使用场景</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#应用场景"><span class="toc-number">1.1.</span> <span class="toc-text">应用场景</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#应用解耦"><span class="toc-number">1.1.1.</span> <span class="toc-text">应用解耦</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#流量削峰"><span class="toc-number">1.1.2.</span> <span class="toc-text">流量削峰</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#数据分发"><span class="toc-number">1.1.3.</span> <span class="toc-text">数据分发</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#缺点"><span class="toc-number">1.2.</span> <span class="toc-text">缺点</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#RocketMQ的基本概念"><span class="toc-number">2.</span> <span class="toc-text">RocketMQ的基本概念</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#RocketMQ的消息类型"><span class="toc-number">3.</span> <span class="toc-text">RocketMQ的消息类型</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#按照发送的特点分"><span class="toc-number">3.1.</span> <span class="toc-text">按照发送的特点分</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#同步发送"><span class="toc-number">3.1.1.</span> <span class="toc-text">同步发送</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#异步发送"><span class="toc-number">3.1.2.</span> <span class="toc-text">异步发送</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#单向发送"><span class="toc-number">3.1.3.</span> <span class="toc-text">单向发送</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#按照使用功能特点分"><span class="toc-number">3.2.</span> <span class="toc-text">按照使用功能特点分</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#普通消息-订阅"><span class="toc-number">3.2.1.</span> <span class="toc-text">普通消息(订阅)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#顺序消息"><span class="toc-number">3.2.2.</span> <span class="toc-text">顺序消息</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#延时消息"><span class="toc-number">3.2.3.</span> <span class="toc-text">延时消息</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#事务消息"><span class="toc-number">3.2.4.</span> <span class="toc-text">事务消息</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#概念介绍"><span class="toc-number">3.2.4.1.</span> <span class="toc-text">概念介绍</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#分布式事务消息的优势"><span class="toc-number">3.2.4.2.</span> <span class="toc-text">分布式事务消息的优势</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#RocketMQ的安装"><span class="toc-number">4.</span> <span class="toc-text">RocketMQ的安装</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#MQ使用场景"><span class="toc-number">1.</span> <span class="toc-text">MQ使用场景</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#应用场景"><span class="toc-number">1.1.</span> <span class="toc-text">应用场景</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#应用解耦"><span class="toc-number">1.1.1.</span> <span class="toc-text">应用解耦</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#流量削峰"><span class="toc-number">1.1.2.</span> <span class="toc-text">流量削峰</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#数据分发"><span class="toc-number">1.1.3.</span> <span class="toc-text">数据分发</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#缺点"><span class="toc-number">1.2.</span> <span class="toc-text">缺点</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#RocketMQ的基本概念"><span class="toc-number">2.</span> <span class="toc-text">RocketMQ的基本概念</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#RocketMQ的消息类型"><span class="toc-number">3.</span> <span class="toc-text">RocketMQ的消息类型</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#按照发送的特点分"><span class="toc-number">3.1.</span> <span class="toc-text">按照发送的特点分</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#同步发送"><span class="toc-number">3.1.1.</span> <span class="toc-text">同步发送</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#异步发送"><span class="toc-number">3.1.2.</span> <span class="toc-text">异步发送</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#单向发送"><span class="toc-number">3.1.3.</span> <span class="toc-text">单向发送</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#按照使用功能特点分"><span class="toc-number">3.2.</span> <span class="toc-text">按照使用功能特点分</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#普通消息-订阅"><span class="toc-number">3.2.1.</span> <span class="toc-text">普通消息(订阅)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#顺序消息"><span class="toc-number">3.2.2.</span> <span class="toc-text">顺序消息</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#延时消息"><span class="toc-number">3.2.3.</span> <span class="toc-text">延时消息</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#事务消息"><span class="toc-number">3.2.4.</span> <span class="toc-text">事务消息</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#概念介绍"><span class="toc-number">3.2.4.1.</span> <span class="toc-text">概念介绍</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#分布式事务消息的优势"><span class="toc-number">3.2.4.2.</span> <span class="toc-text">分布式事务消息的优势</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#RocketMQ的安装"><span class="toc-number">4.</span> <span class="toc-text">RocketMQ的安装</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#消息回查时间间隔的相关配置"><span class="toc-number">4.1.</span> <span class="toc-text">消息回查时间间隔的相关配置</span></a></li></ol></li></ol>
                     </div>
                 </span>
             </div>
@@ -803,6 +809,14 @@ var _hmt = _hmt || [];
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">elasticsearch</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">es</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Redis</a>
               </li>
              
@@ -815,35 +829,11 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">elasticsearch</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">es</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">transaction</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">测试</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Web</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">网络</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">服务器</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">运维</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -859,7 +849,27 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">网络</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">服务器</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">运维</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">transaction</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">crack</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Docker</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -867,7 +877,7 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Docker</a>
+                <a href="javascript:void(0)" class="js-tag color4">git</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -880,10 +890,6 @@ var _hmt = _hmt || [];
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">go-micro</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">git</a>
               </li>
              
               <li class="article-tag-list-item">
